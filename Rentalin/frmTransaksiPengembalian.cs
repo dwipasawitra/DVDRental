@@ -40,9 +40,6 @@ namespace Rentalin
 
         private void frmTransaksiPengembalian_Load(object sender, EventArgs e)
         {
-            //dtpPengembalian.CustomFormat = "dd/MM/yyyy";
-            //dtpPengembalian.Format = DateTimePickerFormat.Custom;
-            
             MessageBox.Show(System.DateTime.Now.ToString());
             tampilanAwal();
             daftarPinjaman.Columns.Add("Kode Judul");
@@ -57,15 +54,11 @@ namespace Rentalin
 
         private int hitungTotalDenda()
         {
-            int i, idx = daftarPinjaman.Rows.Count, totalDenda=0;
+            int i, idx = daftarPinjaman.Rows.Count, totalDenda = 0;
+            MessageBox.Show(idx.ToString());
             for (i = 0; i < idx; i++)
             {
-                //if (daftarPinjaman.Rows[i].ItemArray[4].ToString() == "Baik" || daftarPinjaman.Rows[i].ItemArray[4].ToString() == "")
-                //{
-                totalDenda = totalDenda + int.Parse(daftarPinjaman.Rows[i].ItemArray[3].ToString()) * int.Parse(lblLamaTelat.Text) + int.Parse(daftarPinjaman.Rows[i].ItemArray[3].ToString());
-                //}
-                //else
-                  //  totalDenda += int.Parse(daftarPinjaman.Rows[i].ItemArray[3].ToString());
+                totalDenda = totalDenda + int.Parse(daftarPinjaman.Rows[i].ItemArray[3].ToString()) + int.Parse(daftarPinjaman.Rows[i].ItemArray[5].ToString());
             }
             return totalDenda;
         }
@@ -91,8 +84,9 @@ namespace Rentalin
                 lblLamaTelat.Text = selisih.ToString();
                 for (i = 0; i < idx; i++)
                 {
-                    daftarPinjaman.Rows.Add(dipinjam.Rows[i].ItemArray[0].ToString(), dipinjam.Rows[i].ItemArray[1].ToString(), dipinjam.Rows[i].ItemArray[2].ToString(),(int.Parse(dipinjam.Rows[i].ItemArray[4].ToString())*int.Parse(lblLamaTelat.Text)).ToString(),"",0);
+                    daftarPinjaman.Rows.Add(dipinjam.Rows[i].ItemArray[0].ToString(), dipinjam.Rows[i].ItemArray[1].ToString(), dipinjam.Rows[i].ItemArray[2].ToString(), (int.Parse(dipinjam.Rows[i].ItemArray[4].ToString()) * int.Parse(lblLamaTelat.Text)).ToString(), "", 0);
                 }
+                txtPeminjam.Enabled = false;
                 dgPengembalian.DataSource = daftarPinjaman;
                 dgPengembalian.ReadOnly = true;
                 lblBiayaDenda.Text = hitungTotalDenda().ToString();
@@ -102,8 +96,8 @@ namespace Rentalin
                     lblGenre.Text = dipinjam.Rows[0].ItemArray[5].ToString();
                     lblHargaDendaItem.Text = dipinjam.Rows[0].ItemArray[4].ToString();
                     lblHargaSewaItem.Text = dipinjam.Rows[0].ItemArray[3].ToString();
+                    lblStok.Text = daftarPinjaman.Rows[0].ItemArray[2].ToString();
                 }
-                
             }
         }
 
@@ -130,6 +124,33 @@ namespace Rentalin
             daftarPinjaman.Rows[y][5] = /*int.Parse(daftarPinjaman.Rows[y].ItemArray[3].ToString()) + */int.Parse(lblDendaKerusakan.Text);
             lblBiayaDenda.Text = hitungTotalDenda().ToString();
         }
-        
+
+        private void btnProses_Click(object sender, EventArgs e)
+        {
+            int i, idx = daftarPinjaman.Rows.Count, denda = 0, rusak = 0;
+            //MessageBox.Show(DateTime.Now.Date.ToString());
+            string newDate = DateTime.Now.Date.ToString().Substring(0, 10);
+            MessageBox.Show(newDate);
+            for (i = 0; i < idx; i++)
+            {
+                denda += int.Parse(daftarPinjaman.Rows[i].ItemArray[3].ToString());
+                rusak += int.Parse(daftarPinjaman.Rows[i].ItemArray[5].ToString());
+                if (daftarPinjaman.Rows[i].ItemArray[4].ToString() == "Baik")
+                {
+                    Program.conn.ExecuteNonQuery("UPDATE stokkoleksi SET kondisi = 0, status = 0 WHERE kodestok = '" + daftarPinjaman.Rows[i].ItemArray[2].ToString() + "'");
+                    MessageBox.Show("baik");
+                }
+                else
+                {
+                    MessageBox.Show("buruk");
+                    Program.conn.ExecuteNonQuery("UPDATE stokkoleksi SET kondisi = 1, status = 0 WHERE kodestok = '" + daftarPinjaman.Rows[i].ItemArray[2].ToString() + "'");
+                }
+            }
+            MessageBox.Show(denda.ToString());
+            MessageBox.Show(rusak.ToString());
+            Program.conn.ExecuteNonQuery("UPDATE nota SET tglrealisasikembali = to_date('" + newDate + "','MM/dd/yyyy'), hargadenda = " + denda + ", hargarusak = " + rusak + " WHERE nonota = '" + lblNmrNota.Text + "'");
+
+        }
+
     }
 }
