@@ -15,5 +15,19 @@ namespace Rentalin
         {
             InitializeComponent();
         }
+        DataTable pelanggan = new DataTable();
+        private void frmMasterPelanggan_Load(object sender, EventArgs e)
+        {
+            pelanggan = Program.conn.ExecuteDataTable("SELECT * FROM member");
+            dgPelanggan.DataSource = pelanggan;            
+        }
+
+        private void btnHapus_Click(object sender, EventArgs e)
+        {
+            int rows = dgPelanggan.CurrentCellAddress.Y;
+            string delete = "DELETE FROM member WHERE kodemember = '"+ pelanggan.Rows[rows].ItemArray[0].ToString() + "'";
+            Program.conn.ExecuteDataTable(delete);
+            pelanggan.Rows[rows].Delete();
+        }
     }
 }

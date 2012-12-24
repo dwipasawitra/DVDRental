@@ -15,6 +15,21 @@ namespace Rentalin
         {
             InitializeComponent();
         }
+        DataTable stok = new DataTable();
+
+        private void frmMasterStok_Load(object sender, EventArgs e)
+        {
+            stok = Program.conn.ExecuteDataTable("SELECT * FROM stokkoleksi");
+            dgStokKoleksi.DataSource = stok;
+        }
+
+        private void btnHapus_Click(object sender, EventArgs e)
+        {
+            int rows = dgStokKoleksi.CurrentCellAddress.Y;
+            string delete = "DELETE FROM stokkoleksi WHERE kodestok = '" + stok.Rows[rows].ItemArray[0].ToString() + "'";
+            Program.conn.ExecuteDataTable(delete);
+            stok.Rows[rows].Delete();
+        }
 
         private void lblInfoDetail_Click(object sender, EventArgs e)
         {
@@ -30,5 +45,9 @@ namespace Rentalin
         {
 
         }
+
+        
+
+        
     }
 }

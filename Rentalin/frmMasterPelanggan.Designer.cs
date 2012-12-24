@@ -29,24 +29,24 @@
         private void InitializeComponent()
         {
             this.pnlInfo = new System.Windows.Forms.Panel();
-            this.lblInfoDetail = new System.Windows.Forms.Label();
-            this.lblInfo = new System.Windows.Forms.Label();
+            this.lblPencarian = new System.Windows.Forms.Label();
+            this.txtPencarian = new System.Windows.Forms.TextBox();
             this.btnTambah = new System.Windows.Forms.Button();
+            this.lblInfoDetail = new System.Windows.Forms.Label();
+            this.picInfo = new System.Windows.Forms.PictureBox();
+            this.lblInfo = new System.Windows.Forms.Label();
             this.btnModifikasi = new System.Windows.Forms.Button();
             this.btnHapus = new System.Windows.Forms.Button();
             this.btnHistori = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgPelanggan = new System.Windows.Forms.DataGridView();
             this.pnlDetail = new System.Windows.Forms.Panel();
-            this.lblDetail = new System.Windows.Forms.Label();
-            this.lblNamaPelanggan = new System.Windows.Forms.Label();
             this.lblAlamat = new System.Windows.Forms.Label();
-            this.txtPencarian = new System.Windows.Forms.TextBox();
-            this.lblPencarian = new System.Windows.Forms.Label();
-            this.picInfo = new System.Windows.Forms.PictureBox();
+            this.lblNamaPelanggan = new System.Windows.Forms.Label();
+            this.lblDetail = new System.Windows.Forms.Label();
             this.pnlInfo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.pnlDetail.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picInfo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgPelanggan)).BeginInit();
+            this.pnlDetail.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlInfo
@@ -64,6 +64,31 @@
             this.pnlInfo.Size = new System.Drawing.Size(673, 106);
             this.pnlInfo.TabIndex = 0;
             // 
+            // lblPencarian
+            // 
+            this.lblPencarian.AutoSize = true;
+            this.lblPencarian.Location = new System.Drawing.Point(116, 63);
+            this.lblPencarian.Name = "lblPencarian";
+            this.lblPencarian.Size = new System.Drawing.Size(79, 13);
+            this.lblPencarian.TabIndex = 8;
+            this.lblPencarian.Text = "Cari Pelanggan";
+            // 
+            // txtPencarian
+            // 
+            this.txtPencarian.Location = new System.Drawing.Point(119, 79);
+            this.txtPencarian.Name = "txtPencarian";
+            this.txtPencarian.Size = new System.Drawing.Size(349, 20);
+            this.txtPencarian.TabIndex = 7;
+            // 
+            // btnTambah
+            // 
+            this.btnTambah.Location = new System.Drawing.Point(527, 23);
+            this.btnTambah.Name = "btnTambah";
+            this.btnTambah.Size = new System.Drawing.Size(121, 28);
+            this.btnTambah.TabIndex = 6;
+            this.btnTambah.Text = "Tambah Pelanggan";
+            this.btnTambah.UseVisualStyleBackColor = true;
+            // 
             // lblInfoDetail
             // 
             this.lblInfoDetail.AutoSize = true;
@@ -73,6 +98,15 @@
             this.lblInfoDetail.Size = new System.Drawing.Size(328, 13);
             this.lblInfoDetail.TabIndex = 5;
             this.lblInfoDetail.Text = "Silahkan mengatur daftar pelanggan penyewaan di dalam jendela ini";
+            // 
+            // picInfo
+            // 
+            this.picInfo.Image = global::Rentalin.Properties.Resources.consumer;
+            this.picInfo.Location = new System.Drawing.Point(26, 13);
+            this.picInfo.Name = "picInfo";
+            this.picInfo.Size = new System.Drawing.Size(82, 86);
+            this.picInfo.TabIndex = 0;
+            this.picInfo.TabStop = false;
             // 
             // lblInfo
             // 
@@ -84,15 +118,6 @@
             this.lblInfo.Size = new System.Drawing.Size(203, 25);
             this.lblInfo.TabIndex = 3;
             this.lblInfo.Text = "Master Pelanggan";
-            // 
-            // btnTambah
-            // 
-            this.btnTambah.Location = new System.Drawing.Point(527, 23);
-            this.btnTambah.Name = "btnTambah";
-            this.btnTambah.Size = new System.Drawing.Size(121, 28);
-            this.btnTambah.TabIndex = 6;
-            this.btnTambah.Text = "Tambah Pelanggan";
-            this.btnTambah.UseVisualStyleBackColor = true;
             // 
             // btnModifikasi
             // 
@@ -111,6 +136,7 @@
             this.btnHapus.TabIndex = 8;
             this.btnHapus.Text = "Hapus Pelanggan";
             this.btnHapus.UseVisualStyleBackColor = true;
+            this.btnHapus.Click += new System.EventHandler(this.btnHapus_Click);
             // 
             // btnHistori
             // 
@@ -121,13 +147,13 @@
             this.btnHistori.Text = "Histori Penyewaan";
             this.btnHistori.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // dgPelanggan
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(14, 140);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(454, 329);
-            this.dataGridView1.TabIndex = 1;
+            this.dgPelanggan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgPelanggan.Location = new System.Drawing.Point(14, 140);
+            this.dgPelanggan.Name = "dgPelanggan";
+            this.dgPelanggan.Size = new System.Drawing.Size(454, 329);
+            this.dgPelanggan.TabIndex = 1;
             // 
             // pnlDetail
             // 
@@ -143,16 +169,15 @@
             this.pnlDetail.Size = new System.Drawing.Size(185, 341);
             this.pnlDetail.TabIndex = 2;
             // 
-            // lblDetail
+            // lblAlamat
             // 
-            this.lblDetail.AutoSize = true;
-            this.lblDetail.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDetail.ForeColor = System.Drawing.Color.White;
-            this.lblDetail.Location = new System.Drawing.Point(8, 3);
-            this.lblDetail.Name = "lblDetail";
-            this.lblDetail.Size = new System.Drawing.Size(125, 18);
-            this.lblDetail.TabIndex = 10;
-            this.lblDetail.Text = "Detil Pelanggan";
+            this.lblAlamat.AutoSize = true;
+            this.lblAlamat.ForeColor = System.Drawing.Color.White;
+            this.lblAlamat.Location = new System.Drawing.Point(8, 48);
+            this.lblAlamat.Name = "lblAlamat";
+            this.lblAlamat.Size = new System.Drawing.Size(136, 13);
+            this.lblAlamat.TabIndex = 12;
+            this.lblAlamat.Text = "Wisma Permai Tengah ii-34";
             // 
             // lblNamaPelanggan
             // 
@@ -164,40 +189,16 @@
             this.lblNamaPelanggan.TabIndex = 11;
             this.lblNamaPelanggan.Text = "Putu Wiramaswara Widya";
             // 
-            // lblAlamat
+            // lblDetail
             // 
-            this.lblAlamat.AutoSize = true;
-            this.lblAlamat.ForeColor = System.Drawing.Color.White;
-            this.lblAlamat.Location = new System.Drawing.Point(8, 48);
-            this.lblAlamat.Name = "lblAlamat";
-            this.lblAlamat.Size = new System.Drawing.Size(136, 13);
-            this.lblAlamat.TabIndex = 12;
-            this.lblAlamat.Text = "Wisma Permai Tengah ii-34";
-            // 
-            // txtPencarian
-            // 
-            this.txtPencarian.Location = new System.Drawing.Point(119, 79);
-            this.txtPencarian.Name = "txtPencarian";
-            this.txtPencarian.Size = new System.Drawing.Size(349, 20);
-            this.txtPencarian.TabIndex = 7;
-            // 
-            // lblPencarian
-            // 
-            this.lblPencarian.AutoSize = true;
-            this.lblPencarian.Location = new System.Drawing.Point(116, 63);
-            this.lblPencarian.Name = "lblPencarian";
-            this.lblPencarian.Size = new System.Drawing.Size(79, 13);
-            this.lblPencarian.TabIndex = 8;
-            this.lblPencarian.Text = "Cari Pelanggan";
-            // 
-            // picInfo
-            // 
-            this.picInfo.Image = global::Rentalin.Properties.Resources.consumer;
-            this.picInfo.Location = new System.Drawing.Point(26, 13);
-            this.picInfo.Name = "picInfo";
-            this.picInfo.Size = new System.Drawing.Size(82, 86);
-            this.picInfo.TabIndex = 0;
-            this.picInfo.TabStop = false;
+            this.lblDetail.AutoSize = true;
+            this.lblDetail.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDetail.ForeColor = System.Drawing.Color.White;
+            this.lblDetail.Location = new System.Drawing.Point(8, 3);
+            this.lblDetail.Name = "lblDetail";
+            this.lblDetail.Size = new System.Drawing.Size(125, 18);
+            this.lblDetail.TabIndex = 10;
+            this.lblDetail.Text = "Detil Pelanggan";
             // 
             // frmMasterPelanggan
             // 
@@ -206,19 +207,20 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(671, 479);
             this.Controls.Add(this.pnlDetail);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgPelanggan);
             this.Controls.Add(this.pnlInfo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "frmMasterPelanggan";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Rentalin -- Master Pelanggan";
+            this.Load += new System.EventHandler(this.frmMasterPelanggan_Load);
             this.pnlInfo.ResumeLayout(false);
             this.pnlInfo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picInfo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgPelanggan)).EndInit();
             this.pnlDetail.ResumeLayout(false);
             this.pnlDetail.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picInfo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -233,7 +235,7 @@
         private System.Windows.Forms.Button btnModifikasi;
         private System.Windows.Forms.Button btnHapus;
         private System.Windows.Forms.Button btnHistori;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgPelanggan;
         private System.Windows.Forms.Panel pnlDetail;
         private System.Windows.Forms.Label lblAlamat;
         private System.Windows.Forms.Label lblNamaPelanggan;

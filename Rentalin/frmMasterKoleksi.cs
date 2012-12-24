@@ -15,5 +15,23 @@ namespace Rentalin
         {
             InitializeComponent();
         }
+        
+        DataTable koleksi = new DataTable();
+
+        private void frmMasterKoleksi_Load(object sender, EventArgs e)
+        {
+            koleksi = Program.conn.ExecuteDataTable("SELECT * FROM koleksi");
+            dgKoleksi.DataSource = koleksi;
+        }
+
+        private void btnHapus_Click(object sender, EventArgs e)
+        {
+            int rows = dgKoleksi.CurrentCellAddress.Y;
+            //menghapus data
+            string delete = "DELETE FROM koleksi WHERE kodekoleksi = '" + koleksi.Rows[rows].ItemArray[0].ToString() + "'";
+            Program.conn.ExecuteDataTable(delete);
+            koleksi.Rows[rows].Delete();
+        }
+        
     }
 }

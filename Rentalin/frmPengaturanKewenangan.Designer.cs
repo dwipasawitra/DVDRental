@@ -29,25 +29,27 @@
         private void InitializeComponent()
         {
             this.pnlInfo = new System.Windows.Forms.Panel();
-            this.btnTambah = new System.Windows.Forms.Button();
             this.lblInfoDetail = new System.Windows.Forms.Label();
             this.lblInfo = new System.Windows.Forms.Label();
+            this.btnTambah = new System.Windows.Forms.Button();
             this.listKewenangan = new System.Windows.Forms.ListBox();
             this.lblDaftar = new System.Windows.Forms.Label();
             this.gbDetailKewenangan = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.chkMasterPelanggan = new System.Windows.Forms.CheckBox();
-            this.chkMasterKoleksi = new System.Windows.Forms.CheckBox();
-            this.chkMasterStok = new System.Windows.Forms.CheckBox();
-            this.chkTransaksi = new System.Windows.Forms.CheckBox();
-            this.chkLaporanTransaksi = new System.Windows.Forms.CheckBox();
-            this.chkLaporanMember = new System.Windows.Forms.CheckBox();
-            this.chkLaporanKoleksi = new System.Windows.Forms.CheckBox();
-            this.chkLaporanKeuangan = new System.Windows.Forms.CheckBox();
-            this.chkPengaturanSistem = new System.Windows.Forms.CheckBox();
-            this.chkPengaturanKewenangan = new System.Windows.Forms.CheckBox();
-            this.chkPengaturanPengguna = new System.Windows.Forms.CheckBox();
             this.chkPenawaranMenarik = new System.Windows.Forms.CheckBox();
+            this.chkPengaturanPengguna = new System.Windows.Forms.CheckBox();
+            this.chkPengaturanKewenangan = new System.Windows.Forms.CheckBox();
+            this.chkPengaturanSistem = new System.Windows.Forms.CheckBox();
+            this.chkLaporanKeuangan = new System.Windows.Forms.CheckBox();
+            this.chkLaporanKoleksi = new System.Windows.Forms.CheckBox();
+            this.chkLaporanMember = new System.Windows.Forms.CheckBox();
+            this.chkLaporanTransaksi = new System.Windows.Forms.CheckBox();
+            this.chkTransaksi = new System.Windows.Forms.CheckBox();
+            this.chkMasterStok = new System.Windows.Forms.CheckBox();
+            this.chkMasterKoleksi = new System.Windows.Forms.CheckBox();
+            this.chkMasterPelanggan = new System.Windows.Forms.CheckBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.lblJendelaPertama = new System.Windows.Forms.Label();
+            this.cmbJendelaPertama = new System.Windows.Forms.ComboBox();
             this.pnlInfo.SuspendLayout();
             this.gbDetailKewenangan.SuspendLayout();
             this.SuspendLayout();
@@ -62,15 +64,6 @@
             this.pnlInfo.Name = "pnlInfo";
             this.pnlInfo.Size = new System.Drawing.Size(575, 62);
             this.pnlInfo.TabIndex = 1;
-            // 
-            // btnTambah
-            // 
-            this.btnTambah.Location = new System.Drawing.Point(306, 65);
-            this.btnTambah.Name = "btnTambah";
-            this.btnTambah.Size = new System.Drawing.Size(121, 21);
-            this.btnTambah.TabIndex = 6;
-            this.btnTambah.Text = "Tambah Kewenangan";
-            this.btnTambah.UseVisualStyleBackColor = true;
             // 
             // lblInfoDetail
             // 
@@ -93,6 +86,15 @@
             this.lblInfo.TabIndex = 3;
             this.lblInfo.Text = "Master Pelanggan";
             // 
+            // btnTambah
+            // 
+            this.btnTambah.Location = new System.Drawing.Point(306, 65);
+            this.btnTambah.Name = "btnTambah";
+            this.btnTambah.Size = new System.Drawing.Size(121, 21);
+            this.btnTambah.TabIndex = 6;
+            this.btnTambah.Text = "Tambah Kewenangan";
+            this.btnTambah.UseVisualStyleBackColor = true;
+            // 
             // listKewenangan
             // 
             this.listKewenangan.FormattingEnabled = true;
@@ -112,6 +114,8 @@
             // 
             // gbDetailKewenangan
             // 
+            this.gbDetailKewenangan.Controls.Add(this.cmbJendelaPertama);
+            this.gbDetailKewenangan.Controls.Add(this.lblJendelaPertama);
             this.gbDetailKewenangan.Controls.Add(this.chkPenawaranMenarik);
             this.gbDetailKewenangan.Controls.Add(this.chkPengaturanPengguna);
             this.gbDetailKewenangan.Controls.Add(this.chkPengaturanKewenangan);
@@ -131,114 +135,15 @@
             this.gbDetailKewenangan.TabStop = false;
             this.gbDetailKewenangan.Text = "Detail Kewenangan";
             // 
-            // button1
+            // chkPenawaranMenarik
             // 
-            this.button1.Location = new System.Drawing.Point(434, 65);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(121, 21);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Hapus Kewenangan";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // chkMasterPelanggan
-            // 
-            this.chkMasterPelanggan.AutoSize = true;
-            this.chkMasterPelanggan.Location = new System.Drawing.Point(6, 19);
-            this.chkMasterPelanggan.Name = "chkMasterPelanggan";
-            this.chkMasterPelanggan.Size = new System.Drawing.Size(112, 17);
-            this.chkMasterPelanggan.TabIndex = 0;
-            this.chkMasterPelanggan.Text = "Master Pelanggan";
-            this.chkMasterPelanggan.UseVisualStyleBackColor = true;
-            // 
-            // chkMasterKoleksi
-            // 
-            this.chkMasterKoleksi.AutoSize = true;
-            this.chkMasterKoleksi.Location = new System.Drawing.Point(6, 42);
-            this.chkMasterKoleksi.Name = "chkMasterKoleksi";
-            this.chkMasterKoleksi.Size = new System.Drawing.Size(95, 17);
-            this.chkMasterKoleksi.TabIndex = 9;
-            this.chkMasterKoleksi.Text = "Master Koleksi";
-            this.chkMasterKoleksi.UseVisualStyleBackColor = true;
-            // 
-            // chkMasterStok
-            // 
-            this.chkMasterStok.AutoSize = true;
-            this.chkMasterStok.Location = new System.Drawing.Point(6, 65);
-            this.chkMasterStok.Name = "chkMasterStok";
-            this.chkMasterStok.Size = new System.Drawing.Size(83, 17);
-            this.chkMasterStok.TabIndex = 10;
-            this.chkMasterStok.Text = "Master Stok";
-            this.chkMasterStok.UseVisualStyleBackColor = true;
-            // 
-            // chkTransaksi
-            // 
-            this.chkTransaksi.AutoSize = true;
-            this.chkTransaksi.Location = new System.Drawing.Point(6, 88);
-            this.chkTransaksi.Name = "chkTransaksi";
-            this.chkTransaksi.Size = new System.Drawing.Size(72, 17);
-            this.chkTransaksi.TabIndex = 11;
-            this.chkTransaksi.Text = "Transaksi";
-            this.chkTransaksi.UseVisualStyleBackColor = true;
-            // 
-            // chkLaporanTransaksi
-            // 
-            this.chkLaporanTransaksi.AutoSize = true;
-            this.chkLaporanTransaksi.Location = new System.Drawing.Point(168, 19);
-            this.chkLaporanTransaksi.Name = "chkLaporanTransaksi";
-            this.chkLaporanTransaksi.Size = new System.Drawing.Size(114, 17);
-            this.chkLaporanTransaksi.TabIndex = 12;
-            this.chkLaporanTransaksi.Text = "Laporan Transaksi";
-            this.chkLaporanTransaksi.UseVisualStyleBackColor = true;
-            // 
-            // chkLaporanMember
-            // 
-            this.chkLaporanMember.AutoSize = true;
-            this.chkLaporanMember.Location = new System.Drawing.Point(168, 42);
-            this.chkLaporanMember.Name = "chkLaporanMember";
-            this.chkLaporanMember.Size = new System.Drawing.Size(106, 17);
-            this.chkLaporanMember.TabIndex = 13;
-            this.chkLaporanMember.Text = "Laporan Member";
-            this.chkLaporanMember.UseVisualStyleBackColor = true;
-            // 
-            // chkLaporanKoleksi
-            // 
-            this.chkLaporanKoleksi.AutoSize = true;
-            this.chkLaporanKoleksi.Location = new System.Drawing.Point(168, 65);
-            this.chkLaporanKoleksi.Name = "chkLaporanKoleksi";
-            this.chkLaporanKoleksi.Size = new System.Drawing.Size(102, 17);
-            this.chkLaporanKoleksi.TabIndex = 14;
-            this.chkLaporanKoleksi.Text = "Laporan Koleksi";
-            this.chkLaporanKoleksi.UseVisualStyleBackColor = true;
-            // 
-            // chkLaporanKeuangan
-            // 
-            this.chkLaporanKeuangan.AutoSize = true;
-            this.chkLaporanKeuangan.Location = new System.Drawing.Point(168, 88);
-            this.chkLaporanKeuangan.Name = "chkLaporanKeuangan";
-            this.chkLaporanKeuangan.Size = new System.Drawing.Size(117, 17);
-            this.chkLaporanKeuangan.TabIndex = 14;
-            this.chkLaporanKeuangan.Text = "Laporan Keuangan";
-            this.chkLaporanKeuangan.UseVisualStyleBackColor = true;
-            // 
-            // chkPengaturanSistem
-            // 
-            this.chkPengaturanSistem.AutoSize = true;
-            this.chkPengaturanSistem.Location = new System.Drawing.Point(315, 19);
-            this.chkPengaturanSistem.Name = "chkPengaturanSistem";
-            this.chkPengaturanSistem.Size = new System.Drawing.Size(115, 17);
-            this.chkPengaturanSistem.TabIndex = 15;
-            this.chkPengaturanSistem.Text = "Pengaturan Sistem";
-            this.chkPengaturanSistem.UseVisualStyleBackColor = true;
-            // 
-            // chkPengaturanKewenangan
-            // 
-            this.chkPengaturanKewenangan.AutoSize = true;
-            this.chkPengaturanKewenangan.Location = new System.Drawing.Point(315, 42);
-            this.chkPengaturanKewenangan.Name = "chkPengaturanKewenangan";
-            this.chkPengaturanKewenangan.Size = new System.Drawing.Size(147, 17);
-            this.chkPengaturanKewenangan.TabIndex = 16;
-            this.chkPengaturanKewenangan.Text = "Pengaturan Kewenangan";
-            this.chkPengaturanKewenangan.UseVisualStyleBackColor = true;
+            this.chkPenawaranMenarik.AutoSize = true;
+            this.chkPenawaranMenarik.Location = new System.Drawing.Point(315, 88);
+            this.chkPenawaranMenarik.Name = "chkPenawaranMenarik";
+            this.chkPenawaranMenarik.Size = new System.Drawing.Size(179, 17);
+            this.chkPenawaranMenarik.TabIndex = 17;
+            this.chkPenawaranMenarik.Text = "Pengaturan Penawaran Menarik";
+            this.chkPenawaranMenarik.UseVisualStyleBackColor = true;
             // 
             // chkPengaturanPengguna
             // 
@@ -250,15 +155,131 @@
             this.chkPengaturanPengguna.Text = "Pengaturan Pengguna";
             this.chkPengaturanPengguna.UseVisualStyleBackColor = true;
             // 
-            // chkPenawaranMenarik
+            // chkPengaturanKewenangan
             // 
-            this.chkPenawaranMenarik.AutoSize = true;
-            this.chkPenawaranMenarik.Location = new System.Drawing.Point(315, 88);
-            this.chkPenawaranMenarik.Name = "chkPenawaranMenarik";
-            this.chkPenawaranMenarik.Size = new System.Drawing.Size(179, 17);
-            this.chkPenawaranMenarik.TabIndex = 17;
-            this.chkPenawaranMenarik.Text = "Pengaturan Penawaran Menarik";
-            this.chkPenawaranMenarik.UseVisualStyleBackColor = true;
+            this.chkPengaturanKewenangan.AutoSize = true;
+            this.chkPengaturanKewenangan.Location = new System.Drawing.Point(315, 42);
+            this.chkPengaturanKewenangan.Name = "chkPengaturanKewenangan";
+            this.chkPengaturanKewenangan.Size = new System.Drawing.Size(147, 17);
+            this.chkPengaturanKewenangan.TabIndex = 16;
+            this.chkPengaturanKewenangan.Text = "Pengaturan Kewenangan";
+            this.chkPengaturanKewenangan.UseVisualStyleBackColor = true;
+            // 
+            // chkPengaturanSistem
+            // 
+            this.chkPengaturanSistem.AutoSize = true;
+            this.chkPengaturanSistem.Location = new System.Drawing.Point(315, 19);
+            this.chkPengaturanSistem.Name = "chkPengaturanSistem";
+            this.chkPengaturanSistem.Size = new System.Drawing.Size(115, 17);
+            this.chkPengaturanSistem.TabIndex = 15;
+            this.chkPengaturanSistem.Text = "Pengaturan Sistem";
+            this.chkPengaturanSistem.UseVisualStyleBackColor = true;
+            // 
+            // chkLaporanKeuangan
+            // 
+            this.chkLaporanKeuangan.AutoSize = true;
+            this.chkLaporanKeuangan.Location = new System.Drawing.Point(168, 88);
+            this.chkLaporanKeuangan.Name = "chkLaporanKeuangan";
+            this.chkLaporanKeuangan.Size = new System.Drawing.Size(117, 17);
+            this.chkLaporanKeuangan.TabIndex = 14;
+            this.chkLaporanKeuangan.Text = "Laporan Keuangan";
+            this.chkLaporanKeuangan.UseVisualStyleBackColor = true;
+            // 
+            // chkLaporanKoleksi
+            // 
+            this.chkLaporanKoleksi.AutoSize = true;
+            this.chkLaporanKoleksi.Location = new System.Drawing.Point(168, 65);
+            this.chkLaporanKoleksi.Name = "chkLaporanKoleksi";
+            this.chkLaporanKoleksi.Size = new System.Drawing.Size(102, 17);
+            this.chkLaporanKoleksi.TabIndex = 14;
+            this.chkLaporanKoleksi.Text = "Laporan Koleksi";
+            this.chkLaporanKoleksi.UseVisualStyleBackColor = true;
+            // 
+            // chkLaporanMember
+            // 
+            this.chkLaporanMember.AutoSize = true;
+            this.chkLaporanMember.Location = new System.Drawing.Point(168, 42);
+            this.chkLaporanMember.Name = "chkLaporanMember";
+            this.chkLaporanMember.Size = new System.Drawing.Size(106, 17);
+            this.chkLaporanMember.TabIndex = 13;
+            this.chkLaporanMember.Text = "Laporan Member";
+            this.chkLaporanMember.UseVisualStyleBackColor = true;
+            // 
+            // chkLaporanTransaksi
+            // 
+            this.chkLaporanTransaksi.AutoSize = true;
+            this.chkLaporanTransaksi.Location = new System.Drawing.Point(168, 19);
+            this.chkLaporanTransaksi.Name = "chkLaporanTransaksi";
+            this.chkLaporanTransaksi.Size = new System.Drawing.Size(114, 17);
+            this.chkLaporanTransaksi.TabIndex = 12;
+            this.chkLaporanTransaksi.Text = "Laporan Transaksi";
+            this.chkLaporanTransaksi.UseVisualStyleBackColor = true;
+            // 
+            // chkTransaksi
+            // 
+            this.chkTransaksi.AutoSize = true;
+            this.chkTransaksi.Location = new System.Drawing.Point(6, 88);
+            this.chkTransaksi.Name = "chkTransaksi";
+            this.chkTransaksi.Size = new System.Drawing.Size(72, 17);
+            this.chkTransaksi.TabIndex = 11;
+            this.chkTransaksi.Text = "Transaksi";
+            this.chkTransaksi.UseVisualStyleBackColor = true;
+            // 
+            // chkMasterStok
+            // 
+            this.chkMasterStok.AutoSize = true;
+            this.chkMasterStok.Location = new System.Drawing.Point(6, 65);
+            this.chkMasterStok.Name = "chkMasterStok";
+            this.chkMasterStok.Size = new System.Drawing.Size(83, 17);
+            this.chkMasterStok.TabIndex = 10;
+            this.chkMasterStok.Text = "Master Stok";
+            this.chkMasterStok.UseVisualStyleBackColor = true;
+            // 
+            // chkMasterKoleksi
+            // 
+            this.chkMasterKoleksi.AutoSize = true;
+            this.chkMasterKoleksi.Location = new System.Drawing.Point(6, 42);
+            this.chkMasterKoleksi.Name = "chkMasterKoleksi";
+            this.chkMasterKoleksi.Size = new System.Drawing.Size(95, 17);
+            this.chkMasterKoleksi.TabIndex = 9;
+            this.chkMasterKoleksi.Text = "Master Koleksi";
+            this.chkMasterKoleksi.UseVisualStyleBackColor = true;
+            // 
+            // chkMasterPelanggan
+            // 
+            this.chkMasterPelanggan.AutoSize = true;
+            this.chkMasterPelanggan.Location = new System.Drawing.Point(6, 19);
+            this.chkMasterPelanggan.Name = "chkMasterPelanggan";
+            this.chkMasterPelanggan.Size = new System.Drawing.Size(112, 17);
+            this.chkMasterPelanggan.TabIndex = 0;
+            this.chkMasterPelanggan.Text = "Master Pelanggan";
+            this.chkMasterPelanggan.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(434, 65);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(121, 21);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Hapus Kewenangan";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // lblJendelaPertama
+            // 
+            this.lblJendelaPertama.AutoSize = true;
+            this.lblJendelaPertama.Location = new System.Drawing.Point(6, 121);
+            this.lblJendelaPertama.Name = "lblJendelaPertama";
+            this.lblJendelaPertama.Size = new System.Drawing.Size(154, 13);
+            this.lblJendelaPertama.TabIndex = 18;
+            this.lblJendelaPertama.Text = "Jendela Pertama Setelah Login";
+            // 
+            // cmbJendelaPertama
+            // 
+            this.cmbJendelaPertama.FormattingEnabled = true;
+            this.cmbJendelaPertama.Location = new System.Drawing.Point(166, 118);
+            this.cmbJendelaPertama.Name = "cmbJendelaPertama";
+            this.cmbJendelaPertama.Size = new System.Drawing.Size(351, 21);
+            this.cmbJendelaPertama.TabIndex = 19;
             // 
             // frmPengaturanKewenangan
             // 
@@ -307,5 +328,7 @@
         private System.Windows.Forms.CheckBox chkPengaturanPengguna;
         private System.Windows.Forms.CheckBox chkPengaturanKewenangan;
         private System.Windows.Forms.CheckBox chkPengaturanSistem;
+        private System.Windows.Forms.ComboBox cmbJendelaPertama;
+        private System.Windows.Forms.Label lblJendelaPertama;
     }
 }

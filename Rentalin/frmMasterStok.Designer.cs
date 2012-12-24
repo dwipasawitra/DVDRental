@@ -32,23 +32,23 @@
             this.pnlInfo = new System.Windows.Forms.Panel();
             this.lblPencarian = new System.Windows.Forms.Label();
             this.txtPencarian = new System.Windows.Forms.TextBox();
-            this.btnTambah = new System.Windows.Forms.Button();
             this.lblInfoDetail = new System.Windows.Forms.Label();
+            this.picInfo = new System.Windows.Forms.PictureBox();
             this.lblInfo = new System.Windows.Forms.Label();
+            this.btnTambah = new System.Windows.Forms.Button();
             this.btnHistori = new System.Windows.Forms.Button();
             this.btnModifikasi = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgStokKoleksi = new System.Windows.Forms.DataGridView();
             this.pnlKoleksiDIpilih = new System.Windows.Forms.Panel();
-            this.lblDipilih = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.btnPilihKoleksi = new System.Windows.Forms.Button();
             this.lblGenre = new System.Windows.Forms.Label();
             this.lblJudul = new System.Windows.Forms.Label();
-            this.picInfo = new System.Windows.Forms.PictureBox();
+            this.btnPilihKoleksi = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.lblDipilih = new System.Windows.Forms.Label();
             this.pnlInfo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.pnlKoleksiDIpilih.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picInfo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgStokKoleksi)).BeginInit();
+            this.pnlKoleksiDIpilih.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnHapus
@@ -59,6 +59,7 @@
             this.btnHapus.TabIndex = 8;
             this.btnHapus.Text = "Hapus Stok";
             this.btnHapus.UseVisualStyleBackColor = true;
+            this.btnHapus.Click += new System.EventHandler(this.btnHapus_Click);
             // 
             // pnlInfo
             // 
@@ -92,15 +93,6 @@
             this.txtPencarian.TabIndex = 7;
             this.txtPencarian.TextChanged += new System.EventHandler(this.txtPencarian_TextChanged);
             // 
-            // btnTambah
-            // 
-            this.btnTambah.Location = new System.Drawing.Point(43, 125);
-            this.btnTambah.Name = "btnTambah";
-            this.btnTambah.Size = new System.Drawing.Size(121, 28);
-            this.btnTambah.TabIndex = 6;
-            this.btnTambah.Text = "Tambah Stok";
-            this.btnTambah.UseVisualStyleBackColor = true;
-            // 
             // lblInfoDetail
             // 
             this.lblInfoDetail.AutoSize = true;
@@ -113,6 +105,15 @@
                 "dela ini";
             this.lblInfoDetail.Click += new System.EventHandler(this.lblInfoDetail_Click);
             // 
+            // picInfo
+            // 
+            this.picInfo.Image = global::Rentalin.Properties.Resources.consumer;
+            this.picInfo.Location = new System.Drawing.Point(26, 13);
+            this.picInfo.Name = "picInfo";
+            this.picInfo.Size = new System.Drawing.Size(82, 86);
+            this.picInfo.TabIndex = 0;
+            this.picInfo.TabStop = false;
+            // 
             // lblInfo
             // 
             this.lblInfo.AutoSize = true;
@@ -123,6 +124,15 @@
             this.lblInfo.Size = new System.Drawing.Size(138, 25);
             this.lblInfo.TabIndex = 3;
             this.lblInfo.Text = "Master Stok";
+            // 
+            // btnTambah
+            // 
+            this.btnTambah.Location = new System.Drawing.Point(43, 125);
+            this.btnTambah.Name = "btnTambah";
+            this.btnTambah.Size = new System.Drawing.Size(121, 28);
+            this.btnTambah.TabIndex = 6;
+            this.btnTambah.Text = "Tambah Stok";
+            this.btnTambah.UseVisualStyleBackColor = true;
             // 
             // btnHistori
             // 
@@ -142,13 +152,13 @@
             this.btnModifikasi.Text = "Modifikasi Stok";
             this.btnModifikasi.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // dgStokKoleksi
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(13, 132);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(477, 329);
-            this.dataGridView1.TabIndex = 4;
+            this.dgStokKoleksi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgStokKoleksi.Location = new System.Drawing.Point(13, 132);
+            this.dgStokKoleksi.Name = "dgStokKoleksi";
+            this.dgStokKoleksi.Size = new System.Drawing.Size(477, 329);
+            this.dgStokKoleksi.TabIndex = 4;
             // 
             // pnlKoleksiDIpilih
             // 
@@ -167,32 +177,6 @@
             this.pnlKoleksiDIpilih.Name = "pnlKoleksiDIpilih";
             this.pnlKoleksiDIpilih.Size = new System.Drawing.Size(211, 454);
             this.pnlKoleksiDIpilih.TabIndex = 9;
-            // 
-            // lblDipilih
-            // 
-            this.lblDipilih.AutoSize = true;
-            this.lblDipilih.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDipilih.Location = new System.Drawing.Point(3, 11);
-            this.lblDipilih.Name = "lblDipilih";
-            this.lblDipilih.Size = new System.Drawing.Size(118, 13);
-            this.lblDipilih.TabIndex = 0;
-            this.lblDipilih.Text = "Koleksi yang Dipilih";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(9, 69);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(188, 20);
-            this.textBox1.TabIndex = 1;
-            // 
-            // btnPilihKoleksi
-            // 
-            this.btnPilihKoleksi.Location = new System.Drawing.Point(43, 35);
-            this.btnPilihKoleksi.Name = "btnPilihKoleksi";
-            this.btnPilihKoleksi.Size = new System.Drawing.Size(121, 28);
-            this.btnPilihKoleksi.TabIndex = 10;
-            this.btnPilihKoleksi.Text = "Pilih Koleksi";
-            this.btnPilihKoleksi.UseVisualStyleBackColor = true;
             // 
             // lblGenre
             // 
@@ -215,14 +199,31 @@
             this.lblJudul.TabIndex = 13;
             this.lblJudul.Text = "Dilwale Dulhania Le Jayengge";
             // 
-            // picInfo
+            // btnPilihKoleksi
             // 
-            this.picInfo.Image = global::Rentalin.Properties.Resources.consumer;
-            this.picInfo.Location = new System.Drawing.Point(26, 13);
-            this.picInfo.Name = "picInfo";
-            this.picInfo.Size = new System.Drawing.Size(82, 86);
-            this.picInfo.TabIndex = 0;
-            this.picInfo.TabStop = false;
+            this.btnPilihKoleksi.Location = new System.Drawing.Point(43, 35);
+            this.btnPilihKoleksi.Name = "btnPilihKoleksi";
+            this.btnPilihKoleksi.Size = new System.Drawing.Size(121, 28);
+            this.btnPilihKoleksi.TabIndex = 10;
+            this.btnPilihKoleksi.Text = "Pilih Koleksi";
+            this.btnPilihKoleksi.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(9, 69);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(188, 20);
+            this.textBox1.TabIndex = 1;
+            // 
+            // lblDipilih
+            // 
+            this.lblDipilih.AutoSize = true;
+            this.lblDipilih.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDipilih.Location = new System.Drawing.Point(3, 11);
+            this.lblDipilih.Name = "lblDipilih";
+            this.lblDipilih.Size = new System.Drawing.Size(118, 13);
+            this.lblDipilih.TabIndex = 0;
+            this.lblDipilih.Text = "Koleksi yang Dipilih";
             // 
             // frmMasterStok
             // 
@@ -232,18 +233,19 @@
             this.ClientSize = new System.Drawing.Size(705, 479);
             this.Controls.Add(this.pnlKoleksiDIpilih);
             this.Controls.Add(this.pnlInfo);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgStokKoleksi);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "frmMasterStok";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RENTALIN -- Master Stok";
+            this.Load += new System.EventHandler(this.frmMasterStok_Load);
             this.pnlInfo.ResumeLayout(false);
             this.pnlInfo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picInfo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgStokKoleksi)).EndInit();
             this.pnlKoleksiDIpilih.ResumeLayout(false);
             this.pnlKoleksiDIpilih.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picInfo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -260,7 +262,7 @@
         private System.Windows.Forms.Label lblInfo;
         private System.Windows.Forms.Button btnHistori;
         private System.Windows.Forms.Button btnModifikasi;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgStokKoleksi;
         private System.Windows.Forms.Panel pnlKoleksiDIpilih;
         private System.Windows.Forms.Button btnPilihKoleksi;
         private System.Windows.Forms.TextBox textBox1;

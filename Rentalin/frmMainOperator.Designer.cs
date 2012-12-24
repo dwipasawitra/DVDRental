@@ -34,36 +34,36 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblStatistik = new System.Windows.Forms.Label();
             this.pnlMaster = new System.Windows.Forms.Panel();
-            this.pnlTransaksi = new System.Windows.Forms.Panel();
-            this.pnlLaporan = new System.Windows.Forms.Panel();
-            this.lblMasterData = new System.Windows.Forms.Label();
-            this.lblMasterInfo = new System.Windows.Forms.Label();
-            this.btnMasterPelanggan = new System.Windows.Forms.Button();
-            this.btnMasterKoleksi = new System.Windows.Forms.Button();
             this.btnMasterStok = new System.Windows.Forms.Button();
-            this.btnPengembalian = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.lblTransaksiInfo = new System.Windows.Forms.Label();
+            this.btnMasterKoleksi = new System.Windows.Forms.Button();
+            this.btnMasterPelanggan = new System.Windows.Forms.Button();
+            this.lblMasterInfo = new System.Windows.Forms.Label();
+            this.picMaster = new System.Windows.Forms.PictureBox();
+            this.lblMasterData = new System.Windows.Forms.Label();
+            this.pnlTransaksi = new System.Windows.Forms.Panel();
             this.lblTransaksi = new System.Windows.Forms.Label();
+            this.btnPengembalian = new System.Windows.Forms.Button();
+            this.picTransaksi = new System.Windows.Forms.PictureBox();
+            this.btnPeminjaman = new System.Windows.Forms.Button();
+            this.lblTransaksiInfo = new System.Windows.Forms.Label();
+            this.pnlLaporan = new System.Windows.Forms.Panel();
             this.lblLaporan = new System.Windows.Forms.Label();
             this.lblLaporanInfo = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblDate = new System.Windows.Forms.Label();
             this.lblTime = new System.Windows.Forms.Label();
             this.lblLogedInAs = new System.Windows.Forms.Label();
             this.lblUserName = new System.Windows.Forms.Label();
             this.btnLogout = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.picTransaksi = new System.Windows.Forms.PictureBox();
-            this.picMaster = new System.Windows.Forms.PictureBox();
             this.picDisc = new System.Windows.Forms.PictureBox();
             this.btnAdmin = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.pnlMaster.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picMaster)).BeginInit();
             this.pnlTransaksi.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picTransaksi)).BeginInit();
             this.pnlLaporan.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picTransaksi)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picMaster)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picDisc)).BeginInit();
             this.SuspendLayout();
             // 
@@ -127,40 +127,39 @@
             this.pnlMaster.Size = new System.Drawing.Size(458, 116);
             this.pnlMaster.TabIndex = 10;
             // 
-            // pnlTransaksi
+            // btnMasterStok
             // 
-            this.pnlTransaksi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(173)))), ((int)(((byte)(191)))));
-            this.pnlTransaksi.Controls.Add(this.lblTransaksi);
-            this.pnlTransaksi.Controls.Add(this.btnPengembalian);
-            this.pnlTransaksi.Controls.Add(this.picTransaksi);
-            this.pnlTransaksi.Controls.Add(this.button3);
-            this.pnlTransaksi.Controls.Add(this.lblTransaksiInfo);
-            this.pnlTransaksi.Location = new System.Drawing.Point(291, 200);
-            this.pnlTransaksi.Name = "pnlTransaksi";
-            this.pnlTransaksi.Size = new System.Drawing.Size(458, 124);
-            this.pnlTransaksi.TabIndex = 11;
+            this.btnMasterStok.ForeColor = System.Drawing.Color.White;
+            this.btnMasterStok.Location = new System.Drawing.Point(302, 65);
+            this.btnMasterStok.Name = "btnMasterStok";
+            this.btnMasterStok.Size = new System.Drawing.Size(72, 40);
+            this.btnMasterStok.TabIndex = 13;
+            this.btnMasterStok.Text = "Master Stok";
+            this.btnMasterStok.UseVisualStyleBackColor = true;
+            this.btnMasterStok.Click += new System.EventHandler(this.btnMasterStok_Click);
             // 
-            // pnlLaporan
+            // btnMasterKoleksi
             // 
-            this.pnlLaporan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(31)))), ((int)(((byte)(38)))));
-            this.pnlLaporan.Controls.Add(this.lblLaporan);
-            this.pnlLaporan.Controls.Add(this.lblLaporanInfo);
-            this.pnlLaporan.Controls.Add(this.pictureBox1);
-            this.pnlLaporan.Location = new System.Drawing.Point(291, 353);
-            this.pnlLaporan.Name = "pnlLaporan";
-            this.pnlLaporan.Size = new System.Drawing.Size(458, 124);
-            this.pnlLaporan.TabIndex = 11;
+            this.btnMasterKoleksi.ForeColor = System.Drawing.Color.White;
+            this.btnMasterKoleksi.Location = new System.Drawing.Point(211, 65);
+            this.btnMasterKoleksi.Name = "btnMasterKoleksi";
+            this.btnMasterKoleksi.Size = new System.Drawing.Size(72, 40);
+            this.btnMasterKoleksi.TabIndex = 12;
+            this.btnMasterKoleksi.Text = "Master Koleksi";
+            this.btnMasterKoleksi.UseVisualStyleBackColor = true;
+            this.btnMasterKoleksi.Click += new System.EventHandler(this.btnMasterKoleksi_Click);
             // 
-            // lblMasterData
+            // btnMasterPelanggan
             // 
-            this.lblMasterData.AutoSize = true;
-            this.lblMasterData.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMasterData.ForeColor = System.Drawing.Color.White;
-            this.lblMasterData.Location = new System.Drawing.Point(113, 10);
-            this.lblMasterData.Name = "lblMasterData";
-            this.lblMasterData.Size = new System.Drawing.Size(140, 25);
-            this.lblMasterData.TabIndex = 0;
-            this.lblMasterData.Text = "Master Data";
+            this.btnMasterPelanggan.BackColor = System.Drawing.Color.Transparent;
+            this.btnMasterPelanggan.ForeColor = System.Drawing.Color.White;
+            this.btnMasterPelanggan.Location = new System.Drawing.Point(118, 64);
+            this.btnMasterPelanggan.Name = "btnMasterPelanggan";
+            this.btnMasterPelanggan.Size = new System.Drawing.Size(72, 40);
+            this.btnMasterPelanggan.TabIndex = 3;
+            this.btnMasterPelanggan.Text = "Master Pelanggan";
+            this.btnMasterPelanggan.UseVisualStyleBackColor = false;
+            this.btnMasterPelanggan.Click += new System.EventHandler(this.btnMasterPelanggan_Click);
             // 
             // lblMasterInfo
             // 
@@ -173,35 +172,49 @@
             this.lblMasterInfo.Text = "Silahkan mengatur basis data layanan rental ini\r\nMelalui menu yang disediakan di " +
                 "bawah";
             // 
-            // btnMasterPelanggan
+            // picMaster
             // 
-            this.btnMasterPelanggan.ForeColor = System.Drawing.Color.White;
-            this.btnMasterPelanggan.Location = new System.Drawing.Point(118, 64);
-            this.btnMasterPelanggan.Name = "btnMasterPelanggan";
-            this.btnMasterPelanggan.Size = new System.Drawing.Size(72, 40);
-            this.btnMasterPelanggan.TabIndex = 3;
-            this.btnMasterPelanggan.Text = "Master Pelanggan";
-            this.btnMasterPelanggan.UseVisualStyleBackColor = true;
+            this.picMaster.Image = global::Rentalin.Properties.Resources.db;
+            this.picMaster.Location = new System.Drawing.Point(15, 10);
+            this.picMaster.Name = "picMaster";
+            this.picMaster.Size = new System.Drawing.Size(92, 95);
+            this.picMaster.TabIndex = 1;
+            this.picMaster.TabStop = false;
             // 
-            // btnMasterKoleksi
+            // lblMasterData
             // 
-            this.btnMasterKoleksi.ForeColor = System.Drawing.Color.White;
-            this.btnMasterKoleksi.Location = new System.Drawing.Point(211, 65);
-            this.btnMasterKoleksi.Name = "btnMasterKoleksi";
-            this.btnMasterKoleksi.Size = new System.Drawing.Size(72, 40);
-            this.btnMasterKoleksi.TabIndex = 12;
-            this.btnMasterKoleksi.Text = "Master Koleksi";
-            this.btnMasterKoleksi.UseVisualStyleBackColor = true;
+            this.lblMasterData.AutoSize = true;
+            this.lblMasterData.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMasterData.ForeColor = System.Drawing.Color.White;
+            this.lblMasterData.Location = new System.Drawing.Point(113, 10);
+            this.lblMasterData.Name = "lblMasterData";
+            this.lblMasterData.Size = new System.Drawing.Size(140, 25);
+            this.lblMasterData.TabIndex = 0;
+            this.lblMasterData.Text = "Master Data";
             // 
-            // btnMasterStok
+            // pnlTransaksi
             // 
-            this.btnMasterStok.ForeColor = System.Drawing.Color.White;
-            this.btnMasterStok.Location = new System.Drawing.Point(302, 65);
-            this.btnMasterStok.Name = "btnMasterStok";
-            this.btnMasterStok.Size = new System.Drawing.Size(72, 40);
-            this.btnMasterStok.TabIndex = 13;
-            this.btnMasterStok.Text = "Master Stok";
-            this.btnMasterStok.UseVisualStyleBackColor = true;
+            this.pnlTransaksi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(173)))), ((int)(((byte)(191)))));
+            this.pnlTransaksi.Controls.Add(this.lblTransaksi);
+            this.pnlTransaksi.Controls.Add(this.btnPengembalian);
+            this.pnlTransaksi.Controls.Add(this.picTransaksi);
+            this.pnlTransaksi.Controls.Add(this.btnPeminjaman);
+            this.pnlTransaksi.Controls.Add(this.lblTransaksiInfo);
+            this.pnlTransaksi.Location = new System.Drawing.Point(291, 200);
+            this.pnlTransaksi.Name = "pnlTransaksi";
+            this.pnlTransaksi.Size = new System.Drawing.Size(458, 124);
+            this.pnlTransaksi.TabIndex = 11;
+            // 
+            // lblTransaksi
+            // 
+            this.lblTransaksi.AutoSize = true;
+            this.lblTransaksi.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTransaksi.ForeColor = System.Drawing.Color.White;
+            this.lblTransaksi.Location = new System.Drawing.Point(113, 12);
+            this.lblTransaksi.Name = "lblTransaksi";
+            this.lblTransaksi.Size = new System.Drawing.Size(115, 25);
+            this.lblTransaksi.TabIndex = 14;
+            this.lblTransaksi.Text = "Transaksi";
             // 
             // btnPengembalian
             // 
@@ -212,16 +225,26 @@
             this.btnPengembalian.TabIndex = 18;
             this.btnPengembalian.Text = "Pengembalian";
             this.btnPengembalian.UseVisualStyleBackColor = true;
+            this.btnPengembalian.Click += new System.EventHandler(this.btnPengembalian_Click);
             // 
-            // button3
+            // picTransaksi
             // 
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(118, 66);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(123, 40);
-            this.button3.TabIndex = 17;
-            this.button3.Text = "Peminjaman";
-            this.button3.UseVisualStyleBackColor = true;
+            this.picTransaksi.Image = global::Rentalin.Properties.Resources.bill;
+            this.picTransaksi.Location = new System.Drawing.Point(15, 12);
+            this.picTransaksi.Name = "picTransaksi";
+            this.picTransaksi.Size = new System.Drawing.Size(92, 109);
+            this.picTransaksi.TabIndex = 15;
+            this.picTransaksi.TabStop = false;
+            // 
+            // btnPeminjaman
+            // 
+            this.btnPeminjaman.ForeColor = System.Drawing.Color.White;
+            this.btnPeminjaman.Location = new System.Drawing.Point(118, 66);
+            this.btnPeminjaman.Name = "btnPeminjaman";
+            this.btnPeminjaman.Size = new System.Drawing.Size(123, 40);
+            this.btnPeminjaman.TabIndex = 17;
+            this.btnPeminjaman.Text = "Peminjaman";
+            this.btnPeminjaman.UseVisualStyleBackColor = true;
             // 
             // lblTransaksiInfo
             // 
@@ -234,16 +257,16 @@
             this.lblTransaksiInfo.Text = "Untuk melakukan transaksi peminjaman atau pengembalian,\r\npilih salah satu menu di" +
                 " bawah ini";
             // 
-            // lblTransaksi
+            // pnlLaporan
             // 
-            this.lblTransaksi.AutoSize = true;
-            this.lblTransaksi.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTransaksi.ForeColor = System.Drawing.Color.White;
-            this.lblTransaksi.Location = new System.Drawing.Point(113, 12);
-            this.lblTransaksi.Name = "lblTransaksi";
-            this.lblTransaksi.Size = new System.Drawing.Size(115, 25);
-            this.lblTransaksi.TabIndex = 14;
-            this.lblTransaksi.Text = "Transaksi";
+            this.pnlLaporan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(31)))), ((int)(((byte)(38)))));
+            this.pnlLaporan.Controls.Add(this.lblLaporan);
+            this.pnlLaporan.Controls.Add(this.lblLaporanInfo);
+            this.pnlLaporan.Controls.Add(this.pictureBox1);
+            this.pnlLaporan.Location = new System.Drawing.Point(291, 353);
+            this.pnlLaporan.Name = "pnlLaporan";
+            this.pnlLaporan.Size = new System.Drawing.Size(458, 124);
+            this.pnlLaporan.TabIndex = 11;
             // 
             // lblLaporan
             // 
@@ -266,6 +289,15 @@
             this.lblLaporanInfo.TabIndex = 19;
             this.lblLaporanInfo.Text = "Pilih laporan yang ingin dilihat :";
             this.lblLaporanInfo.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Rentalin.Properties.Resources.report;
+            this.pictureBox1.Location = new System.Drawing.Point(15, 8);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(92, 109);
+            this.pictureBox1.TabIndex = 18;
+            this.pictureBox1.TabStop = false;
             // 
             // lblDate
             // 
@@ -314,33 +346,7 @@
             this.btnLogout.TabIndex = 16;
             this.btnLogout.Text = "Keluar";
             this.btnLogout.UseVisualStyleBackColor = true;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Rentalin.Properties.Resources.report;
-            this.pictureBox1.Location = new System.Drawing.Point(15, 8);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(92, 109);
-            this.pictureBox1.TabIndex = 18;
-            this.pictureBox1.TabStop = false;
-            // 
-            // picTransaksi
-            // 
-            this.picTransaksi.Image = global::Rentalin.Properties.Resources.bill;
-            this.picTransaksi.Location = new System.Drawing.Point(15, 12);
-            this.picTransaksi.Name = "picTransaksi";
-            this.picTransaksi.Size = new System.Drawing.Size(92, 109);
-            this.picTransaksi.TabIndex = 15;
-            this.picTransaksi.TabStop = false;
-            // 
-            // picMaster
-            // 
-            this.picMaster.Image = global::Rentalin.Properties.Resources.db;
-            this.picMaster.Location = new System.Drawing.Point(15, 10);
-            this.picMaster.Name = "picMaster";
-            this.picMaster.Size = new System.Drawing.Size(92, 95);
-            this.picMaster.TabIndex = 1;
-            this.picMaster.TabStop = false;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // picDisc
             // 
@@ -359,6 +365,7 @@
             this.btnAdmin.TabIndex = 17;
             this.btnAdmin.Text = "Buka Menu Admin";
             this.btnAdmin.UseVisualStyleBackColor = true;
+            this.btnAdmin.Click += new System.EventHandler(this.btnAdmin_Click);
             // 
             // frmMainOperator
             // 
@@ -385,17 +392,18 @@
             this.Name = "frmMainOperator";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Rentalin -- Menu [OPERATOR]";
+            this.Load += new System.EventHandler(this.frmMainOperator_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.pnlMaster.ResumeLayout(false);
             this.pnlMaster.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picMaster)).EndInit();
             this.pnlTransaksi.ResumeLayout(false);
             this.pnlTransaksi.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picTransaksi)).EndInit();
             this.pnlLaporan.ResumeLayout(false);
             this.pnlLaporan.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picTransaksi)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picMaster)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picDisc)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -422,7 +430,7 @@
         private System.Windows.Forms.Label lblTransaksi;
         private System.Windows.Forms.Button btnPengembalian;
         private System.Windows.Forms.PictureBox picTransaksi;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnPeminjaman;
         private System.Windows.Forms.Label lblTransaksiInfo;
         private System.Windows.Forms.Label lblLaporan;
         private System.Windows.Forms.Label lblLaporanInfo;

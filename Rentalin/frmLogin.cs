@@ -18,20 +18,25 @@ namespace Rentalin
         }
 
         private void frmLogin_Load(object sender, EventArgs e)
-        {
-            
-
-
-            newDataTable = Program.conn.ExecuteDataTable("SELECT * FROM mhs");
+        {           
+            newDataTable = Program.conn.ExecuteDataTable("SELECT * FROM mahasiswa");
             dataGridView1.DataSource = newDataTable;
-
-
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            Program.session.login(txtUserName.Text.ToString(), txtPassword.Text.ToString());
-           
+            int status;
+            status = Program.session.login(txtUserName.Text.ToString(), txtPassword.Text.ToString());
+            if (status == userSession.LOGIN_SUCCESS)
+            {
+                
+                if (Program.role.jendelaPertama == userRole.JENDELA_PERTAMA_OPERATOR)
+                    new frmMainOperator();
+                else
+                    new frmAdmin();
+
+                Close();
+            }
         }
     }
 }
