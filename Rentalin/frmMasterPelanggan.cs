@@ -19,7 +19,8 @@ namespace Rentalin
         private void frmMasterPelanggan_Load(object sender, EventArgs e)
         {
             pelanggan = Program.conn.ExecuteDataTable("SELECT * FROM member");
-            dgPelanggan.DataSource = pelanggan;            
+            dgPelanggan.DataSource = pelanggan;
+            dgPelanggan.ReadOnly = true;
         }
 
         private void btnHapus_Click(object sender, EventArgs e)

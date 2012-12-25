@@ -21,6 +21,7 @@ namespace Rentalin
         {
             stok = Program.conn.ExecuteDataTable("SELECT * FROM stokkoleksi");
             dgStokKoleksi.DataSource = stok;
+            dgStokKoleksi.ReadOnly = true;
         }
 
         private void btnHapus_Click(object sender, EventArgs e)

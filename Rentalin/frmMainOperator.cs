@@ -37,40 +37,55 @@ namespace Rentalin
 
         private void btnMasterPelanggan_Click(object sender, EventArgs e)
         {
-            new frmMasterPelanggan();
+            frmMasterPelanggan formMasterPelanggan = new frmMasterPelanggan();
+            formMasterPelanggan.Show();
+            //Close();
         }
 
         private void btnMasterKoleksi_Click(object sender, EventArgs e)
         {
-            new frmMasterKoleksi();
+            frmMasterKoleksi formMasterKoleksi = new frmMasterKoleksi();
+            formMasterKoleksi.Show();
+            //Close();
         }
 
         private void btnMasterStok_Click(object sender, EventArgs e)
         {
-            new frmMasterStok();
+            frmMasterStok formMasterStok = new frmMasterStok();
+            formMasterStok.Show();
+            //Close();
         }
-
-        private void btnPeminjaman_Click(object sender, EventArgs e)
-        {
-            new frmTransaksiPeminjaman();
-        }
-
+               
         private void btnPengembalian_Click(object sender, EventArgs e)
         {
-            new frmTransaksiPengembalian();
+            frmTransaksiPengembalian formTransaksiPengembalian = new frmTransaksiPengembalian();
+            formTransaksiPengembalian.Show();
+            //Close();
         }
 
         private void btnAdmin_Click(object sender, EventArgs e)
         {
-            new frmAdmin();
-            Close();
+            frmAdmin formAdmin = new frmAdmin();
+            formAdmin.Show();
+            //Close();
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
             Program.session.logout();
-            new frmLogin();
+            frmLogin formLogin = new frmLogin();
+            formLogin.Show();
             Close();
         }
+
+        private void btnPeminjaman_Click(object sender, EventArgs e)
+        {
+            frmTransaksiPeminjaman formTransaksiPeminjaman = new frmTransaksiPeminjaman();
+            formTransaksiPeminjaman.Show();
+        }
+
+        
+
+        
     }
 }

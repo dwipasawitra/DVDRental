@@ -15,5 +15,11 @@ namespace Rentalin
         {
             InitializeComponent();
         }
+
+        private void frmTransaksiPengembalian_Load(object sender, EventArgs e)
+        {
+        
+        }
+        
     }
 }

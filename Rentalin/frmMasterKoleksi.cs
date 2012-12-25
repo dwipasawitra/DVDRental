@@ -22,6 +22,7 @@ namespace Rentalin
         {
             koleksi = Program.conn.ExecuteDataTable("SELECT * FROM koleksi");
             dgKoleksi.DataSource = koleksi;
+            dgKoleksi.ReadOnly = true;
         }
 
         private void btnHapus_Click(object sender, EventArgs e)

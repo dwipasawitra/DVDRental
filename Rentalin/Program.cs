@@ -62,22 +62,24 @@ namespace Rentalin
         private DataTable loginChecker = new DataTable();
         private DataTable roleChecker = new DataTable();
                 
-        public static const int LOGIN_USERNAME_PASSWORD_WRONG = 0;
-        public static const int LOGIN_MULTI = 1;
-        public static const int LOGIN_SUCCESS = 2;
+        public const int LOGIN_USERNAME_PASSWORD_WRONG = 0;
+        public const int LOGIN_MULTI = 1;
+        public const int LOGIN_SUCCESS = 2;
         
         public int login(string userName, string password)
         {
             string passwordMd5 = md5Encrypt.EncodePassword(password);
             string passwordSha1 = sha1Encrypt.EncodePassword(passwordMd5);
 
+
             loginChecker = Program.conn.ExecuteDataTable("SELECT * FROM pengguna WHERE username = '"
-                                                        + userName +" and password = '"
+                                                        + userName +"' and password = '"
                                                         + passwordSha1 + "'");
+            MessageBox.Show(loginChecker.Rows.Count.ToString());
             if (loginChecker.Rows.Count == 1)
             {
                 
-                if (Convert.ToBoolean(loginChecker.Rows[0].ItemArray[4].ToString()) == true)
+                if (Convert.ToBoolean(loginChecker.Rows[0].ItemArray[4]) == true)
                 {
                     return LOGIN_MULTI;
                 }
@@ -85,19 +87,19 @@ namespace Rentalin
                 {
                     int role = Convert.ToInt32(loginChecker.Rows[0].ItemArray[1]);
                     roleChecker = Program.conn.ExecuteDataTable("SELECT * FROM kewenangan WHERE kodeKewenangan = '" + role + "'");
-                    Program.role.masterPelanggan = Convert.ToBoolean(roleChecker.Rows[0].ItemArray[1]);
-                    Program.role.masterKoleksi = Convert.ToBoolean(roleChecker.Rows[0].ItemArray[2]);
-                    Program.role.masterStok = Convert.ToBoolean(roleChecker.Rows[0].ItemArray[3]);
-                    Program.role.transaksi = Convert.ToBoolean(roleChecker.Rows[0].ItemArray[4]);
-                    Program.role.laporanTransaksi = Convert.ToBoolean(roleChecker.Rows[0].ItemArray[5]);
-                    Program.role.laporanMember = Convert.ToBoolean(roleChecker.Rows[0].ItemArray[6]);
-                    Program.role.laporanKoleksi = Convert.ToBoolean(roleChecker.Rows[0].ItemArray[7]);
-                    Program.role.laporanKeuangan = Convert.ToBoolean(roleChecker.Rows[0].ItemArray[8]);
-                    Program.role.pengaturanSistem = Convert.ToBoolean(roleChecker.Rows[0].ItemArray[9]);
-                    Program.role.pengaturanKewenangan = Convert.ToBoolean(roleChecker.Rows[0].ItemArray[10]);
-                    Program.role.pengaturanPengguna = Convert.ToBoolean(roleChecker.Rows[0].ItemArray[11]);
-                    Program.role.pengaturanPenawaranMenarik = Convert.ToBoolean(roleChecker.Rows[0].ItemArray[12]);
-                    Program.role.jendelaPertama = Convert.ToBoolean(roleChecker.Rows[0].ItemArray[13]);
+                    Program.role.masterPelanggan = Convert.ToBoolean(roleChecker.Rows[0].ItemArray[2]);
+                    Program.role.masterKoleksi = Convert.ToBoolean(roleChecker.Rows[0].ItemArray[3]);
+                    Program.role.masterStok = Convert.ToBoolean(roleChecker.Rows[0].ItemArray[4]);
+                    Program.role.transaksi = Convert.ToBoolean(roleChecker.Rows[0].ItemArray[5]);
+                    Program.role.laporanTransaksi = Convert.ToBoolean(roleChecker.Rows[0].ItemArray[6]);
+                    Program.role.laporanMember = Convert.ToBoolean(roleChecker.Rows[0].ItemArray[7]);
+                    Program.role.laporanKoleksi = Convert.ToBoolean(roleChecker.Rows[0].ItemArray[8]);
+                    Program.role.laporanKeuangan = Convert.ToBoolean(roleChecker.Rows[0].ItemArray[9]);
+                    Program.role.pengaturanSistem = Convert.ToBoolean(roleChecker.Rows[0].ItemArray[10]);
+                    Program.role.pengaturanKewenangan = Convert.ToBoolean(roleChecker.Rows[0].ItemArray[11]);
+                    Program.role.pengaturanPengguna = Convert.ToBoolean(roleChecker.Rows[0].ItemArray[12]);
+                    Program.role.pengaturanPenawaranMenarik = Convert.ToBoolean(roleChecker.Rows[0].ItemArray[13]);
+                    Program.role.jendelaPertama = Convert.ToBoolean(roleChecker.Rows[0].ItemArray[14]);
                     loged = true;
                     return LOGIN_SUCCESS;
                 }

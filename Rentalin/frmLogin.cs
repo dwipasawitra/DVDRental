@@ -18,9 +18,8 @@ namespace Rentalin
         }
 
         private void frmLogin_Load(object sender, EventArgs e)
-        {           
-            newDataTable = Program.conn.ExecuteDataTable("SELECT * FROM mahasiswa");
-            dataGridView1.DataSource = newDataTable;
+        {
+            Console.WriteLine("Saya");
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -29,13 +28,18 @@ namespace Rentalin
             status = Program.session.login(txtUserName.Text.ToString(), txtPassword.Text.ToString());
             if (status == userSession.LOGIN_SUCCESS)
             {
-                
+                MessageBox.Show("Login");
                 if (Program.role.jendelaPertama == userRole.JENDELA_PERTAMA_OPERATOR)
-                    new frmMainOperator();
+                {
+                    frmMainOperator formOperator = new frmMainOperator();
+                    formOperator.Show();
+                }
                 else
-                    new frmAdmin();
-
-                Close();
+                {
+                    frmAdmin formAdmin = new frmAdmin();
+                    formAdmin.Show();
+                }
+                Hide();
             }
         }
     }

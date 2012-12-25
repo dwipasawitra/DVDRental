@@ -37,11 +37,9 @@
             this.lblNamaLayanan = new System.Windows.Forms.Label();
             this.lblAlamatLayanan = new System.Windows.Forms.Label();
             this.picDisc = new System.Windows.Forms.PictureBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picUser)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picDisc)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -127,21 +125,12 @@
             this.picDisc.TabIndex = 4;
             this.picDisc.TabStop = false;
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(74, 236);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(430, 60);
-            this.dataGridView1.TabIndex = 5;
-            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(727, 330);
-            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.picDisc);
             this.Controls.Add(this.lblAlamatLayanan);
             this.Controls.Add(this.lblNamaLayanan);
@@ -157,7 +146,6 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picUser)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picDisc)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -174,7 +162,6 @@
         private System.Windows.Forms.Label lblAlamatLayanan;
         private System.Windows.Forms.PictureBox picUser;
         private System.Windows.Forms.PictureBox picDisc;
-        private System.Windows.Forms.DataGridView dataGridView1;
 
     }
 }

@@ -37,7 +37,7 @@
             this.lblAlamat = new System.Windows.Forms.Label();
             this.lblNamaPeminjam = new System.Windows.Forms.Label();
             this.btnCariPelanggan = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtPeminjam = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lblTambahJudul = new System.Windows.Forms.Label();
             this.txtTambahJudul = new System.Windows.Forms.TextBox();
@@ -66,6 +66,7 @@
             this.lblNmrNota = new System.Windows.Forms.Label();
             this.lblNmrNotaInfo = new System.Windows.Forms.Label();
             this.lblDetailTransaksi = new System.Windows.Forms.Label();
+            this.btOk = new System.Windows.Forms.Button();
             this.pnlInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picInfo)).BeginInit();
             this.pnlPeminjam.SuspendLayout();
@@ -119,11 +120,12 @@
             // pnlPeminjam
             // 
             this.pnlPeminjam.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(173)))), ((int)(((byte)(191)))));
+            this.pnlPeminjam.Controls.Add(this.btOk);
             this.pnlPeminjam.Controls.Add(this.lblIdentitas);
             this.pnlPeminjam.Controls.Add(this.lblAlamat);
             this.pnlPeminjam.Controls.Add(this.lblNamaPeminjam);
             this.pnlPeminjam.Controls.Add(this.btnCariPelanggan);
-            this.pnlPeminjam.Controls.Add(this.textBox1);
+            this.pnlPeminjam.Controls.Add(this.txtPeminjam);
             this.pnlPeminjam.Controls.Add(this.label1);
             this.pnlPeminjam.ForeColor = System.Drawing.Color.White;
             this.pnlPeminjam.Location = new System.Drawing.Point(385, -1);
@@ -161,19 +163,19 @@
             // 
             // btnCariPelanggan
             // 
-            this.btnCariPelanggan.Location = new System.Drawing.Point(232, 2);
+            this.btnCariPelanggan.Location = new System.Drawing.Point(236, 32);
             this.btnCariPelanggan.Name = "btnCariPelanggan";
             this.btnCariPelanggan.Size = new System.Drawing.Size(75, 23);
             this.btnCariPelanggan.TabIndex = 2;
             this.btnCariPelanggan.Text = "Cari...";
             this.btnCariPelanggan.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // txtPeminjam
             // 
-            this.textBox1.Location = new System.Drawing.Point(69, 4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(157, 20);
-            this.textBox1.TabIndex = 1;
+            this.txtPeminjam.Location = new System.Drawing.Point(69, 4);
+            this.txtPeminjam.Name = "txtPeminjam";
+            this.txtPeminjam.Size = new System.Drawing.Size(157, 20);
+            this.txtPeminjam.TabIndex = 1;
             // 
             // label1
             // 
@@ -218,6 +220,7 @@
             this.dgPeminjaman.Name = "dgPeminjaman";
             this.dgPeminjaman.Size = new System.Drawing.Size(484, 326);
             this.dgPeminjaman.TabIndex = 6;
+            this.dgPeminjaman.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgPeminjaman_CellContentClick);
             // 
             // pnlDetail
             // 
@@ -292,6 +295,7 @@
             this.cmbStok.Name = "cmbStok";
             this.cmbStok.Size = new System.Drawing.Size(172, 21);
             this.cmbStok.TabIndex = 16;
+            this.cmbStok.SelectedIndexChanged += new System.EventHandler(this.cmbStok_SelectedIndexChanged);
             // 
             // lblStok
             // 
@@ -458,6 +462,16 @@
             this.lblDetailTransaksi.TabIndex = 0;
             this.lblDetailTransaksi.Text = "DETAIL\r\nTRANSAKSI";
             // 
+            // btOk
+            // 
+            this.btOk.Location = new System.Drawing.Point(236, 3);
+            this.btOk.Name = "btOk";
+            this.btOk.Size = new System.Drawing.Size(75, 23);
+            this.btOk.TabIndex = 6;
+            this.btOk.Text = "OK";
+            this.btOk.UseVisualStyleBackColor = true;
+            this.btOk.Click += new System.EventHandler(this.btOk_Click);
+            // 
             // frmTransaksiPeminjaman
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -505,7 +519,7 @@
         private System.Windows.Forms.Label lblAlamat;
         private System.Windows.Forms.Label lblNamaPeminjam;
         private System.Windows.Forms.Button btnCariPelanggan;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtPeminjam;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblTambahJudul;
         private System.Windows.Forms.TextBox txtTambahJudul;
@@ -534,5 +548,6 @@
         private System.Windows.Forms.Label lblHargaSewaItemInfo;
         private System.Windows.Forms.Label lblHargaDendaItem;
         private System.Windows.Forms.Label lblHargaDendaItemInfo;
+        private System.Windows.Forms.Button btOk;
     }
 }

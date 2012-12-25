@@ -41,11 +41,13 @@
             this.lblDetailTransaksi = new System.Windows.Forms.Label();
             this.lblKondisi = new System.Windows.Forms.Label();
             this.pnlTransaksi = new System.Windows.Forms.Panel();
+            this.lblTanggalSeharusnyaKembali = new System.Windows.Forms.Label();
             this.lblHargaSewaItem = new System.Windows.Forms.Label();
             this.lblGenre = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.pnlInfo = new System.Windows.Forms.Panel();
             this.lblInfoDetail = new System.Windows.Forms.Label();
+            this.picInfo = new System.Windows.Forms.PictureBox();
             this.lblInfo = new System.Windows.Forms.Label();
             this.lblIdentitas = new System.Windows.Forms.Label();
             this.lblAlamat = new System.Windows.Forms.Label();
@@ -56,21 +58,19 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lblDetail = new System.Windows.Forms.Label();
             this.pnlDetail = new System.Windows.Forms.Panel();
-            this.lblJudul = new System.Windows.Forms.Label();
-            this.picInfo = new System.Windows.Forms.PictureBox();
-            this.lblHargaDendaItem = new System.Windows.Forms.Label();
-            this.lblHargaDendaItemInfo = new System.Windows.Forms.Label();
-            this.lblDendaKerusakan = new System.Windows.Forms.Label();
-            this.lblDendaKerusakanInfo = new System.Windows.Forms.Label();
-            this.lblStokInfo = new System.Windows.Forms.Label();
             this.lblStok = new System.Windows.Forms.Label();
-            this.lblTanggalSeharusnyaKembali = new System.Windows.Forms.Label();
+            this.lblStokInfo = new System.Windows.Forms.Label();
+            this.lblDendaKerusakan = new System.Windows.Forms.Label();
+            this.lblHargaDendaItem = new System.Windows.Forms.Label();
+            this.lblDendaKerusakanInfo = new System.Windows.Forms.Label();
+            this.lblHargaDendaItemInfo = new System.Windows.Forms.Label();
+            this.lblJudul = new System.Windows.Forms.Label();
             this.pnlTransaksi.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.pnlInfo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picInfo)).BeginInit();
             this.pnlPeminjam.SuspendLayout();
             this.pnlDetail.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picInfo)).BeginInit();
             this.SuspendLayout();
             // 
             // lblHargaSewaItemInfo
@@ -207,6 +207,15 @@
             this.pnlTransaksi.Size = new System.Drawing.Size(702, 73);
             this.pnlTransaksi.TabIndex = 18;
             // 
+            // lblTanggalSeharusnyaKembali
+            // 
+            this.lblTanggalSeharusnyaKembali.AutoSize = true;
+            this.lblTanggalSeharusnyaKembali.Location = new System.Drawing.Point(243, 28);
+            this.lblTanggalSeharusnyaKembali.Name = "lblTanggalSeharusnyaKembali";
+            this.lblTanggalSeharusnyaKembali.Size = new System.Drawing.Size(97, 13);
+            this.lblTanggalSeharusnyaKembali.TabIndex = 10;
+            this.lblTanggalSeharusnyaKembali.Text = "24 Desember 2012";
+            // 
             // lblHargaSewaItem
             // 
             this.lblHargaSewaItem.AutoSize = true;
@@ -255,6 +264,15 @@
             this.lblInfoDetail.Size = new System.Drawing.Size(174, 26);
             this.lblInfoDetail.TabIndex = 5;
             this.lblInfoDetail.Text = "Atur pelanggan yang menyewa dan\r\natur kondisi barang setelah disewa";
+            // 
+            // picInfo
+            // 
+            this.picInfo.Image = global::Rentalin.Properties.Resources.arrowup2;
+            this.picInfo.Location = new System.Drawing.Point(12, 10);
+            this.picInfo.Name = "picInfo";
+            this.picInfo.Size = new System.Drawing.Size(38, 54);
+            this.picInfo.TabIndex = 0;
+            this.picInfo.TabStop = false;
             // 
             // lblInfo
             // 
@@ -368,63 +386,14 @@
             this.pnlDetail.Size = new System.Drawing.Size(191, 365);
             this.pnlDetail.TabIndex = 16;
             // 
-            // lblJudul
+            // lblStok
             // 
-            this.lblJudul.AutoSize = true;
-            this.lblJudul.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblJudul.ForeColor = System.Drawing.Color.White;
-            this.lblJudul.Location = new System.Drawing.Point(4, 38);
-            this.lblJudul.Name = "lblJudul";
-            this.lblJudul.Size = new System.Drawing.Size(178, 13);
-            this.lblJudul.TabIndex = 13;
-            this.lblJudul.Text = "Dilwale Dulhania Le Jayengge";
-            // 
-            // picInfo
-            // 
-            this.picInfo.Image = global::Rentalin.Properties.Resources.arrowup2;
-            this.picInfo.Location = new System.Drawing.Point(12, 10);
-            this.picInfo.Name = "picInfo";
-            this.picInfo.Size = new System.Drawing.Size(38, 54);
-            this.picInfo.TabIndex = 0;
-            this.picInfo.TabStop = false;
-            // 
-            // lblHargaDendaItem
-            // 
-            this.lblHargaDendaItem.AutoSize = true;
-            this.lblHargaDendaItem.Location = new System.Drawing.Point(4, 131);
-            this.lblHargaDendaItem.Name = "lblHargaDendaItem";
-            this.lblHargaDendaItem.Size = new System.Drawing.Size(51, 13);
-            this.lblHargaDendaItem.TabIndex = 23;
-            this.lblHargaDendaItem.Text = "Rp. 100,-";
-            // 
-            // lblHargaDendaItemInfo
-            // 
-            this.lblHargaDendaItemInfo.AutoSize = true;
-            this.lblHargaDendaItemInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHargaDendaItemInfo.Location = new System.Drawing.Point(4, 114);
-            this.lblHargaDendaItemInfo.Name = "lblHargaDendaItemInfo";
-            this.lblHargaDendaItemInfo.Size = new System.Drawing.Size(131, 13);
-            this.lblHargaDendaItemInfo.TabIndex = 22;
-            this.lblHargaDendaItemInfo.Text = "Harga Denda per Hari";
-            // 
-            // lblDendaKerusakan
-            // 
-            this.lblDendaKerusakan.AutoSize = true;
-            this.lblDendaKerusakan.Location = new System.Drawing.Point(4, 278);
-            this.lblDendaKerusakan.Name = "lblDendaKerusakan";
-            this.lblDendaKerusakan.Size = new System.Drawing.Size(39, 13);
-            this.lblDendaKerusakan.TabIndex = 25;
-            this.lblDendaKerusakan.Text = "Rp. 0,-";
-            // 
-            // lblDendaKerusakanInfo
-            // 
-            this.lblDendaKerusakanInfo.AutoSize = true;
-            this.lblDendaKerusakanInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDendaKerusakanInfo.Location = new System.Drawing.Point(4, 263);
-            this.lblDendaKerusakanInfo.Name = "lblDendaKerusakanInfo";
-            this.lblDendaKerusakanInfo.Size = new System.Drawing.Size(145, 13);
-            this.lblDendaKerusakanInfo.TabIndex = 24;
-            this.lblDendaKerusakanInfo.Text = "Harga Denda kerusakan";
+            this.lblStok.AutoSize = true;
+            this.lblStok.Location = new System.Drawing.Point(4, 191);
+            this.lblStok.Name = "lblStok";
+            this.lblStok.Size = new System.Drawing.Size(50, 13);
+            this.lblStok.TabIndex = 26;
+            this.lblStok.Text = "F001K02";
             // 
             // lblStokInfo
             // 
@@ -436,23 +405,54 @@
             this.lblStokInfo.TabIndex = 23;
             this.lblStokInfo.Text = "Stok yang dipinjam";
             // 
-            // lblStok
+            // lblDendaKerusakan
             // 
-            this.lblStok.AutoSize = true;
-            this.lblStok.Location = new System.Drawing.Point(4, 191);
-            this.lblStok.Name = "lblStok";
-            this.lblStok.Size = new System.Drawing.Size(50, 13);
-            this.lblStok.TabIndex = 26;
-            this.lblStok.Text = "F001K02";
+            this.lblDendaKerusakan.AutoSize = true;
+            this.lblDendaKerusakan.Location = new System.Drawing.Point(4, 278);
+            this.lblDendaKerusakan.Name = "lblDendaKerusakan";
+            this.lblDendaKerusakan.Size = new System.Drawing.Size(39, 13);
+            this.lblDendaKerusakan.TabIndex = 25;
+            this.lblDendaKerusakan.Text = "Rp. 0,-";
             // 
-            // lblTanggalSeharusnyaKembali
+            // lblHargaDendaItem
             // 
-            this.lblTanggalSeharusnyaKembali.AutoSize = true;
-            this.lblTanggalSeharusnyaKembali.Location = new System.Drawing.Point(243, 28);
-            this.lblTanggalSeharusnyaKembali.Name = "lblTanggalSeharusnyaKembali";
-            this.lblTanggalSeharusnyaKembali.Size = new System.Drawing.Size(97, 13);
-            this.lblTanggalSeharusnyaKembali.TabIndex = 10;
-            this.lblTanggalSeharusnyaKembali.Text = "24 Desember 2012";
+            this.lblHargaDendaItem.AutoSize = true;
+            this.lblHargaDendaItem.Location = new System.Drawing.Point(4, 131);
+            this.lblHargaDendaItem.Name = "lblHargaDendaItem";
+            this.lblHargaDendaItem.Size = new System.Drawing.Size(51, 13);
+            this.lblHargaDendaItem.TabIndex = 23;
+            this.lblHargaDendaItem.Text = "Rp. 100,-";
+            // 
+            // lblDendaKerusakanInfo
+            // 
+            this.lblDendaKerusakanInfo.AutoSize = true;
+            this.lblDendaKerusakanInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDendaKerusakanInfo.Location = new System.Drawing.Point(4, 263);
+            this.lblDendaKerusakanInfo.Name = "lblDendaKerusakanInfo";
+            this.lblDendaKerusakanInfo.Size = new System.Drawing.Size(145, 13);
+            this.lblDendaKerusakanInfo.TabIndex = 24;
+            this.lblDendaKerusakanInfo.Text = "Harga Denda kerusakan";
+            // 
+            // lblHargaDendaItemInfo
+            // 
+            this.lblHargaDendaItemInfo.AutoSize = true;
+            this.lblHargaDendaItemInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHargaDendaItemInfo.Location = new System.Drawing.Point(4, 114);
+            this.lblHargaDendaItemInfo.Name = "lblHargaDendaItemInfo";
+            this.lblHargaDendaItemInfo.Size = new System.Drawing.Size(131, 13);
+            this.lblHargaDendaItemInfo.TabIndex = 22;
+            this.lblHargaDendaItemInfo.Text = "Harga Denda per Hari";
+            // 
+            // lblJudul
+            // 
+            this.lblJudul.AutoSize = true;
+            this.lblJudul.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblJudul.ForeColor = System.Drawing.Color.White;
+            this.lblJudul.Location = new System.Drawing.Point(4, 38);
+            this.lblJudul.Name = "lblJudul";
+            this.lblJudul.Size = new System.Drawing.Size(178, 13);
+            this.lblJudul.TabIndex = 13;
+            this.lblJudul.Text = "Dilwale Dulhania Le Jayengge";
             // 
             // frmTransaksiPengembalian
             // 
@@ -470,16 +470,17 @@
             this.Name = "frmTransaksiPengembalian";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RENTALIN -- Transaksi Pengembalian";
+            this.Load += new System.EventHandler(this.frmTransaksiPengembalian_Load);
             this.pnlTransaksi.ResumeLayout(false);
             this.pnlTransaksi.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.pnlInfo.ResumeLayout(false);
             this.pnlInfo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picInfo)).EndInit();
             this.pnlPeminjam.ResumeLayout(false);
             this.pnlPeminjam.PerformLayout();
             this.pnlDetail.ResumeLayout(false);
             this.pnlDetail.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picInfo)).EndInit();
             this.ResumeLayout(false);
 
         }
