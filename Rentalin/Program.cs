@@ -61,7 +61,7 @@ namespace Rentalin
 
         private DataTable loginChecker = new DataTable();
         private DataTable roleChecker = new DataTable();
-                
+        public int kodeOperator;         
         public const int LOGIN_USERNAME_PASSWORD_WRONG = 0;
         public const int LOGIN_MULTI = 1;
         public const int LOGIN_SUCCESS = 2;
@@ -101,6 +101,7 @@ namespace Rentalin
                     Program.role.pengaturanPenawaranMenarik = Convert.ToBoolean(roleChecker.Rows[0].ItemArray[13]);
                     Program.role.jendelaPertama = Convert.ToBoolean(roleChecker.Rows[0].ItemArray[14]);
                     loged = true;
+                    kodeOperator = int.Parse(roleChecker.Rows[0].ItemArray[0].ToString());
                     return LOGIN_SUCCESS;
                 }
             }
@@ -109,7 +110,7 @@ namespace Rentalin
                 return LOGIN_USERNAME_PASSWORD_WRONG;
             }           
         }
-
+        
         public void logout()
         {
             loged = false;

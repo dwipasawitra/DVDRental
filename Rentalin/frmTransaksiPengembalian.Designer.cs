@@ -44,17 +44,17 @@
             this.lblTanggalSeharusnyaKembali = new System.Windows.Forms.Label();
             this.lblHargaSewaItem = new System.Windows.Forms.Label();
             this.lblGenre = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgPengembalian = new System.Windows.Forms.DataGridView();
             this.pnlInfo = new System.Windows.Forms.Panel();
             this.lblInfoDetail = new System.Windows.Forms.Label();
             this.picInfo = new System.Windows.Forms.PictureBox();
             this.lblInfo = new System.Windows.Forms.Label();
             this.lblIdentitas = new System.Windows.Forms.Label();
-            this.lblAlamat = new System.Windows.Forms.Label();
+            this.lblKodeMember = new System.Windows.Forms.Label();
             this.lblNamaPeminjam = new System.Windows.Forms.Label();
             this.pnlPeminjam = new System.Windows.Forms.Panel();
             this.btnCariPelanggan = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtPeminjam = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lblDetail = new System.Windows.Forms.Label();
             this.pnlDetail = new System.Windows.Forms.Panel();
@@ -65,8 +65,10 @@
             this.lblDendaKerusakanInfo = new System.Windows.Forms.Label();
             this.lblHargaDendaItemInfo = new System.Windows.Forms.Label();
             this.lblJudul = new System.Windows.Forms.Label();
+            this.lblHari = new System.Windows.Forms.Label();
+            this.dtpPengembalian = new System.Windows.Forms.DateTimePicker();
             this.pnlTransaksi.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgPengembalian)).BeginInit();
             this.pnlInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picInfo)).BeginInit();
             this.pnlPeminjam.SuspendLayout();
@@ -98,9 +100,9 @@
             this.lblBiayaDenda.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBiayaDenda.Location = new System.Drawing.Point(413, 28);
             this.lblBiayaDenda.Name = "lblBiayaDenda";
-            this.lblBiayaDenda.Size = new System.Drawing.Size(94, 24);
+            this.lblBiayaDenda.Size = new System.Drawing.Size(21, 24);
             this.lblBiayaDenda.TabIndex = 8;
-            this.lblBiayaDenda.Text = "Rp. 200,-";
+            this.lblBiayaDenda.Text = "0";
             // 
             // lblBiayaDendaInfo
             // 
@@ -117,9 +119,9 @@
             this.lblLamaTelat.AutoSize = true;
             this.lblLamaTelat.Location = new System.Drawing.Point(367, 51);
             this.lblLamaTelat.Name = "lblLamaTelat";
-            this.lblLamaTelat.Size = new System.Drawing.Size(33, 13);
+            this.lblLamaTelat.Size = new System.Drawing.Size(13, 13);
             this.lblLamaTelat.TabIndex = 6;
-            this.lblLamaTelat.Text = "2 hari";
+            this.lblLamaTelat.Text = "0";
             // 
             // lblLamaTelatInfo
             // 
@@ -148,15 +150,16 @@
             this.cmbKondisi.Name = "cmbKondisi";
             this.cmbKondisi.Size = new System.Drawing.Size(172, 21);
             this.cmbKondisi.TabIndex = 16;
+            this.cmbKondisi.SelectedIndexChanged += new System.EventHandler(this.cmbKondisi_SelectedIndexChanged);
             // 
             // lblNmrNota
             // 
             this.lblNmrNota.AutoSize = true;
             this.lblNmrNota.Location = new System.Drawing.Point(136, 34);
             this.lblNmrNota.Name = "lblNmrNota";
-            this.lblNmrNota.Size = new System.Drawing.Size(65, 13);
+            this.lblNmrNota.Size = new System.Drawing.Size(58, 13);
             this.lblNmrNota.TabIndex = 2;
-            this.lblNmrNota.Text = "KI20244913";
+            this.lblNmrNota.Text = "Kode Nota";
             // 
             // lblNmrNotaInfo
             // 
@@ -191,6 +194,8 @@
             // pnlTransaksi
             // 
             this.pnlTransaksi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(173)))), ((int)(((byte)(191)))));
+            this.pnlTransaksi.Controls.Add(this.dtpPengembalian);
+            this.pnlTransaksi.Controls.Add(this.lblHari);
             this.pnlTransaksi.Controls.Add(this.lblTanggalSeharusnyaKembali);
             this.pnlTransaksi.Controls.Add(this.btnProses);
             this.pnlTransaksi.Controls.Add(this.lblBiayaDenda);
@@ -212,18 +217,18 @@
             this.lblTanggalSeharusnyaKembali.AutoSize = true;
             this.lblTanggalSeharusnyaKembali.Location = new System.Drawing.Point(243, 28);
             this.lblTanggalSeharusnyaKembali.Name = "lblTanggalSeharusnyaKembali";
-            this.lblTanggalSeharusnyaKembali.Size = new System.Drawing.Size(97, 13);
+            this.lblTanggalSeharusnyaKembali.Size = new System.Drawing.Size(86, 13);
             this.lblTanggalSeharusnyaKembali.TabIndex = 10;
-            this.lblTanggalSeharusnyaKembali.Text = "24 Desember 2012";
+            this.lblTanggalSeharusnyaKembali.Text = "Tanggal Kembali";
             // 
             // lblHargaSewaItem
             // 
             this.lblHargaSewaItem.AutoSize = true;
             this.lblHargaSewaItem.Location = new System.Drawing.Point(4, 90);
             this.lblHargaSewaItem.Name = "lblHargaSewaItem";
-            this.lblHargaSewaItem.Size = new System.Drawing.Size(51, 13);
+            this.lblHargaSewaItem.Size = new System.Drawing.Size(13, 13);
             this.lblHargaSewaItem.TabIndex = 19;
-            this.lblHargaSewaItem.Text = "Rp. 300,-";
+            this.lblHargaSewaItem.Text = "0";
             // 
             // lblGenre
             // 
@@ -231,17 +236,18 @@
             this.lblGenre.ForeColor = System.Drawing.Color.White;
             this.lblGenre.Location = new System.Drawing.Point(4, 51);
             this.lblGenre.Name = "lblGenre";
-            this.lblGenre.Size = new System.Drawing.Size(55, 13);
+            this.lblGenre.Size = new System.Drawing.Size(36, 13);
             this.lblGenre.TabIndex = 14;
-            this.lblGenre.Text = "Bollywood";
+            this.lblGenre.Text = "Genre";
             // 
-            // dataGridView1
+            // dgPengembalian
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 80);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(484, 366);
-            this.dataGridView1.TabIndex = 15;
+            this.dgPengembalian.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgPengembalian.Location = new System.Drawing.Point(6, 80);
+            this.dgPengembalian.Name = "dgPengembalian";
+            this.dgPengembalian.Size = new System.Drawing.Size(484, 366);
+            this.dgPengembalian.TabIndex = 15;
+            this.dgPengembalian.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgPengembalian_CellContentClick);
             // 
             // pnlInfo
             // 
@@ -290,18 +296,18 @@
             this.lblIdentitas.AutoSize = true;
             this.lblIdentitas.Location = new System.Drawing.Point(3, 52);
             this.lblIdentitas.Name = "lblIdentitas";
-            this.lblIdentitas.Size = new System.Drawing.Size(135, 13);
+            this.lblIdentitas.Size = new System.Drawing.Size(53, 13);
             this.lblIdentitas.TabIndex = 5;
-            this.lblIdentitas.Text = "Identitas: SIM - 511231321";
+            this.lblIdentitas.Text = "Identitas: ";
             // 
-            // lblAlamat
+            // lblKodeMember
             // 
-            this.lblAlamat.AutoSize = true;
-            this.lblAlamat.Location = new System.Drawing.Point(3, 38);
-            this.lblAlamat.Name = "lblAlamat";
-            this.lblAlamat.Size = new System.Drawing.Size(136, 13);
-            this.lblAlamat.TabIndex = 4;
-            this.lblAlamat.Text = "Wisma Permai Tengah ii-34";
+            this.lblKodeMember.AutoSize = true;
+            this.lblKodeMember.Location = new System.Drawing.Point(3, 38);
+            this.lblKodeMember.Name = "lblKodeMember";
+            this.lblKodeMember.Size = new System.Drawing.Size(73, 13);
+            this.lblKodeMember.TabIndex = 4;
+            this.lblKodeMember.Text = "Kode Member";
             // 
             // lblNamaPeminjam
             // 
@@ -309,18 +315,18 @@
             this.lblNamaPeminjam.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNamaPeminjam.Location = new System.Drawing.Point(3, 24);
             this.lblNamaPeminjam.Name = "lblNamaPeminjam";
-            this.lblNamaPeminjam.Size = new System.Drawing.Size(151, 13);
+            this.lblNamaPeminjam.Size = new System.Drawing.Size(96, 13);
             this.lblNamaPeminjam.TabIndex = 3;
-            this.lblNamaPeminjam.Text = "Putu Wiramaswara Widya";
+            this.lblNamaPeminjam.Text = "Nama Peminjam";
             // 
             // pnlPeminjam
             // 
             this.pnlPeminjam.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(153)))), ((int)(((byte)(102)))));
             this.pnlPeminjam.Controls.Add(this.lblIdentitas);
-            this.pnlPeminjam.Controls.Add(this.lblAlamat);
+            this.pnlPeminjam.Controls.Add(this.lblKodeMember);
             this.pnlPeminjam.Controls.Add(this.lblNamaPeminjam);
             this.pnlPeminjam.Controls.Add(this.btnCariPelanggan);
-            this.pnlPeminjam.Controls.Add(this.textBox1);
+            this.pnlPeminjam.Controls.Add(this.txtPeminjam);
             this.pnlPeminjam.Controls.Add(this.label1);
             this.pnlPeminjam.ForeColor = System.Drawing.Color.White;
             this.pnlPeminjam.Location = new System.Drawing.Point(379, -4);
@@ -330,19 +336,20 @@
             // 
             // btnCariPelanggan
             // 
-            this.btnCariPelanggan.Location = new System.Drawing.Point(232, 2);
+            this.btnCariPelanggan.Location = new System.Drawing.Point(232, 4);
             this.btnCariPelanggan.Name = "btnCariPelanggan";
             this.btnCariPelanggan.Size = new System.Drawing.Size(75, 23);
             this.btnCariPelanggan.TabIndex = 2;
             this.btnCariPelanggan.Text = "Cari...";
             this.btnCariPelanggan.UseVisualStyleBackColor = true;
+            this.btnCariPelanggan.Click += new System.EventHandler(this.btnCariPelanggan_Click);
             // 
-            // textBox1
+            // txtPeminjam
             // 
-            this.textBox1.Location = new System.Drawing.Point(69, 4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(157, 20);
-            this.textBox1.TabIndex = 1;
+            this.txtPeminjam.Location = new System.Drawing.Point(69, 5);
+            this.txtPeminjam.Name = "txtPeminjam";
+            this.txtPeminjam.Size = new System.Drawing.Size(157, 20);
+            this.txtPeminjam.TabIndex = 1;
             // 
             // label1
             // 
@@ -391,9 +398,9 @@
             this.lblStok.AutoSize = true;
             this.lblStok.Location = new System.Drawing.Point(4, 191);
             this.lblStok.Name = "lblStok";
-            this.lblStok.Size = new System.Drawing.Size(50, 13);
+            this.lblStok.Size = new System.Drawing.Size(57, 13);
             this.lblStok.TabIndex = 26;
-            this.lblStok.Text = "F001K02";
+            this.lblStok.Text = "Kode Stok";
             // 
             // lblStokInfo
             // 
@@ -410,18 +417,18 @@
             this.lblDendaKerusakan.AutoSize = true;
             this.lblDendaKerusakan.Location = new System.Drawing.Point(4, 278);
             this.lblDendaKerusakan.Name = "lblDendaKerusakan";
-            this.lblDendaKerusakan.Size = new System.Drawing.Size(39, 13);
+            this.lblDendaKerusakan.Size = new System.Drawing.Size(13, 13);
             this.lblDendaKerusakan.TabIndex = 25;
-            this.lblDendaKerusakan.Text = "Rp. 0,-";
+            this.lblDendaKerusakan.Text = "0";
             // 
             // lblHargaDendaItem
             // 
             this.lblHargaDendaItem.AutoSize = true;
             this.lblHargaDendaItem.Location = new System.Drawing.Point(4, 131);
             this.lblHargaDendaItem.Name = "lblHargaDendaItem";
-            this.lblHargaDendaItem.Size = new System.Drawing.Size(51, 13);
+            this.lblHargaDendaItem.Size = new System.Drawing.Size(13, 13);
             this.lblHargaDendaItem.TabIndex = 23;
-            this.lblHargaDendaItem.Text = "Rp. 100,-";
+            this.lblHargaDendaItem.Text = "0";
             // 
             // lblDendaKerusakanInfo
             // 
@@ -450,9 +457,25 @@
             this.lblJudul.ForeColor = System.Drawing.Color.White;
             this.lblJudul.Location = new System.Drawing.Point(4, 38);
             this.lblJudul.Name = "lblJudul";
-            this.lblJudul.Size = new System.Drawing.Size(178, 13);
+            this.lblJudul.Size = new System.Drawing.Size(63, 13);
             this.lblJudul.TabIndex = 13;
-            this.lblJudul.Text = "Dilwale Dulhania Le Jayengge";
+            this.lblJudul.Text = "Judul Film";
+            // 
+            // lblHari
+            // 
+            this.lblHari.AutoSize = true;
+            this.lblHari.Location = new System.Drawing.Point(394, 51);
+            this.lblHari.Name = "lblHari";
+            this.lblHari.Size = new System.Drawing.Size(26, 13);
+            this.lblHari.TabIndex = 11;
+            this.lblHari.Text = "Hari";
+            // 
+            // dtpPengembalian
+            // 
+            this.dtpPengembalian.Location = new System.Drawing.Point(99, 50);
+            this.dtpPengembalian.Name = "dtpPengembalian";
+            this.dtpPengembalian.Size = new System.Drawing.Size(135, 20);
+            this.dtpPengembalian.TabIndex = 12;
             // 
             // frmTransaksiPengembalian
             // 
@@ -461,7 +484,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(691, 520);
             this.Controls.Add(this.pnlTransaksi);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgPengembalian);
             this.Controls.Add(this.pnlInfo);
             this.Controls.Add(this.pnlPeminjam);
             this.Controls.Add(this.pnlDetail);
@@ -473,7 +496,7 @@
             this.Load += new System.EventHandler(this.frmTransaksiPengembalian_Load);
             this.pnlTransaksi.ResumeLayout(false);
             this.pnlTransaksi.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgPengembalian)).EndInit();
             this.pnlInfo.ResumeLayout(false);
             this.pnlInfo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picInfo)).EndInit();
@@ -502,17 +525,17 @@
         private System.Windows.Forms.Panel pnlTransaksi;
         private System.Windows.Forms.Label lblHargaSewaItem;
         private System.Windows.Forms.Label lblGenre;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgPengembalian;
         private System.Windows.Forms.Panel pnlInfo;
         private System.Windows.Forms.Label lblInfoDetail;
         private System.Windows.Forms.PictureBox picInfo;
         private System.Windows.Forms.Label lblInfo;
         private System.Windows.Forms.Label lblIdentitas;
-        private System.Windows.Forms.Label lblAlamat;
+        private System.Windows.Forms.Label lblKodeMember;
         private System.Windows.Forms.Label lblNamaPeminjam;
         private System.Windows.Forms.Panel pnlPeminjam;
         private System.Windows.Forms.Button btnCariPelanggan;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtPeminjam;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblDetail;
         private System.Windows.Forms.Panel pnlDetail;
@@ -524,5 +547,7 @@
         private System.Windows.Forms.Label lblDendaKerusakan;
         private System.Windows.Forms.Label lblDendaKerusakanInfo;
         private System.Windows.Forms.Label lblTanggalSeharusnyaKembali;
+        private System.Windows.Forms.Label lblHari;
+        private System.Windows.Forms.DateTimePicker dtpPengembalian;
     }
 }
