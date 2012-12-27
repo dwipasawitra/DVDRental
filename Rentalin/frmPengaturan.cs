@@ -85,7 +85,71 @@ namespace Rentalin
         private void btnTerapkan_Click(object sender, EventArgs e)
         {
             // Update app setting
-            Program.setting.app
+            Program.setting.namaJasa = txtNamaJasa.Text;
+            Program.setting.alamatJasa = txtAlamat.Text;
+            Program.setting.namaPemilik = txtNamaPemilik.Text;
+
+            // Set pengaturan biaya sewa
+            if (chkSewaPerItem.Checked && chkSewaPerKategori.Checked)
+            {
+                Program.setting.biayaSewaPer = appSetting.BIAYA_SEWA_KEDUANYA;
+
+            }
+            else if (chkSewaPerItem.Checked)
+            {
+                Program.setting.biayaSewaPer = appSetting.BIAYA_SEWA_PER_KATEGORI;
+            }
+            else if (chkSewaPerKategori.Checked)
+            {
+                Program.setting.biayaSewaPer = appSetting.BIAYA_SEWA_PER_KATEGORI;
+            }
+            else
+            {
+                Program.setting.biayaSewaPer = appSetting.BIAYA_SEWA_TIDAK_ADA;
+            }
+
+            // Set pengaturan biaya denda
+            if (chkDendaPerItem.Checked && chkDendaPerKategori.Checked)
+            {
+                Program.setting.biayaDendaPer = appSetting.BIAYA_DENDA_KEDUANYA;
+                
+            }
+            else if (chkDendaPerItem.Checked)
+            {
+                Program.setting.biayaDendaPer = appSetting.BIAYA_DENDA_PER_KATEGORI;
+            }
+            else if (chkDendaPerKategori.Checked)
+            {
+                Program.setting.biayaDendaPer = appSetting.BIAYA_DENDA_PER_KATEGORI;
+            }
+            else
+            {
+                Program.setting.biayaDendaPer = appSetting.BIAYA_DENDA_TIDAK_ADA;
+            }
+
+            // Cek maks jumlah hari transaksi
+            if (rbHariDitetapkan.Checked)
+            {
+                Program.setting.lamaPenyewaan = appSetting.LAMA_PENYEWAAN_FIX;
+            }
+            else
+            {
+                Program.setting.lamaPenyewaan = appSetting.LAMA_PENYEWAAN_BEBAS;
+            }
+            Program.setting.lamaPenyewaanHari = Int16.Parse(txtJumlahHari.Text);
+
+            // Cek maks jumlah judul disewa per transaksi
+            if (rbTetapJudul.Checked)
+            {
+                Program.setting.maksTransaksi = appSetting.MAKS_TRANSAKSI_MAKS;
+            }
+            else
+            {
+                Program.setting.maksTransaksi = appSetting.MAKS_TRANSAKSI_BEBAS;
+            }
+            Program.setting.maksTransaksiJumlah = Int16.Parse(txtJumlahJudul.Text);
+
+            // Done
         }
     }
 }

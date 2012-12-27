@@ -66,7 +66,8 @@ namespace Rentalin
         private DataTable roleChecker = new DataTable();
 
         private int role;
-        private int kodeOperator;         
+        private int kodeOperator;
+        private string namaUser; 
 
         public const int LOGIN_USERNAME_PASSWORD_WRONG = 0;
         public const int LOGIN_MULTI = 1;
@@ -101,7 +102,8 @@ namespace Rentalin
                     // And then login is SUCESS
                     loged = true;
                     Program.conn.ExecuteNonQuery("UPDATE pengguna SET isLogin=1 WHERE kodeOperator='" + kodeOperator + "'");
-                    kodeOperator = int.Parse(roleChecker.Rows[0].ItemArray[0].ToString());
+                    kodeOperator = int.Parse(loginChecker.Rows[0].ItemArray[0].ToString());
+                    namaUser = loginChecker.Rows[0].ItemArray[2].ToString();
                     return LOGIN_SUCCESS;
                 }
             }
@@ -126,10 +128,18 @@ namespace Rentalin
         {
             return kodeOperator;
         }
+
+        public string getNamaUser()
+        {
+            return namaUser;
+        }
     }
 
     public class userRole
     {
+        private string roleName;
+        private int role;
+
         public bool masterPelanggan;
         public bool masterKoleksi;
         public bool masterStok;
@@ -150,20 +160,33 @@ namespace Rentalin
         {
             DataTable roleChecker;
             roleChecker = Program.conn.ExecuteDataTable("SELECT * FROM kewenangan WHERE kodeKewenangan = '" + roleNum + "'");
-            Program.role.masterPelanggan = Convert.ToBoolean(roleChecker.Rows[0].ItemArray[2]);
-            Program.role.masterKoleksi = Convert.ToBoolean(roleChecker.Rows[0].ItemArray[3]);
-            Program.role.masterStok = Convert.ToBoolean(roleChecker.Rows[0].ItemArray[4]);
-            Program.role.transaksi = Convert.ToBoolean(roleChecker.Rows[0].ItemArray[5]);
-            Program.role.laporanPerTransaksi = Convert.ToBoolean(roleChecker.Rows[0].ItemArray[6]);
-            Program.role.laporanTransaksi = Convert.ToBoolean(roleChecker.Rows[0].ItemArray[7]);
-            Program.role.laporanKeuangan = Convert.ToBoolean(roleChecker.Rows[0].ItemArray[8]);
-            Program.role.halloffame = Convert.ToBoolean(roleChecker.Rows[0].ItemArray[9]);
-            Program.role.pengaturanSistem = Convert.ToBoolean(roleChecker.Rows[0].ItemArray[10]);
-            Program.role.pengaturanKewenangan = Convert.ToBoolean(roleChecker.Rows[0].ItemArray[11]);
+            masterPelanggan = Convert.ToBoolean(roleChecker.Rows[0].ItemArray[2]);
+            masterKoleksi = Convert.ToBoolean(roleChecker.Rows[0].ItemArray[3]);
+            masterStok = Convert.ToBoolean(roleChecker.Rows[0].ItemArray[4]);
+            transaksi = Convert.ToBoolean(roleChecker.Rows[0].ItemArray[5]);
+            laporanPerTransaksi = Convert.ToBoolean(roleChecker.Rows[0].ItemArray[6]);
+            laporanTransaksi = Convert.ToBoolean(roleChecker.Rows[0].ItemArray[7]);
+            laporanKeuangan = Convert.ToBoolean(roleChecker.Rows[0].ItemArray[8]);
+            halloffame = Convert.ToBoolean(roleChecker.Rows[0].ItemArray[9]);
+            pengaturanSistem = Convert.ToBoolean(roleChecker.Rows[0].ItemArray[10]);
+            pengaturanKewenangan = Convert.ToBoolean(roleChecker.Rows[0].ItemArray[11]);
             Program.role.pengaturanPengguna = Convert.ToBoolean(roleChecker.Rows[0].ItemArray[12]);
             Program.role.pengaturanPenawaranMenarik = Convert.ToBoolean(roleChecker.Rows[0].ItemArray[13]);
             Program.role.jendelaPertama = Convert.ToBoolean(roleChecker.Rows[0].ItemArray[14]);
+
+            roleName = roleChecker.Rows[0].ItemArray[1].ToString();
+            role = roleNum;
         }
+
+        public void roleApplyThis()
+        {
+            roleApply(role);
+        }
+        public string getRoleName()
+        {
+            return roleName;
+        }
+
     }
 
     public class appSetting

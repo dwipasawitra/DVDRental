@@ -44,12 +44,10 @@
             this.btnPengguna = new System.Windows.Forms.Button();
             this.lblSOinfo = new System.Windows.Forms.Label();
             this.btnSO = new System.Windows.Forms.Button();
+            this.lblLaporanNotaInfo = new System.Windows.Forms.Label();
+            this.btnLaporanNota = new System.Windows.Forms.Button();
             this.lblLaporanTransaksiInfo = new System.Windows.Forms.Label();
             this.btnLaporanTransaksi = new System.Windows.Forms.Button();
-            this.lblLaporanMemberInfo = new System.Windows.Forms.Label();
-            this.btnLaporanMember = new System.Windows.Forms.Button();
-            this.btnLaporanKoleksi = new System.Windows.Forms.Button();
-            this.lblLaporakKoleksiInfo = new System.Windows.Forms.Label();
             this.lblLaporanKeuanganInfo = new System.Windows.Forms.Label();
             this.btnLaporanKeuangan = new System.Windows.Forms.Button();
             this.lblMenuOperatorInfo = new System.Windows.Forms.Label();
@@ -181,6 +179,7 @@
             this.btnKewenangan.TabIndex = 3;
             this.btnKewenangan.Text = "Pengaturan Kewenangan";
             this.btnKewenangan.UseVisualStyleBackColor = true;
+            this.btnKewenangan.Click += new System.EventHandler(this.btnKewenangan_Click);
             // 
             // lblPenggunaInfo
             // 
@@ -199,6 +198,7 @@
             this.btnPengguna.TabIndex = 5;
             this.btnPengguna.Text = "Pengaturan Pengguna";
             this.btnPengguna.UseVisualStyleBackColor = true;
+            this.btnPengguna.Click += new System.EventHandler(this.btnPengguna_Click);
             // 
             // lblSOinfo
             // 
@@ -219,66 +219,47 @@
             this.btnSO.Text = "Atur Penawaran Menarik";
             this.btnSO.UseVisualStyleBackColor = true;
             // 
+            // lblLaporanNotaInfo
+            // 
+            this.lblLaporanNotaInfo.AutoSize = true;
+            this.lblLaporanNotaInfo.Location = new System.Drawing.Point(321, 240);
+            this.lblLaporanNotaInfo.Name = "lblLaporanNotaInfo";
+            this.lblLaporanNotaInfo.Size = new System.Drawing.Size(263, 13);
+            this.lblLaporanNotaInfo.TabIndex = 10;
+            this.lblLaporanNotaInfo.Text = "Lihat laporan nota transaksi untuk salah satu transaksi";
+            // 
+            // btnLaporanNota
+            // 
+            this.btnLaporanNota.Location = new System.Drawing.Point(189, 240);
+            this.btnLaporanNota.Name = "btnLaporanNota";
+            this.btnLaporanNota.Size = new System.Drawing.Size(126, 26);
+            this.btnLaporanNota.TabIndex = 9;
+            this.btnLaporanNota.Text = "Laporan Nota";
+            this.btnLaporanNota.UseVisualStyleBackColor = true;
+            // 
             // lblLaporanTransaksiInfo
             // 
             this.lblLaporanTransaksiInfo.AutoSize = true;
-            this.lblLaporanTransaksiInfo.Location = new System.Drawing.Point(321, 240);
+            this.lblLaporanTransaksiInfo.Location = new System.Drawing.Point(321, 272);
             this.lblLaporanTransaksiInfo.Name = "lblLaporanTransaksiInfo";
-            this.lblLaporanTransaksiInfo.Size = new System.Drawing.Size(222, 26);
-            this.lblLaporanTransaksiInfo.TabIndex = 10;
-            this.lblLaporanTransaksiInfo.Text = "Lihat Laporan transaksi harian, mingguan dan\r\nbulanan";
+            this.lblLaporanTransaksiInfo.Size = new System.Drawing.Size(249, 26);
+            this.lblLaporanTransaksiInfo.TabIndex = 12;
+            this.lblLaporanTransaksiInfo.Text = "Lihat daftar Transaksi untuk rentang waktu tertentu\r\n(Mingguan, Bulanan, Tahunan)" +
+                "";
             // 
             // btnLaporanTransaksi
             // 
-            this.btnLaporanTransaksi.Location = new System.Drawing.Point(189, 240);
+            this.btnLaporanTransaksi.Location = new System.Drawing.Point(189, 272);
             this.btnLaporanTransaksi.Name = "btnLaporanTransaksi";
             this.btnLaporanTransaksi.Size = new System.Drawing.Size(126, 26);
-            this.btnLaporanTransaksi.TabIndex = 9;
+            this.btnLaporanTransaksi.TabIndex = 11;
             this.btnLaporanTransaksi.Text = "Laporan Transaksi";
             this.btnLaporanTransaksi.UseVisualStyleBackColor = true;
-            // 
-            // lblLaporanMemberInfo
-            // 
-            this.lblLaporanMemberInfo.AutoSize = true;
-            this.lblLaporanMemberInfo.Location = new System.Drawing.Point(321, 272);
-            this.lblLaporanMemberInfo.Name = "lblLaporanMemberInfo";
-            this.lblLaporanMemberInfo.Size = new System.Drawing.Size(277, 26);
-            this.lblLaporanMemberInfo.TabIndex = 12;
-            this.lblLaporanMemberInfo.Text = "Lihat Laporan aktivitas peminjaman member untuk setiap \r\nhari, minggu atau bulan " +
-                "tertentu";
-            // 
-            // btnLaporanMember
-            // 
-            this.btnLaporanMember.Location = new System.Drawing.Point(189, 272);
-            this.btnLaporanMember.Name = "btnLaporanMember";
-            this.btnLaporanMember.Size = new System.Drawing.Size(126, 26);
-            this.btnLaporanMember.TabIndex = 11;
-            this.btnLaporanMember.Text = "Laporan Member";
-            this.btnLaporanMember.UseVisualStyleBackColor = true;
-            // 
-            // btnLaporanKoleksi
-            // 
-            this.btnLaporanKoleksi.Location = new System.Drawing.Point(189, 304);
-            this.btnLaporanKoleksi.Name = "btnLaporanKoleksi";
-            this.btnLaporanKoleksi.Size = new System.Drawing.Size(126, 26);
-            this.btnLaporanKoleksi.TabIndex = 13;
-            this.btnLaporanKoleksi.Text = "Laporan Koleksi";
-            this.btnLaporanKoleksi.UseVisualStyleBackColor = true;
-            // 
-            // lblLaporakKoleksiInfo
-            // 
-            this.lblLaporakKoleksiInfo.AutoSize = true;
-            this.lblLaporakKoleksiInfo.Location = new System.Drawing.Point(321, 304);
-            this.lblLaporakKoleksiInfo.Name = "lblLaporakKoleksiInfo";
-            this.lblLaporakKoleksiInfo.Size = new System.Drawing.Size(259, 26);
-            this.lblLaporakKoleksiInfo.TabIndex = 14;
-            this.lblLaporakKoleksiInfo.Text = "Lihat laporan aktivitas peminjaman suatu koleksi judul\r\nuntuk setiap hari, minggu" +
-                " dan bulan tertentu.";
             // 
             // lblLaporanKeuanganInfo
             // 
             this.lblLaporanKeuanganInfo.AutoSize = true;
-            this.lblLaporanKeuanganInfo.Location = new System.Drawing.Point(321, 336);
+            this.lblLaporanKeuanganInfo.Location = new System.Drawing.Point(321, 304);
             this.lblLaporanKeuanganInfo.Name = "lblLaporanKeuanganInfo";
             this.lblLaporanKeuanganInfo.Size = new System.Drawing.Size(263, 26);
             this.lblLaporanKeuanganInfo.TabIndex = 16;
@@ -287,7 +268,7 @@
             // 
             // btnLaporanKeuangan
             // 
-            this.btnLaporanKeuangan.Location = new System.Drawing.Point(189, 336);
+            this.btnLaporanKeuangan.Location = new System.Drawing.Point(189, 304);
             this.btnLaporanKeuangan.Name = "btnLaporanKeuangan";
             this.btnLaporanKeuangan.Size = new System.Drawing.Size(126, 26);
             this.btnLaporanKeuangan.TabIndex = 15;
@@ -297,7 +278,7 @@
             // lblMenuOperatorInfo
             // 
             this.lblMenuOperatorInfo.AutoSize = true;
-            this.lblMenuOperatorInfo.Location = new System.Drawing.Point(321, 368);
+            this.lblMenuOperatorInfo.Location = new System.Drawing.Point(321, 336);
             this.lblMenuOperatorInfo.Name = "lblMenuOperatorInfo";
             this.lblMenuOperatorInfo.Size = new System.Drawing.Size(135, 13);
             this.lblMenuOperatorInfo.TabIndex = 18;
@@ -305,7 +286,7 @@
             // 
             // btnMenuOperator
             // 
-            this.btnMenuOperator.Location = new System.Drawing.Point(189, 368);
+            this.btnMenuOperator.Location = new System.Drawing.Point(189, 336);
             this.btnMenuOperator.Name = "btnMenuOperator";
             this.btnMenuOperator.Size = new System.Drawing.Size(126, 26);
             this.btnMenuOperator.TabIndex = 17;
@@ -317,17 +298,15 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(703, 411);
+            this.ClientSize = new System.Drawing.Size(703, 370);
             this.Controls.Add(this.lblMenuOperatorInfo);
             this.Controls.Add(this.btnMenuOperator);
             this.Controls.Add(this.lblLaporanKeuanganInfo);
             this.Controls.Add(this.btnLaporanKeuangan);
-            this.Controls.Add(this.lblLaporakKoleksiInfo);
-            this.Controls.Add(this.btnLaporanKoleksi);
-            this.Controls.Add(this.lblLaporanMemberInfo);
-            this.Controls.Add(this.btnLaporanMember);
             this.Controls.Add(this.lblLaporanTransaksiInfo);
             this.Controls.Add(this.btnLaporanTransaksi);
+            this.Controls.Add(this.lblLaporanNotaInfo);
+            this.Controls.Add(this.btnLaporanNota);
             this.Controls.Add(this.lblSOinfo);
             this.Controls.Add(this.btnSO);
             this.Controls.Add(this.lblPenggunaInfo);
@@ -342,6 +321,7 @@
             this.Name = "frmAdmin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RENTALIN -- Menu [ADMIN]";
+            this.Load += new System.EventHandler(this.frmAdmin_Load);
             this.pnlInfo.ResumeLayout(false);
             this.pnlInfo.PerformLayout();
             this.ResumeLayout(false);
@@ -367,12 +347,10 @@
         private System.Windows.Forms.Button btnPengguna;
         private System.Windows.Forms.Label lblSOinfo;
         private System.Windows.Forms.Button btnSO;
+        private System.Windows.Forms.Label lblLaporanNotaInfo;
+        private System.Windows.Forms.Button btnLaporanNota;
         private System.Windows.Forms.Label lblLaporanTransaksiInfo;
         private System.Windows.Forms.Button btnLaporanTransaksi;
-        private System.Windows.Forms.Label lblLaporanMemberInfo;
-        private System.Windows.Forms.Button btnLaporanMember;
-        private System.Windows.Forms.Button btnLaporanKoleksi;
-        private System.Windows.Forms.Label lblLaporakKoleksiInfo;
         private System.Windows.Forms.Label lblLaporanKeuanganInfo;
         private System.Windows.Forms.Button btnLaporanKeuangan;
         private System.Windows.Forms.Label lblMenuOperatorInfo;

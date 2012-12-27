@@ -99,6 +99,12 @@
     <Compile Include="frmPengaturanKewenangan.Designer.cs">
       <DependentUpon>frmPengaturanKewenangan.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmPengaturanPengguna.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPengaturanPengguna.Designer.cs">
+      <DependentUpon>frmPengaturanPengguna.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmTambahKoleksi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -142,6 +148,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPengaturanKewenangan.resx">
       <DependentUpon>frmPengaturanKewenangan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPengaturanPengguna.resx">
+      <DependentUpon>frmPengaturanPengguna.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTambahKoleksi.resx">
       <DependentUpon>frmTambahKoleksi.cs</DependentUpon>
