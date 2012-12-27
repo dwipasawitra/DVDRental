@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.pnlInfo = new System.Windows.Forms.Panel();
-            this.lblInfoJudul = new System.Windows.Forms.Label();
-            this.lblInfoDetail = new System.Windows.Forms.Label();
+            this.lblRole = new System.Windows.Forms.Label();
+            this.lblRoleInfo = new System.Windows.Forms.Label();
             this.btnLogout = new System.Windows.Forms.Button();
             this.lblUserName = new System.Windows.Forms.Label();
+            this.lblInfoDetail = new System.Windows.Forms.Label();
             this.lblLogedInAs = new System.Windows.Forms.Label();
-            this.lblRoleInfo = new System.Windows.Forms.Label();
-            this.lblRole = new System.Windows.Forms.Label();
+            this.lblInfoJudul = new System.Windows.Forms.Label();
             this.btnPengaturan = new System.Windows.Forms.Button();
             this.lblPengaturanInfo = new System.Windows.Forms.Label();
             this.lblKewenanganInfo = new System.Windows.Forms.Label();
@@ -73,25 +73,24 @@
             this.pnlInfo.Size = new System.Drawing.Size(708, 76);
             this.pnlInfo.TabIndex = 0;
             // 
-            // lblInfoJudul
+            // lblRole
             // 
-            this.lblInfoJudul.AutoSize = true;
-            this.lblInfoJudul.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInfoJudul.Location = new System.Drawing.Point(12, 10);
-            this.lblInfoJudul.Name = "lblInfoJudul";
-            this.lblInfoJudul.Size = new System.Drawing.Size(165, 20);
-            this.lblInfoJudul.TabIndex = 0;
-            this.lblInfoJudul.Text = "Menu Administrator";
+            this.lblRole.AutoSize = true;
+            this.lblRole.Location = new System.Drawing.Point(321, 32);
+            this.lblRole.Name = "lblRole";
+            this.lblRole.Size = new System.Drawing.Size(55, 13);
+            this.lblRole.TabIndex = 21;
+            this.lblRole.Text = "Superuser";
             // 
-            // lblInfoDetail
+            // lblRoleInfo
             // 
-            this.lblInfoDetail.AutoSize = true;
-            this.lblInfoDetail.Location = new System.Drawing.Point(13, 30);
-            this.lblInfoDetail.Name = "lblInfoDetail";
-            this.lblInfoDetail.Size = new System.Drawing.Size(262, 26);
-            this.lblInfoDetail.TabIndex = 1;
-            this.lblInfoDetail.Text = "Anda sedang berada di menu Administrator.\r\nSilahkan membuka menu yang diinginkan " +
-                "di bawah ini";
+            this.lblRoleInfo.AutoSize = true;
+            this.lblRoleInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRoleInfo.Location = new System.Drawing.Point(321, 15);
+            this.lblRoleInfo.Name = "lblRoleInfo";
+            this.lblRoleInfo.Size = new System.Drawing.Size(80, 13);
+            this.lblRoleInfo.TabIndex = 20;
+            this.lblRoleInfo.Text = "Kewenangan";
             // 
             // btnLogout
             // 
@@ -114,6 +113,16 @@
             this.lblUserName.Text = "Bejo";
             this.lblUserName.Click += new System.EventHandler(this.lblUserName_Click);
             // 
+            // lblInfoDetail
+            // 
+            this.lblInfoDetail.AutoSize = true;
+            this.lblInfoDetail.Location = new System.Drawing.Point(13, 30);
+            this.lblInfoDetail.Name = "lblInfoDetail";
+            this.lblInfoDetail.Size = new System.Drawing.Size(262, 26);
+            this.lblInfoDetail.TabIndex = 1;
+            this.lblInfoDetail.Text = "Anda sedang berada di menu Administrator.\r\nSilahkan membuka menu yang diinginkan " +
+                "di bawah ini";
+            // 
             // lblLogedInAs
             // 
             this.lblLogedInAs.AutoSize = true;
@@ -124,24 +133,15 @@
             this.lblLogedInAs.Text = "Masuk sebagai";
             this.lblLogedInAs.Click += new System.EventHandler(this.lblLogedInAs_Click);
             // 
-            // lblRoleInfo
+            // lblInfoJudul
             // 
-            this.lblRoleInfo.AutoSize = true;
-            this.lblRoleInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRoleInfo.Location = new System.Drawing.Point(321, 15);
-            this.lblRoleInfo.Name = "lblRoleInfo";
-            this.lblRoleInfo.Size = new System.Drawing.Size(80, 13);
-            this.lblRoleInfo.TabIndex = 20;
-            this.lblRoleInfo.Text = "Kewenangan";
-            // 
-            // lblRole
-            // 
-            this.lblRole.AutoSize = true;
-            this.lblRole.Location = new System.Drawing.Point(321, 32);
-            this.lblRole.Name = "lblRole";
-            this.lblRole.Size = new System.Drawing.Size(55, 13);
-            this.lblRole.TabIndex = 21;
-            this.lblRole.Text = "Superuser";
+            this.lblInfoJudul.AutoSize = true;
+            this.lblInfoJudul.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInfoJudul.Location = new System.Drawing.Point(12, 10);
+            this.lblInfoJudul.Name = "lblInfoJudul";
+            this.lblInfoJudul.Size = new System.Drawing.Size(165, 20);
+            this.lblInfoJudul.TabIndex = 0;
+            this.lblInfoJudul.Text = "Menu Administrator";
             // 
             // btnPengaturan
             // 
@@ -151,6 +151,7 @@
             this.btnPengaturan.TabIndex = 1;
             this.btnPengaturan.Text = "Pengaturan Sistem";
             this.btnPengaturan.UseVisualStyleBackColor = true;
+            this.btnPengaturan.Click += new System.EventHandler(this.btnPengaturan_Click);
             // 
             // lblPengaturanInfo
             // 

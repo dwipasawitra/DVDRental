@@ -43,10 +43,12 @@
             this.lblJudul = new System.Windows.Forms.Label();
             this.lblDetail = new System.Windows.Forms.Label();
             this.dgKoleksi = new System.Windows.Forms.DataGridView();
+            this.pbCoverArt = new System.Windows.Forms.PictureBox();
             this.pnlInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picInfo)).BeginInit();
             this.pnlDetail.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgKoleksi)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCoverArt)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlInfo
@@ -151,6 +153,7 @@
             // pnlDetail
             // 
             this.pnlDetail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.pnlDetail.Controls.Add(this.pbCoverArt);
             this.pnlDetail.Controls.Add(this.lblGenre);
             this.pnlDetail.Controls.Add(this.lblJudul);
             this.pnlDetail.Controls.Add(this.btnHistori);
@@ -202,6 +205,14 @@
             this.dgKoleksi.Size = new System.Drawing.Size(454, 329);
             this.dgKoleksi.TabIndex = 4;
             // 
+            // pbCoverArt
+            // 
+            this.pbCoverArt.Location = new System.Drawing.Point(11, 70);
+            this.pbCoverArt.Name = "pbCoverArt";
+            this.pbCoverArt.Size = new System.Drawing.Size(92, 112);
+            this.pbCoverArt.TabIndex = 13;
+            this.pbCoverArt.TabStop = false;
+            // 
             // frmMasterKoleksi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -220,6 +231,7 @@
             this.pnlDetail.ResumeLayout(false);
             this.pnlDetail.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgKoleksi)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCoverArt)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -241,6 +253,7 @@
         private System.Windows.Forms.TextBox txtPencarian;
         private System.Windows.Forms.Label lblGenre;
         private System.Windows.Forms.Label lblJudul;
+        private System.Windows.Forms.PictureBox pbCoverArt;
 
     }
 }

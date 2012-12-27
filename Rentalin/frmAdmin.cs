@@ -30,5 +30,12 @@ namespace Rentalin
         {
 
         }
+
+        private void btnPengaturan_Click(object sender, EventArgs e)
+        {
+            // Buka Form Pengaturan
+            frmPengaturan form = new frmPengaturan();
+            form.Show();
+        }
     }
 }
