@@ -102,13 +102,8 @@ namespace Rentalin
                     // And then login is SUCESS
                     loged = true;
                     Program.conn.ExecuteNonQuery("UPDATE pengguna SET isLogin=1 WHERE kodeOperator='" + kodeOperator + "'");
-<<<<<<< HEAD
                     kodeOperator = int.Parse(loginChecker.Rows[0].ItemArray[0].ToString());
                     namaUser = loginChecker.Rows[0].ItemArray[2].ToString();
-=======
-                    kodeOperator =   int.Parse(loginChecker.Rows[0].ItemArray[0].ToString());
-                    
->>>>>>> bustan
                     return LOGIN_SUCCESS;
                 }
             }
@@ -134,14 +129,10 @@ namespace Rentalin
             return kodeOperator;
         }
 
-<<<<<<< HEAD
         public string getNamaUser()
         {
             return namaUser;
         }
-=======
-        
->>>>>>> bustan
     }
 
     public class userRole
@@ -257,12 +248,12 @@ namespace Rentalin
             isConn = conn.Open();
             if (isConn)
             {
-                MessageBox.Show("Berhasil melakukan koneksi");
-                Application.Run(new frmLogin());
+                MessageBox.Show("Berhasil melakukan koneksi ke basis data RENTALIN", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Application.Run(new frmMain());
             }
             else
             {
-                MessageBox.Show("Gagal melakukan koneksi");
+                MessageBox.Show("Gagal melakukan koneksi ke basis data. Pastikan pengaturan basis data sudah sesuai.", "Galat", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }          
         }

@@ -160,5 +160,16 @@ namespace Rentalin
             frmPengaturanPengguna form = new frmPengaturanPengguna();
             form.ShowDialog(this);
         }
+
+        private void btnLaporanNota_Click(object sender, EventArgs e)
+        {
+            frmLaporanNota form = new frmLaporanNota();
+            form.ShowDialog(this);
+        }
+
+        private void btnLaporanTransaksi_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

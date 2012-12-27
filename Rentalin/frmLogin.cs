@@ -29,7 +29,6 @@ namespace Rentalin
             status = Program.session.login(txtUserName.Text.ToString(), txtPassword.Text.ToString());
             if (status == userSession.LOGIN_SUCCESS)
             {
-                MessageBox.Show("Login");
                 if (Program.role.jendelaPertama == userRole.JENDELA_PERTAMA_OPERATOR)
                 {
                     frmMainOperator formOperator = new frmMainOperator();
@@ -40,8 +39,56 @@ namespace Rentalin
                     frmAdmin formAdmin = new frmAdmin();
                     formAdmin.Show();
                 }
-                Hide();
+                Close();
+            }
+            else if (status == userSession.LOGIN_MULTI)
+            {
+                MessageBox.Show("Ada 1 sesi berbeda berjalan, atau proses keluar sebelumnya tidak sempurna. Silahkan lakukan prosedur pengembalian autentifikasi", "Galat", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if(status == userSession.LOGIN_USERNAME_PASSWORD_WRONG)
+            {
+                MessageBox.Show("Nama Pengguna atau Password salah.", "Galat", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void txtUserName_Enter(object sender, EventArgs e)
+        {
+            if(txtUserName.Text=="Nama Pengguna...")
+            {
+                txtUserName.Text = "";
+            }
+        }
+
+        private void txtUserName_Leave(object sender, EventArgs e)
+        {
+            if (txtUserName.Text == "")
+            {
+                txtUserName.Text = "Nama Pengguna...";
+            }
+        }
+
+        private void txtPassword_Enter(object sender, EventArgs e)
+        {
+            if (txtPassword.Text == "Password...")
+            {
+                txtPassword.Text = "";
+            }
+        }
+
+        private void txtPassword_Leave(object sender, EventArgs e)
+        {
+            if (txtPassword.Text == "")
+            {
+                txtPassword.Text = "Password...";
+            }
+        }
+
+        private void txtUserName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
+        
     }
 }

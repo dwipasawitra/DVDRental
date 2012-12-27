@@ -66,7 +66,6 @@ namespace Rentalin
 
                 lblNamaPengguna.Text = namaPenggunaDipilih;
                 txtNamaLengkap.Text = namaLengkapPenggunaDipilih;
-                cmbKewenangan.SelectedText = kewenanganDipilih;
             }
         }
     }

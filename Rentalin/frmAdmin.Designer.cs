@@ -236,6 +236,7 @@
             this.btnLaporanNota.TabIndex = 9;
             this.btnLaporanNota.Text = "Laporan Nota";
             this.btnLaporanNota.UseVisualStyleBackColor = true;
+            this.btnLaporanNota.Click += new System.EventHandler(this.btnLaporanNota_Click);
             // 
             // lblLaporanTransaksiInfo
             // 
@@ -255,6 +256,7 @@
             this.btnLaporanTransaksi.TabIndex = 11;
             this.btnLaporanTransaksi.Text = "Laporan Transaksi";
             this.btnLaporanTransaksi.UseVisualStyleBackColor = true;
+            this.btnLaporanTransaksi.Click += new System.EventHandler(this.btnLaporanTransaksi_Click);
             // 
             // lblLaporanKeuanganInfo
             // 
