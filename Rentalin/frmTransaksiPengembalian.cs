@@ -168,12 +168,10 @@ namespace Rentalin
             if (error == 0)
             {
                 frmBayarKembali formBayarKembali = new frmBayarKembali(lblNmrNota.Text, int.Parse(lblBiayaDenda.Text));
+            
+                       
                 formBayarKembali.ShowDialog(this);
-               
-                if (int.Parse(lblBiayaDenda.Text) == 0)
-                {                    
-                    formBayarKembali.ShowDialog(this);
-                }                
+                              
 
                 if (formBayarKembali.getHasil() == true)
                 {
@@ -189,7 +187,7 @@ namespace Rentalin
                         }
                         Program.conn.ExecuteNonQuery("UPDATE dipinjam SET hargadenda = " + int.Parse(daftarPinjaman.Rows[i].ItemArray[6].ToString()) + " WHERE nonota = '" + lblNmrNota.Text + "' AND kodestok = '" + daftarPinjaman.Rows[i].ItemArray[2].ToString() + "'");
                     }
-                    Program.conn.ExecuteNonQuery("UPDATE nota SET tglrealisasikembali = to_date('" + newDate + "','MM/dd/yyyy') WHERE nonota = '" + lblNmrNota.Text + "'");
+                    Program.conn.ExecuteNonQuery("UPDATE nota SET tglrealisasikembali = sysdate WHERE nonota = '" + lblNmrNota.Text + "'");
                     MessageBox.Show("Transaksi Berhasil");
                     frmLaporanNota notaTransaksi = new frmLaporanNota(lblNmrNota.Text);
                     notaTransaksi.ShowDialog(this);
@@ -232,7 +230,7 @@ namespace Rentalin
                 lblLamaTelat.Text = selisih.ToString();
                 
                 // Cek apakah tanggal mengembalikan tidak sama dengan tanggal meminjam
-                if (selisih > 0)
+                if (selisih >= 0)
                 {
                     for (i = 0; i < idx; i++)
                     {
@@ -279,6 +277,11 @@ namespace Rentalin
         }
 
         private void dgPengembalian_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void pnlTransaksi_Paint(object sender, PaintEventArgs e)
         {
 
         }

@@ -14,6 +14,7 @@ namespace Rentalin
         DataTable jenisidentitas;
         DataTable modify;
         DataTable listMember;
+        private const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
         public int mode;
         public string IDMember;
@@ -24,6 +25,26 @@ namespace Rentalin
             mode = 0;
 
             txtKodeMember.Enabled = true;
+        }
+
+        private string randomKode()
+        {
+            Random rand = new Random();
+            char[] buffer = new char[4];
+            string hasil;
+            int i;
+            for (i = 0; i < 4; i++)
+            {
+                buffer[i] = chars[rand.Next(chars.Length)];
+            }
+            hasil = new string(buffer);
+            int angka;
+            for (i = 0; i < 6; i++)
+            {
+                angka = rand.Next(0, 9);
+                hasil += angka.ToString();
+            }
+            return hasil;
         }
 
         public frmTambahPelanggan(string KodeMember)
@@ -52,7 +73,7 @@ namespace Rentalin
         {
             lblInfo.Text = "Silahkan menambahkan detail\npelanggan di jendela ini";
             btnTambahkan.Enabled = false;
-            txtKodeMember.ResetText();
+            txtKodeMember.Text = randomKode();
             txtNamaMember.ResetText();
             txtNomorIdentitas.ResetText();
             addListJenisIdentitas();

@@ -46,7 +46,6 @@
             this.dgPengembalian = new System.Windows.Forms.DataGridView();
             this.pnlInfo = new System.Windows.Forms.Panel();
             this.lblInfoDetail = new System.Windows.Forms.Label();
-            this.picInfo = new System.Windows.Forms.PictureBox();
             this.lblInfo = new System.Windows.Forms.Label();
             this.lblIdentitas = new System.Windows.Forms.Label();
             this.lblKodeMember = new System.Windows.Forms.Label();
@@ -67,12 +66,13 @@
             this.lblDendaKerusakanInfo = new System.Windows.Forms.Label();
             this.lblHargaDendaItemInfo = new System.Windows.Forms.Label();
             this.lblJudul = new System.Windows.Forms.Label();
+            this.picInfo = new System.Windows.Forms.PictureBox();
             this.pnlTransaksi.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgPengembalian)).BeginInit();
             this.pnlInfo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picInfo)).BeginInit();
             this.pnlPeminjam.SuspendLayout();
             this.pnlDetail.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picInfo)).BeginInit();
             this.SuspendLayout();
             // 
             // btnProses
@@ -204,6 +204,7 @@
             this.pnlTransaksi.Name = "pnlTransaksi";
             this.pnlTransaksi.Size = new System.Drawing.Size(899, 73);
             this.pnlTransaksi.TabIndex = 18;
+            this.pnlTransaksi.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlTransaksi_Paint);
             // 
             // lblHari
             // 
@@ -267,15 +268,6 @@
             this.lblInfoDetail.Size = new System.Drawing.Size(174, 26);
             this.lblInfoDetail.TabIndex = 5;
             this.lblInfoDetail.Text = "Atur pelanggan yang menyewa dan\r\natur kondisi barang setelah disewa";
-            // 
-            // picInfo
-            // 
-            this.picInfo.Image = global::Rentalin.Properties.Resources.arrowup2;
-            this.picInfo.Location = new System.Drawing.Point(12, 10);
-            this.picInfo.Name = "picInfo";
-            this.picInfo.Size = new System.Drawing.Size(38, 54);
-            this.picInfo.TabIndex = 0;
-            this.picInfo.TabStop = false;
             // 
             // lblInfo
             // 
@@ -491,6 +483,15 @@
             this.lblJudul.TabIndex = 13;
             this.lblJudul.Text = "Judul Film";
             // 
+            // picInfo
+            // 
+            this.picInfo.Image = global::Rentalin.Properties.Resources.arrowup2;
+            this.picInfo.Location = new System.Drawing.Point(12, 10);
+            this.picInfo.Name = "picInfo";
+            this.picInfo.Size = new System.Drawing.Size(38, 54);
+            this.picInfo.TabIndex = 0;
+            this.picInfo.TabStop = false;
+            // 
             // frmTransaksiPengembalian
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -513,11 +514,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgPengembalian)).EndInit();
             this.pnlInfo.ResumeLayout(false);
             this.pnlInfo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picInfo)).EndInit();
             this.pnlPeminjam.ResumeLayout(false);
             this.pnlPeminjam.PerformLayout();
             this.pnlDetail.ResumeLayout(false);
             this.pnlDetail.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picInfo)).EndInit();
             this.ResumeLayout(false);
 
         }

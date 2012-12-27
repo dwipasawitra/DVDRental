@@ -32,6 +32,7 @@
             this.lblAlamatLayanan = new System.Windows.Forms.Label();
             this.lblNamaLayanan = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnChat = new System.Windows.Forms.Button();
             this.lblPenawaranSpesial = new System.Windows.Forms.Label();
             this.lblPenawaranSpesialInfo = new System.Windows.Forms.Label();
             this.lblMemutakhirkan = new System.Windows.Forms.Label();
@@ -56,11 +57,14 @@
             this.btnMasterKoleksi = new System.Windows.Forms.Button();
             this.btnMasterPelanggan = new System.Windows.Forms.Button();
             this.lblMasterInfo = new System.Windows.Forms.Label();
+            this.picMaster = new System.Windows.Forms.PictureBox();
             this.lblMasterData = new System.Windows.Forms.Label();
             this.pnlTransaksi = new System.Windows.Forms.Panel();
+            this.btnPendingPeminjaman = new System.Windows.Forms.Button();
             this.btnPeminjaman = new System.Windows.Forms.Button();
             this.lblTransaksi = new System.Windows.Forms.Label();
             this.btnPengembalian = new System.Windows.Forms.Button();
+            this.picTransaksi = new System.Windows.Forms.PictureBox();
             this.lblTransaksiInfo = new System.Windows.Forms.Label();
             this.pnlLaporan = new System.Windows.Forms.Panel();
             this.btnLaporanKeuangan = new System.Windows.Forms.Button();
@@ -68,6 +72,7 @@
             this.btnLaporanNota = new System.Windows.Forms.Button();
             this.lblLaporan = new System.Windows.Forms.Label();
             this.lblLaporanInfo = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblDate = new System.Windows.Forms.Label();
             this.lblTime = new System.Windows.Forms.Label();
             this.lblLogedInAs = new System.Windows.Forms.Label();
@@ -76,29 +81,25 @@
             this.btnAdmin = new System.Windows.Forms.Button();
             this.tmrWaktu = new System.Windows.Forms.Timer(this.components);
             this.panel2 = new System.Windows.Forms.Panel();
+            this.picDisc = new System.Windows.Forms.PictureBox();
             this.tmrStatistik = new System.Windows.Forms.Timer(this.components);
             this.tmrBlinkingPenawaranSpesial = new System.Windows.Forms.Timer(this.components);
             this.lblPowered = new System.Windows.Forms.Label();
             this.pnlScrollingText = new System.Windows.Forms.Panel();
             this.lblScrollText = new System.Windows.Forms.Label();
             this.tmrScrollingText = new System.Windows.Forms.Timer(this.components);
-            this.btnPendingPeminjaman = new System.Windows.Forms.Button();
-            this.btnChat = new System.Windows.Forms.Button();
-            this.picDisc = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.picTransaksi = new System.Windows.Forms.PictureBox();
-            this.picMaster = new System.Windows.Forms.PictureBox();
             this.tmrChat = new System.Windows.Forms.Timer(this.components);
+            this.btnMasterKategori = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.pnlMaster.SuspendLayout();
-            this.pnlTransaksi.SuspendLayout();
-            this.pnlLaporan.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.pnlScrollingText.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picDisc)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picTransaksi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picMaster)).BeginInit();
+            this.pnlTransaksi.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picTransaksi)).BeginInit();
+            this.pnlLaporan.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picDisc)).BeginInit();
+            this.pnlScrollingText.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblAlamatLayanan
@@ -148,6 +149,17 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(242, 329);
             this.panel1.TabIndex = 9;
+            // 
+            // btnChat
+            // 
+            this.btnChat.ForeColor = System.Drawing.Color.Black;
+            this.btnChat.Location = new System.Drawing.Point(12, 291);
+            this.btnChat.Name = "btnChat";
+            this.btnChat.Size = new System.Drawing.Size(210, 26);
+            this.btnChat.TabIndex = 21;
+            this.btnChat.Text = "Chat dengan Pelanggan";
+            this.btnChat.UseVisualStyleBackColor = true;
+            this.btnChat.Click += new System.EventHandler(this.btnChat_Click);
             // 
             // lblPenawaranSpesial
             // 
@@ -327,6 +339,7 @@
             // pnlMaster
             // 
             this.pnlMaster.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(136)))), ((int)(((byte)(166)))));
+            this.pnlMaster.Controls.Add(this.btnMasterKategori);
             this.pnlMaster.Controls.Add(this.btnMasterStok);
             this.pnlMaster.Controls.Add(this.btnMasterKoleksi);
             this.pnlMaster.Controls.Add(this.btnMasterPelanggan);
@@ -341,9 +354,9 @@
             // btnMasterStok
             // 
             this.btnMasterStok.ForeColor = System.Drawing.Color.Black;
-            this.btnMasterStok.Location = new System.Drawing.Point(352, 65);
+            this.btnMasterStok.Location = new System.Drawing.Point(291, 65);
             this.btnMasterStok.Name = "btnMasterStok";
-            this.btnMasterStok.Size = new System.Drawing.Size(94, 40);
+            this.btnMasterStok.Size = new System.Drawing.Size(74, 40);
             this.btnMasterStok.TabIndex = 13;
             this.btnMasterStok.Text = "Master Stok";
             this.btnMasterStok.UseVisualStyleBackColor = true;
@@ -352,9 +365,9 @@
             // btnMasterKoleksi
             // 
             this.btnMasterKoleksi.ForeColor = System.Drawing.Color.Black;
-            this.btnMasterKoleksi.Location = new System.Drawing.Point(234, 65);
+            this.btnMasterKoleksi.Location = new System.Drawing.Point(215, 65);
             this.btnMasterKoleksi.Name = "btnMasterKoleksi";
-            this.btnMasterKoleksi.Size = new System.Drawing.Size(112, 40);
+            this.btnMasterKoleksi.Size = new System.Drawing.Size(68, 40);
             this.btnMasterKoleksi.TabIndex = 12;
             this.btnMasterKoleksi.Text = "Master Koleksi";
             this.btnMasterKoleksi.UseVisualStyleBackColor = true;
@@ -366,7 +379,7 @@
             this.btnMasterPelanggan.ForeColor = System.Drawing.Color.Black;
             this.btnMasterPelanggan.Location = new System.Drawing.Point(118, 65);
             this.btnMasterPelanggan.Name = "btnMasterPelanggan";
-            this.btnMasterPelanggan.Size = new System.Drawing.Size(110, 40);
+            this.btnMasterPelanggan.Size = new System.Drawing.Size(93, 40);
             this.btnMasterPelanggan.TabIndex = 3;
             this.btnMasterPelanggan.Text = "Master Pelanggan";
             this.btnMasterPelanggan.UseVisualStyleBackColor = false;
@@ -382,6 +395,15 @@
             this.lblMasterInfo.TabIndex = 2;
             this.lblMasterInfo.Text = "Silahkan mengatur basis data layanan rental ini\r\nMelalui menu yang disediakan di " +
                 "bawah";
+            // 
+            // picMaster
+            // 
+            this.picMaster.Image = global::Rentalin.Properties.Resources.db;
+            this.picMaster.Location = new System.Drawing.Point(15, 10);
+            this.picMaster.Name = "picMaster";
+            this.picMaster.Size = new System.Drawing.Size(92, 95);
+            this.picMaster.TabIndex = 1;
+            this.picMaster.TabStop = false;
             // 
             // lblMasterData
             // 
@@ -407,6 +429,17 @@
             this.pnlTransaksi.Name = "pnlTransaksi";
             this.pnlTransaksi.Size = new System.Drawing.Size(458, 114);
             this.pnlTransaksi.TabIndex = 11;
+            // 
+            // btnPendingPeminjaman
+            // 
+            this.btnPendingPeminjaman.ForeColor = System.Drawing.Color.Black;
+            this.btnPendingPeminjaman.Location = new System.Drawing.Point(352, 65);
+            this.btnPendingPeminjaman.Name = "btnPendingPeminjaman";
+            this.btnPendingPeminjaman.Size = new System.Drawing.Size(94, 40);
+            this.btnPendingPeminjaman.TabIndex = 21;
+            this.btnPendingPeminjaman.Text = "Peminjaman dari Katalog";
+            this.btnPendingPeminjaman.UseVisualStyleBackColor = true;
+            this.btnPendingPeminjaman.Click += new System.EventHandler(this.btnPendingPeminjaman_Click);
             // 
             // btnPeminjaman
             // 
@@ -440,6 +473,15 @@
             this.btnPengembalian.Text = "Pengembalian";
             this.btnPengembalian.UseVisualStyleBackColor = true;
             this.btnPengembalian.Click += new System.EventHandler(this.btnPengembalian_Click);
+            // 
+            // picTransaksi
+            // 
+            this.picTransaksi.Image = global::Rentalin.Properties.Resources.bill;
+            this.picTransaksi.Location = new System.Drawing.Point(15, 12);
+            this.picTransaksi.Name = "picTransaksi";
+            this.picTransaksi.Size = new System.Drawing.Size(94, 94);
+            this.picTransaksi.TabIndex = 15;
+            this.picTransaksi.TabStop = false;
             // 
             // lblTransaksiInfo
             // 
@@ -517,6 +559,15 @@
             this.lblLaporanInfo.TabIndex = 19;
             this.lblLaporanInfo.Text = "Silahkan pilih salah satu laporan layanan yang ingin Anda lihat\r\npada menu dibawa" +
                 "h ini";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Rentalin.Properties.Resources.report;
+            this.pictureBox1.Location = new System.Drawing.Point(15, 8);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(92, 109);
+            this.pictureBox1.TabIndex = 18;
+            this.pictureBox1.TabStop = false;
             // 
             // lblDate
             // 
@@ -601,6 +652,15 @@
             this.panel2.Size = new System.Drawing.Size(756, 81);
             this.panel2.TabIndex = 18;
             // 
+            // picDisc
+            // 
+            this.picDisc.Image = global::Rentalin.Properties.Resources.disc;
+            this.picDisc.Location = new System.Drawing.Point(17, 0);
+            this.picDisc.Name = "picDisc";
+            this.picDisc.Size = new System.Drawing.Size(85, 87);
+            this.picDisc.TabIndex = 8;
+            this.picDisc.TabStop = false;
+            // 
             // tmrStatistik
             // 
             this.tmrStatistik.Enabled = true;
@@ -646,69 +706,22 @@
             this.tmrScrollingText.Enabled = true;
             this.tmrScrollingText.Tick += new System.EventHandler(this.tmrScrollingText_Tick);
             // 
-            // btnPendingPeminjaman
-            // 
-            this.btnPendingPeminjaman.ForeColor = System.Drawing.Color.Black;
-            this.btnPendingPeminjaman.Location = new System.Drawing.Point(352, 65);
-            this.btnPendingPeminjaman.Name = "btnPendingPeminjaman";
-            this.btnPendingPeminjaman.Size = new System.Drawing.Size(94, 40);
-            this.btnPendingPeminjaman.TabIndex = 21;
-            this.btnPendingPeminjaman.Text = "Peminjaman dari Katalog";
-            this.btnPendingPeminjaman.UseVisualStyleBackColor = true;
-            this.btnPendingPeminjaman.Click += new System.EventHandler(this.btnPendingPeminjaman_Click);
-            // 
-            // btnChat
-            // 
-            this.btnChat.ForeColor = System.Drawing.Color.Black;
-            this.btnChat.Location = new System.Drawing.Point(12, 291);
-            this.btnChat.Name = "btnChat";
-            this.btnChat.Size = new System.Drawing.Size(210, 26);
-            this.btnChat.TabIndex = 21;
-            this.btnChat.Text = "Chat dengan Pelanggan";
-            this.btnChat.UseVisualStyleBackColor = true;
-            this.btnChat.Click += new System.EventHandler(this.btnChat_Click);
-            // 
-            // picDisc
-            // 
-            this.picDisc.Image = global::Rentalin.Properties.Resources.disc;
-            this.picDisc.Location = new System.Drawing.Point(17, 0);
-            this.picDisc.Name = "picDisc";
-            this.picDisc.Size = new System.Drawing.Size(85, 87);
-            this.picDisc.TabIndex = 8;
-            this.picDisc.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Rentalin.Properties.Resources.report;
-            this.pictureBox1.Location = new System.Drawing.Point(15, 8);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(92, 109);
-            this.pictureBox1.TabIndex = 18;
-            this.pictureBox1.TabStop = false;
-            // 
-            // picTransaksi
-            // 
-            this.picTransaksi.Image = global::Rentalin.Properties.Resources.bill;
-            this.picTransaksi.Location = new System.Drawing.Point(15, 12);
-            this.picTransaksi.Name = "picTransaksi";
-            this.picTransaksi.Size = new System.Drawing.Size(94, 94);
-            this.picTransaksi.TabIndex = 15;
-            this.picTransaksi.TabStop = false;
-            // 
-            // picMaster
-            // 
-            this.picMaster.Image = global::Rentalin.Properties.Resources.db;
-            this.picMaster.Location = new System.Drawing.Point(15, 10);
-            this.picMaster.Name = "picMaster";
-            this.picMaster.Size = new System.Drawing.Size(92, 95);
-            this.picMaster.TabIndex = 1;
-            this.picMaster.TabStop = false;
-            // 
             // tmrChat
             // 
             this.tmrChat.Enabled = true;
             this.tmrChat.Interval = 1000;
             this.tmrChat.Tick += new System.EventHandler(this.tmrChat_Tick);
+            // 
+            // btnMasterKategori
+            // 
+            this.btnMasterKategori.ForeColor = System.Drawing.Color.Black;
+            this.btnMasterKategori.Location = new System.Drawing.Point(374, 65);
+            this.btnMasterKategori.Name = "btnMasterKategori";
+            this.btnMasterKategori.Size = new System.Drawing.Size(74, 40);
+            this.btnMasterKategori.TabIndex = 22;
+            this.btnMasterKategori.Text = "Master Kategori";
+            this.btnMasterKategori.UseVisualStyleBackColor = true;
+            this.btnMasterKategori.Click += new System.EventHandler(this.btnMasterKategori_Click);
             // 
             // frmMainOperator
             // 
@@ -735,18 +748,18 @@
             this.panel1.PerformLayout();
             this.pnlMaster.ResumeLayout(false);
             this.pnlMaster.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picMaster)).EndInit();
             this.pnlTransaksi.ResumeLayout(false);
             this.pnlTransaksi.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picTransaksi)).EndInit();
             this.pnlLaporan.ResumeLayout(false);
             this.pnlLaporan.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picDisc)).EndInit();
             this.pnlScrollingText.ResumeLayout(false);
             this.pnlScrollingText.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picDisc)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picTransaksi)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picMaster)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -814,5 +827,6 @@
         private System.Windows.Forms.Button btnChat;
         private System.Windows.Forms.Button btnPendingPeminjaman;
         private System.Windows.Forms.Timer tmrChat;
+        private System.Windows.Forms.Button btnMasterKategori;
     }
 }

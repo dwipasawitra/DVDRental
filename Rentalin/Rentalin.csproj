@@ -144,6 +144,12 @@
     <Compile Include="frmMainOperator.Designer.cs">
       <DependentUpon>frmMainOperator.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmMasterKategori.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMasterKategori.Designer.cs">
+      <DependentUpon>frmMasterKategori.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMasterKoleksi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -262,6 +268,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMainOperator.resx">
       <DependentUpon>frmMainOperator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMasterKategori.resx">
+      <DependentUpon>frmMasterKategori.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMasterKoleksi.resx">
       <DependentUpon>frmMasterKoleksi.cs</DependentUpon>

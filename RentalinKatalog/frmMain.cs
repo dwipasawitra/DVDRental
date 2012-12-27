@@ -135,7 +135,7 @@ namespace RentalinKatalog
                         picTopKoleksiTerbaik.SizeMode = PictureBoxSizeMode.StretchImage;
                         picTopKoleksiTerbaik.Refresh();
                     }
-                    lblDeskripsiTop.Text = blobTable.Rows[idxTopKoleksi].ItemArray[1].ToString();
+                    lblDeskripsiTop.Text = blobTable.Rows[0].ItemArray[1].ToString();
                 }
                 catch (Exception e)
                 {

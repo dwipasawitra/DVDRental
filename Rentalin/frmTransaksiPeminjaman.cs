@@ -30,6 +30,9 @@ namespace Rentalin
 
             dgPeminjaman.DataSource = belanja;
             dgPeminjaman.ReadOnly = true;
+
+            dgPeminjaman.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+ 
         }
 
         public frmTransaksiPeminjaman(string kodePendingNota, string kodeMember)
@@ -50,6 +53,9 @@ namespace Rentalin
 
             dgPeminjaman.DataSource = belanja;
             dgPeminjaman.ReadOnly = true;
+
+            dgPeminjaman.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+           
 
             // Proses pending nota
             // Masukkan kode member dari pending nota yang dimaksud
@@ -186,13 +192,17 @@ namespace Rentalin
                 {
                     if (txtTambahJudul.Text == koleksi.Rows[i].ItemArray[0].ToString())
                     {
+
                         stokKoleksi = Program.conn.ExecuteDataTable("SELECT * FROM stokkoleksi WHERE kodekoleksi = '" + txtTambahJudul.Text + "' AND kondisi = 0 AND status = 0");
+                        //MessageBox.Show(stokKoleksi.Rows[0].ItemArray[0].ToString());
                         if (!koleksiSudahMasuk(koleksi.Rows[i].ItemArray[0].ToString()))
                         {
                             if (stokKoleksi.Rows.Count > 0)
                             {
                                 int idx_stok = stokKoleksi.Rows.Count;
-
+                              
+                                
+                                
                                 //menambah daftar belanja
                                 if (Program.setting.biayaSewaPer == appSetting.BIAYA_SEWA_TIDAK_ADA)
                                 {
@@ -242,17 +252,8 @@ namespace Rentalin
                                 //MessageBox.Show("Data berhasil ditambahkan");
                                 btnProses.Enabled = true;
                                 btnHapus.Enabled = true;
-                                if (dgPeminjaman.Rows.Count == 2)
-                                {
-                                    int l;
-                                    cmbStok.Items.Clear();
-                                    for (l = 0; l < idx_stok; l++)
-                                    {
-                                        cmbStok.Items.Add(stokKoleksi.Rows[l].ItemArray[0].ToString());
-                                    }
-                                    cmbStok.Text = stokKoleksi.Rows[0].ItemArray[0].ToString();
-                                    labelSewaDenda();
-                                }
+                                cmbStok.Text = stokKoleksi.Rows[0].ItemArray[0].ToString();
+                                labelSewaDenda();
                                 break;
                             }
                             else
@@ -384,7 +385,7 @@ namespace Rentalin
                     int i, idx = belanja.Rows.Count;
                     for (i = 0; i < idx; i++)
                     {
-                        string insertDipinjam = "INSERT INTO dipinjam (kodedipinjam, kodestok, nonota, hargasewa) VALUES('" + randomNota() + "','" + belanja.Rows[i].ItemArray[2].ToString() + "','" + lblNmrNota.Text + "'," + int.Parse(belanja.Rows[i].ItemArray[4].ToString()) + ")";
+                        string insertDipinjam = "INSERT INTO dipinjam (kodedipinjam, kodestok, nonota, hargasewa) VALUES('" + randomNota() +"','" + belanja.Rows[i].ItemArray[2].ToString() + "','" + lblNmrNota.Text + "'," + int.Parse(belanja.Rows[i].ItemArray[4].ToString()) + ")";
                         Program.conn.ExecuteNonQuery(insertDipinjam);
                         string updateStok = "UPDATE stokkoleksi SET status = 1 WHERE kodestok = '" + belanja.Rows[i].ItemArray[2].ToString() + "'";
                         Program.conn.ExecuteNonQuery(updateStok);

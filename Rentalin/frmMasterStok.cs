@@ -16,13 +16,35 @@ namespace Rentalin
         DataTable koleksi = new DataTable();
         public int mode;
         public int modify;
-        public string viewStok;    
+        public string viewStok;
+        private const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
         public frmMasterStok()
         {
             InitializeComponent();
             tampilanAwal();
-        }        
+        }
+
+
+        private string randomKode()
+        {
+            Random rand = new Random();
+            char[] buffer = new char[6];
+            string hasil;
+            int i;
+            for (i = 0; i < 6; i++)
+            {
+                buffer[i] = chars[rand.Next(chars.Length)];
+            }
+            hasil = new string(buffer);
+            int angka;
+            for (i = 0; i < 6; i++)
+            {
+                angka = rand.Next(0, 9);
+                hasil += angka.ToString();
+            }
+            return hasil;
+        }
 
         public frmMasterStok(string kodeKoleksi)
         {
@@ -158,6 +180,7 @@ namespace Rentalin
             cmbStatus.SelectedIndex = 0;
             cmbKondisi.SelectedIndex = 0;
             btnPerbarui.Text = "Tambahkan";
+            txtKodeStok.Text = randomKode();
             txtKodeStok.Focus();
         }
 
@@ -239,64 +262,79 @@ namespace Rentalin
 
         }
 
+        private bool cekKarakter(string inp)
+        {
+            int i;
+            for (i = 0; i < inp.Length; i++)
+            {
+                if (char.IsLetter(inp[i]))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
         private void btnPerbarui_Click(object sender, EventArgs e)
         {
             int i, idx = info.Rows.Count;
-            if (txtKodeStok.Text == ""  && cmbKondisi.Text == "" && cmbStatus.Text == "" && txtHarga.Text == "")
+            if(cekKarakter(txtHarga.Text))
             {
-                MessageBox.Show("Ada informasi yang kosong");
-            }
-            else if (txtKodeStok.TextLength != 12)
-            {
-                MessageBox.Show("Kode Stok harus 12 karakter");
-            }
-            else
-            {
-                for (i = 0; i < idx; i++)
+                if (txtKodeStok.Text == ""  && cmbKondisi.Text == "" && cmbStatus.Text == "" && txtHarga.Text == "")
                 {
-                    if (info.Rows[i].ItemArray[0].ToString() == txtKodeStok.Text && modify == 0)
-                    {
-                        MessageBox.Show("Kode Stok tidak bisa diterima");
-                        break;
-                    }
+                    MessageBox.Show("Ada informasi yang kosong");
                 }
-                if (i == idx)
+                else if (txtKodeStok.TextLength != 12)
                 {
-                    if (modify == 0)
+                    MessageBox.Show("Kode Stok harus 12 karakter");
+                }
+                else
+                {
+                    for (i = 0; i < idx; i++)
                     {
-                        string insert = "INSERT INTO stokkoleksi VALUES('" + txtKodeStok.Text + "','" + viewStok + "'," + cmbKondisi.SelectedIndex + "," + cmbStatus.SelectedIndex + "," + txtHarga.Text + ",'" + Program.convertTglkeOracle(dtpTglBeli.Value) + "')";
-                        Program.conn.ExecuteNonQuery(insert);
-                        MessageBox.Show("Data berhasil ditambahkan");
-                        txtKodeStok.ResetText();
-                        cmbKondisi.ResetText();
-                        cmbStatus.ResetText();
-                        dtpTglBeli.ResetText();
-                        txtHarga.ResetText();
+                        if (info.Rows[i].ItemArray[0].ToString() == txtKodeStok.Text && modify == 0)
+                        {
+                            MessageBox.Show("Kode Stok tidak bisa diterima");
+                            break;
+                        }
+                    }
+                    if (i == idx)
+                    {
+                        if (modify == 0)
+                        {
+                            string insert = "INSERT INTO stokkoleksi VALUES('" + txtKodeStok.Text + "','" + viewStok + "'," + cmbKondisi.SelectedIndex + "," + cmbStatus.SelectedIndex + "," + txtHarga.Text + ",'" + Program.convertTglkeOracle(dtpTglBeli.Value) + "')";
+                            Program.conn.ExecuteNonQuery(insert);
+                            MessageBox.Show("Data berhasil ditambahkan");
+                            txtKodeStok.ResetText();
+                            cmbKondisi.ResetText();
+                            cmbStatus.ResetText();
+                            dtpTglBeli.ResetText();
+                            txtHarga.ResetText();
                        
-                        updateStok();
+                            updateStok();
+                        }
+                        else if (modify == 1)
+                        {                        
+                            string update = "UPDATE stokkoleksi SET kondisi = '" + cmbKondisi.SelectedIndex + "', status = '" + cmbStatus.SelectedIndex + "', harga = '" + txtHarga.Text + "', tglbeli = '" + Program.convertTglkeOracle(dtpTglBeli.Value) + "' WHERE kodestok = '" + txtKodeStok.Text + "'";
+                            Program.conn.ExecuteNonQuery(update);
+                            MessageBox.Show("Data berhasil diperbarui");
+                            txtKodeStok.ResetText();
+                            cmbKondisi.ResetText();
+                            cmbStatus.ResetText();
+                            dtpTglBeli.ResetText();
+                            txtHarga.ResetText();
+                            updateStok();
+                        }
+                        btnPerbarui.Text = "Modifikasi";
+                        txtKodeStok.Enabled = false;
+                        cmbKondisi.Enabled = false;
+                        cmbStatus.Enabled = false;
+                        dtpTglBeli.Enabled = false;
+                        txtHarga.Enabled = false;
+                        btnPerbarui.Enabled = false;
                     }
-                    else if (modify == 1)
-                    {                        
-                        string update = "UPDATE stokkoleksi SET kondisi = '" + cmbKondisi.SelectedIndex + "', status = '" + cmbStatus.SelectedIndex + "', harga = '" + txtHarga.Text + "', tglbeli = '" + Program.convertTglkeOracle(dtpTglBeli.Value) + "' WHERE kodestok = '" + txtKodeStok.Text + "'";
-                        Program.conn.ExecuteNonQuery(update);
-                        MessageBox.Show("Data berhasil diperbarui");
-                        txtKodeStok.ResetText();
-                        cmbKondisi.ResetText();
-                        cmbStatus.ResetText();
-                        dtpTglBeli.ResetText();
-                        txtHarga.ResetText();
-                        updateStok();
-                    }
-                    btnPerbarui.Text = "Modifikasi";
-                    txtKodeStok.Enabled = false;
-                    cmbKondisi.Enabled = false;
-                    cmbStatus.Enabled = false;
-                    dtpTglBeli.Enabled = false;
-                    txtHarga.Enabled = false;
-                    btnPerbarui.Enabled = false;
                 }
             }
-
         }
 
         private void dgStokKoleksi_SelectionChanged(object sender, EventArgs e)

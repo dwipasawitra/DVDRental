@@ -342,6 +342,12 @@ namespace Rentalin
             }
         }
 
+        private void btnMasterKategori_Click(object sender, EventArgs e)
+        {
+            frmMasterKategori form = new frmMasterKategori();
+            form.ShowDialog(this);
+        }
+
        
 
         

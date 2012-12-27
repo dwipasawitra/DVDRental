@@ -15,6 +15,7 @@ namespace Rentalin
         DataTable modify = new DataTable();
         DataTable daftarGenre = new DataTable();
         DataTable daftarJenisKeping = new DataTable();
+        private const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
         byte[] imgCoverArt;
 
@@ -35,6 +36,26 @@ namespace Rentalin
             KodeKoleksi = kodeKoleksi;
             txtJudul.Focus();
            
+        }
+
+        private string randomKode()
+        {
+            Random rand = new Random();
+            char[] buffer = new char[5];
+            string hasil;
+            int i;
+            for (i = 0; i < 5; i++)
+            {
+                buffer[i] = chars[rand.Next(chars.Length)];
+            }
+            hasil = new string(buffer);
+            int angka;
+            for (i = 0; i < 7; i++)
+            {
+                angka = rand.Next(0, 9);
+                hasil += angka.ToString();
+            }
+            return hasil;
         }
 
         public void tampilanAwal()
@@ -65,7 +86,7 @@ namespace Rentalin
                 //lblTambahKoleksi.Text = "Silahkan mengubah detail koleksi yang ingin diedit";
                 //btnTambahkan.Text = "Tambahkan";
                 btnTambahkan.Enabled = false;
-                txtKode.ResetText();
+                txtKode.Text = randomKode();
                 txtJudul.ResetText();
                 txtHargaSewa.ResetText();
                 txtHargaDenda.ResetText();
