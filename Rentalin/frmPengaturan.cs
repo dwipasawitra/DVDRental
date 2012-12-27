@@ -85,6 +85,7 @@ namespace Rentalin
         private void btnTerapkan_Click(object sender, EventArgs e)
         {
             // Update app setting
+<<<<<<< HEAD
             Program.setting.namaJasa = txtNamaJasa.Text;
             Program.setting.alamatJasa = txtAlamat.Text;
             Program.setting.namaPemilik = txtNamaPemilik.Text;

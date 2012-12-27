@@ -18,12 +18,13 @@ namespace Rentalin
         }
 
         private void frmLogin_Load(object sender, EventArgs e)
-        {
+        {            
             Console.WriteLine("Saya");
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            
             int status;
             status = Program.session.login(txtUserName.Text.ToString(), txtPassword.Text.ToString());
             if (status == userSession.LOGIN_SUCCESS)

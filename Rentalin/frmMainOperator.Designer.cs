@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblAlamatLayanan = new System.Windows.Forms.Label();
             this.lblNamaLayanan = new System.Windows.Forms.Label();
             this.lblJudul = new System.Windows.Forms.Label();
@@ -41,6 +42,7 @@
             this.picMaster = new System.Windows.Forms.PictureBox();
             this.lblMasterData = new System.Windows.Forms.Label();
             this.pnlTransaksi = new System.Windows.Forms.Panel();
+            this.btnPeminjaman = new System.Windows.Forms.Button();
             this.lblTransaksi = new System.Windows.Forms.Label();
             this.btnPengembalian = new System.Windows.Forms.Button();
             this.picTransaksi = new System.Windows.Forms.PictureBox();
@@ -56,7 +58,7 @@
             this.btnLogout = new System.Windows.Forms.Button();
             this.picDisc = new System.Windows.Forms.PictureBox();
             this.btnAdmin = new System.Windows.Forms.Button();
-            this.btnPeminjaman = new System.Windows.Forms.Button();
+            this.tmrWaktu = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.pnlMaster.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picMaster)).BeginInit();
@@ -204,6 +206,17 @@
             this.pnlTransaksi.Name = "pnlTransaksi";
             this.pnlTransaksi.Size = new System.Drawing.Size(458, 124);
             this.pnlTransaksi.TabIndex = 11;
+            // 
+            // btnPeminjaman
+            // 
+            this.btnPeminjaman.ForeColor = System.Drawing.Color.White;
+            this.btnPeminjaman.Location = new System.Drawing.Point(118, 66);
+            this.btnPeminjaman.Name = "btnPeminjaman";
+            this.btnPeminjaman.Size = new System.Drawing.Size(123, 40);
+            this.btnPeminjaman.TabIndex = 20;
+            this.btnPeminjaman.Text = "Peminjaman";
+            this.btnPeminjaman.UseVisualStyleBackColor = true;
+            this.btnPeminjaman.Click += new System.EventHandler(this.btnPeminjaman_Click);
             // 
             // lblTransaksi
             // 
@@ -357,16 +370,10 @@
             this.btnAdmin.UseVisualStyleBackColor = true;
             this.btnAdmin.Click += new System.EventHandler(this.btnAdmin_Click);
             // 
-            // btnPeminjaman
+            // tmrWaktu
             // 
-            this.btnPeminjaman.ForeColor = System.Drawing.Color.White;
-            this.btnPeminjaman.Location = new System.Drawing.Point(118, 66);
-            this.btnPeminjaman.Name = "btnPeminjaman";
-            this.btnPeminjaman.Size = new System.Drawing.Size(123, 40);
-            this.btnPeminjaman.TabIndex = 20;
-            this.btnPeminjaman.Text = "Peminjaman";
-            this.btnPeminjaman.UseVisualStyleBackColor = true;
-            this.btnPeminjaman.Click += new System.EventHandler(this.btnPeminjaman_Click);
+            this.tmrWaktu.Enabled = true;
+            this.tmrWaktu.Tick += new System.EventHandler(this.tmrWaktu_Tick);
             // 
             // frmMainOperator
             // 
@@ -442,5 +449,6 @@
         private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.Button btnAdmin;
         private System.Windows.Forms.Button btnPeminjaman;
+        private System.Windows.Forms.Timer tmrWaktu;
     }
 }

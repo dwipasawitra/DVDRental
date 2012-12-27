@@ -47,6 +47,7 @@ namespace Rentalin
         {
             MessageBox.Show(System.DateTime.Now.ToString());
             tampilanAwal();
+            txtPeminjam.Focus();
             daftarPinjaman.Columns.Add("Kode Judul");
             daftarPinjaman.Columns.Add("Judul Film");
             daftarPinjaman.Columns.Add("Kode Stok");
@@ -158,9 +159,7 @@ namespace Rentalin
             Program.conn.ExecuteNonQuery("UPDATE nota SET tglrealisasikembali = to_date('" + newDate + "','MM/dd/yyyy'), hargadenda = " + denda + ", hargarusak = " + rusak + " WHERE nonota = '" + lblNmrNota.Text + "'");
             MessageBox.Show("Transaksi Berhasil");
             tampilanAwal();
-        }
-
-     
+        }    
 
     }
 }

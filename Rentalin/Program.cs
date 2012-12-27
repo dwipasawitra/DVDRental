@@ -63,7 +63,6 @@ namespace Rentalin
         private bool loged;
 
         private DataTable loginChecker = new DataTable();
-        private DataTable roleChecker = new DataTable();
 
         private int role;
         private int kodeOperator;
@@ -86,6 +85,7 @@ namespace Rentalin
                                                         + passwordSha1 + "'");
             
             // If there is one row in table
+            //MessageBox.Show(loginChecker.Rows.Count.ToString());
             if (loginChecker.Rows.Count == 1)
             {
                 // Check if there is no multiple login
@@ -102,8 +102,13 @@ namespace Rentalin
                     // And then login is SUCESS
                     loged = true;
                     Program.conn.ExecuteNonQuery("UPDATE pengguna SET isLogin=1 WHERE kodeOperator='" + kodeOperator + "'");
+<<<<<<< HEAD
                     kodeOperator = int.Parse(loginChecker.Rows[0].ItemArray[0].ToString());
                     namaUser = loginChecker.Rows[0].ItemArray[2].ToString();
+=======
+                    kodeOperator =   int.Parse(loginChecker.Rows[0].ItemArray[0].ToString());
+                    
+>>>>>>> bustan
                     return LOGIN_SUCCESS;
                 }
             }
@@ -129,10 +134,14 @@ namespace Rentalin
             return kodeOperator;
         }
 
+<<<<<<< HEAD
         public string getNamaUser()
         {
             return namaUser;
         }
+=======
+        
+>>>>>>> bustan
     }
 
     public class userRole

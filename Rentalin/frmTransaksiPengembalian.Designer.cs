@@ -41,7 +41,6 @@
             this.lblDetailTransaksi = new System.Windows.Forms.Label();
             this.lblKondisi = new System.Windows.Forms.Label();
             this.pnlTransaksi = new System.Windows.Forms.Panel();
-            this.dtpPengembalian = new System.Windows.Forms.DateTimePicker();
             this.lblHari = new System.Windows.Forms.Label();
             this.lblTanggalSeharusnyaKembali = new System.Windows.Forms.Label();
             this.lblHargaSewaItem = new System.Windows.Forms.Label();
@@ -195,7 +194,6 @@
             // pnlTransaksi
             // 
             this.pnlTransaksi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(173)))), ((int)(((byte)(191)))));
-            this.pnlTransaksi.Controls.Add(this.dtpPengembalian);
             this.pnlTransaksi.Controls.Add(this.lblHari);
             this.pnlTransaksi.Controls.Add(this.lblTanggalSeharusnyaKembali);
             this.pnlTransaksi.Controls.Add(this.btnProses);
@@ -212,13 +210,6 @@
             this.pnlTransaksi.Name = "pnlTransaksi";
             this.pnlTransaksi.Size = new System.Drawing.Size(702, 73);
             this.pnlTransaksi.TabIndex = 18;
-            // 
-            // dtpPengembalian
-            // 
-            this.dtpPengembalian.Location = new System.Drawing.Point(99, 50);
-            this.dtpPengembalian.Name = "dtpPengembalian";
-            this.dtpPengembalian.Size = new System.Drawing.Size(135, 20);
-            this.dtpPengembalian.TabIndex = 12;
             // 
             // lblHari
             // 
@@ -549,6 +540,5 @@
         private System.Windows.Forms.Label lblDendaKerusakanInfo;
         private System.Windows.Forms.Label lblTanggalSeharusnyaKembali;
         private System.Windows.Forms.Label lblHari;
-        private System.Windows.Forms.DateTimePicker dtpPengembalian;
     }
 }
