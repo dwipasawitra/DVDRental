@@ -203,7 +203,7 @@ namespace Rentalin
             string newTglKembali = tglKembali.Substring(0, 10);
             //insert belanjaan ke tabel
 
-            string insertNota = "INSERT INTO nota (nonota,kodeoperator,kodepenawaranspesial,kodemember,tgltransaksi,tglkembali,hargasewa)VALUES ('" + lblNmrNota.Text + "','" + Program.session.kodeOperator.ToString() + "',0,'" + lblKodeMember.Text + "',to_date('" + newDate + "','mm/dd/yyyy'),to_date('" + newTglKembali + "','mm/dd/yyyy')," + lblBiayaSewa.Text + ")";
+            string insertNota = "INSERT INTO nota (nonota,kodeoperator,kodepenawaranspesial,kodemember,tgltransaksi,tglkembali,hargasewa)VALUES ('" + lblNmrNota.Text + "','" + Program.session.getKodeOperator().ToString() + "',0,'" + lblKodeMember.Text + "',to_date('" + newDate + "','mm/dd/yyyy'),to_date('" + newTglKembali + "','mm/dd/yyyy')," + lblBiayaSewa.Text + ")";
             Program.conn.ExecuteNonQuery(insertNota);
             string kodeDipinjam = randomNota();
             int i, idx = belanja.Rows.Count;
@@ -222,6 +222,7 @@ namespace Rentalin
         {
             //dgPeminjaman.ClearSelection();
             belanja.Clear();
+            btOk.Enabled = true;
             txtPeminjam.Enabled = true;
             txtPeminjam.ResetText();
             lblNmrNota.Text = "Kode Nota";
@@ -237,9 +238,11 @@ namespace Rentalin
             lblHargaDendaItem.Text = "0";
             cmbStok.Items.Clear();
             dtpTanggalKembali.ResetText();
+            lblNmrNota.ResetText();
             lblNmrNota.Text = randomNota();
             lblLamaPenyewaan.Text = "0";
             lblBiayaSewa.Text = "0";
+            
             btnHapus.Enabled = false;
         }
         private void dtpTanggalKembali_ValueChanged(object sender, EventArgs e)
