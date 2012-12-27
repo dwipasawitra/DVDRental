@@ -11,9 +11,21 @@ namespace Rentalin
 {
     public partial class frmTambahKoleksi : Form
     {
+        private int mode;
+
         public frmTambahKoleksi()
         {
             InitializeComponent();
+        }
+
+        private void frmTambahKoleksi_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        public frmTambahKoleksi(int mode)
+        {
+
         }
     }
 }

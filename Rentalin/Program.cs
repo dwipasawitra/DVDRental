@@ -63,10 +63,10 @@ namespace Rentalin
         private bool loged;
 
         private DataTable loginChecker = new DataTable();
-        private DataTable roleChecker = new DataTable();
 
         private int role;
-        private int kodeOperator;         
+        private int kodeOperator;
+        
 
         public const int LOGIN_USERNAME_PASSWORD_WRONG = 0;
         public const int LOGIN_MULTI = 1;
@@ -85,6 +85,7 @@ namespace Rentalin
                                                         + passwordSha1 + "'");
             
             // If there is one row in table
+            //MessageBox.Show(loginChecker.Rows.Count.ToString());
             if (loginChecker.Rows.Count == 1)
             {
                 // Check if there is no multiple login
@@ -101,7 +102,8 @@ namespace Rentalin
                     // And then login is SUCESS
                     loged = true;
                     Program.conn.ExecuteNonQuery("UPDATE pengguna SET isLogin=1 WHERE kodeOperator='" + kodeOperator + "'");
-                    kodeOperator = int.Parse(roleChecker.Rows[0].ItemArray[0].ToString());
+                    kodeOperator =   int.Parse(loginChecker.Rows[0].ItemArray[0].ToString());
+                    
                     return LOGIN_SUCCESS;
                 }
             }
@@ -126,6 +128,8 @@ namespace Rentalin
         {
             return kodeOperator;
         }
+
+        
     }
 
     public class userRole

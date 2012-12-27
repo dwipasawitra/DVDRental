@@ -85,7 +85,7 @@ namespace Rentalin
         private void btnTerapkan_Click(object sender, EventArgs e)
         {
             // Update app setting
-            Program.setting.app
+            //Program.setting.app
         }
     }
 }

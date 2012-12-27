@@ -18,11 +18,18 @@ namespace Rentalin
         
         DataTable koleksi = new DataTable();
 
-        private void frmMasterKoleksi_Load(object sender, EventArgs e)
+        private void tampilanAwal()
         {
-            koleksi = Program.conn.ExecuteDataTable("SELECT * FROM koleksi");
+            lblJudul.Text = "Judul Film";
+            lblGenre.Text = "Genre";
             dgKoleksi.DataSource = koleksi;
             dgKoleksi.ReadOnly = true;
+        }
+
+        private void frmMasterKoleksi_Load(object sender, EventArgs e)
+        {
+            koleksi = Program.conn.ExecuteDataTable("SELECT kodekoleksi, namaitem, genre.namakategori, biayasewafilm, biayadendafilm from koleksi, genre where genre.kodekategori = koleksi.kodekategori");
+            tampilanAwal();
         }
 
         private void btnHapus_Click(object sender, EventArgs e)
@@ -32,6 +39,19 @@ namespace Rentalin
             string delete = "DELETE FROM koleksi WHERE kodekoleksi = '" + koleksi.Rows[rows].ItemArray[0].ToString() + "'";
             Program.conn.ExecuteDataTable(delete);
             koleksi.Rows[rows].Delete();
+        }
+
+        private void dgKoleksi_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int y = e.RowIndex;
+            lblJudul.Text = koleksi.Rows[y].ItemArray[1].ToString();
+            lblGenre.Text = koleksi.Rows[y].ItemArray[2].ToString();
+        }
+
+        private void btnHistori_Click(object sender, EventArgs e)
+        {
+            frmMasterStok formMasterStok = new frmMasterStok(koleksi.Rows[dgKoleksi.CurrentCellAddress.Y].ItemArray[0].ToString());
+            formMasterStok.ShowDialog(this);
         }
         
     }

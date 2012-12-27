@@ -39,16 +39,16 @@
             this.btnHapus = new System.Windows.Forms.Button();
             this.btnModifikasi = new System.Windows.Forms.Button();
             this.pnlDetail = new System.Windows.Forms.Panel();
+            this.pbCoverArt = new System.Windows.Forms.PictureBox();
             this.lblGenre = new System.Windows.Forms.Label();
             this.lblJudul = new System.Windows.Forms.Label();
             this.lblDetail = new System.Windows.Forms.Label();
             this.dgKoleksi = new System.Windows.Forms.DataGridView();
-            this.pbCoverArt = new System.Windows.Forms.PictureBox();
             this.pnlInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picInfo)).BeginInit();
             this.pnlDetail.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgKoleksi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCoverArt)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgKoleksi)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlInfo
@@ -130,6 +130,7 @@
             this.btnHistori.TabIndex = 9;
             this.btnHistori.Text = "Lihat Stok";
             this.btnHistori.UseVisualStyleBackColor = true;
+            this.btnHistori.Click += new System.EventHandler(this.btnHistori_Click);
             // 
             // btnHapus
             // 
@@ -164,6 +165,14 @@
             this.pnlDetail.Name = "pnlDetail";
             this.pnlDetail.Size = new System.Drawing.Size(185, 341);
             this.pnlDetail.TabIndex = 5;
+            // 
+            // pbCoverArt
+            // 
+            this.pbCoverArt.Location = new System.Drawing.Point(11, 70);
+            this.pbCoverArt.Name = "pbCoverArt";
+            this.pbCoverArt.Size = new System.Drawing.Size(92, 112);
+            this.pbCoverArt.TabIndex = 13;
+            this.pbCoverArt.TabStop = false;
             // 
             // lblGenre
             // 
@@ -204,14 +213,7 @@
             this.dgKoleksi.Name = "dgKoleksi";
             this.dgKoleksi.Size = new System.Drawing.Size(454, 329);
             this.dgKoleksi.TabIndex = 4;
-            // 
-            // pbCoverArt
-            // 
-            this.pbCoverArt.Location = new System.Drawing.Point(11, 70);
-            this.pbCoverArt.Name = "pbCoverArt";
-            this.pbCoverArt.Size = new System.Drawing.Size(92, 112);
-            this.pbCoverArt.TabIndex = 13;
-            this.pbCoverArt.TabStop = false;
+            this.dgKoleksi.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgKoleksi_CellContentClick);
             // 
             // frmMasterKoleksi
             // 
@@ -230,8 +232,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.picInfo)).EndInit();
             this.pnlDetail.ResumeLayout(false);
             this.pnlDetail.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgKoleksi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCoverArt)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgKoleksi)).EndInit();
             this.ResumeLayout(false);
 
         }

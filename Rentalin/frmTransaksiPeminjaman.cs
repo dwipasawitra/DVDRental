@@ -125,6 +125,7 @@ namespace Rentalin
             {
                 MessageBox.Show("Member tidak bisa melakukan peminjaman");
                 txtPeminjam.ResetText();
+                txtPeminjam.Focus();
             }
             else
             {
@@ -139,7 +140,8 @@ namespace Rentalin
                         btnCariJudul.Enabled = true;
                         btnTambah.Enabled = true;
                         txtPeminjam.Enabled = false;
-                        btOk.Enabled = false;                        
+                        btOk.Enabled = false;
+                        txtTambahJudul.Focus();
                         break;
                     }
                 }
@@ -147,6 +149,7 @@ namespace Rentalin
                 {
                     MessageBox.Show("Member tidak ditemukan");
                     txtPeminjam.ResetText();
+                    txtPeminjam.Focus();
                 }
             }
         }
@@ -255,7 +258,7 @@ namespace Rentalin
         private void button1_Click(object sender, EventArgs e)
         {
             tampilanAwal();
-        }
+        }     
 
     }
 }

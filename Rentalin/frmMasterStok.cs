@@ -11,18 +11,28 @@ namespace Rentalin
 {
     public partial class frmMasterStok : Form
     {
+        DataTable stok = new DataTable();
         public frmMasterStok()
         {
-            InitializeComponent();
-        }
-        DataTable stok = new DataTable();
-
-        private void frmMasterStok_Load(object sender, EventArgs e)
-        {
+            InitializeComponent();           
+        
             stok = Program.conn.ExecuteDataTable("SELECT * FROM stokkoleksi");
             dgStokKoleksi.DataSource = stok;
             dgStokKoleksi.ReadOnly = true;
+            MessageBox.Show("no string");
+        }        
+
+        public frmMasterStok(string kodeKoleksi)
+        {
+            InitializeComponent();
+
+            stok = Program.conn.ExecuteDataTable("SELECT * FROM stokkoleksi WHERE kodekoleksi = '"+kodeKoleksi+"'");
+            dgStokKoleksi.DataSource = stok;
+            dgStokKoleksi.ReadOnly = true;
+            MessageBox.Show("string");
         }
+
+        
 
         private void btnHapus_Click(object sender, EventArgs e)
         {
@@ -43,6 +53,11 @@ namespace Rentalin
         }
 
         private void txtPencarian_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void frmMasterStok_Load(object sender, EventArgs e)
         {
 
         }
