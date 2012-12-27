@@ -41,6 +41,8 @@
             this.lblDetailTransaksi = new System.Windows.Forms.Label();
             this.lblKondisi = new System.Windows.Forms.Label();
             this.pnlTransaksi = new System.Windows.Forms.Panel();
+            this.dtpPengembalian = new System.Windows.Forms.DateTimePicker();
+            this.lblHari = new System.Windows.Forms.Label();
             this.lblTanggalSeharusnyaKembali = new System.Windows.Forms.Label();
             this.lblHargaSewaItem = new System.Windows.Forms.Label();
             this.lblGenre = new System.Windows.Forms.Label();
@@ -65,8 +67,6 @@
             this.lblDendaKerusakanInfo = new System.Windows.Forms.Label();
             this.lblHargaDendaItemInfo = new System.Windows.Forms.Label();
             this.lblJudul = new System.Windows.Forms.Label();
-            this.lblHari = new System.Windows.Forms.Label();
-            this.dtpPengembalian = new System.Windows.Forms.DateTimePicker();
             this.pnlTransaksi.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgPengembalian)).BeginInit();
             this.pnlInfo.SuspendLayout();
@@ -93,6 +93,7 @@
             this.btnProses.TabIndex = 9;
             this.btnProses.Text = "Proses Transaksi";
             this.btnProses.UseVisualStyleBackColor = true;
+            this.btnProses.Click += new System.EventHandler(this.btnProses_Click);
             // 
             // lblBiayaDenda
             // 
@@ -211,6 +212,22 @@
             this.pnlTransaksi.Name = "pnlTransaksi";
             this.pnlTransaksi.Size = new System.Drawing.Size(702, 73);
             this.pnlTransaksi.TabIndex = 18;
+            // 
+            // dtpPengembalian
+            // 
+            this.dtpPengembalian.Location = new System.Drawing.Point(99, 50);
+            this.dtpPengembalian.Name = "dtpPengembalian";
+            this.dtpPengembalian.Size = new System.Drawing.Size(135, 20);
+            this.dtpPengembalian.TabIndex = 12;
+            // 
+            // lblHari
+            // 
+            this.lblHari.AutoSize = true;
+            this.lblHari.Location = new System.Drawing.Point(394, 51);
+            this.lblHari.Name = "lblHari";
+            this.lblHari.Size = new System.Drawing.Size(26, 13);
+            this.lblHari.TabIndex = 11;
+            this.lblHari.Text = "Hari";
             // 
             // lblTanggalSeharusnyaKembali
             // 
@@ -460,22 +477,6 @@
             this.lblJudul.Size = new System.Drawing.Size(63, 13);
             this.lblJudul.TabIndex = 13;
             this.lblJudul.Text = "Judul Film";
-            // 
-            // lblHari
-            // 
-            this.lblHari.AutoSize = true;
-            this.lblHari.Location = new System.Drawing.Point(394, 51);
-            this.lblHari.Name = "lblHari";
-            this.lblHari.Size = new System.Drawing.Size(26, 13);
-            this.lblHari.TabIndex = 11;
-            this.lblHari.Text = "Hari";
-            // 
-            // dtpPengembalian
-            // 
-            this.dtpPengembalian.Location = new System.Drawing.Point(99, 50);
-            this.dtpPengembalian.Name = "dtpPengembalian";
-            this.dtpPengembalian.Size = new System.Drawing.Size(135, 20);
-            this.dtpPengembalian.TabIndex = 12;
             // 
             // frmTransaksiPengembalian
             // 
