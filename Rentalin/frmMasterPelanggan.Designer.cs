@@ -82,6 +82,7 @@
             // 
             // btnTambah
             // 
+            this.btnTambah.ForeColor = System.Drawing.Color.Black;
             this.btnTambah.Location = new System.Drawing.Point(527, 23);
             this.btnTambah.Name = "btnTambah";
             this.btnTambah.Size = new System.Drawing.Size(121, 28);
@@ -175,9 +176,9 @@
             this.lblAlamat.ForeColor = System.Drawing.Color.White;
             this.lblAlamat.Location = new System.Drawing.Point(8, 48);
             this.lblAlamat.Name = "lblAlamat";
-            this.lblAlamat.Size = new System.Drawing.Size(136, 13);
+            this.lblAlamat.Size = new System.Drawing.Size(53, 13);
             this.lblAlamat.TabIndex = 12;
-            this.lblAlamat.Text = "Wisma Permai Tengah ii-34";
+            this.lblAlamat.Text = "Identitas :";
             // 
             // lblNamaPelanggan
             // 
@@ -185,9 +186,9 @@
             this.lblNamaPelanggan.ForeColor = System.Drawing.Color.White;
             this.lblNamaPelanggan.Location = new System.Drawing.Point(8, 35);
             this.lblNamaPelanggan.Name = "lblNamaPelanggan";
-            this.lblNamaPelanggan.Size = new System.Drawing.Size(129, 13);
+            this.lblNamaPelanggan.Size = new System.Drawing.Size(89, 13);
             this.lblNamaPelanggan.TabIndex = 11;
-            this.lblNamaPelanggan.Text = "Putu Wiramaswara Widya";
+            this.lblNamaPelanggan.Text = "Nama Pelanggan";
             // 
             // lblDetail
             // 
