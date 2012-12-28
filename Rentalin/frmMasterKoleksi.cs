@@ -36,7 +36,9 @@ namespace Rentalin
         {
             int rows = dgKoleksi.CurrentCellAddress.Y;
             //menghapus data
-            string delete = "DELETE FROM koleksi WHERE kodekoleksi = '" + koleksi.Rows[rows].ItemArray[0].ToString() + "'";
+            string delete = "DELETE FROM stokkoleksi WHERE kodekoleksi = '" + koleksi.Rows[rows].ItemArray[0].ToString() + "'";
+            Program.conn.ExecuteDataTable(delete);
+            delete = "DELETE FROM koleksi WHERE kodekoleksi = '" + koleksi.Rows[rows].ItemArray[0].ToString() + "'";
             Program.conn.ExecuteDataTable(delete);
             koleksi.Rows[rows].Delete();
         }
