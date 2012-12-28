@@ -18,6 +18,8 @@ namespace Rentalin
 
         private void frmLaporanNota_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'dsRentalin.QueryNota' table. You can move, or remove it, as needed.
+            this.QueryNotaTableAdapter.Fill(this.dsRentalin.QueryNota, "A2005       ");
 
             this.reportviewNota.RefreshReport();
         }

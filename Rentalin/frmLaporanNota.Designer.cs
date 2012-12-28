@@ -28,13 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.pnlInfo = new System.Windows.Forms.Panel();
+            this.cmbNoNota = new System.Windows.Forms.ComboBox();
+            this.kalendarNota = new System.Windows.Forms.MonthCalendar();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.reportviewNota = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.kalendarNota = new System.Windows.Forms.MonthCalendar();
-            this.cmbNoNota = new System.Windows.Forms.ComboBox();
+            this.dsRentalin = new Rentalin.dsRentalin();
+            this.QueryNotaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.QueryNotaTableAdapter = new Rentalin.dsRentalinTableAdapters.QueryNotaTableAdapter();
             this.pnlInfo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dsRentalin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.QueryNotaBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlInfo
@@ -49,6 +56,20 @@
             this.pnlInfo.Name = "pnlInfo";
             this.pnlInfo.Size = new System.Drawing.Size(220, 420);
             this.pnlInfo.TabIndex = 0;
+            // 
+            // cmbNoNota
+            // 
+            this.cmbNoNota.FormattingEnabled = true;
+            this.cmbNoNota.Location = new System.Drawing.Point(18, 367);
+            this.cmbNoNota.Name = "cmbNoNota";
+            this.cmbNoNota.Size = new System.Drawing.Size(185, 21);
+            this.cmbNoNota.TabIndex = 3;
+            // 
+            // kalendarNota
+            // 
+            this.kalendarNota.Location = new System.Drawing.Point(18, 192);
+            this.kalendarNota.Name = "kalendarNota";
+            this.kalendarNota.TabIndex = 2;
             // 
             // label2
             // 
@@ -73,25 +94,29 @@
             // 
             // reportviewNota
             // 
+            reportDataSource1.Name = "dsQueryNota";
+            reportDataSource1.Value = this.QueryNotaBindingSource;
+            this.reportviewNota.LocalReport.DataSources.Add(reportDataSource1);
+            this.reportviewNota.LocalReport.ReportEmbeddedResource = "Rentalin.rptLaporanNota.rdlc";
             this.reportviewNota.Location = new System.Drawing.Point(226, 4);
             this.reportviewNota.Name = "reportviewNota";
             this.reportviewNota.Size = new System.Drawing.Size(628, 420);
             this.reportviewNota.TabIndex = 1;
             this.reportviewNota.Load += new System.EventHandler(this.reportviewNota_Load);
             // 
-            // kalendarNota
+            // dsRentalin
             // 
-            this.kalendarNota.Location = new System.Drawing.Point(18, 192);
-            this.kalendarNota.Name = "kalendarNota";
-            this.kalendarNota.TabIndex = 2;
+            this.dsRentalin.DataSetName = "dsRentalin";
+            this.dsRentalin.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // cmbNoNota
+            // QueryNotaBindingSource
             // 
-            this.cmbNoNota.FormattingEnabled = true;
-            this.cmbNoNota.Location = new System.Drawing.Point(18, 367);
-            this.cmbNoNota.Name = "cmbNoNota";
-            this.cmbNoNota.Size = new System.Drawing.Size(185, 21);
-            this.cmbNoNota.TabIndex = 3;
+            this.QueryNotaBindingSource.DataMember = "QueryNota";
+            this.QueryNotaBindingSource.DataSource = this.dsRentalin;
+            // 
+            // QueryNotaTableAdapter
+            // 
+            this.QueryNotaTableAdapter.ClearBeforeFill = true;
             // 
             // frmLaporanNota
             // 
@@ -108,6 +133,8 @@
             this.Load += new System.EventHandler(this.frmLaporanNota_Load);
             this.pnlInfo.ResumeLayout(false);
             this.pnlInfo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dsRentalin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.QueryNotaBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -120,5 +147,8 @@
         private Microsoft.Reporting.WinForms.ReportViewer reportviewNota;
         private System.Windows.Forms.ComboBox cmbNoNota;
         private System.Windows.Forms.MonthCalendar kalendarNota;
+        private System.Windows.Forms.BindingSource QueryNotaBindingSource;
+        private dsRentalin dsRentalin;
+        private dsRentalinTableAdapters.QueryNotaTableAdapter QueryNotaTableAdapter;
     }
 }
