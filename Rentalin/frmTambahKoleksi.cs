@@ -92,7 +92,7 @@ namespace Rentalin
                     {
                         MessageBox.Show("Koleksi sudah ditambahkan");
                         //Insert table
-                        string insert = "INSERT into kol
+                        //string insert = "INSERT into kol
                     }
                     else
                     {
