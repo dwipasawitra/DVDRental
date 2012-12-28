@@ -28,7 +28,7 @@ namespace Rentalin
             int rows = dgPelanggan.CurrentCellAddress.Y;
             string delete = "DELETE FROM member WHERE kodemember = '"+ pelanggan.Rows[rows].ItemArray[0].ToString() + "'";
             Program.conn.ExecuteDataTable(delete);
-            pelanggan.Rows[rows].Delete();
+            //pelanggan.Rows[rows].Delete();
         }
     }
 }
