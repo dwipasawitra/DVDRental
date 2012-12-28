@@ -100,7 +100,7 @@ namespace Rentalin
                     {
                         MessageBox.Show("Koleksi sudah ditambahkan");
                         //Insert table
-                        //string insert = "INSERT into koleksi 
+                        //string insert = "INSERT into koleksi
                     }
                     else
                     {

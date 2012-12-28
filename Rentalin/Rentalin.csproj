@@ -53,6 +53,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="dsRentalin.cs">
+      <DependentUpon>dsRentalin.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="dsRentalin.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsRentalin.xsd</DependentUpon>
+    </Compile>
     <Compile Include="frmLaporanNota.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -192,7 +201,19 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="rptLaporanNota.rdlc" />
     <None Include="app.config" />
+    <None Include="dsRentalin.xsc">
+      <DependentUpon>dsRentalin.xsd</DependentUpon>
+    </None>
+    <None Include="dsRentalin.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsRentalin.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsRentalin.xss">
+      <DependentUpon>dsRentalin.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
