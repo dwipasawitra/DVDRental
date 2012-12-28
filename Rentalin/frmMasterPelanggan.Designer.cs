@@ -40,7 +40,7 @@
             this.btnHistori = new System.Windows.Forms.Button();
             this.dgPelanggan = new System.Windows.Forms.DataGridView();
             this.pnlDetail = new System.Windows.Forms.Panel();
-            this.lblAlamat = new System.Windows.Forms.Label();
+            this.lblIdentitas = new System.Windows.Forms.Label();
             this.lblNamaPelanggan = new System.Windows.Forms.Label();
             this.lblDetail = new System.Windows.Forms.Label();
             this.pnlInfo.SuspendLayout();
@@ -155,12 +155,14 @@
             this.dgPelanggan.Name = "dgPelanggan";
             this.dgPelanggan.Size = new System.Drawing.Size(454, 329);
             this.dgPelanggan.TabIndex = 1;
+            this.dgPelanggan.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgPelanggan_CellContentClick);
+            this.dgPelanggan.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dgPelanggan_RowsRemoved);
             // 
             // pnlDetail
             // 
             this.pnlDetail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(173)))), ((int)(((byte)(191)))));
             this.pnlDetail.Controls.Add(this.btnHistori);
-            this.pnlDetail.Controls.Add(this.lblAlamat);
+            this.pnlDetail.Controls.Add(this.lblIdentitas);
             this.pnlDetail.Controls.Add(this.btnHapus);
             this.pnlDetail.Controls.Add(this.lblNamaPelanggan);
             this.pnlDetail.Controls.Add(this.btnModifikasi);
@@ -170,15 +172,15 @@
             this.pnlDetail.Size = new System.Drawing.Size(185, 341);
             this.pnlDetail.TabIndex = 2;
             // 
-            // lblAlamat
+            // lblIdentitas
             // 
-            this.lblAlamat.AutoSize = true;
-            this.lblAlamat.ForeColor = System.Drawing.Color.White;
-            this.lblAlamat.Location = new System.Drawing.Point(8, 48);
-            this.lblAlamat.Name = "lblAlamat";
-            this.lblAlamat.Size = new System.Drawing.Size(53, 13);
-            this.lblAlamat.TabIndex = 12;
-            this.lblAlamat.Text = "Identitas :";
+            this.lblIdentitas.AutoSize = true;
+            this.lblIdentitas.ForeColor = System.Drawing.Color.White;
+            this.lblIdentitas.Location = new System.Drawing.Point(8, 48);
+            this.lblIdentitas.Name = "lblIdentitas";
+            this.lblIdentitas.Size = new System.Drawing.Size(53, 13);
+            this.lblIdentitas.TabIndex = 12;
+            this.lblIdentitas.Text = "Identitas :";
             // 
             // lblNamaPelanggan
             // 
@@ -238,7 +240,7 @@
         private System.Windows.Forms.Button btnHistori;
         private System.Windows.Forms.DataGridView dgPelanggan;
         private System.Windows.Forms.Panel pnlDetail;
-        private System.Windows.Forms.Label lblAlamat;
+        private System.Windows.Forms.Label lblIdentitas;
         private System.Windows.Forms.Label lblNamaPelanggan;
         private System.Windows.Forms.Label lblDetail;
         private System.Windows.Forms.Label lblPencarian;
