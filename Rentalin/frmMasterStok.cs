@@ -62,14 +62,6 @@ namespace Rentalin
 
         }
 
-        private void dgStokKoleksi_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
-        {
-            if (stok.Rows.Count < 1)
-            {
-                btnHapus.Enabled = false;
-            }
-        }
-
         
 
         
