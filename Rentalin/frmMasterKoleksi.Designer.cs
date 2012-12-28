@@ -77,12 +77,14 @@
             // 
             // btnTambah
             // 
+            this.btnTambah.ForeColor = System.Drawing.Color.Black;
             this.btnTambah.Location = new System.Drawing.Point(521, 23);
             this.btnTambah.Name = "btnTambah";
             this.btnTambah.Size = new System.Drawing.Size(121, 28);
             this.btnTambah.TabIndex = 6;
             this.btnTambah.Text = "Tambah Koleksi";
             this.btnTambah.UseVisualStyleBackColor = true;
+            this.btnTambah.Click += new System.EventHandler(this.btnTambah_Click);
             // 
             // txtPencarian
             // 
@@ -150,6 +152,7 @@
             this.btnModifikasi.TabIndex = 7;
             this.btnModifikasi.Text = "Modifikasi Koleksi";
             this.btnModifikasi.UseVisualStyleBackColor = true;
+            this.btnModifikasi.Click += new System.EventHandler(this.btnModifikasi_Click);
             // 
             // pnlDetail
             // 
@@ -180,9 +183,9 @@
             this.lblGenre.ForeColor = System.Drawing.Color.White;
             this.lblGenre.Location = new System.Drawing.Point(8, 43);
             this.lblGenre.Name = "lblGenre";
-            this.lblGenre.Size = new System.Drawing.Size(55, 13);
+            this.lblGenre.Size = new System.Drawing.Size(36, 13);
             this.lblGenre.TabIndex = 12;
-            this.lblGenre.Text = "Bollywood";
+            this.lblGenre.Text = "Genre";
             // 
             // lblJudul
             // 
@@ -191,9 +194,9 @@
             this.lblJudul.ForeColor = System.Drawing.Color.White;
             this.lblJudul.Location = new System.Drawing.Point(8, 30);
             this.lblJudul.Name = "lblJudul";
-            this.lblJudul.Size = new System.Drawing.Size(178, 13);
+            this.lblJudul.Size = new System.Drawing.Size(63, 13);
             this.lblJudul.TabIndex = 11;
-            this.lblJudul.Text = "Dilwale Dulhania Le Jayengge";
+            this.lblJudul.Text = "Judul Film";
             // 
             // lblDetail
             // 

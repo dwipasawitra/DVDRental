@@ -53,6 +53,7 @@
             // 
             // btnHapus
             // 
+            this.btnHapus.ForeColor = System.Drawing.Color.Black;
             this.btnHapus.Location = new System.Drawing.Point(43, 374);
             this.btnHapus.Name = "btnHapus";
             this.btnHapus.Size = new System.Drawing.Size(121, 28);
@@ -127,6 +128,7 @@
             // 
             // btnTambah
             // 
+            this.btnTambah.ForeColor = System.Drawing.Color.Black;
             this.btnTambah.Location = new System.Drawing.Point(43, 125);
             this.btnTambah.Name = "btnTambah";
             this.btnTambah.Size = new System.Drawing.Size(121, 28);
@@ -136,6 +138,7 @@
             // 
             // btnHistori
             // 
+            this.btnHistori.ForeColor = System.Drawing.Color.Black;
             this.btnHistori.Location = new System.Drawing.Point(43, 408);
             this.btnHistori.Name = "btnHistori";
             this.btnHistori.Size = new System.Drawing.Size(121, 28);
@@ -145,6 +148,7 @@
             // 
             // btnModifikasi
             // 
+            this.btnModifikasi.ForeColor = System.Drawing.Color.Black;
             this.btnModifikasi.Location = new System.Drawing.Point(43, 340);
             this.btnModifikasi.Name = "btnModifikasi";
             this.btnModifikasi.Size = new System.Drawing.Size(121, 28);
@@ -201,6 +205,7 @@
             // 
             // btnPilihKoleksi
             // 
+            this.btnPilihKoleksi.ForeColor = System.Drawing.Color.Black;
             this.btnPilihKoleksi.Location = new System.Drawing.Point(43, 35);
             this.btnPilihKoleksi.Name = "btnPilihKoleksi";
             this.btnPilihKoleksi.Size = new System.Drawing.Size(121, 28);

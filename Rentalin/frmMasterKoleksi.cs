@@ -53,6 +53,19 @@ namespace Rentalin
             frmMasterStok formMasterStok = new frmMasterStok(koleksi.Rows[dgKoleksi.CurrentCellAddress.Y].ItemArray[0].ToString());
             formMasterStok.ShowDialog(this);
         }
+
+        private void btnTambah_Click(object sender, EventArgs e)
+        {
+            frmTambahKoleksi formTambahKoleksi = new frmTambahKoleksi();
+            formTambahKoleksi.ShowDialog(this);
+        }
+
+        private void btnModifikasi_Click(object sender, EventArgs e)
+        {
+            int y = dgKoleksi.CurrentCellAddress.Y;
+            frmTambahKoleksi formTambahKoleksi = new frmTambahKoleksi(koleksi.Rows[y].ItemArray[0].ToString());
+            formTambahKoleksi.ShowDialog(this);
+        }
         
     }
 }
