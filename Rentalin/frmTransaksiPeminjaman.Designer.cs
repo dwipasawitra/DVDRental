@@ -33,6 +33,7 @@
             this.picInfo = new System.Windows.Forms.PictureBox();
             this.lblInfo = new System.Windows.Forms.Label();
             this.pnlPeminjam = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.lblKodeMember = new System.Windows.Forms.Label();
             this.btOk = new System.Windows.Forms.Button();
             this.lblIdentitas = new System.Windows.Forms.Label();
@@ -57,18 +58,17 @@
             this.lblJudul = new System.Windows.Forms.Label();
             this.btnTambah = new System.Windows.Forms.Button();
             this.pnlTransaksi = new System.Windows.Forms.Panel();
+            this.lblLamaPenyewaan = new System.Windows.Forms.Label();
             this.lblHari = new System.Windows.Forms.Label();
             this.btnProses = new System.Windows.Forms.Button();
             this.lblBiayaSewa = new System.Windows.Forms.Label();
             this.lblBiayaSewaInfo = new System.Windows.Forms.Label();
-            this.lblLamaPenyewaan = new System.Windows.Forms.Label();
             this.lblLamaMenyewaInfo = new System.Windows.Forms.Label();
             this.dtpTanggalKembali = new System.Windows.Forms.DateTimePicker();
             this.lblTanggalKembaliInfo = new System.Windows.Forms.Label();
             this.lblNmrNota = new System.Windows.Forms.Label();
             this.lblNmrNotaInfo = new System.Windows.Forms.Label();
             this.lblDetailTransaksi = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.pnlInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picInfo)).BeginInit();
             this.pnlPeminjam.SuspendLayout();
@@ -135,6 +135,16 @@
             this.pnlPeminjam.Name = "pnlPeminjam";
             this.pnlPeminjam.Size = new System.Drawing.Size(317, 75);
             this.pnlPeminjam.TabIndex = 2;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(151, 30);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Clear";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // lblKodeMember
             // 
@@ -235,6 +245,7 @@
             this.dgPeminjaman.Size = new System.Drawing.Size(484, 326);
             this.dgPeminjaman.TabIndex = 6;
             this.dgPeminjaman.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgPeminjaman_CellContentClick);
+            this.dgPeminjaman.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dgPeminjaman_RowsRemoved);
             // 
             // pnlDetail
             // 
@@ -366,11 +377,11 @@
             // pnlTransaksi
             // 
             this.pnlTransaksi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(153)))), ((int)(((byte)(102)))));
+            this.pnlTransaksi.Controls.Add(this.lblLamaPenyewaan);
             this.pnlTransaksi.Controls.Add(this.lblHari);
             this.pnlTransaksi.Controls.Add(this.btnProses);
             this.pnlTransaksi.Controls.Add(this.lblBiayaSewa);
             this.pnlTransaksi.Controls.Add(this.lblBiayaSewaInfo);
-            this.pnlTransaksi.Controls.Add(this.lblLamaPenyewaan);
             this.pnlTransaksi.Controls.Add(this.lblLamaMenyewaInfo);
             this.pnlTransaksi.Controls.Add(this.dtpTanggalKembali);
             this.pnlTransaksi.Controls.Add(this.lblTanggalKembaliInfo);
@@ -382,6 +393,15 @@
             this.pnlTransaksi.Name = "pnlTransaksi";
             this.pnlTransaksi.Size = new System.Drawing.Size(702, 73);
             this.pnlTransaksi.TabIndex = 9;
+            // 
+            // lblLamaPenyewaan
+            // 
+            this.lblLamaPenyewaan.AutoSize = true;
+            this.lblLamaPenyewaan.Location = new System.Drawing.Point(350, 52);
+            this.lblLamaPenyewaan.Name = "lblLamaPenyewaan";
+            this.lblLamaPenyewaan.Size = new System.Drawing.Size(13, 13);
+            this.lblLamaPenyewaan.TabIndex = 11;
+            this.lblLamaPenyewaan.Text = "0";
             // 
             // lblHari
             // 
@@ -421,15 +441,6 @@
             this.lblBiayaSewaInfo.Size = new System.Drawing.Size(106, 13);
             this.lblBiayaSewaInfo.TabIndex = 7;
             this.lblBiayaSewaInfo.Text = "Total Biaya Sewa";
-            // 
-            // lblLamaPenyewaan
-            // 
-            this.lblLamaPenyewaan.AutoSize = true;
-            this.lblLamaPenyewaan.Location = new System.Drawing.Point(352, 51);
-            this.lblLamaPenyewaan.Name = "lblLamaPenyewaan";
-            this.lblLamaPenyewaan.Size = new System.Drawing.Size(13, 13);
-            this.lblLamaPenyewaan.TabIndex = 6;
-            this.lblLamaPenyewaan.Text = "0";
             // 
             // lblLamaMenyewaInfo
             // 
@@ -487,16 +498,6 @@
             this.lblDetailTransaksi.Size = new System.Drawing.Size(109, 40);
             this.lblDetailTransaksi.TabIndex = 0;
             this.lblDetailTransaksi.Text = "DETAIL\r\nTRANSAKSI";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(151, 30);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Clear";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // frmTransaksiPeminjaman
             // 
@@ -561,7 +562,6 @@
         private System.Windows.Forms.Button btnProses;
         private System.Windows.Forms.Label lblBiayaSewa;
         private System.Windows.Forms.Label lblBiayaSewaInfo;
-        private System.Windows.Forms.Label lblLamaPenyewaan;
         private System.Windows.Forms.Label lblLamaMenyewaInfo;
         private System.Windows.Forms.DateTimePicker dtpTanggalKembali;
         private System.Windows.Forms.Label lblTanggalKembaliInfo;
@@ -577,5 +577,6 @@
         private System.Windows.Forms.Label lblHari;
         private System.Windows.Forms.Label lblKodeMember;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label lblLamaPenyewaan;
     }
 }
