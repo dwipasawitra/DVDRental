@@ -30,5 +30,21 @@ namespace Rentalin
             Program.conn.ExecuteDataTable(delete);
             //pelanggan.Rows[rows].Delete();
         }
+
+        private void dgPelanggan_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+        {
+            if (pelanggan.Rows.Count < 1)
+            {
+                btnHapus.Enabled = false;
+            }
+        }
+
+        private void dgPelanggan_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int y = e.RowIndex;
+            lblNamaPelanggan.Text = pelanggan.Rows[y].ItemArray[1].ToString();
+            lblIdentitas.Text += pelanggan.Rows[y].ItemArray[3].ToString();
+
+        }
     }
 }

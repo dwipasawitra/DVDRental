@@ -131,6 +131,7 @@
             // 
             // cmbKategori
             // 
+            this.cmbKategori.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbKategori.FormattingEnabled = true;
             this.cmbKategori.Location = new System.Drawing.Point(89, 178);
             this.cmbKategori.Name = "cmbKategori";
@@ -157,6 +158,7 @@
             // 
             // cmbJenis
             // 
+            this.cmbJenis.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbJenis.FormattingEnabled = true;
             this.cmbJenis.Location = new System.Drawing.Point(89, 203);
             this.cmbJenis.Name = "cmbJenis";

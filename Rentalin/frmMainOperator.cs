@@ -31,7 +31,7 @@ namespace Rentalin
                 btnMasterKoleksi.Enabled = false;
             if (Program.role.masterStok == false)
                 btnMasterStok.Enabled = false;
-            //lblUserName.Text = Program.session.getNamaOperator();
+            lblUserName.Text = Program.session.getNamaUser();
 
         }
 
