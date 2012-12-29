@@ -33,6 +33,7 @@
             this.picInfo = new System.Windows.Forms.PictureBox();
             this.lblInfo = new System.Windows.Forms.Label();
             this.pnlPeminjam = new System.Windows.Forms.Panel();
+            this.lblKodeMember = new System.Windows.Forms.Label();
             this.btOk = new System.Windows.Forms.Button();
             this.lblIdentitas = new System.Windows.Forms.Label();
             this.lblNamaPeminjam = new System.Windows.Forms.Label();
@@ -44,6 +45,7 @@
             this.btnCariJudul = new System.Windows.Forms.Button();
             this.dgPeminjaman = new System.Windows.Forms.DataGridView();
             this.pnlDetail = new System.Windows.Forms.Panel();
+            this.lblDetail = new System.Windows.Forms.Label();
             this.lblHargaDendaItem = new System.Windows.Forms.Label();
             this.lblHargaDendaItemInfo = new System.Windows.Forms.Label();
             this.lblHargaSewaItem = new System.Windows.Forms.Label();
@@ -55,6 +57,7 @@
             this.lblJudul = new System.Windows.Forms.Label();
             this.btnTambah = new System.Windows.Forms.Button();
             this.pnlTransaksi = new System.Windows.Forms.Panel();
+            this.lblHari = new System.Windows.Forms.Label();
             this.btnProses = new System.Windows.Forms.Button();
             this.lblBiayaSewa = new System.Windows.Forms.Label();
             this.lblBiayaSewaInfo = new System.Windows.Forms.Label();
@@ -65,9 +68,7 @@
             this.lblNmrNota = new System.Windows.Forms.Label();
             this.lblNmrNotaInfo = new System.Windows.Forms.Label();
             this.lblDetailTransaksi = new System.Windows.Forms.Label();
-            this.lblDetail = new System.Windows.Forms.Label();
-            this.lblHari = new System.Windows.Forms.Label();
-            this.lblKodeMember = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.pnlInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picInfo)).BeginInit();
             this.pnlPeminjam.SuspendLayout();
@@ -121,6 +122,7 @@
             // pnlPeminjam
             // 
             this.pnlPeminjam.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(173)))), ((int)(((byte)(191)))));
+            this.pnlPeminjam.Controls.Add(this.button1);
             this.pnlPeminjam.Controls.Add(this.lblKodeMember);
             this.pnlPeminjam.Controls.Add(this.btOk);
             this.pnlPeminjam.Controls.Add(this.lblIdentitas);
@@ -133,6 +135,16 @@
             this.pnlPeminjam.Name = "pnlPeminjam";
             this.pnlPeminjam.Size = new System.Drawing.Size(317, 75);
             this.pnlPeminjam.TabIndex = 2;
+            // 
+            // lblKodeMember
+            // 
+            this.lblKodeMember.AutoSize = true;
+            this.lblKodeMember.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblKodeMember.Location = new System.Drawing.Point(3, 40);
+            this.lblKodeMember.Name = "lblKodeMember";
+            this.lblKodeMember.Size = new System.Drawing.Size(84, 13);
+            this.lblKodeMember.TabIndex = 7;
+            this.lblKodeMember.Text = "Kode Member";
             // 
             // btOk
             // 
@@ -242,6 +254,16 @@
             this.pnlDetail.Name = "pnlDetail";
             this.pnlDetail.Size = new System.Drawing.Size(191, 365);
             this.pnlDetail.TabIndex = 7;
+            // 
+            // lblDetail
+            // 
+            this.lblDetail.AutoSize = true;
+            this.lblDetail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDetail.Location = new System.Drawing.Point(4, 9);
+            this.lblDetail.Name = "lblDetail";
+            this.lblDetail.Size = new System.Drawing.Size(155, 16);
+            this.lblDetail.TabIndex = 23;
+            this.lblDetail.Text = "Detail item Transaksi";
             // 
             // lblHargaDendaItem
             // 
@@ -361,6 +383,15 @@
             this.pnlTransaksi.Size = new System.Drawing.Size(702, 73);
             this.pnlTransaksi.TabIndex = 9;
             // 
+            // lblHari
+            // 
+            this.lblHari.AutoSize = true;
+            this.lblHari.Location = new System.Drawing.Point(371, 51);
+            this.lblHari.Name = "lblHari";
+            this.lblHari.Size = new System.Drawing.Size(24, 13);
+            this.lblHari.TabIndex = 10;
+            this.lblHari.Text = "hari";
+            // 
             // btnProses
             // 
             this.btnProses.Location = new System.Drawing.Point(552, 10);
@@ -457,34 +488,15 @@
             this.lblDetailTransaksi.TabIndex = 0;
             this.lblDetailTransaksi.Text = "DETAIL\r\nTRANSAKSI";
             // 
-            // lblDetail
+            // button1
             // 
-            this.lblDetail.AutoSize = true;
-            this.lblDetail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDetail.Location = new System.Drawing.Point(4, 9);
-            this.lblDetail.Name = "lblDetail";
-            this.lblDetail.Size = new System.Drawing.Size(155, 16);
-            this.lblDetail.TabIndex = 23;
-            this.lblDetail.Text = "Detail item Transaksi";
-            // 
-            // lblHari
-            // 
-            this.lblHari.AutoSize = true;
-            this.lblHari.Location = new System.Drawing.Point(371, 51);
-            this.lblHari.Name = "lblHari";
-            this.lblHari.Size = new System.Drawing.Size(24, 13);
-            this.lblHari.TabIndex = 10;
-            this.lblHari.Text = "hari";
-            // 
-            // lblKodeMember
-            // 
-            this.lblKodeMember.AutoSize = true;
-            this.lblKodeMember.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblKodeMember.Location = new System.Drawing.Point(3, 40);
-            this.lblKodeMember.Name = "lblKodeMember";
-            this.lblKodeMember.Size = new System.Drawing.Size(84, 13);
-            this.lblKodeMember.TabIndex = 7;
-            this.lblKodeMember.Text = "Kode Member";
+            this.button1.Location = new System.Drawing.Point(151, 30);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Clear";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // frmTransaksiPeminjaman
             // 
@@ -564,5 +576,6 @@
         private System.Windows.Forms.Label lblDetail;
         private System.Windows.Forms.Label lblHari;
         private System.Windows.Forms.Label lblKodeMember;
+        private System.Windows.Forms.Button button1;
     }
 }

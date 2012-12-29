@@ -21,6 +21,7 @@ namespace Rentalin
         DataTable member = new DataTable();
         DataTable stokKoleksi = new DataTable();
         private const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
         private void hitungTotalBiaya()
         {
             int i, totalBiayaSewa = 0;
@@ -52,7 +53,6 @@ namespace Rentalin
                 angka = rand.Next(0, 9);
                 nota += angka.ToString();
             }
-            //MessageBox.Show(nota);
             return nota;
         }
 
@@ -85,15 +85,16 @@ namespace Rentalin
                 if (txtTambahJudul.Text == koleksi.Rows[i].ItemArray[0].ToString())
                 {
                     MessageBox.Show("terpilih");
-                    stokKoleksi = Program.conn.ExecuteDataTable("SELECT * FROM stokkoleksi WHERE kodekoleksi = '" + txtTambahJudul.Text + "' AND kondisi = 0 AND status = 0");
-                    //stokKoleksi = Program.conn.ExecuteDataTable("SELECT * FROM stokkoleksi WHERE kodekoleksi = '" + dgPeminjaman.Rows[y].Cells[0].Value.ToString() + "' AND kondisi = 0 AND STATUS = 0");
+                    stokKoleksi = Program.conn.ExecuteDataTable("SELECT * FROM stokkoleksi WHERE kodekoleksi = '" + txtTambahJudul.Text + "' AND kondisi = 0 AND status = 0");                    
                     int idx_stok = stokKoleksi.Rows.Count;
 
                     MessageBox.Show(idx_stok.ToString());
                     belanja.Rows.Add(txtTambahJudul.Text, koleksi.Rows[i].ItemArray[2].ToString(), stokKoleksi.Rows[0].ItemArray[0].ToString(), int.Parse(koleksi.Rows[i].ItemArray[3].ToString()), int.Parse(koleksi.Rows[i].ItemArray[4].ToString()));
                     dgPeminjaman.ReadOnly = true;
                     dgPeminjaman.DataSource = belanja;
-                    //MessageBox.Show("Data berhasil ditambahkan");
+                    MessageBox.Show("Data berhasil ditambahkan");
+                    btnProses.Enabled = true;
+                    btnHapus.Enabled = true;
                     if (dgPeminjaman.Rows.Count == 2)
                     {
                         int l;
@@ -118,11 +119,12 @@ namespace Rentalin
         private void btOk_Click(object sender, EventArgs e)
         {
             DataTable cekPeminjam = new DataTable();
-            cekPeminjam = Program.conn.ExecuteDataTable("SELECT * FROM nota WHERE kodemember = '" + txtPeminjam.Text + "' AND tglrealisasikembali IS NOT NULL");
+            cekPeminjam = Program.conn.ExecuteDataTable("SELECT * FROM nota WHERE kodemember = '" + txtPeminjam.Text + "' AND tglrealisasikembali IS NULL");
             int cek = cekPeminjam.Rows.Count;
-            if (cek == 0)
+            if (cek != 0)
             {
                 MessageBox.Show("Member tidak bisa melakukan peminjaman");
+                txtPeminjam.ResetText();
             }
             else
             {
@@ -136,13 +138,15 @@ namespace Rentalin
                         txtTambahJudul.Enabled = true;
                         btnCariJudul.Enabled = true;
                         btnTambah.Enabled = true;
-                        txtPeminjam.ResetText();
+                        txtPeminjam.Enabled = false;
+                        btOk.Enabled = false;                        
                         break;
                     }
                 }
                 if (i == idx)
                 {
                     MessageBox.Show("Member tidak ditemukan");
+                    txtPeminjam.ResetText();
                 }
             }
         }
@@ -152,7 +156,7 @@ namespace Rentalin
             int y = dgPeminjaman.CurrentCellAddress.Y;
             belanja.Rows[y][2] = cmbStok.Text;
         }
-
+        
         private void dgPeminjaman_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int x = e.ColumnIndex;
@@ -179,8 +183,6 @@ namespace Rentalin
                     break;
                 }
             }
-
-
             lblHargaSewaItem.Text = dgPeminjaman.Rows[y].Cells[3].Value.ToString();
             lblHargaDendaItem.Text = dgPeminjaman.Rows[y].Cells[4].Value.ToString();
         }
@@ -220,12 +222,15 @@ namespace Rentalin
         {
             //dgPeminjaman.ClearSelection();
             belanja.Clear();
+            txtPeminjam.Enabled = true;
+            txtPeminjam.ResetText();
             lblNmrNota.Text = "Kode Nota";
             lblNamaPeminjam.Text = "Nama Peminjam";
             lblKodeMember.Text = "Kode Member";
             btnCariJudul.Enabled = false;
             txtTambahJudul.Enabled = false;
             btnTambah.Enabled = false;
+            btnProses.Enabled = false;
             lblJudul.Text = "Judul Film";
             lblGenre.Text = "Genre";
             lblHargaSewaItem.Text = "0";
@@ -235,12 +240,18 @@ namespace Rentalin
             lblNmrNota.Text = randomNota();
             lblLamaPenyewaan.Text = "0";
             lblBiayaSewa.Text = "0";
+            btnHapus.Enabled = false;
         }
         private void dtpTanggalKembali_ValueChanged(object sender, EventArgs e)
         {
             int lamaPenyewaan = dtpTanggalKembali.Value.Day - DateTime.Now.Day;
             lblLamaPenyewaan.Text = lamaPenyewaan.ToString();
             hitungTotalBiaya();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            tampilanAwal();
         }
 
     }
