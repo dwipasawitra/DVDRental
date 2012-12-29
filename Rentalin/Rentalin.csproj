@@ -53,6 +53,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmTambahPelanggan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTambahPelanggan.Designer.cs">
+      <DependentUpon>frmTambahPelanggan.cs</DependentUpon>
+    </Compile>
     <Compile Include="dsRentalin.cs">
       <DependentUpon>dsRentalin.xsd</DependentUpon>
       <SubType>Component</SubType>
@@ -163,6 +169,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmBayarKembali.resx">
       <DependentUpon>frmBayarKembali.cs</DependentUpon>
+    <EmbeddedResource Include="frmTambahPelanggan.resx">
+      <DependentUpon>frmTambahPelanggan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLaporanNota.resx">
       <DependentUpon>frmLaporanNota.cs</DependentUpon>
