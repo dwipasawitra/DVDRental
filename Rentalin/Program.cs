@@ -122,7 +122,7 @@ namespace Rentalin
             return loged;
         }
 
-        private int getKodeOperator()
+        public int getKodeOperator()
         {
             return kodeOperator;
         }
@@ -149,7 +149,7 @@ namespace Rentalin
         public void roleApply(int roleNum)
         {
             DataTable roleChecker;
-            roleChecker = Program.conn.ExecuteDataTable("SELECT * FROM kewenangan WHERE kodeKewenangan = '" + role + "'");
+            roleChecker = Program.conn.ExecuteDataTable("SELECT * FROM kewenangan WHERE kodeKewenangan = '" + roleNum + "'");
             Program.role.masterPelanggan = Convert.ToBoolean(roleChecker.Rows[0].ItemArray[2]);
             Program.role.masterKoleksi = Convert.ToBoolean(roleChecker.Rows[0].ItemArray[3]);
             Program.role.masterStok = Convert.ToBoolean(roleChecker.Rows[0].ItemArray[4]);
