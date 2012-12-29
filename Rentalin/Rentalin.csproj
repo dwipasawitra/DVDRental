@@ -157,12 +157,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <EmbeddedResource Include="frmBayarKembali.resx">
       <DependentUpon>frmBayarKembali.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTambahPelanggan.resx">
       <DependentUpon>frmTambahPelanggan.cs</DependentUpon>
     </EmbeddedResource>
+=======
+>>>>>>> parent of 2489208... restore Rentalin.csproj
 =======
 >>>>>>> parent of 2489208... restore Rentalin.csproj
 =======
