@@ -13,6 +13,8 @@ namespace Rentalin
     {
         DataTable daftarKoleksi = new DataTable();
         DataTable modify = new DataTable();
+        DataTable daftarGenre = new DataTable();
+
         public int mode;
         public string KodeKoleksi;
         public frmTambahKoleksi()
@@ -32,6 +34,13 @@ namespace Rentalin
 
         public void tampilanAwal()
         {
+            // Tampilkan daftar kategori
+            for (int i = 0; i < daftarGenre.Rows.Count; i++)
+            {
+                cmbKategori.Items.Add(daftarGenre.Rows[i].ItemArray[1].ToString());
+            }
+
+            // Tampilkan form sesuai mode
             if(mode == 0)
             {
                 //lblTambahKoleksi.Text = "Silahkan mengubah detail koleksi yang ingin diedit";
@@ -48,29 +57,25 @@ namespace Rentalin
             }
             else
             {
-                lblTambahKoleksi.Text = "Silahkan mengubah detail koleksi yang \ningin diedit";
+                lblTambahKoleksi.Text = "Silahkan mengubah detail koleksi yang ingin disunting";
                 btnTambahkan.Text = "Perbarui";
-                modify = Program.conn.ExecuteDataTable("SELECT kodekoleksi, kodekategori, namaitem, dekripsiitem, jenis, biayasewafilm, biayadendafilm FROM koleksi WHERE kodekoleksi = '" + KodeKoleksi + "'");
+                
+                // Query rincian data yang akan dimodifikasi
+                modify = Program.conn.ExecuteDataTable("SELECT kodekoleksi, genre.kodekategori, namaitem, dekripsiitem, jenis, biayasewafilm, biayadendafilm, namakategori FROM koleksi INNER JOIN genre ON koleksi.kodekategori = genre.kodekategori WHERE kodekoleksi = '" + KodeKoleksi + "'");
+                
                 txtKode.Text = KodeKoleksi;
                 txtKode.Enabled = false;
-                string kodeKategori = "";
-                if (modify.Rows[0].ItemArray[1].ToString() == "A001")
-                    kodeKategori = "Anime";
-                else if (modify.Rows[0].ItemArray[1].ToString() == "A002")
-                    kodeKategori = "Action";
-                else if (modify.Rows[0].ItemArray[1].ToString() == "A003")
-                    kodeKategori = "Adventure";
-                else if (modify.Rows[0].ItemArray[1].ToString() == "C001")
-                    kodeKategori = "Comedy";
-                else if (modify.Rows[0].ItemArray[1].ToString() == "D001")
-                    kodeKategori = "Drama";
-                else if (modify.Rows[0].ItemArray[1].ToString() == "H001")
-                    kodeKategori = "Horror";
-                cmbKategori.Text = kodeKategori;
+
+                cmbKategori.Text = modify.Rows[0].ItemArray[7].ToString();
+                
                 txtJudul.Text = modify.Rows[0].ItemArray[2].ToString();
+                
                 txtDeskripsi.Text = modify.Rows[0].ItemArray[3].ToString();
+                
                 cmbJenis.Text = modify.Rows[0].ItemArray[4].ToString();
+                
                 txtHargaSewa.Text = modify.Rows[0].ItemArray[5].ToString();
+                
                 txtHargaDenda.Text = modify.Rows[0].ItemArray[6].ToString();
 
             }
@@ -78,20 +83,13 @@ namespace Rentalin
 
         private void frmTambahKoleksi_Load(object sender, EventArgs e)
         {
-            
+
+            // Query data koleksi dan genre
             daftarKoleksi = Program.conn.ExecuteDataTable("SELECT kodekoleksi, kodekategori, namaitem, dekripsiitem, jenis, biayasewafilm, biayadendafilm FROM koleksi");
-            cmbKategori.Items.Add("Anime");
-            cmbKategori.Items.Add("Action");
-            cmbKategori.Items.Add("Adventure");
-            cmbKategori.Items.Add("Comedy");
-            cmbKategori.Items.Add("Drama");
-            cmbKategori.Items.Add("Horror");
-            cmbJenis.Items.Add("1");
-            cmbJenis.Items.Add("2");
-            cmbJenis.Items.Add("3");
-            MessageBox.Show("asdadsdsasad");
+            daftarGenre = Program.conn.ExecuteDataTable("SELECT kodekategori, namakategori FROM genre");
+            
             tampilanAwal();
-            MessageBox.Show("asdadsdsasad");
+            
         }       
 
         private void txtKode_TextChanged(object sender, EventArgs e)
@@ -198,6 +196,11 @@ namespace Rentalin
                 }
                 catch (Exception) { }
             }
+        }
+
+        private void btnBrowse_Click(object sender, EventArgs e)
+        {
+
         }
         
     }

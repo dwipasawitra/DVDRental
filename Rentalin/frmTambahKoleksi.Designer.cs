@@ -37,7 +37,6 @@
             this.txtDeskripsi = new System.Windows.Forms.TextBox();
             this.lblKategori = new System.Windows.Forms.Label();
             this.cmbKategori = new System.Windows.Forms.ComboBox();
-            this.btnKategori = new System.Windows.Forms.Button();
             this.lblJenis = new System.Windows.Forms.Label();
             this.cmbJenis = new System.Windows.Forms.ComboBox();
             this.lblCoverArt = new System.Windows.Forms.Label();
@@ -54,6 +53,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txtHargaSewa = new System.Windows.Forms.TextBox();
             this.txtHargaDenda = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picCoverArt)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,9 +63,10 @@
             this.lblTambahKoleksi.AutoSize = true;
             this.lblTambahKoleksi.Location = new System.Drawing.Point(12, 9);
             this.lblTambahKoleksi.Name = "lblTambahKoleksi";
-            this.lblTambahKoleksi.Size = new System.Drawing.Size(186, 26);
+            this.lblTambahKoleksi.Size = new System.Drawing.Size(399, 26);
             this.lblTambahKoleksi.TabIndex = 0;
-            this.lblTambahKoleksi.Text = "Silahkan mengisi detail koleksi terbaru\r\nyang ingin ditambahkan";
+            this.lblTambahKoleksi.Text = "Silahkan mengisi detail koleksi terbaru yang ingin ditambahkan\r\nKETERANGAN: Harga" +
+                " sewa/denda berlaku jika pengaturan skema diatur per judul";
             // 
             // lblKode
             // 
@@ -130,17 +132,8 @@
             this.cmbKategori.FormattingEnabled = true;
             this.cmbKategori.Location = new System.Drawing.Point(89, 220);
             this.cmbKategori.Name = "cmbKategori";
-            this.cmbKategori.Size = new System.Drawing.Size(126, 21);
+            this.cmbKategori.Size = new System.Drawing.Size(196, 21);
             this.cmbKategori.TabIndex = 8;
-            // 
-            // btnKategori
-            // 
-            this.btnKategori.Location = new System.Drawing.Point(219, 217);
-            this.btnKategori.Name = "btnKategori";
-            this.btnKategori.Size = new System.Drawing.Size(71, 36);
-            this.btnKategori.TabIndex = 9;
-            this.btnKategori.Text = "Atur Kategori";
-            this.btnKategori.UseVisualStyleBackColor = true;
             // 
             // lblJenis
             // 
@@ -154,6 +147,15 @@
             // cmbJenis
             // 
             this.cmbJenis.FormattingEnabled = true;
+            this.cmbJenis.Items.AddRange(new object[] {
+            "MP3",
+            "CD",
+            "VCD",
+            "DVD4",
+            "DVD8",
+            "DVD-DL",
+            "Blu-Ray",
+            "HD-DVD"});
             this.cmbJenis.Location = new System.Drawing.Point(89, 254);
             this.cmbJenis.Name = "cmbJenis";
             this.cmbJenis.Size = new System.Drawing.Size(74, 21);
@@ -162,7 +164,7 @@
             // lblCoverArt
             // 
             this.lblCoverArt.AutoSize = true;
-            this.lblCoverArt.Location = new System.Drawing.Point(20, 287);
+            this.lblCoverArt.Location = new System.Drawing.Point(291, 112);
             this.lblCoverArt.Name = "lblCoverArt";
             this.lblCoverArt.Size = new System.Drawing.Size(51, 13);
             this.lblCoverArt.TabIndex = 12;
@@ -170,23 +172,24 @@
             // 
             // txtCoverArt
             // 
-            this.txtCoverArt.Location = new System.Drawing.Point(89, 284);
+            this.txtCoverArt.Location = new System.Drawing.Point(360, 108);
             this.txtCoverArt.Name = "txtCoverArt";
-            this.txtCoverArt.Size = new System.Drawing.Size(111, 20);
+            this.txtCoverArt.Size = new System.Drawing.Size(126, 20);
             this.txtCoverArt.TabIndex = 13;
             // 
             // btnBrowse
             // 
-            this.btnBrowse.Location = new System.Drawing.Point(204, 284);
+            this.btnBrowse.Location = new System.Drawing.Point(492, 108);
             this.btnBrowse.Name = "btnBrowse";
             this.btnBrowse.Size = new System.Drawing.Size(86, 20);
             this.btnBrowse.TabIndex = 14;
             this.btnBrowse.Text = "Telusuri..";
             this.btnBrowse.UseVisualStyleBackColor = true;
+            this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
             // 
             // picCoverArt
             // 
-            this.picCoverArt.Location = new System.Drawing.Point(89, 310);
+            this.picCoverArt.Location = new System.Drawing.Point(360, 134);
             this.picCoverArt.Name = "picCoverArt";
             this.picCoverArt.Size = new System.Drawing.Size(126, 156);
             this.picCoverArt.TabIndex = 15;
@@ -194,9 +197,9 @@
             // 
             // btnTambahkan
             // 
-            this.btnTambahkan.Location = new System.Drawing.Point(219, 9);
+            this.btnTambahkan.Location = new System.Drawing.Point(220, 311);
             this.btnTambahkan.Name = "btnTambahkan";
-            this.btnTambahkan.Size = new System.Drawing.Size(77, 26);
+            this.btnTambahkan.Size = new System.Drawing.Size(143, 26);
             this.btnTambahkan.TabIndex = 16;
             this.btnTambahkan.Text = "Tambahkan";
             this.btnTambahkan.UseVisualStyleBackColor = true;
@@ -262,7 +265,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Red;
-            this.label6.Location = new System.Drawing.Point(1, 469);
+            this.label6.Location = new System.Drawing.Point(4, 324);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(15, 20);
             this.label6.TabIndex = 22;
@@ -271,7 +274,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(13, 469);
+            this.label7.Location = new System.Drawing.Point(16, 324);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(117, 13);
             this.label7.TabIndex = 23;
@@ -279,23 +282,44 @@
             // 
             // txtHargaSewa
             // 
-            this.txtHargaSewa.Location = new System.Drawing.Point(23, 145);
+            this.txtHargaSewa.Location = new System.Drawing.Point(360, 58);
             this.txtHargaSewa.Name = "txtHargaSewa";
-            this.txtHargaSewa.Size = new System.Drawing.Size(53, 20);
+            this.txtHargaSewa.Size = new System.Drawing.Size(126, 20);
             this.txtHargaSewa.TabIndex = 24;
             // 
             // txtHargaDenda
             // 
-            this.txtHargaDenda.Location = new System.Drawing.Point(25, 174);
+            this.txtHargaDenda.Location = new System.Drawing.Point(360, 81);
             this.txtHargaDenda.Name = "txtHargaDenda";
-            this.txtHargaDenda.Size = new System.Drawing.Size(50, 20);
+            this.txtHargaDenda.Size = new System.Drawing.Size(126, 20);
             this.txtHargaDenda.TabIndex = 25;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(288, 63);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(66, 13);
+            this.label8.TabIndex = 26;
+            this.label8.Text = "Harga Sewa";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(288, 87);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(71, 13);
+            this.label9.TabIndex = 27;
+            this.label9.Text = "Harga Denda";
             // 
             // frmTambahKoleksi
             // 
+            this.AcceptButton = this.btnTambahkan;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(308, 486);
+            this.ClientSize = new System.Drawing.Size(587, 349);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.txtHargaDenda);
             this.Controls.Add(this.txtHargaSewa);
             this.Controls.Add(this.label7);
@@ -312,7 +336,6 @@
             this.Controls.Add(this.lblCoverArt);
             this.Controls.Add(this.cmbJenis);
             this.Controls.Add(this.lblJenis);
-            this.Controls.Add(this.btnKategori);
             this.Controls.Add(this.cmbKategori);
             this.Controls.Add(this.lblKategori);
             this.Controls.Add(this.txtDeskripsi);
@@ -345,7 +368,6 @@
         private System.Windows.Forms.TextBox txtDeskripsi;
         private System.Windows.Forms.Label lblKategori;
         private System.Windows.Forms.ComboBox cmbKategori;
-        private System.Windows.Forms.Button btnKategori;
         private System.Windows.Forms.Label lblJenis;
         private System.Windows.Forms.ComboBox cmbJenis;
         private System.Windows.Forms.Label lblCoverArt;
@@ -362,5 +384,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtHargaSewa;
         private System.Windows.Forms.TextBox txtHargaDenda;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
     }
 }

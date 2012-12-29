@@ -17,7 +17,33 @@ namespace Rentalin
         }
         
         DataTable koleksi = new DataTable();
-        DataTable pencarian = new DataTable();
+
+        private void updateKoleksi()
+        {
+           
+            koleksi = Program.conn.ExecuteDataTable("SELECT kodekoleksi, namaitem, genre.namakategori, biayasewafilm, biayadendafilm from koleksi, genre where genre.kodekategori = koleksi.kodekategori");
+           
+            // Atur judul kolom 
+            koleksi.Columns[0].ColumnName = "Kode Koleksi";
+            koleksi.Columns[1].ColumnName = "Judul";
+            koleksi.Columns[2].ColumnName = "Kategori";
+            koleksi.Columns[3].ColumnName = "Biaya Sewa";
+            koleksi.Columns[4].ColumnName = "Biaya Denda";
+            
+            
+        }
+
+        private void cariKoleksi(string arg)
+        {
+            koleksi = Program.conn.ExecuteDataTable("SELECT kodekoleksi, namaitem, genre.namakategori, biayasewafilm, biayadendafilm from koleksi, genre where genre.kodekategori = koleksi.kodekategori AND (kodekoleksi like '%" + arg + "%' OR namaitem like '%" + arg + "%')");
+
+            // Atur judul kolom 
+            koleksi.Columns[0].ColumnName = "Kode Koleksi";
+            koleksi.Columns[1].ColumnName = "Judul";
+            koleksi.Columns[2].ColumnName = "Kategori";
+            koleksi.Columns[3].ColumnName = "Biaya Sewa";
+            koleksi.Columns[4].ColumnName = "Biaya Denda";
+        }
         private void tampilanAwal()
         {
             lblJudul.Text = "Judul Film";
@@ -28,7 +54,7 @@ namespace Rentalin
 
         private void frmMasterKoleksi_Load(object sender, EventArgs e)
         {
-            koleksi = Program.conn.ExecuteDataTable("SELECT kodekoleksi, namaitem, genre.namakategori, biayasewafilm, biayadendafilm from koleksi, genre where genre.kodekategori = koleksi.kodekategori");
+            updateKoleksi();
             tampilanAwal();
         }
 
@@ -43,13 +69,7 @@ namespace Rentalin
             koleksi.Rows[rows].Delete();
         }
 
-        private void dgKoleksi_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            int y = e.RowIndex;
-            lblJudul.Text = koleksi.Rows[y].ItemArray[1].ToString();
-            lblGenre.Text = koleksi.Rows[y].ItemArray[2].ToString();
-        }
-
+     
         private void btnHistori_Click(object sender, EventArgs e)
         {
             frmMasterStok formMasterStok = new frmMasterStok(koleksi.Rows[dgKoleksi.CurrentCellAddress.Y].ItemArray[0].ToString());
@@ -71,9 +91,67 @@ namespace Rentalin
 
         private void txtPencarian_TextChanged(object sender, EventArgs e)
         {
-            pencarian = Program.conn.ExecuteDataTable("SELECT kodekoleksi, namaitem, genre.namakategori, biayasewafilm, biayadendafilm from koleksi, genre where genre.kodekategori = koleksi.kodekategori AND (kodekoleksi like '%"+txtPencarian.Text+"%' OR namaitem like '%"+txtPencarian.Text+"%')");
-            dgKoleksi.DataSource = pencarian;
+            cariKoleksi(txtPencarian.Text);
+            dgKoleksi.DataSource = koleksi;
         }
+
+        private void dgKoleksi_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgKoleksi.SelectedCells.Count >= 1)
+            {
+                int idx = dgKoleksi.SelectedCells[0].RowIndex;
+                showDataDetail(idx);
+
+            }
+        }
+
+        private void showDataDetail(int index)
+        {
+          
+     
+            // Tampilkan nama judul dan genre
+            lblJudul.Text = koleksi.Rows[index].ItemArray[1].ToString();
+            lblGenre.Text = koleksi.Rows[index].ItemArray[2].ToString();
+
+            // Ambil deskripsi dan BLOB gambar dari database
+            string kodeKoleksi = koleksi.Rows[index].ItemArray[0].ToString();
+            DataTable infoJudul;
+            infoJudul = Program.conn.ExecuteDataTable("SELECT dekripsiitem, coverart FROM koleksi WHERE KodeKoleksi='" + kodeKoleksi + "'");
+
+            try
+            {
+                // Convert coverart ke gambar
+                if (!Convert.IsDBNull(infoJudul.Rows[0].ItemArray[1]))
+                {
+                    byte[] blob = (byte[])infoJudul.Rows[0].ItemArray[1];
+                    Program.displayBlobImage(blob);
+
+                    // Tampilkan gambar
+                    pbCoverArt.Image = Image.FromFile(Program.IMAGE_FILE_TEMPORARY);
+                    pbCoverArt.SizeMode = PictureBoxSizeMode.StretchImage;
+                    pbCoverArt.Refresh();
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+
+            // Tampilkan teks pada deskripsi
+            txtDeskripsi.Text = infoJudul.Rows[0].ItemArray[0].ToString();
+        }
+
+        private void dgKoleksi_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void pnlInfo_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+
         
     }
 }

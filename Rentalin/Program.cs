@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using System.Data;
 using System.Security.Cryptography;
 using System.Text;
+using System.IO;
 
 namespace Rentalin
 {
@@ -353,6 +354,7 @@ namespace Rentalin
         public static userRole role = new userRole();
         public static specialOffer so = new specialOffer();
 
+        public const string IMAGE_FILE_TEMPORARY = "gambarsementara.jpg";
         static void Main()
         {
             bool isConn;
@@ -400,6 +402,28 @@ namespace Rentalin
             }
 
             return tgl.ToString() + "-" + namaBulan + "-" + thn.ToString();
+        }
+
+        public static void displayBlobImage(byte[] blob)
+        {
+
+            // Tulis BLOB tersebut ke berkas imgtmp.jpg
+            FileStream FS = new FileStream(IMAGE_FILE_TEMPORARY, FileMode.Create);
+            FS.Write(blob, 0, blob.Length);
+            FS.Close();
+            FS = null;
+        }
+
+        public static byte[] getBlobImage(string filePath)
+        {
+            // Ambil berkas filePath, jadikan dia sebuah blob
+            FileStream FS = new FileStream(filePath, FileMode.Open, FileAccess.Read);
+            byte[] blob = new byte[FS.Length];
+            FS.Read(blob, 0, Convert.ToInt32(FS.Length));
+            FS.Close();
+            FS = null;
+
+            return blob;
         }
     }
 }

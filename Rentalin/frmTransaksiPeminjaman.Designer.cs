@@ -138,6 +138,7 @@
             // 
             // button1
             // 
+            this.button1.ForeColor = System.Drawing.Color.Black;
             this.button1.Location = new System.Drawing.Point(151, 30);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
@@ -158,6 +159,7 @@
             // 
             // btOk
             // 
+            this.btOk.ForeColor = System.Drawing.Color.Black;
             this.btOk.Location = new System.Drawing.Point(236, 3);
             this.btOk.Name = "btOk";
             this.btOk.Size = new System.Drawing.Size(75, 23);
@@ -187,6 +189,7 @@
             // 
             // btnCariPelanggan
             // 
+            this.btnCariPelanggan.ForeColor = System.Drawing.Color.Black;
             this.btnCariPelanggan.Location = new System.Drawing.Point(236, 32);
             this.btnCariPelanggan.Name = "btnCariPelanggan";
             this.btnCariPelanggan.Size = new System.Drawing.Size(75, 23);
@@ -218,7 +221,6 @@
             this.txtTambahJudul.Size = new System.Drawing.Size(193, 20);
             this.txtTambahJudul.TabIndex = 4;
             this.txtTambahJudul.TextChanged += new System.EventHandler(this.txtTambahJudul_TextChanged);
-            
             // 
             // dgPeminjaman
             // 
@@ -299,6 +301,7 @@
             // 
             // btnHapus
             // 
+            this.btnHapus.ForeColor = System.Drawing.Color.Black;
             this.btnHapus.Location = new System.Drawing.Point(7, 221);
             this.btnHapus.Name = "btnHapus";
             this.btnHapus.Size = new System.Drawing.Size(179, 27);
@@ -397,6 +400,7 @@
             // 
             // btnProses
             // 
+            this.btnProses.ForeColor = System.Drawing.Color.Black;
             this.btnProses.Location = new System.Drawing.Point(552, 10);
             this.btnProses.Name = "btnProses";
             this.btnProses.Size = new System.Drawing.Size(127, 53);
