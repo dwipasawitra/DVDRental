@@ -18,8 +18,10 @@ namespace Rentalin
         }
 
         private void frmLogin_Load(object sender, EventArgs e)
-        {            
-            Console.WriteLine("Saya");
+        {
+            // Muat nama toko dan alamatnya
+            lblNamaLayanan.Text = Program.setting.namaJasa;
+            lblAlamatLayanan.Text = Program.setting.alamatJasa;
         }
 
         private void btnLogin_Click(object sender, EventArgs e)

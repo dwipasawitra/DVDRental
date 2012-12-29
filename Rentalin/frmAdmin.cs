@@ -175,5 +175,18 @@ namespace Rentalin
             frmLaporanTransaksi form = new frmLaporanTransaksi();
             form.ShowDialog(this);
         }
+
+        private void btnMenuOperator_Click(object sender, EventArgs e)
+        {
+            // Ubah jendela pertama ke jendela Admin
+            Program.role.jendelaPertama = userRole.JENDELA_PERTAMA_OPERATOR;
+            Close();
+        }
+
+        private void btnLaporanKeuangan_Click(object sender, EventArgs e)
+        {
+            frmLaporanKeuangan form = new frmLaporanKeuangan();
+            form.ShowDialog(this);
+        }
     }
 }

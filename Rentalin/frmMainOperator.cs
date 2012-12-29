@@ -78,7 +78,10 @@ namespace Rentalin
         }
         private void frmMainOperator_Load(object sender, EventArgs e)
         {
-            
+            // Muat nama toko dan alamatnya
+            lblNamaLayanan.Text = Program.setting.namaJasa;
+            lblAlamatLayanan.Text = Program.setting.alamatJasa;
+
             // cek kewenangan            
             if (Program.role.masterPelanggan == false)
                 btnMasterPelanggan.Enabled = false;
@@ -236,6 +239,24 @@ namespace Rentalin
                 lblPenawaranSpesial.Visible = true;
                 lblPenawaranSpesialInfo.Visible = true;
             }
+        }
+
+        private void btnLaporanNota_Click(object sender, EventArgs e)
+        {
+            frmLaporanNota form = new frmLaporanNota();
+            form.ShowDialog(this);
+        }
+
+        private void btnLaporanTransaksi_Click(object sender, EventArgs e)
+        {
+            frmLaporanTransaksi form = new frmLaporanTransaksi();
+            form.ShowDialog(this);
+        }
+
+        private void btnLaporanKeuangan_Click(object sender, EventArgs e)
+        {
+            frmLaporanKeuangan form = new frmLaporanKeuangan();
+            form.ShowDialog(this);
         }
 
         

@@ -277,6 +277,7 @@
             this.btnLaporanKeuangan.TabIndex = 15;
             this.btnLaporanKeuangan.Text = "Laporan Keuangan";
             this.btnLaporanKeuangan.UseVisualStyleBackColor = true;
+            this.btnLaporanKeuangan.Click += new System.EventHandler(this.btnLaporanKeuangan_Click);
             // 
             // lblMenuOperatorInfo
             // 
@@ -295,6 +296,7 @@
             this.btnMenuOperator.TabIndex = 17;
             this.btnMenuOperator.Text = "Menu Operator";
             this.btnMenuOperator.UseVisualStyleBackColor = true;
+            this.btnMenuOperator.Click += new System.EventHandler(this.btnMenuOperator_Click);
             // 
             // frmAdmin
             // 

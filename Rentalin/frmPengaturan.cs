@@ -149,7 +149,15 @@ namespace Rentalin
             }
             Program.setting.maksTransaksiJumlah = Int16.Parse(txtJumlahJudul.Text);
 
+            // And the last, kita update settingnya
+            Program.setting.updateSetting();
+
             // Done
+        }
+
+        private void btnBatal_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

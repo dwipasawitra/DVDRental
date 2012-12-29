@@ -214,16 +214,76 @@ namespace Rentalin
         public const int MAKS_TRANSAKSI_MAKS = 0;
         public const int MAKS_TRANSAKSI_BEBAS = 1;
 
+    
+
         public void readSetting()
         {
             DataTable setting;
-            
-            // Pending by Wirama
-        }
 
+            try
+            {
+                // namaJasa
+                setting = Program.conn.ExecuteDataTable("SELECT data FROM pengaturan WHERE Atribut='namaToko'");
+                namaJasa = setting.Rows[0].ItemArray[0].ToString();
+
+                // alamatJasa
+                setting = Program.conn.ExecuteDataTable("SELECT data FROM pengaturan WHERE Atribut='alamatToko'");
+                alamatJasa = setting.Rows[0].ItemArray[0].ToString();
+
+                // namaPemilik
+                setting = Program.conn.ExecuteDataTable("SELECT data FROM pengaturan WHERE Atribut='namaPemilik'");
+                namaPemilik = setting.Rows[0].ItemArray[0].ToString();
+
+                // biayaSewaPer
+                setting = Program.conn.ExecuteDataTable("SELECT data FROM pengaturan WHERE Atribut='skemaBiayaSewa'");
+                biayaSewaPer = Int16.Parse(setting.Rows[0].ItemArray[0].ToString());
+
+                // biayaDendaPer
+                setting = Program.conn.ExecuteDataTable("SELECT data FROM pengaturan WHERE Atribut='skemaBiayaDenda'");
+                biayaDendaPer = Int16.Parse(setting.Rows[0].ItemArray[0].ToString());
+
+                // lamaPenyewaan
+                setting = Program.conn.ExecuteDataTable("SELECT data FROM pengaturan WHERE Atribut='skemaHariTransaksi'");
+                lamaPenyewaan = Int16.Parse(setting.Rows[0].ItemArray[0].ToString());
+
+                // lamaPenyewaanHari
+                setting = Program.conn.ExecuteDataTable("SELECT data FROM pengaturan WHERE Atribut='maksHariTransaksi'");
+                lamaPenyewaanHari = Int16.Parse(setting.Rows[0].ItemArray[0].ToString());
+
+                // maksTransaksi
+                setting = Program.conn.ExecuteDataTable("SELECT data FROM pengaturan WHERE Atribut='skemaJudulTransaksi'");
+                maksTransaksi = Int16.Parse(setting.Rows[0].ItemArray[0].ToString());
+
+                // maksTransaksiJumlah
+                setting = Program.conn.ExecuteDataTable("SELECT data FROM pengaturan WHERE Atribut='maksJudulTransaksi'");
+                maksTransaksiJumlah = Int16.Parse(setting.Rows[0].ItemArray[0].ToString());
+
+            } 
+            catch (Exception e) 
+            {
+                MessageBox.Show(e.ToString());
+            }
+        }
         public void updateSetting()
         {
-
+            //public string namaJasa
+            Program.conn.ExecuteNonQuery("UPDATE pengaturan SET data='" + namaJasa + "' WHERE atribut='namaToko'");
+            //public string alamatJasa
+            Program.conn.ExecuteNonQuery("UPDATE pengaturan SET data='" + alamatJasa + "' WHERE atribut='alamatToko'");
+            //public string namaPemilik
+            Program.conn.ExecuteNonQuery("UPDATE pengaturan SET data='" + namaPemilik + "' WHERE atribut='namaPemilik'");
+            //public int biayaSewaPer
+            Program.conn.ExecuteNonQuery("UPDATE pengaturan SET data='" + biayaSewaPer + "' WHERE atribut='skemaBiayaSewa'");
+            //public int biayaDendaPer
+            Program.conn.ExecuteNonQuery("UPDATE pengaturan SET data='" + biayaDendaPer + "' WHERE atribut='skemaBiayaDenda'");
+            //public int lamaPenyewaan
+            Program.conn.ExecuteNonQuery("UPDATE pengaturan SET data='" + lamaPenyewaan + "' WHERE atribut='skemaHariTransaksi'");
+            //public int lamaPenyewaanHari
+            Program.conn.ExecuteNonQuery("UPDATE pengaturan SET data='" + lamaPenyewaanHari + "' WHERE atribut='maksHariTransaksi'");
+            //public int maksTransaksi
+            Program.conn.ExecuteNonQuery("UPDATE pengaturan SET data='" + maksTransaksi + "' WHERE atribut='skemaJudulTransaksi'");
+            //public int maksTransaksiJumlah
+            Program.conn.ExecuteNonQuery("UPDATE pengaturan SET data='" + maksTransaksiJumlah + "' WHERE atribut='maksJudulTransaksi'");
         }
     }
 
@@ -305,6 +365,7 @@ namespace Rentalin
             isConn = conn.Open();
             if (isConn)
             {
+                setting.readSetting();
                 MessageBox.Show("Berhasil melakukan koneksi ke basis data RENTALIN", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Application.Run(new frmMain());
             }

@@ -74,6 +74,12 @@
     <Compile Include="frmHallOfFame.Designer.cs">
       <DependentUpon>frmHallOfFame.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmLaporanKeuangan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLaporanKeuangan.Designer.cs">
+      <DependentUpon>frmLaporanKeuangan.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmLaporanNota.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -184,6 +190,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmHallOfFame.resx">
       <DependentUpon>frmHallOfFame.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLaporanKeuangan.resx">
+      <DependentUpon>frmLaporanKeuangan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLaporanNota.resx">
       <DependentUpon>frmLaporanNota.cs</DependentUpon>

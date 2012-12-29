@@ -32,6 +32,9 @@
             this.lblAlamatLayanan = new System.Windows.Forms.Label();
             this.lblNamaLayanan = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblPenawaranSpesial = new System.Windows.Forms.Label();
+            this.lblPenawaranSpesialInfo = new System.Windows.Forms.Label();
+            this.lblMemutakhirkan = new System.Windows.Forms.Label();
             this.txtJudulDipinjamBulanan = new System.Windows.Forms.TextBox();
             this.lblStatistikJudulDipinjamBulanan = new System.Windows.Forms.Label();
             this.txtJudulDipinjamMingguan = new System.Windows.Forms.TextBox();
@@ -53,13 +56,11 @@
             this.btnMasterKoleksi = new System.Windows.Forms.Button();
             this.btnMasterPelanggan = new System.Windows.Forms.Button();
             this.lblMasterInfo = new System.Windows.Forms.Label();
-            this.picMaster = new System.Windows.Forms.PictureBox();
             this.lblMasterData = new System.Windows.Forms.Label();
             this.pnlTransaksi = new System.Windows.Forms.Panel();
             this.btnPeminjaman = new System.Windows.Forms.Button();
             this.lblTransaksi = new System.Windows.Forms.Label();
             this.btnPengembalian = new System.Windows.Forms.Button();
-            this.picTransaksi = new System.Windows.Forms.PictureBox();
             this.lblTransaksiInfo = new System.Windows.Forms.Label();
             this.pnlLaporan = new System.Windows.Forms.Panel();
             this.btnLaporanKeuangan = new System.Windows.Forms.Button();
@@ -67,7 +68,6 @@
             this.btnLaporanNota = new System.Windows.Forms.Button();
             this.lblLaporan = new System.Windows.Forms.Label();
             this.lblLaporanInfo = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblDate = new System.Windows.Forms.Label();
             this.lblTime = new System.Windows.Forms.Label();
             this.lblLogedInAs = new System.Windows.Forms.Label();
@@ -76,21 +76,22 @@
             this.btnAdmin = new System.Windows.Forms.Button();
             this.tmrWaktu = new System.Windows.Forms.Timer(this.components);
             this.panel2 = new System.Windows.Forms.Panel();
-            this.picDisc = new System.Windows.Forms.PictureBox();
-            this.lblMemutakhirkan = new System.Windows.Forms.Label();
             this.tmrStatistik = new System.Windows.Forms.Timer(this.components);
-            this.lblPenawaranSpesialInfo = new System.Windows.Forms.Label();
-            this.lblPenawaranSpesial = new System.Windows.Forms.Label();
             this.tmrBlinkingPenawaranSpesial = new System.Windows.Forms.Timer(this.components);
+            this.lblPowered = new System.Windows.Forms.Label();
+            this.picDisc = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.picTransaksi = new System.Windows.Forms.PictureBox();
+            this.picMaster = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.pnlMaster.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picMaster)).BeginInit();
             this.pnlTransaksi.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picTransaksi)).BeginInit();
             this.pnlLaporan.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picDisc)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picTransaksi)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picMaster)).BeginInit();
             this.SuspendLayout();
             // 
             // lblAlamatLayanan
@@ -108,7 +109,7 @@
             this.lblNamaLayanan.AutoSize = true;
             this.lblNamaLayanan.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNamaLayanan.ForeColor = System.Drawing.Color.White;
-            this.lblNamaLayanan.Location = new System.Drawing.Point(108, 20);
+            this.lblNamaLayanan.Location = new System.Drawing.Point(106, 20);
             this.lblNamaLayanan.Name = "lblNamaLayanan";
             this.lblNamaLayanan.Size = new System.Drawing.Size(130, 25);
             this.lblNamaLayanan.TabIndex = 6;
@@ -139,6 +140,39 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(242, 320);
             this.panel1.TabIndex = 9;
+            // 
+            // lblPenawaranSpesial
+            // 
+            this.lblPenawaranSpesial.AutoSize = true;
+            this.lblPenawaranSpesial.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPenawaranSpesial.ForeColor = System.Drawing.Color.Red;
+            this.lblPenawaranSpesial.Location = new System.Drawing.Point(7, 245);
+            this.lblPenawaranSpesial.Name = "lblPenawaranSpesial";
+            this.lblPenawaranSpesial.Size = new System.Drawing.Size(151, 20);
+            this.lblPenawaranSpesial.TabIndex = 31;
+            this.lblPenawaranSpesial.Text = "Diskon Natal 50%";
+            this.lblPenawaranSpesial.Visible = false;
+            // 
+            // lblPenawaranSpesialInfo
+            // 
+            this.lblPenawaranSpesialInfo.AutoSize = true;
+            this.lblPenawaranSpesialInfo.ForeColor = System.Drawing.Color.Red;
+            this.lblPenawaranSpesialInfo.Location = new System.Drawing.Point(8, 229);
+            this.lblPenawaranSpesialInfo.Name = "lblPenawaranSpesialInfo";
+            this.lblPenawaranSpesialInfo.Size = new System.Drawing.Size(133, 13);
+            this.lblPenawaranSpesialInfo.TabIndex = 30;
+            this.lblPenawaranSpesialInfo.Text = "Penawaran Spesial Hari ini";
+            this.lblPenawaranSpesialInfo.Visible = false;
+            // 
+            // lblMemutakhirkan
+            // 
+            this.lblMemutakhirkan.AutoSize = true;
+            this.lblMemutakhirkan.Location = new System.Drawing.Point(9, 245);
+            this.lblMemutakhirkan.Name = "lblMemutakhirkan";
+            this.lblMemutakhirkan.Size = new System.Drawing.Size(155, 13);
+            this.lblMemutakhirkan.TabIndex = 29;
+            this.lblMemutakhirkan.Text = "Memutakhirkan Data Statistik...";
+            this.lblMemutakhirkan.Visible = false;
             // 
             // txtJudulDipinjamBulanan
             // 
@@ -341,15 +375,6 @@
             this.lblMasterInfo.Text = "Silahkan mengatur basis data layanan rental ini\r\nMelalui menu yang disediakan di " +
                 "bawah";
             // 
-            // picMaster
-            // 
-            this.picMaster.Image = global::Rentalin.Properties.Resources.db;
-            this.picMaster.Location = new System.Drawing.Point(15, 10);
-            this.picMaster.Name = "picMaster";
-            this.picMaster.Size = new System.Drawing.Size(92, 95);
-            this.picMaster.TabIndex = 1;
-            this.picMaster.TabStop = false;
-            // 
             // lblMasterData
             // 
             this.lblMasterData.AutoSize = true;
@@ -407,15 +432,6 @@
             this.btnPengembalian.UseVisualStyleBackColor = true;
             this.btnPengembalian.Click += new System.EventHandler(this.btnPengembalian_Click);
             // 
-            // picTransaksi
-            // 
-            this.picTransaksi.Image = global::Rentalin.Properties.Resources.bill;
-            this.picTransaksi.Location = new System.Drawing.Point(15, 12);
-            this.picTransaksi.Name = "picTransaksi";
-            this.picTransaksi.Size = new System.Drawing.Size(94, 94);
-            this.picTransaksi.TabIndex = 15;
-            this.picTransaksi.TabStop = false;
-            // 
             // lblTransaksiInfo
             // 
             this.lblTransaksiInfo.AutoSize = true;
@@ -449,6 +465,7 @@
             this.btnLaporanKeuangan.TabIndex = 21;
             this.btnLaporanKeuangan.Text = "Laporan Keuangan";
             this.btnLaporanKeuangan.UseVisualStyleBackColor = true;
+            this.btnLaporanKeuangan.Click += new System.EventHandler(this.btnLaporanKeuangan_Click);
             // 
             // btnLaporanTransaksi
             // 
@@ -458,6 +475,7 @@
             this.btnLaporanTransaksi.TabIndex = 21;
             this.btnLaporanTransaksi.Text = "Laporan Transaksi";
             this.btnLaporanTransaksi.UseVisualStyleBackColor = true;
+            this.btnLaporanTransaksi.Click += new System.EventHandler(this.btnLaporanTransaksi_Click);
             // 
             // btnLaporanNota
             // 
@@ -467,6 +485,7 @@
             this.btnLaporanNota.TabIndex = 20;
             this.btnLaporanNota.Text = "Laporan Nota";
             this.btnLaporanNota.UseVisualStyleBackColor = true;
+            this.btnLaporanNota.Click += new System.EventHandler(this.btnLaporanNota_Click);
             // 
             // lblLaporan
             // 
@@ -489,15 +508,6 @@
             this.lblLaporanInfo.TabIndex = 19;
             this.lblLaporanInfo.Text = "Silahkan pilih salah satu laporan layanan yang ingin Anda lihat\r\npada menu dibawa" +
                 "h ini";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Rentalin.Properties.Resources.report;
-            this.pictureBox1.Location = new System.Drawing.Point(15, 8);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(92, 109);
-            this.pictureBox1.TabIndex = 18;
-            this.pictureBox1.TabStop = false;
             // 
             // lblDate
             // 
@@ -582,6 +592,26 @@
             this.panel2.Size = new System.Drawing.Size(756, 81);
             this.panel2.TabIndex = 18;
             // 
+            // tmrStatistik
+            // 
+            this.tmrStatistik.Enabled = true;
+            this.tmrStatistik.Interval = 10000;
+            this.tmrStatistik.Tick += new System.EventHandler(this.tmrStatistik_Tick);
+            // 
+            // tmrBlinkingPenawaranSpesial
+            // 
+            this.tmrBlinkingPenawaranSpesial.Interval = 500;
+            this.tmrBlinkingPenawaranSpesial.Tick += new System.EventHandler(this.tmrBlinkingPenawaranSpesial_Tick);
+            // 
+            // lblPowered
+            // 
+            this.lblPowered.AutoSize = true;
+            this.lblPowered.Location = new System.Drawing.Point(530, 454);
+            this.lblPowered.Name = "lblPowered";
+            this.lblPowered.Size = new System.Drawing.Size(210, 26);
+            this.lblPowered.TabIndex = 19;
+            this.lblPowered.Text = "Powered by RENTALIN engine\r\nhttp://github.com/initrunlevel0/DVDRental";
+            // 
             // picDisc
             // 
             this.picDisc.Image = global::Rentalin.Properties.Resources.disc;
@@ -591,49 +621,32 @@
             this.picDisc.TabIndex = 8;
             this.picDisc.TabStop = false;
             // 
-            // lblMemutakhirkan
+            // pictureBox1
             // 
-            this.lblMemutakhirkan.AutoSize = true;
-            this.lblMemutakhirkan.Location = new System.Drawing.Point(9, 245);
-            this.lblMemutakhirkan.Name = "lblMemutakhirkan";
-            this.lblMemutakhirkan.Size = new System.Drawing.Size(155, 13);
-            this.lblMemutakhirkan.TabIndex = 29;
-            this.lblMemutakhirkan.Text = "Memutakhirkan Data Statistik...";
-            this.lblMemutakhirkan.Visible = false;
+            this.pictureBox1.Image = global::Rentalin.Properties.Resources.report;
+            this.pictureBox1.Location = new System.Drawing.Point(15, 8);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(92, 109);
+            this.pictureBox1.TabIndex = 18;
+            this.pictureBox1.TabStop = false;
             // 
-            // tmrStatistik
+            // picTransaksi
             // 
-            this.tmrStatistik.Enabled = true;
-            this.tmrStatistik.Interval = 10000;
-            this.tmrStatistik.Tick += new System.EventHandler(this.tmrStatistik_Tick);
+            this.picTransaksi.Image = global::Rentalin.Properties.Resources.bill;
+            this.picTransaksi.Location = new System.Drawing.Point(15, 12);
+            this.picTransaksi.Name = "picTransaksi";
+            this.picTransaksi.Size = new System.Drawing.Size(94, 94);
+            this.picTransaksi.TabIndex = 15;
+            this.picTransaksi.TabStop = false;
             // 
-            // lblPenawaranSpesialInfo
+            // picMaster
             // 
-            this.lblPenawaranSpesialInfo.AutoSize = true;
-            this.lblPenawaranSpesialInfo.ForeColor = System.Drawing.Color.Red;
-            this.lblPenawaranSpesialInfo.Location = new System.Drawing.Point(8, 229);
-            this.lblPenawaranSpesialInfo.Name = "lblPenawaranSpesialInfo";
-            this.lblPenawaranSpesialInfo.Size = new System.Drawing.Size(133, 13);
-            this.lblPenawaranSpesialInfo.TabIndex = 30;
-            this.lblPenawaranSpesialInfo.Text = "Penawaran Spesial Hari ini";
-            this.lblPenawaranSpesialInfo.Visible = false;
-            // 
-            // lblPenawaranSpesial
-            // 
-            this.lblPenawaranSpesial.AutoSize = true;
-            this.lblPenawaranSpesial.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPenawaranSpesial.ForeColor = System.Drawing.Color.Red;
-            this.lblPenawaranSpesial.Location = new System.Drawing.Point(7, 245);
-            this.lblPenawaranSpesial.Name = "lblPenawaranSpesial";
-            this.lblPenawaranSpesial.Size = new System.Drawing.Size(151, 20);
-            this.lblPenawaranSpesial.TabIndex = 31;
-            this.lblPenawaranSpesial.Text = "Diskon Natal 50%";
-            this.lblPenawaranSpesial.Visible = false;
-            // 
-            // tmrBlinkingPenawaranSpesial
-            // 
-            this.tmrBlinkingPenawaranSpesial.Interval = 500;
-            this.tmrBlinkingPenawaranSpesial.Tick += new System.EventHandler(this.tmrBlinkingPenawaranSpesial_Tick);
+            this.picMaster.Image = global::Rentalin.Properties.Resources.db;
+            this.picMaster.Location = new System.Drawing.Point(15, 10);
+            this.picMaster.Name = "picMaster";
+            this.picMaster.Size = new System.Drawing.Size(92, 95);
+            this.picMaster.TabIndex = 1;
+            this.picMaster.TabStop = false;
             // 
             // frmMainOperator
             // 
@@ -641,6 +654,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(749, 482);
+            this.Controls.Add(this.lblPowered);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.lblTime);
             this.Controls.Add(this.lblDate);
@@ -658,16 +672,16 @@
             this.panel1.PerformLayout();
             this.pnlMaster.ResumeLayout(false);
             this.pnlMaster.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picMaster)).EndInit();
             this.pnlTransaksi.ResumeLayout(false);
             this.pnlTransaksi.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picTransaksi)).EndInit();
             this.pnlLaporan.ResumeLayout(false);
             this.pnlLaporan.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picDisc)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picTransaksi)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picMaster)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -728,5 +742,6 @@
         private System.Windows.Forms.Label lblPenawaranSpesial;
         private System.Windows.Forms.Label lblPenawaranSpesialInfo;
         private System.Windows.Forms.Timer tmrBlinkingPenawaranSpesial;
+        private System.Windows.Forms.Label lblPowered;
     }
 }

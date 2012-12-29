@@ -231,12 +231,14 @@
             // 
             // btnBatal
             // 
+            this.btnBatal.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnBatal.Location = new System.Drawing.Point(434, 420);
             this.btnBatal.Name = "btnBatal";
             this.btnBatal.Size = new System.Drawing.Size(75, 23);
             this.btnBatal.TabIndex = 5;
             this.btnBatal.Text = "Batal";
             this.btnBatal.UseVisualStyleBackColor = true;
+            this.btnBatal.Click += new System.EventHandler(this.btnBatal_Click);
             // 
             // gbLamaPenyewaan
             // 
@@ -342,8 +344,10 @@
             // 
             // frmPengaturan
             // 
+            this.AcceptButton = this.btnTerapkan;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnBatal;
             this.ClientSize = new System.Drawing.Size(525, 449);
             this.Controls.Add(this.gbJumlahSewa);
             this.Controls.Add(this.gbLamaPenyewaan);

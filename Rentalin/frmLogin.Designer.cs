@@ -33,10 +33,10 @@
             this.btnLogin = new System.Windows.Forms.Button();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.txtUserName = new System.Windows.Forms.TextBox();
-            this.lblJudul = new System.Windows.Forms.Label();
+            this.picDisc = new System.Windows.Forms.PictureBox();
             this.lblNamaLayanan = new System.Windows.Forms.Label();
             this.lblAlamatLayanan = new System.Windows.Forms.Label();
-            this.picDisc = new System.Windows.Forms.PictureBox();
+            this.lblPowered = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picUser)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picDisc)).BeginInit();
@@ -99,34 +99,6 @@
             this.txtUserName.Enter += new System.EventHandler(this.txtUserName_Enter);
             this.txtUserName.Leave += new System.EventHandler(this.txtUserName_Leave);
             // 
-            // lblJudul
-            // 
-            this.lblJudul.AutoSize = true;
-            this.lblJudul.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblJudul.Location = new System.Drawing.Point(92, 21);
-            this.lblJudul.Name = "lblJudul";
-            this.lblJudul.Size = new System.Drawing.Size(114, 31);
-            this.lblJudul.TabIndex = 1;
-            this.lblJudul.Text = "Rentalin";
-            // 
-            // lblNamaLayanan
-            // 
-            this.lblNamaLayanan.AutoSize = true;
-            this.lblNamaLayanan.Location = new System.Drawing.Point(98, 52);
-            this.lblNamaLayanan.Name = "lblNamaLayanan";
-            this.lblNamaLayanan.Size = new System.Drawing.Size(62, 13);
-            this.lblNamaLayanan.TabIndex = 2;
-            this.lblNamaLayanan.Text = "HMTC Disc";
-            // 
-            // lblAlamatLayanan
-            // 
-            this.lblAlamatLayanan.AutoSize = true;
-            this.lblAlamatLayanan.Location = new System.Drawing.Point(98, 65);
-            this.lblAlamatLayanan.Name = "lblAlamatLayanan";
-            this.lblAlamatLayanan.Size = new System.Drawing.Size(170, 13);
-            this.lblAlamatLayanan.TabIndex = 3;
-            this.lblAlamatLayanan.Text = "Jalan Teknik Kimia, ITS, Surabaya";
-            // 
             // picDisc
             // 
             this.picDisc.Image = global::Rentalin.Properties.Resources.disc;
@@ -136,16 +108,46 @@
             this.picDisc.TabIndex = 4;
             this.picDisc.TabStop = false;
             // 
+            // lblNamaLayanan
+            // 
+            this.lblNamaLayanan.AutoSize = true;
+            this.lblNamaLayanan.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNamaLayanan.ForeColor = System.Drawing.Color.Black;
+            this.lblNamaLayanan.Location = new System.Drawing.Point(103, 30);
+            this.lblNamaLayanan.Name = "lblNamaLayanan";
+            this.lblNamaLayanan.Size = new System.Drawing.Size(130, 25);
+            this.lblNamaLayanan.TabIndex = 8;
+            this.lblNamaLayanan.Text = "HMTC Disc";
+            // 
+            // lblAlamatLayanan
+            // 
+            this.lblAlamatLayanan.AutoSize = true;
+            this.lblAlamatLayanan.ForeColor = System.Drawing.Color.Black;
+            this.lblAlamatLayanan.Location = new System.Drawing.Point(105, 55);
+            this.lblAlamatLayanan.Name = "lblAlamatLayanan";
+            this.lblAlamatLayanan.Size = new System.Drawing.Size(170, 13);
+            this.lblAlamatLayanan.TabIndex = 9;
+            this.lblAlamatLayanan.Text = "Jalan Teknik Kimia, ITS, Surabaya";
+            // 
+            // lblPowered
+            // 
+            this.lblPowered.AutoSize = true;
+            this.lblPowered.Location = new System.Drawing.Point(491, 292);
+            this.lblPowered.Name = "lblPowered";
+            this.lblPowered.Size = new System.Drawing.Size(210, 26);
+            this.lblPowered.TabIndex = 10;
+            this.lblPowered.Text = "Powered by RENTALIN engine\r\nhttp://github.com/initrunlevel0/DVDRental";
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(727, 330);
-            this.Controls.Add(this.picDisc);
-            this.Controls.Add(this.lblAlamatLayanan);
+            this.Controls.Add(this.lblPowered);
             this.Controls.Add(this.lblNamaLayanan);
-            this.Controls.Add(this.lblJudul);
+            this.Controls.Add(this.lblAlamatLayanan);
+            this.Controls.Add(this.picDisc);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -168,11 +170,11 @@
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.TextBox txtUserName;
-        private System.Windows.Forms.Label lblJudul;
-        private System.Windows.Forms.Label lblNamaLayanan;
-        private System.Windows.Forms.Label lblAlamatLayanan;
         private System.Windows.Forms.PictureBox picUser;
         private System.Windows.Forms.PictureBox picDisc;
+        private System.Windows.Forms.Label lblNamaLayanan;
+        private System.Windows.Forms.Label lblAlamatLayanan;
+        private System.Windows.Forms.Label lblPowered;
 
     }
 }
