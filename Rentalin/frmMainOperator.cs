@@ -203,12 +203,7 @@ namespace Rentalin
                 lblTime.Text = jam + " " + menit + " " + detik;
                 blinker = true;
             }
-
-            
-        }
-
-      
-
+        }   
 
         private void btnHallofFame_Click(object sender, EventArgs e)
         {

@@ -12,7 +12,6 @@ namespace Rentalin
 {
     public partial class frmLaporanTransaksi : Form
     {
-        DataTable dataTransaksi;
         private const int LAPTRANSAKSI_MODE_HARIAN = 0;
         private const int LAPTRANSAKSI_MODE_MINGGUAN = 1;
         private const int LAPTRANSAKSI_MODE_BULANAN = 2;

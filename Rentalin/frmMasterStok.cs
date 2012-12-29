@@ -91,7 +91,6 @@ namespace Rentalin
             cmbKondisi.Items.Add("1");
             cmbStatus.Items.Add("0");
             cmbStatus.Items.Add("1");
-            
         }
 
         private void dgStokKoleksi_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
@@ -124,18 +123,40 @@ namespace Rentalin
             cmbKondisi.Text = dgStokKoleksi.Rows[dgStokKoleksi.CurrentCellAddress.Y].Cells[2].Value.ToString();
             cmbStatus.Text = dgStokKoleksi.Rows[dgStokKoleksi.CurrentCellAddress.Y].Cells[3].Value.ToString();
             txtHarga.Text = dgStokKoleksi.Rows[dgStokKoleksi.CurrentCellAddress.Y].Cells[4].Value.ToString();
+
+
+            cmbKondisi.Enabled = true;
+            cmbStatus.Enabled = true;
+            txtHarga.Enabled = true;
+            dtpTglBeli.Enabled = true;
+            btnPerbarui.Enabled = true;
+
             string date = dgStokKoleksi.Rows[dgStokKoleksi.CurrentCellAddress.Y].Cells[5].Value.ToString();
             date = date.Substring(0, 10);
-            string pertama, kedua, ketiga;
-            if (date.Substring(9, 1) == " ")
+            string newDate = "";
+
+            if (date.Substring(1, 1) == "/" && date.Substring(3, 1) == "/")
             {
-                pertama = date.Substring(0, 3);
-                MessageBox.Show(date);
+                newDate = "0";
+                newDate += date.Substring(0, 2);
+                newDate += "0";
+                newDate += date.Substring(3, 5);
             }
-            
-            //int i;
-            
-            //dtpTglBeli.Value = DateTime.ParseExact(date, "MM/dd/yyyy", null);
+            else if (date.Substring(1, 1) == "/" && date.Substring(4, 1) == "/")
+            {
+                newDate = "0";
+                newDate += date.Substring(0, 9);
+            }
+            else if (date.Substring(2, 1) == "/" && date.Substring(4, 1) == "/")
+            {
+                newDate = date.Substring(0, 3);
+                newDate += "0";
+                newDate += date.Substring(3, 6);
+            }
+            else
+                newDate = date.Substring(0, 10);
+
+            dtpTglBeli.Value = DateTime.ParseExact(newDate, "MM/dd/yyyy",null);
 
         }
 
@@ -158,7 +179,7 @@ namespace Rentalin
 
         private void btnPilihKoleksi_Click(object sender, EventArgs e)
         {
-            stok = Program.conn.ExecuteDataTable("SELECT * FROM stokkoleksi WHERE kodekoleksi = '"+txtPilihKoleksi.Text+"'");
+            stok = Program.conn.ExecuteDataTable("SELECT * FROM stokkoleksi WHERE kodekoleksi = '" + txtPilihKoleksi.Text + "'");
             if (stok.Rows.Count > 1)
             {
                 dgStokKoleksi.DataSource = stok;
@@ -171,12 +192,7 @@ namespace Rentalin
             {
                 txtPencarian.ResetText();
                 MessageBox.Show("Kode Koleksi tidak ada");
-            }            
-        }
-
-        private void txtKodeStok_TextChanged(object sender, EventArgs e)
-        {
-
+            }
         }
 
         private void txtKodeStok_Enter(object sender, EventArgs e)
@@ -227,7 +243,7 @@ namespace Rentalin
             {
                 for (i = 0; i < idx; i++)
                 {
-                    if (info.Rows[i].ItemArray[0].ToString() == txtKodeStok.Text && modify == 1)
+                    if (info.Rows[i].ItemArray[0].ToString() == txtKodeStok.Text && modify == 0)
                     {
                         MessageBox.Show("Kode Stok tidak bisa diterima");
                         break;
@@ -249,8 +265,8 @@ namespace Rentalin
                         dgStokKoleksi.DataSource = pencarian;
                     }
                     else if (modify == 1)
-                    {
-                        string update = "UPDATE stokkoleksi SET kodestok = '" + txtKodeStok.Text + "', kondisi = " + cmbKondisi.Text + ", status = " + cmbStatus.Text + ", harga = " + txtHarga.Text + ", tglbeli = to_date('" + dtpTglBeli.Value.Date.ToString().Substring(0, 10) + "','mm/dd/yyyy') WHERE kodekoleksi = '" + viewStok + "'";
+                    {                        
+                        string update = "UPDATE stokkoleksi SET kondisi = " + cmbKondisi.Text + ", status = " + cmbStatus.Text + ", harga = " + txtHarga.Text + ", tglbeli = to_date('" + dtpTglBeli.Value.Date.ToString().Substring(0, 10) + "','MM/dd/yyyy') WHERE kodestok = '" + txtKodeStok.Text + "'";
                         Program.conn.ExecuteNonQuery(update);
                         MessageBox.Show("Data berhasil diperbarui");
                         txtKodeStok.ResetText();
@@ -265,5 +281,6 @@ namespace Rentalin
             }
 
         }
+
     }
 }
