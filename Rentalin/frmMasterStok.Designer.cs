@@ -43,8 +43,11 @@
             this.lblGenre = new System.Windows.Forms.Label();
             this.lblJudul = new System.Windows.Forms.Label();
             this.btnPilihKoleksi = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtPilihKoleksi = new System.Windows.Forms.TextBox();
             this.lblDipilih = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
             this.pnlInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picInfo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgStokKoleksi)).BeginInit();
@@ -135,6 +138,7 @@
             this.btnTambah.TabIndex = 6;
             this.btnTambah.Text = "Tambah Stok";
             this.btnTambah.UseVisualStyleBackColor = true;
+            this.btnTambah.Click += new System.EventHandler(this.btnTambah_Click);
             // 
             // btnHistori
             // 
@@ -149,12 +153,13 @@
             // btnModifikasi
             // 
             this.btnModifikasi.ForeColor = System.Drawing.Color.Black;
-            this.btnModifikasi.Location = new System.Drawing.Point(43, 340);
+            this.btnModifikasi.Location = new System.Drawing.Point(43, 339);
             this.btnModifikasi.Name = "btnModifikasi";
             this.btnModifikasi.Size = new System.Drawing.Size(121, 28);
             this.btnModifikasi.TabIndex = 7;
             this.btnModifikasi.Text = "Modifikasi Stok";
             this.btnModifikasi.UseVisualStyleBackColor = true;
+            this.btnModifikasi.Click += new System.EventHandler(this.btnModifikasi_Click);
             // 
             // dgStokKoleksi
             // 
@@ -163,17 +168,21 @@
             this.dgStokKoleksi.Name = "dgStokKoleksi";
             this.dgStokKoleksi.Size = new System.Drawing.Size(477, 329);
             this.dgStokKoleksi.TabIndex = 4;
+            this.dgStokKoleksi.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgStokKoleksi_CellContentClick);
             this.dgStokKoleksi.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dgStokKoleksi_RowsRemoved);
             // 
             // pnlKoleksiDIpilih
             // 
             this.pnlKoleksiDIpilih.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(173)))), ((int)(((byte)(191)))));
+            this.pnlKoleksiDIpilih.Controls.Add(this.textBox4);
+            this.pnlKoleksiDIpilih.Controls.Add(this.textBox3);
+            this.pnlKoleksiDIpilih.Controls.Add(this.textBox2);
             this.pnlKoleksiDIpilih.Controls.Add(this.lblGenre);
             this.pnlKoleksiDIpilih.Controls.Add(this.lblJudul);
             this.pnlKoleksiDIpilih.Controls.Add(this.btnHistori);
             this.pnlKoleksiDIpilih.Controls.Add(this.btnPilihKoleksi);
             this.pnlKoleksiDIpilih.Controls.Add(this.btnTambah);
-            this.pnlKoleksiDIpilih.Controls.Add(this.textBox1);
+            this.pnlKoleksiDIpilih.Controls.Add(this.txtPilihKoleksi);
             this.pnlKoleksiDIpilih.Controls.Add(this.btnHapus);
             this.pnlKoleksiDIpilih.Controls.Add(this.lblDipilih);
             this.pnlKoleksiDIpilih.Controls.Add(this.btnModifikasi);
@@ -189,9 +198,9 @@
             this.lblGenre.ForeColor = System.Drawing.Color.White;
             this.lblGenre.Location = new System.Drawing.Point(4, 105);
             this.lblGenre.Name = "lblGenre";
-            this.lblGenre.Size = new System.Drawing.Size(55, 13);
+            this.lblGenre.Size = new System.Drawing.Size(36, 13);
             this.lblGenre.TabIndex = 14;
-            this.lblGenre.Text = "Bollywood";
+            this.lblGenre.Text = "Genre";
             // 
             // lblJudul
             // 
@@ -200,9 +209,9 @@
             this.lblJudul.ForeColor = System.Drawing.Color.White;
             this.lblJudul.Location = new System.Drawing.Point(4, 92);
             this.lblJudul.Name = "lblJudul";
-            this.lblJudul.Size = new System.Drawing.Size(178, 13);
+            this.lblJudul.Size = new System.Drawing.Size(64, 13);
             this.lblJudul.TabIndex = 13;
-            this.lblJudul.Text = "Dilwale Dulhania Le Jayengge";
+            this.lblJudul.Text = "Judul FIlm";
             // 
             // btnPilihKoleksi
             // 
@@ -213,13 +222,14 @@
             this.btnPilihKoleksi.TabIndex = 10;
             this.btnPilihKoleksi.Text = "Pilih Koleksi";
             this.btnPilihKoleksi.UseVisualStyleBackColor = true;
+            this.btnPilihKoleksi.Click += new System.EventHandler(this.btnPilihKoleksi_Click);
             // 
-            // textBox1
+            // txtPilihKoleksi
             // 
-            this.textBox1.Location = new System.Drawing.Point(9, 69);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(188, 20);
-            this.textBox1.TabIndex = 1;
+            this.txtPilihKoleksi.Location = new System.Drawing.Point(9, 69);
+            this.txtPilihKoleksi.Name = "txtPilihKoleksi";
+            this.txtPilihKoleksi.Size = new System.Drawing.Size(188, 20);
+            this.txtPilihKoleksi.TabIndex = 1;
             // 
             // lblDipilih
             // 
@@ -230,6 +240,27 @@
             this.lblDipilih.Size = new System.Drawing.Size(118, 13);
             this.lblDipilih.TabIndex = 0;
             this.lblDipilih.Text = "Koleksi yang Dipilih";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(9, 174);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(188, 20);
+            this.textBox2.TabIndex = 15;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(9, 200);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(188, 20);
+            this.textBox3.TabIndex = 16;
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(9, 226);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(188, 20);
+            this.textBox4.TabIndex = 17;
             // 
             // frmMasterStok
             // 
@@ -271,9 +302,12 @@
         private System.Windows.Forms.DataGridView dgStokKoleksi;
         private System.Windows.Forms.Panel pnlKoleksiDIpilih;
         private System.Windows.Forms.Button btnPilihKoleksi;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtPilihKoleksi;
         private System.Windows.Forms.Label lblDipilih;
         private System.Windows.Forms.Label lblGenre;
         private System.Windows.Forms.Label lblJudul;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }

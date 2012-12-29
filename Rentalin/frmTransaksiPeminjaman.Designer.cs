@@ -41,9 +41,7 @@
             this.btnCariPelanggan = new System.Windows.Forms.Button();
             this.txtPeminjam = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.lblTambahJudul = new System.Windows.Forms.Label();
             this.txtTambahJudul = new System.Windows.Forms.TextBox();
-            this.btnCariJudul = new System.Windows.Forms.Button();
             this.dgPeminjaman = new System.Windows.Forms.DataGridView();
             this.pnlDetail = new System.Windows.Forms.Panel();
             this.lblDetail = new System.Windows.Forms.Label();
@@ -69,6 +67,8 @@
             this.lblNmrNota = new System.Windows.Forms.Label();
             this.lblNmrNotaInfo = new System.Windows.Forms.Label();
             this.lblDetailTransaksi = new System.Windows.Forms.Label();
+            this.btnCariJudul = new System.Windows.Forms.Button();
+            this.lblTambahJudul = new System.Windows.Forms.Label();
             this.pnlInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picInfo)).BeginInit();
             this.pnlPeminjam.SuspendLayout();
@@ -211,31 +211,14 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Peminjam";
             // 
-            // lblTambahJudul
-            // 
-            this.lblTambahJudul.AutoSize = true;
-            this.lblTambahJudul.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTambahJudul.Location = new System.Drawing.Point(9, 93);
-            this.lblTambahJudul.Name = "lblTambahJudul";
-            this.lblTambahJudul.Size = new System.Drawing.Size(106, 16);
-            this.lblTambahJudul.TabIndex = 3;
-            this.lblTambahJudul.Text = "Tambah Judul";
-            // 
             // txtTambahJudul
             // 
             this.txtTambahJudul.Location = new System.Drawing.Point(212, 91);
             this.txtTambahJudul.Name = "txtTambahJudul";
             this.txtTambahJudul.Size = new System.Drawing.Size(193, 20);
             this.txtTambahJudul.TabIndex = 4;
-            // 
-            // btnCariJudul
-            // 
-            this.btnCariJudul.Location = new System.Drawing.Point(121, 91);
-            this.btnCariJudul.Name = "btnCariJudul";
-            this.btnCariJudul.Size = new System.Drawing.Size(85, 20);
-            this.btnCariJudul.TabIndex = 5;
-            this.btnCariJudul.Text = "Cari Judul";
-            this.btnCariJudul.UseVisualStyleBackColor = true;
+            this.txtTambahJudul.TextChanged += new System.EventHandler(this.txtTambahJudul_TextChanged);
+            
             // 
             // dgPeminjaman
             // 
@@ -499,6 +482,26 @@
             this.lblDetailTransaksi.TabIndex = 0;
             this.lblDetailTransaksi.Text = "DETAIL\r\nTRANSAKSI";
             // 
+            // btnCariJudul
+            // 
+            this.btnCariJudul.Location = new System.Drawing.Point(121, 91);
+            this.btnCariJudul.Name = "btnCariJudul";
+            this.btnCariJudul.Size = new System.Drawing.Size(85, 20);
+            this.btnCariJudul.TabIndex = 5;
+            this.btnCariJudul.Text = "Cari Judul";
+            this.btnCariJudul.UseVisualStyleBackColor = true;
+            this.btnCariJudul.Click += new System.EventHandler(this.btnCariJudul_Click);
+            // 
+            // lblTambahJudul
+            // 
+            this.lblTambahJudul.AutoSize = true;
+            this.lblTambahJudul.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTambahJudul.Location = new System.Drawing.Point(9, 93);
+            this.lblTambahJudul.Name = "lblTambahJudul";
+            this.lblTambahJudul.Size = new System.Drawing.Size(106, 16);
+            this.lblTambahJudul.TabIndex = 3;
+            this.lblTambahJudul.Text = "Tambah Judul";
+            // 
             // frmTransaksiPeminjaman
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -547,9 +550,7 @@
         private System.Windows.Forms.Button btnCariPelanggan;
         private System.Windows.Forms.TextBox txtPeminjam;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lblTambahJudul;
         private System.Windows.Forms.TextBox txtTambahJudul;
-        private System.Windows.Forms.Button btnCariJudul;
         private System.Windows.Forms.DataGridView dgPeminjaman;
         private System.Windows.Forms.Panel pnlDetail;
         private System.Windows.Forms.Button btnHapus;
@@ -578,5 +579,7 @@
         private System.Windows.Forms.Label lblKodeMember;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label lblLamaPenyewaan;
+        private System.Windows.Forms.Button btnCariJudul;
+        private System.Windows.Forms.Label lblTambahJudul;
     }
 }

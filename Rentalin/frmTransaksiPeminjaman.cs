@@ -147,7 +147,7 @@ namespace Rentalin
                         lblNamaPeminjam.Text = member.Rows[i].ItemArray[1].ToString();
                         lblKodeMember.Text = txtPeminjam.Text;
                         txtTambahJudul.Enabled = true;
-                        btnCariJudul.Enabled = true;
+                        //btnCariJudul.Enabled = true;
                         btnTambah.Enabled = true;
                         txtPeminjam.Enabled = false;
                         btOk.Enabled = false;
@@ -237,7 +237,7 @@ namespace Rentalin
             lblNmrNota.Text = "Kode Nota";
             lblNamaPeminjam.Text = "Nama Peminjam";
             lblKodeMember.Text = "Kode Member";
-            btnCariJudul.Enabled = false;
+            //btnCariJudul.Enabled = false;
             txtTambahJudul.Enabled = false;
             btnTambah.Enabled = false;
             btnProses.Enabled = false;
@@ -286,6 +286,20 @@ namespace Rentalin
             {                
                 btnHapus.Enabled = false;
             }             
-        }            
+        }
+
+        private void btnCariJudul_Click(object sender, EventArgs e)
+        {
+            frmPeminjamanCariJudul formPeminjamanCariJudul = new frmPeminjamanCariJudul();
+            formPeminjamanCariJudul.ShowDialog(this);
+        }
+
+        private void txtTambahJudul_TextChanged(object sender, EventArgs e)
+        {
+            if (txtTambahJudul.TextLength == 12)
+                btnTambah_Click(sender,e);
+        }      
+
+              
     }
 }

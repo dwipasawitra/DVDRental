@@ -33,7 +33,6 @@
             this.txtPencarian = new System.Windows.Forms.TextBox();
             this.btnTambah = new System.Windows.Forms.Button();
             this.lblInfoDetail = new System.Windows.Forms.Label();
-            this.picInfo = new System.Windows.Forms.PictureBox();
             this.lblInfo = new System.Windows.Forms.Label();
             this.btnModifikasi = new System.Windows.Forms.Button();
             this.btnHapus = new System.Windows.Forms.Button();
@@ -43,10 +42,12 @@
             this.lblIdentitas = new System.Windows.Forms.Label();
             this.lblNamaPelanggan = new System.Windows.Forms.Label();
             this.lblDetail = new System.Windows.Forms.Label();
+            this.btnMuatUlang = new System.Windows.Forms.Button();
+            this.picInfo = new System.Windows.Forms.PictureBox();
             this.pnlInfo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picInfo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgPelanggan)).BeginInit();
             this.pnlDetail.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picInfo)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlInfo
@@ -79,6 +80,7 @@
             this.txtPencarian.Name = "txtPencarian";
             this.txtPencarian.Size = new System.Drawing.Size(349, 20);
             this.txtPencarian.TabIndex = 7;
+            this.txtPencarian.TextChanged += new System.EventHandler(this.txtPencarian_TextChanged);
             // 
             // btnTambah
             // 
@@ -89,6 +91,7 @@
             this.btnTambah.TabIndex = 6;
             this.btnTambah.Text = "Tambah Pelanggan";
             this.btnTambah.UseVisualStyleBackColor = true;
+            this.btnTambah.Click += new System.EventHandler(this.btnTambah_Click);
             // 
             // lblInfoDetail
             // 
@@ -99,15 +102,6 @@
             this.lblInfoDetail.Size = new System.Drawing.Size(328, 13);
             this.lblInfoDetail.TabIndex = 5;
             this.lblInfoDetail.Text = "Silahkan mengatur daftar pelanggan penyewaan di dalam jendela ini";
-            // 
-            // picInfo
-            // 
-            this.picInfo.Image = global::Rentalin.Properties.Resources.consumer;
-            this.picInfo.Location = new System.Drawing.Point(26, 13);
-            this.picInfo.Name = "picInfo";
-            this.picInfo.Size = new System.Drawing.Size(82, 86);
-            this.picInfo.TabIndex = 0;
-            this.picInfo.TabStop = false;
             // 
             // lblInfo
             // 
@@ -128,6 +122,7 @@
             this.btnModifikasi.TabIndex = 7;
             this.btnModifikasi.Text = "Modifikasi Pelanggan";
             this.btnModifikasi.UseVisualStyleBackColor = true;
+            this.btnModifikasi.Click += new System.EventHandler(this.btnModifikasi_Click);
             // 
             // btnHapus
             // 
@@ -147,6 +142,7 @@
             this.btnHistori.TabIndex = 9;
             this.btnHistori.Text = "Histori Penyewaan";
             this.btnHistori.UseVisualStyleBackColor = true;
+            this.btnHistori.Click += new System.EventHandler(this.btnHistori_Click);
             // 
             // dgPelanggan
             // 
@@ -161,6 +157,7 @@
             // pnlDetail
             // 
             this.pnlDetail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(173)))), ((int)(((byte)(191)))));
+            this.pnlDetail.Controls.Add(this.btnMuatUlang);
             this.pnlDetail.Controls.Add(this.btnHistori);
             this.pnlDetail.Controls.Add(this.lblIdentitas);
             this.pnlDetail.Controls.Add(this.btnHapus);
@@ -203,6 +200,25 @@
             this.lblDetail.TabIndex = 10;
             this.lblDetail.Text = "Detil Pelanggan";
             // 
+            // btnMuatUlang
+            // 
+            this.btnMuatUlang.Location = new System.Drawing.Point(19, 294);
+            this.btnMuatUlang.Name = "btnMuatUlang";
+            this.btnMuatUlang.Size = new System.Drawing.Size(113, 32);
+            this.btnMuatUlang.TabIndex = 13;
+            this.btnMuatUlang.Text = "Muat Ulang";
+            this.btnMuatUlang.UseVisualStyleBackColor = true;
+            this.btnMuatUlang.Click += new System.EventHandler(this.btnMuatUlang_Click);
+            // 
+            // picInfo
+            // 
+            this.picInfo.Image = global::Rentalin.Properties.Resources.consumer;
+            this.picInfo.Location = new System.Drawing.Point(26, 13);
+            this.picInfo.Name = "picInfo";
+            this.picInfo.Size = new System.Drawing.Size(82, 86);
+            this.picInfo.TabIndex = 0;
+            this.picInfo.TabStop = false;
+            // 
             // frmMasterPelanggan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -220,10 +236,10 @@
             this.Load += new System.EventHandler(this.frmMasterPelanggan_Load);
             this.pnlInfo.ResumeLayout(false);
             this.pnlInfo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picInfo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgPelanggan)).EndInit();
             this.pnlDetail.ResumeLayout(false);
             this.pnlDetail.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picInfo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -245,5 +261,6 @@
         private System.Windows.Forms.Label lblDetail;
         private System.Windows.Forms.Label lblPencarian;
         private System.Windows.Forms.TextBox txtPencarian;
+        private System.Windows.Forms.Button btnMuatUlang;
     }
 }
