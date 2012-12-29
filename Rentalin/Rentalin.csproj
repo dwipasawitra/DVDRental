@@ -169,6 +169,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmBayarKembali.resx">
       <DependentUpon>frmBayarKembali.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmTambahPelanggan.resx">
       <DependentUpon>frmTambahPelanggan.cs</DependentUpon>
     </EmbeddedResource>
