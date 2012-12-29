@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.lblTambahKoleksi = new System.Windows.Forms.Label();
-            this.lblKode = new System.Windows.Forms.Label();
+            this.lblKodeMember = new System.Windows.Forms.Label();
             this.txtKode = new System.Windows.Forms.TextBox();
-            this.lblNama = new System.Windows.Forms.Label();
+            this.lblNamaMember = new System.Windows.Forms.Label();
             this.txtJudul = new System.Windows.Forms.TextBox();
             this.lblDeskripsi = new System.Windows.Forms.Label();
             this.txtDeskripsi = new System.Windows.Forms.TextBox();
-            this.lblKategori = new System.Windows.Forms.Label();
+            this.lblJenisIdentitas = new System.Windows.Forms.Label();
             this.cmbKategori = new System.Windows.Forms.ComboBox();
             this.btnKategori = new System.Windows.Forms.Button();
             this.lblJenis = new System.Windows.Forms.Label();
@@ -72,12 +72,12 @@
             // 
             // lblKode
             // 
-            this.lblKode.AutoSize = true;
-            this.lblKode.Location = new System.Drawing.Point(7, 60);
-            this.lblKode.Name = "lblKode";
-            this.lblKode.Size = new System.Drawing.Size(69, 13);
-            this.lblKode.TabIndex = 1;
-            this.lblKode.Text = "Kode Koleksi";
+            this.lblKodeMember.AutoSize = true;
+            this.lblKodeMember.Location = new System.Drawing.Point(7, 60);
+            this.lblKodeMember.Name = "lblKode";
+            this.lblKodeMember.Size = new System.Drawing.Size(69, 13);
+            this.lblKodeMember.TabIndex = 1;
+            this.lblKodeMember.Text = "Kode Koleksi";
             // 
             // txtKode
             // 
@@ -89,12 +89,12 @@
             // 
             // lblNama
             // 
-            this.lblNama.AutoSize = true;
-            this.lblNama.Location = new System.Drawing.Point(44, 82);
-            this.lblNama.Name = "lblNama";
-            this.lblNama.Size = new System.Drawing.Size(32, 13);
-            this.lblNama.TabIndex = 3;
-            this.lblNama.Text = "Judul";
+            this.lblNamaMember.AutoSize = true;
+            this.lblNamaMember.Location = new System.Drawing.Point(44, 82);
+            this.lblNamaMember.Name = "lblNama";
+            this.lblNamaMember.Size = new System.Drawing.Size(32, 13);
+            this.lblNamaMember.TabIndex = 3;
+            this.lblNamaMember.Text = "Judul";
             // 
             // txtJudul
             // 
@@ -122,12 +122,12 @@
             // 
             // lblKategori
             // 
-            this.lblKategori.AutoSize = true;
-            this.lblKategori.Location = new System.Drawing.Point(26, 181);
-            this.lblKategori.Name = "lblKategori";
-            this.lblKategori.Size = new System.Drawing.Size(46, 13);
-            this.lblKategori.TabIndex = 7;
-            this.lblKategori.Text = "Kategori";
+            this.lblJenisIdentitas.AutoSize = true;
+            this.lblJenisIdentitas.Location = new System.Drawing.Point(26, 181);
+            this.lblJenisIdentitas.Name = "lblKategori";
+            this.lblJenisIdentitas.Size = new System.Drawing.Size(46, 13);
+            this.lblJenisIdentitas.TabIndex = 7;
+            this.lblJenisIdentitas.Text = "Kategori";
             // 
             // cmbKategori
             // 
@@ -366,13 +366,13 @@
             this.Controls.Add(this.lblJenis);
             this.Controls.Add(this.btnKategori);
             this.Controls.Add(this.cmbKategori);
-            this.Controls.Add(this.lblKategori);
+            this.Controls.Add(this.lblJenisIdentitas);
             this.Controls.Add(this.txtDeskripsi);
             this.Controls.Add(this.lblDeskripsi);
             this.Controls.Add(this.txtJudul);
-            this.Controls.Add(this.lblNama);
+            this.Controls.Add(this.lblNamaMember);
             this.Controls.Add(this.txtKode);
-            this.Controls.Add(this.lblKode);
+            this.Controls.Add(this.lblKodeMember);
             this.Controls.Add(this.lblTambahKoleksi);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
