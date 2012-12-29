@@ -92,6 +92,7 @@
             this.txtPencarian.Name = "txtPencarian";
             this.txtPencarian.Size = new System.Drawing.Size(349, 20);
             this.txtPencarian.TabIndex = 9;
+            this.txtPencarian.TextChanged += new System.EventHandler(this.txtPencarian_TextChanged);
             // 
             // lblInfoDetail
             // 

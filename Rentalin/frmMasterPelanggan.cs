@@ -44,8 +44,8 @@ namespace Rentalin
         private void dgPelanggan_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int y = e.RowIndex;
-            lblNamaPelanggan.Text = pelanggan.Rows[y].ItemArray[1].ToString();
-            lblIdentitas.Text = "Identitas : " + pelanggan.Rows[y].ItemArray[3].ToString();
+            lblNamaPelanggan.Text = dgPelanggan.Rows[y].Cells[1].Value.ToString();// pelanggan.Rows[y].ItemArray[1].ToString();
+            lblIdentitas.Text = "Identitas : " + dgPelanggan.Rows[y].Cells[3].Value.ToString(); 
 
         }
 
@@ -58,7 +58,7 @@ namespace Rentalin
         private void btnModifikasi_Click(object sender, EventArgs e)
         {
             int y = dgPelanggan.CurrentCellAddress.Y;
-            frmTambahPelanggan formTambahPelanggan = new frmTambahPelanggan(pelanggan.Rows[y].ItemArray[0].ToString());
+            frmTambahPelanggan formTambahPelanggan = new frmTambahPelanggan(dgPelanggan.Rows[y].Cells[0].Value.ToString());
             formTambahPelanggan.ShowDialog(this);
         }
 
