@@ -111,6 +111,12 @@
     <Compile Include="frmMasterStok.Designer.cs">
       <DependentUpon>frmMasterStok.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmPeminjamanCariJudul.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPeminjamanCariJudul.Designer.cs">
+      <DependentUpon>frmPeminjamanCariJudul.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmPengaturan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -134,6 +140,12 @@
     </Compile>
     <Compile Include="frmTambahKoleksi.Designer.cs">
       <DependentUpon>frmTambahKoleksi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTambahPelanggan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTambahPelanggan.Designer.cs">
+      <DependentUpon>frmTambahPelanggan.cs</DependentUpon>
     </Compile>
     <Compile Include="frmTransaksiPeminjaman.cs">
       <SubType>Form</SubType>
@@ -167,8 +179,14 @@
     <EmbeddedResource Include="frmMasterKoleksi.resx">
       <DependentUpon>frmMasterKoleksi.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmMasterPelanggan.resx">
+      <DependentUpon>frmMasterPelanggan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMasterStok.resx">
       <DependentUpon>frmMasterStok.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPeminjamanCariJudul.resx">
+      <DependentUpon>frmPeminjamanCariJudul.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPengaturan.resx">
       <DependentUpon>frmPengaturan.cs</DependentUpon>
@@ -181,6 +199,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmTambahKoleksi.resx">
       <DependentUpon>frmTambahKoleksi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTambahPelanggan.resx">
+      <DependentUpon>frmTambahPelanggan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTransaksiPeminjaman.resx">
       <DependentUpon>frmTransaksiPeminjaman.cs</DependentUpon>
