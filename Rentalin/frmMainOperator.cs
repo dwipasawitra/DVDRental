@@ -52,7 +52,7 @@ namespace Rentalin
         private void btnMasterStok_Click(object sender, EventArgs e)
         {
             frmMasterStok formMasterStok = new frmMasterStok();
-            formMasterStok.Show();
+            formMasterStok.ShowDialog(this);
             //Close();
         }
                
