@@ -176,7 +176,7 @@
             this.dgStokKoleksi.Name = "dgStokKoleksi";
             this.dgStokKoleksi.Size = new System.Drawing.Size(477, 329);
             this.dgStokKoleksi.TabIndex = 4;
-            this.dgStokKoleksi.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgStokKoleksi_CellContentClick);
+            this.dgStokKoleksi.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgStokKoleksi_CellContentClick);            
             this.dgStokKoleksi.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dgStokKoleksi_RowsRemoved);
             // 
             // pnlKoleksiDIpilih

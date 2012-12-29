@@ -17,7 +17,7 @@ namespace Rentalin
         }
         
         DataTable koleksi = new DataTable();
-
+        DataTable pencarian = new DataTable();
         private void tampilanAwal()
         {
             lblJudul.Text = "Judul Film";
@@ -67,6 +67,12 @@ namespace Rentalin
             int y = dgKoleksi.CurrentCellAddress.Y;
             frmTambahKoleksi formTambahKoleksi = new frmTambahKoleksi(koleksi.Rows[y].ItemArray[0].ToString());
             formTambahKoleksi.ShowDialog(this);
+        }
+
+        private void txtPencarian_TextChanged(object sender, EventArgs e)
+        {
+            pencarian = Program.conn.ExecuteDataTable("SELECT kodekoleksi, namaitem, genre.namakategori, biayasewafilm, biayadendafilm from koleksi, genre where genre.kodekategori = koleksi.kodekategori AND (kodekoleksi like '%"+txtPencarian.Text+"%' OR namaitem like '%"+txtPencarian.Text+"%')");
+            dgKoleksi.DataSource = pencarian;
         }
         
     }
