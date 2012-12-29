@@ -52,6 +52,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.txtHargaSewa = new System.Windows.Forms.TextBox();
+            this.txtHargaDenda = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.picCoverArt)).BeginInit();
             this.SuspendLayout();
             // 
@@ -275,11 +277,27 @@
             this.label7.TabIndex = 23;
             this.label7.Text = "informasi ini dibutuhkan";
             // 
+            // txtHargaSewa
+            // 
+            this.txtHargaSewa.Location = new System.Drawing.Point(23, 145);
+            this.txtHargaSewa.Name = "txtHargaSewa";
+            this.txtHargaSewa.Size = new System.Drawing.Size(53, 20);
+            this.txtHargaSewa.TabIndex = 24;
+            // 
+            // txtHargaDenda
+            // 
+            this.txtHargaDenda.Location = new System.Drawing.Point(25, 174);
+            this.txtHargaDenda.Name = "txtHargaDenda";
+            this.txtHargaDenda.Size = new System.Drawing.Size(50, 20);
+            this.txtHargaDenda.TabIndex = 25;
+            // 
             // frmTambahKoleksi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(308, 486);
+            this.Controls.Add(this.txtHargaDenda);
+            this.Controls.Add(this.txtHargaSewa);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -342,5 +360,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtHargaSewa;
+        private System.Windows.Forms.TextBox txtHargaDenda;
     }
 }
