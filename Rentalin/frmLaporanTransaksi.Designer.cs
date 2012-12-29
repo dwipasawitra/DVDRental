@@ -28,29 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLaporanTransaksi));
-            this.reportviewNota = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.reportviewTransaksi = new Microsoft.Reporting.WinForms.ReportViewer();
             this.pnlInfo = new System.Windows.Forms.Panel();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.rbPerBulan = new System.Windows.Forms.RadioButton();
+            this.rbPerMinggu = new System.Windows.Forms.RadioButton();
+            this.rbPerTanggal = new System.Windows.Forms.RadioButton();
+            this.dtpTanggal = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.lblInfo = new System.Windows.Forms.Label();
-            this.rbPerTanggal = new System.Windows.Forms.RadioButton();
-            this.rbPerMinggu = new System.Windows.Forms.RadioButton();
-            this.rbPerBulan = new System.Windows.Forms.RadioButton();
+            this.dsRentalin = new Rentalin.dsRentalin();
+            this.QueryTransaksiBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.QueryTransaksiTableAdapter = new Rentalin.dsRentalinTableAdapters.QueryTransaksiTableAdapter();
             this.pnlInfo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dsRentalin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.QueryTransaksiBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
-            // reportviewNota
+            // reportviewTransaksi
             // 
-            reportDataSource1.Name = "dsQueryNota";
-            reportDataSource1.Value = null;
-            this.reportviewNota.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportviewNota.LocalReport.ReportEmbeddedResource = "Rentalin.rptLaporanNota.rdlc";
-            this.reportviewNota.Location = new System.Drawing.Point(257, 8);
-            this.reportviewNota.Name = "reportviewNota";
-            this.reportviewNota.Size = new System.Drawing.Size(707, 416);
-            this.reportviewNota.TabIndex = 6;
+            reportDataSource1.Name = "dsLaporanTransaksi";
+            reportDataSource1.Value = this.QueryTransaksiBindingSource;
+            this.reportviewTransaksi.LocalReport.DataSources.Add(reportDataSource1);
+            this.reportviewTransaksi.LocalReport.ReportEmbeddedResource = "Rentalin.rptLaporanTransaksi.rdlc";
+            this.reportviewTransaksi.Location = new System.Drawing.Point(257, 8);
+            this.reportviewTransaksi.Name = "reportviewTransaksi";
+            this.reportviewTransaksi.Size = new System.Drawing.Size(707, 416);
+            this.reportviewTransaksi.TabIndex = 6;
             // 
             // pnlInfo
             // 
@@ -58,7 +64,7 @@
             this.pnlInfo.Controls.Add(this.rbPerBulan);
             this.pnlInfo.Controls.Add(this.rbPerMinggu);
             this.pnlInfo.Controls.Add(this.rbPerTanggal);
-            this.pnlInfo.Controls.Add(this.dateTimePicker1);
+            this.pnlInfo.Controls.Add(this.dtpTanggal);
             this.pnlInfo.Controls.Add(this.label2);
             this.pnlInfo.Controls.Add(this.lblInfo);
             this.pnlInfo.ForeColor = System.Drawing.Color.White;
@@ -67,12 +73,48 @@
             this.pnlInfo.Size = new System.Drawing.Size(251, 420);
             this.pnlInfo.TabIndex = 9;
             // 
-            // dateTimePicker1
+            // rbPerBulan
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(18, 178);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(218, 20);
-            this.dateTimePicker1.TabIndex = 4;
+            this.rbPerBulan.AutoSize = true;
+            this.rbPerBulan.Location = new System.Drawing.Point(18, 275);
+            this.rbPerBulan.Name = "rbPerBulan";
+            this.rbPerBulan.Size = new System.Drawing.Size(175, 30);
+            this.rbPerBulan.TabIndex = 7;
+            this.rbPerBulan.Text = "Tampilkan transaksi pada bulan\r\ndari tanggal tersebut";
+            this.rbPerBulan.UseVisualStyleBackColor = true;
+            this.rbPerBulan.CheckedChanged += new System.EventHandler(this.rbPerBulan_CheckedChanged);
+            // 
+            // rbPerMinggu
+            // 
+            this.rbPerMinggu.AutoSize = true;
+            this.rbPerMinggu.Location = new System.Drawing.Point(18, 238);
+            this.rbPerMinggu.Name = "rbPerMinggu";
+            this.rbPerMinggu.Size = new System.Drawing.Size(186, 30);
+            this.rbPerMinggu.TabIndex = 6;
+            this.rbPerMinggu.Text = "Tampilkan transaksi pada minggu \r\ndari tanggal tersebut";
+            this.rbPerMinggu.UseVisualStyleBackColor = true;
+            this.rbPerMinggu.CheckedChanged += new System.EventHandler(this.rbPerMinggu_CheckedChanged);
+            // 
+            // rbPerTanggal
+            // 
+            this.rbPerTanggal.AutoSize = true;
+            this.rbPerTanggal.Checked = true;
+            this.rbPerTanggal.Location = new System.Drawing.Point(18, 215);
+            this.rbPerTanggal.Name = "rbPerTanggal";
+            this.rbPerTanggal.Size = new System.Drawing.Size(198, 17);
+            this.rbPerTanggal.TabIndex = 5;
+            this.rbPerTanggal.TabStop = true;
+            this.rbPerTanggal.Text = "Tampilkan transaksi tanggal tersebut";
+            this.rbPerTanggal.UseVisualStyleBackColor = true;
+            this.rbPerTanggal.CheckedChanged += new System.EventHandler(this.rbPerTanggal_CheckedChanged);
+            // 
+            // dtpTanggal
+            // 
+            this.dtpTanggal.Location = new System.Drawing.Point(18, 178);
+            this.dtpTanggal.Name = "dtpTanggal";
+            this.dtpTanggal.Size = new System.Drawing.Size(218, 20);
+            this.dtpTanggal.TabIndex = 4;
+            this.dtpTanggal.ValueChanged += new System.EventHandler(this.dtpTanggal_ValueChanged);
             // 
             // label2
             // 
@@ -93,38 +135,19 @@
             this.lblInfo.TabIndex = 0;
             this.lblInfo.Text = "Laporan\r\nTransaksi";
             // 
-            // rbPerTanggal
+            // dsRentalin
             // 
-            this.rbPerTanggal.AutoSize = true;
-            this.rbPerTanggal.Location = new System.Drawing.Point(18, 215);
-            this.rbPerTanggal.Name = "rbPerTanggal";
-            this.rbPerTanggal.Size = new System.Drawing.Size(198, 17);
-            this.rbPerTanggal.TabIndex = 5;
-            this.rbPerTanggal.TabStop = true;
-            this.rbPerTanggal.Text = "Tampilkan transaksi tanggal tersebut";
-            this.rbPerTanggal.UseVisualStyleBackColor = true;
+            this.dsRentalin.DataSetName = "dsRentalin";
+            this.dsRentalin.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // rbPerMinggu
+            // QueryTransaksiBindingSource
             // 
-            this.rbPerMinggu.AutoSize = true;
-            this.rbPerMinggu.Location = new System.Drawing.Point(18, 238);
-            this.rbPerMinggu.Name = "rbPerMinggu";
-            this.rbPerMinggu.Size = new System.Drawing.Size(186, 30);
-            this.rbPerMinggu.TabIndex = 6;
-            this.rbPerMinggu.TabStop = true;
-            this.rbPerMinggu.Text = "Tampilkan transaksi pada minggu \r\ndari tanggal tersebut";
-            this.rbPerMinggu.UseVisualStyleBackColor = true;
+            this.QueryTransaksiBindingSource.DataMember = "QueryTransaksi";
+            this.QueryTransaksiBindingSource.DataSource = this.dsRentalin;
             // 
-            // rbPerBulan
+            // QueryTransaksiTableAdapter
             // 
-            this.rbPerBulan.AutoSize = true;
-            this.rbPerBulan.Location = new System.Drawing.Point(18, 275);
-            this.rbPerBulan.Name = "rbPerBulan";
-            this.rbPerBulan.Size = new System.Drawing.Size(175, 30);
-            this.rbPerBulan.TabIndex = 7;
-            this.rbPerBulan.TabStop = true;
-            this.rbPerBulan.Text = "Tampilkan transaksi pada bulan\r\ndari tanggal tersebut";
-            this.rbPerBulan.UseVisualStyleBackColor = true;
+            this.QueryTransaksiTableAdapter.ClearBeforeFill = true;
             // 
             // frmLaporanTransaksi
             // 
@@ -132,7 +155,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(976, 436);
             this.Controls.Add(this.pnlInfo);
-            this.Controls.Add(this.reportviewNota);
+            this.Controls.Add(this.reportviewTransaksi);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "frmLaporanTransaksi";
@@ -141,20 +164,25 @@
             this.Load += new System.EventHandler(this.frmLaporanTransaksi_Load);
             this.pnlInfo.ResumeLayout(false);
             this.pnlInfo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dsRentalin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.QueryTransaksiBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private Microsoft.Reporting.WinForms.ReportViewer reportviewNota;
+        private Microsoft.Reporting.WinForms.ReportViewer reportviewTransaksi;
         private System.Windows.Forms.Panel pnlInfo;
         private System.Windows.Forms.RadioButton rbPerBulan;
         private System.Windows.Forms.RadioButton rbPerMinggu;
         private System.Windows.Forms.RadioButton rbPerTanggal;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpTanggal;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblInfo;
+        private System.Windows.Forms.BindingSource QueryTransaksiBindingSource;
+        private dsRentalin dsRentalin;
+        private dsRentalinTableAdapters.QueryTransaksiTableAdapter QueryTransaksiTableAdapter;
 
     }
 }

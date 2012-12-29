@@ -62,6 +62,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsRentalin.xsd</DependentUpon>
     </Compile>
+    <Compile Include="frmBayarKembali.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBayarKembali.Designer.cs">
+      <DependentUpon>frmBayarKembali.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmLaporanNota.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,6 +79,12 @@
     </Compile>
     <Compile Include="frmAdmin.Designer.cs">
       <DependentUpon>frmAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLaporanTransaksi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLaporanTransaksi.Designer.cs">
+      <DependentUpon>frmLaporanTransaksi.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
@@ -149,11 +161,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmBayarKembali.resx">
+      <DependentUpon>frmBayarKembali.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmLaporanNota.resx">
       <DependentUpon>frmLaporanNota.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAdmin.resx">
       <DependentUpon>frmAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLaporanTransaksi.resx">
+      <DependentUpon>frmLaporanTransaksi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
@@ -198,6 +216,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="rptLaporanTransaksi.rdlc" />
     <EmbeddedResource Include="rptLaporanNota.rdlc" />
     <None Include="app.config" />
     <None Include="dsRentalin.xsc">

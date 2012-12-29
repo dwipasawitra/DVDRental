@@ -11,6 +11,8 @@ namespace Rentalin
 {
     public partial class frmMainOperator : Form
     {
+        bool blinker = false;
+
         public frmMainOperator()
         {
             InitializeComponent();
@@ -65,17 +67,15 @@ namespace Rentalin
 
         private void btnAdmin_Click(object sender, EventArgs e)
         {
-            frmAdmin formAdmin = new frmAdmin();
-            formAdmin.Show();
-            //Close();
+            // Ubah jendela pertama ke jendela Admin
+            Program.role.jendelaPertama = userRole.JENDELA_PERTAMA_ADMIN;
+            Close();
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
             Program.session.logout();
-            frmLogin formLogin = new frmLogin();
-            formLogin.Show();
-            Close();
+            this.Close();
         }
 
         private void btnPeminjaman_Click(object sender, EventArgs e)
@@ -129,7 +129,21 @@ namespace Rentalin
                 detik = "09";
 
             lblDate.Text = hari + ", " + tanggal + "-" + bulan + "-" + tahun;
-            lblTime.Text = jam + ":" + menit + ":" + detik;
+            if (blinker)
+            {
+                lblTime.Text = jam + ":" + menit + ":" + detik;
+                blinker = false;
+            }
+            else
+            {
+                lblTime.Text = jam + " " + menit + " " + detik;
+                blinker = true;
+            }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
 
         

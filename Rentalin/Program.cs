@@ -257,5 +257,31 @@ namespace Rentalin
 
             }          
         }
+
+        public static string convertTglkeOracle(DateTime dtInput)
+        {
+            int tgl = dtInput.Day;
+            int bln = dtInput.Month;
+            int thn = dtInput.Year;
+
+            string namaBulan = "";
+            switch (bln)
+            {
+                case 1: namaBulan = "JAN"; break;
+                case 2: namaBulan = "FEB"; break;
+                case 3: namaBulan = "MAR"; break;
+                case 4: namaBulan = "APR"; break;
+                case 5: namaBulan = "MAY"; break;
+                case 6: namaBulan = "JUN"; break;
+                case 7: namaBulan = "JUL"; break;
+                case 8: namaBulan = "AUG"; break;
+                case 9: namaBulan = "SEP"; break;
+                case 10: namaBulan = "OCT"; break;
+                case 11: namaBulan = "NOV"; break;
+                case 12: namaBulan = "DEC"; break;
+            }
+
+            return tgl.ToString() + "-" + namaBulan + "-" + thn.ToString();
+        }
     }
 }

@@ -11,6 +11,7 @@ namespace Rentalin
 {
     public partial class frmMain : Form
     {
+
         public frmMain()
         {
             InitializeComponent();
@@ -18,10 +19,38 @@ namespace Rentalin
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            frmLogin login = new frmLogin();
-            login.ShowDialog();
-            if (!Program.session.isLogin())
-                Close();
+            jalankanWindow();
+        }
+
+        
+        private void jalankanWindow()
+        {
+            while (true)
+            {
+                if (!Program.session.isLogin())
+                {
+                    frmLogin login = new frmLogin();
+                    login.ShowDialog();
+                    login.Focus();
+                }
+                else
+                {
+                    if (Program.role.jendelaPertama == userRole.JENDELA_PERTAMA_OPERATOR)
+                    {
+                        frmMainOperator formOperator = new frmMainOperator();
+                        formOperator.Focus();
+                        formOperator.ShowDialog();
+                        
+                    }
+                    else
+                    {
+                        frmAdmin formAdmin = new frmAdmin();
+                        formAdmin.Focus();
+                        formAdmin.ShowDialog();
+                        
+                    }
+                }
+            }
         }
     }
 }

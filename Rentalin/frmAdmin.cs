@@ -28,6 +28,9 @@ namespace Rentalin
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
+            // Ubah  jendela pertama ke jendela operator
+            Program.role.jendelaPertama = userRole.JENDELA_PERTAMA_OPERATOR;
+
             Program.session.logout();
             Close();
         }
@@ -169,7 +172,8 @@ namespace Rentalin
 
         private void btnLaporanTransaksi_Click(object sender, EventArgs e)
         {
-
+            frmLaporanTransaksi form = new frmLaporanTransaksi();
+            form.ShowDialog(this);
         }
     }
 }

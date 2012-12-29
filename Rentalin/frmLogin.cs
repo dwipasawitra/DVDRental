@@ -29,17 +29,8 @@ namespace Rentalin
             status = Program.session.login(txtUserName.Text.ToString(), txtPassword.Text.ToString());
             if (status == userSession.LOGIN_SUCCESS)
             {
-                if (Program.role.jendelaPertama == userRole.JENDELA_PERTAMA_OPERATOR)
-                {
-                    frmMainOperator formOperator = new frmMainOperator();
-                    formOperator.Show();
-                }
-                else
-                {
-                    frmAdmin formAdmin = new frmAdmin();
-                    formAdmin.Show();
-                }
                 Close();
+                // Biarkan frmMain melakukan hal selanjutnya
             }
             else if (status == userSession.LOGIN_MULTI)
             {
