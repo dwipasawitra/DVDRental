@@ -12,17 +12,70 @@ namespace Rentalin
     public partial class frmMainOperator : Form
     {
         bool blinker = false;
+        DataTable dtTransaksiStat, dtJudulDipinjamStat;
 
         public frmMainOperator()
         {
             InitializeComponent();
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void updatePenawaranSpesial()
         {
+            Program.so.updateSpecialOffer();
+            if (Program.so.isSpecialOffer())
+            {
+                lblPenawaranSpesialInfo.Visible = true;
+                lblPenawaranSpesial.Visible = true;
+                lblPenawaranSpesial.Text = Program.so.getSpecialOfferName();
+                tmrBlinkingPenawaranSpesial.Enabled = true;
+            }
+            else
+            {
+                lblPenawaranSpesialInfo.Visible = false;
+                lblPenawaranSpesial.Visible = false;
+                lblPenawaranSpesial.Text = "";
+                tmrBlinkingPenawaranSpesial.Enabled = false;
+            }
+        }
+        private void updateStatistik()
+        {
+            // Ambil tanggal hari ini dalam bentuk string (Oracle Friendly)
+            string tglHariIniOracleFriendly = Program.convertTglkeOracle(DateTime.Now);
+            string tglHariIni = DateTime.Now.Year + "-" + DateTime.Now.Month + "-" + DateTime.Now.Day;
+            
+
+            // Statistik transaksi
+            // Harian
+            dtTransaksiStat = Program.conn.ExecuteDataTable("SELECT count(*) FROM Nota WHERE tgltransaksi='" + tglHariIniOracleFriendly + "'");
+            txtTransaksiHarian.Text = dtTransaksiStat.Rows[0].ItemArray[0].ToString();
+
+            // Mingguan
+            dtTransaksiStat = Program.conn.ExecuteDataTable("SELECT count(*) FROM Nota WHERE to_char(tgltransaksi, 'WWYYYY')="
+                                                            + "to_char(date '" + tglHariIni + "', 'WWYYYY')");
+            txtTransaksiMingguan.Text = dtTransaksiStat.Rows[0].ItemArray[0].ToString();
+
+            // Bulanan
+            dtTransaksiStat = Program.conn.ExecuteDataTable("SELECT count(*) FROM Nota WHERE to_char(tgltransaksi, 'MMYYYY')="
+                                                            + "to_char(date '" + tglHariIni + "', 'MMYYYY')");
+            txtTransaksiBulanan.Text = dtTransaksiStat.Rows[0].ItemArray[0].ToString();
+
+
+            // Statistik judul dipinjam
+            // Harian
+            dtJudulDipinjamStat = Program.conn.ExecuteDataTable("SELECT count(*) FROM Dipinjam INNER JOIN Nota ON dipinjam.nonota = nota.nonota WHERE tgltransaksi='" + tglHariIniOracleFriendly + "'");
+            txtJudulDipinjamHarian.Text = dtTransaksiStat.Rows[0].ItemArray[0].ToString();
+
+            // Mingguan
+            dtJudulDipinjamStat = Program.conn.ExecuteDataTable("SELECT count(*) FROM Dipinjam INNER JOIN Nota ON dipinjam.nonota = nota.nonota WHERE to_char(tgltransaksi, 'WWYYYY')="
+                                                            + "to_char(date '" + tglHariIni + "', 'WWYYYY')");
+            txtJudulDipinjamMingguan.Text = dtTransaksiStat.Rows[0].ItemArray[0].ToString();
+
+            // Bulanan
+            dtJudulDipinjamStat = Program.conn.ExecuteDataTable("SELECT count(*) FROM Dipinjam INNER JOIN Nota ON dipinjam.nonota = nota.nonota WHERE to_char(tgltransaksi, 'MMYYYY')="
+                                                            + "to_char(date '" + tglHariIni + "', 'MMYYYY')");
+            txtJudulDipinjamBulanan.Text = dtTransaksiStat.Rows[0].ItemArray[0].ToString();
 
         }
-
         private void frmMainOperator_Load(object sender, EventArgs e)
         {
             
@@ -33,7 +86,15 @@ namespace Rentalin
                 btnMasterKoleksi.Enabled = false;
             if (Program.role.masterStok == false)
                 btnMasterStok.Enabled = false;
+
+            // Ganti nama user
             lblUserName.Text = Program.session.getNamaUser();
+
+            // Update statistik
+            updateStatistik();
+
+            // Update penawaran spesial
+            updatePenawaranSpesial();
 
         }
 
@@ -139,11 +200,42 @@ namespace Rentalin
                 lblTime.Text = jam + " " + menit + " " + detik;
                 blinker = true;
             }
+
+            
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
+      
 
+
+        private void btnHallofFame_Click(object sender, EventArgs e)
+        {
+            frmHallOfFame form = new frmHallOfFame();
+            form.ShowDialog(this);
+        }
+
+        private void tmrStatistik_Tick(object sender, EventArgs e)
+        {
+            lblMemutakhirkan.Visible = true;
+            updateStatistik();
+            lblMemutakhirkan.Visible = false;
+
+            // Sekalian nitip
+            updatePenawaranSpesial();
+        }
+
+        private void tmrBlinkingPenawaranSpesial_Tick(object sender, EventArgs e)
+        {
+            if (lblPenawaranSpesial.Visible)
+            {
+                lblPenawaranSpesial.Visible = false;
+                lblPenawaranSpesialInfo.Visible = false;
+            }
+
+            else
+            {
+                lblPenawaranSpesial.Visible = true;
+                lblPenawaranSpesialInfo.Visible = true;
+            }
         }
 
         

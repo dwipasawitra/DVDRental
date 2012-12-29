@@ -68,6 +68,12 @@
     <Compile Include="frmBayarKembali.Designer.cs">
       <DependentUpon>frmBayarKembali.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmHallOfFame.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHallOfFame.Designer.cs">
+      <DependentUpon>frmHallOfFame.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmLaporanNota.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -175,6 +181,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmBayarKembali.resx">
       <DependentUpon>frmBayarKembali.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHallOfFame.resx">
+      <DependentUpon>frmHallOfFame.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLaporanNota.resx">
       <DependentUpon>frmLaporanNota.cs</DependentUpon>

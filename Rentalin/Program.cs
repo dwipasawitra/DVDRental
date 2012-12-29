@@ -227,6 +227,62 @@ namespace Rentalin
         }
     }
 
+    public class specialOffer
+    {
+        private DataTable dtSpecialOffer;
+        private int specialOfferCode;
+        private string specialOfferName;
+        private float specialOfferDiscount;
+        private bool so;
+
+        public void updateSpecialOffer()
+        {
+            // Cari query special offer diantara tanggal sekarang
+            // Asumsi, hanya ada satu special offer di setiap waktunya
+            dtSpecialOffer = Program.conn.ExecuteDataTable("SELECT * FROM penawaranspesial WHERE mulai <= sysdate AND akhir >= sysdate");
+
+            // Jika ada special offer, maka simpan variabelnya
+            if (dtSpecialOffer.Rows.Count >= 1)
+            {
+                so = true;
+                specialOfferCode = Int16.Parse(dtSpecialOffer.Rows[0].ItemArray[0].ToString());
+                specialOfferName = dtSpecialOffer.Rows[0].ItemArray[1].ToString();
+                specialOfferDiscount = float.Parse(dtSpecialOffer.Rows[0].ItemArray[2].ToString());
+
+            }
+            else
+            {
+                so = false;
+            }
+
+        }
+
+        public float getSpecialOfferDiscount()
+        {
+            if (so)
+            {
+                return specialOfferDiscount;
+            }
+            return 0;
+        }
+
+        public string getSpecialOfferName()
+        {
+            if (so)
+            {
+                return specialOfferName;
+            }
+            return "";
+        }
+
+        public bool isSpecialOffer()
+        {
+            return so;
+        }
+
+
+    }
+
     static class Program
     {
         /// The main entry point for the application.
@@ -235,6 +291,7 @@ namespace Rentalin
         public static userSession session = new userSession();
         public static appSetting setting = new appSetting();
         public static userRole role = new userRole();
+        public static specialOffer so = new specialOffer();
 
         static void Main()
         {
