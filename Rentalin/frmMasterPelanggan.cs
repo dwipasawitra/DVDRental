@@ -16,11 +16,10 @@ namespace Rentalin
             InitializeComponent();            
         }
         DataTable pelanggan = new DataTable();
-        DataTable pencarian = new DataTable();
+
         private void frmMasterPelanggan_Load(object sender, EventArgs e)
-        {            
-            pelanggan = Program.conn.ExecuteDataTable("SELECT * FROM member");
-            dgPelanggan.DataSource = pelanggan;
+        {
+            muatUlangData();
             dgPelanggan.ReadOnly = true;
         }
 
@@ -29,8 +28,11 @@ namespace Rentalin
             int rows = dgPelanggan.CurrentCellAddress.Y;
             string delete = "DELETE FROM member WHERE kodemember = '"+ pelanggan.Rows[rows].ItemArray[0].ToString() + "'";
             Program.conn.ExecuteDataTable(delete);
-            pelanggan = Program.conn.ExecuteDataTable("SELECT * FROM member");
-            dgPelanggan.DataSource = pelanggan;
+
+            muatUlangData();
+            txtPencarian.Text = "";
+
+
         }
 
         private void dgPelanggan_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
@@ -41,13 +43,8 @@ namespace Rentalin
             }
         }
 
-        private void dgPelanggan_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            int y = e.RowIndex;
-            lblNamaPelanggan.Text = dgPelanggan.Rows[y].Cells[1].Value.ToString();// pelanggan.Rows[y].ItemArray[1].ToString();
-            lblIdentitas.Text = "Identitas : " + dgPelanggan.Rows[y].Cells[3].Value.ToString(); 
-
-        }
+        
+     
 
         private void btnTambah_Click(object sender, EventArgs e)
         {
@@ -64,8 +61,8 @@ namespace Rentalin
 
         private void btnMuatUlang_Click(object sender, EventArgs e)
         {
-            pelanggan = Program.conn.ExecuteDataTable("SELECT * FROM member");
-            dgPelanggan.DataSource = pelanggan;
+            muatUlangData();
+            txtPencarian.Text = "";
         }
 
         private void btnHistori_Click(object sender, EventArgs e)
@@ -75,13 +72,51 @@ namespace Rentalin
 
         private void txtPencarian_TextChanged(object sender, EventArgs e)
         {
-            pencarian = Program.conn.ExecuteDataTable("SELECT * FROM member WHERE namamember like '%"+txtPencarian.Text+"%' OR kodemember like '%"+txtPencarian.Text+"%'");
-            if (pencarian.Rows.Count > 0)
-            {
-                //MessageBox.Show("berhasil");
-                dgPelanggan.DataSource = pencarian;
-            }
-            //MessageBox.Show(pencarian.Rows.Count.ToString());
+            // Lakukan filter ulang data member
+            cariData(txtPencarian.Text);
+            
         }
+
+        private void dgPelanggan_SelectionChanged(object sender, EventArgs e)
+        {
+            // Jika ada satu sel dipilih dan tidak melebih batas, maka tampilkan detail keterangan pada panel yang tersdia
+            if (dgPelanggan.SelectedCells.Count == 1)
+            {
+                if (dgPelanggan.SelectedCells[0].RowIndex < pelanggan.Rows.Count)
+                {
+                    int y = dgPelanggan.SelectedCells[0].RowIndex;
+                    lblNamaPelanggan.Text = dgPelanggan.Rows[y].Cells[1].Value.ToString();
+                    lblIdentitas.Text = dgPelanggan.Rows[y].Cells[3].Value.ToString() + " (" + pelanggan.Rows[y].ItemArray[2].ToString() + ")";
+                }
+            }
+        }
+
+        private void muatUlangData()
+        {
+            // Definisikan data member dan nama kolomnya
+            pelanggan = Program.conn.ExecuteDataTable("SELECT kodemember, namamember, jenisidentitas.jenis, nomoridentitas FROM member INNER JOIN jenisidentitas ON member.jenisidentitas = jenisidentitas.id");
+            pelanggan.Columns[0].ColumnName = "Kode Member";
+            pelanggan.Columns[1].ColumnName = "Nama Member";
+            pelanggan.Columns[2].ColumnName = "Jenis identitas";
+            pelanggan.Columns[3].ColumnName = "Nomor Identitas";
+
+            // Masukkan ke dalam grid
+            dgPelanggan.DataSource = pelanggan;
+        }
+
+        private void cariData(string yangdicari)
+        {
+            pelanggan = Program.conn.ExecuteDataTable("SELECT * FROM member WHERE namamember like '%" + txtPencarian.Text + "%' OR kodemember like '%" + txtPencarian.Text + "%'");
+            pelanggan.Columns[0].ColumnName = "Kode Member";
+            pelanggan.Columns[1].ColumnName = "Nama Member";
+            pelanggan.Columns[2].ColumnName = "Jenis identitas";
+            pelanggan.Columns[3].ColumnName = "Nomor Identitas";
+
+            // Masukkan ke dalam grid
+            dgPelanggan.DataSource = pelanggan;
+        }
+
+      
+
     }
 }

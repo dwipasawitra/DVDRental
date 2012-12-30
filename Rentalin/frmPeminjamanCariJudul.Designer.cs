@@ -47,9 +47,9 @@
             // txtPencarian
             // 
             this.txtPencarian.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPencarian.Location = new System.Drawing.Point(270, 7);
+            this.txtPencarian.Location = new System.Drawing.Point(12, 8);
             this.txtPencarian.Name = "txtPencarian";
-            this.txtPencarian.Size = new System.Drawing.Size(206, 21);
+            this.txtPencarian.Size = new System.Drawing.Size(675, 21);
             this.txtPencarian.TabIndex = 0;
             this.txtPencarian.TextChanged += new System.EventHandler(this.txtPencarian_TextChanged);
             // 
@@ -180,7 +180,7 @@
             this.Name = "frmPeminjamanCariJudul";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Cari Judul Film";
+            this.Text = "Cari Judul";
             this.Load += new System.EventHandler(this.frmPeminjamanCariJudul_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgPencarian)).EndInit();
             this.panel1.ResumeLayout(false);

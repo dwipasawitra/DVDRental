@@ -28,19 +28,26 @@ namespace Rentalin
         {
             
             int status;
-            status = Program.session.login(txtUserName.Text.ToString(), txtPassword.Text.ToString());
-            if (status == userSession.LOGIN_SUCCESS)
+            try
             {
-                Close();
-                // Biarkan frmMain melakukan hal selanjutnya
+                status = Program.session.login(txtUserName.Text.ToString(), txtPassword.Text.ToString());
+                if (status == userSession.LOGIN_SUCCESS)
+                {
+                    Close();
+                    // Biarkan frmMain melakukan hal selanjutnya
+                }
+                else if (status == userSession.LOGIN_MULTI)
+                {
+                    MessageBox.Show("Ada 1 sesi berbeda berjalan, atau proses keluar sebelumnya tidak sempurna. Silahkan lakukan prosedur pengembalian autentifikasi", "Galat", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else if (status == userSession.LOGIN_USERNAME_PASSWORD_WRONG)
+                {
+                    MessageBox.Show("Nama Pengguna atau Password salah.", "Galat", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            else if (status == userSession.LOGIN_MULTI)
+            catch
             {
-                MessageBox.Show("Ada 1 sesi berbeda berjalan, atau proses keluar sebelumnya tidak sempurna. Silahkan lakukan prosedur pengembalian autentifikasi", "Galat", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else if(status == userSession.LOGIN_USERNAME_PASSWORD_WRONG)
-            {
-                MessageBox.Show("Nama Pengguna atau Password salah.", "Galat", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Percobaan injeksi SQL telah digagalkan", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

@@ -44,11 +44,13 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnTambahkan
             // 
-            this.btnTambahkan.Location = new System.Drawing.Point(195, 10);
+            this.btnTambahkan.Location = new System.Drawing.Point(220, 8);
             this.btnTambahkan.Name = "btnTambahkan";
             this.btnTambahkan.Size = new System.Drawing.Size(79, 31);
             this.btnTambahkan.TabIndex = 0;
@@ -59,7 +61,7 @@
             // lblInfo
             // 
             this.lblInfo.AutoSize = true;
-            this.lblInfo.Location = new System.Drawing.Point(7, 7);
+            this.lblInfo.Location = new System.Drawing.Point(13, 14);
             this.lblInfo.Name = "lblInfo";
             this.lblInfo.Size = new System.Drawing.Size(25, 13);
             this.lblInfo.TabIndex = 1;
@@ -78,7 +80,7 @@
             // 
             this.txtKodeMember.Location = new System.Drawing.Point(95, 50);
             this.txtKodeMember.Name = "txtKodeMember";
-            this.txtKodeMember.Size = new System.Drawing.Size(177, 20);
+            this.txtKodeMember.Size = new System.Drawing.Size(104, 20);
             this.txtKodeMember.TabIndex = 3;
             this.txtKodeMember.TextChanged += new System.EventHandler(this.txtKodeMember_TextChanged);
             // 
@@ -106,7 +108,7 @@
             // 
             this.txtNamaMember.Location = new System.Drawing.Point(95, 76);
             this.txtNamaMember.Name = "txtNamaMember";
-            this.txtNamaMember.Size = new System.Drawing.Size(177, 20);
+            this.txtNamaMember.Size = new System.Drawing.Size(203, 20);
             this.txtNamaMember.TabIndex = 6;
             // 
             // label3
@@ -153,7 +155,7 @@
             // 
             this.txtNomorIdentitas.Location = new System.Drawing.Point(95, 129);
             this.txtNomorIdentitas.Name = "txtNomorIdentitas";
-            this.txtNomorIdentitas.Size = new System.Drawing.Size(177, 20);
+            this.txtNomorIdentitas.Size = new System.Drawing.Size(203, 20);
             this.txtNomorIdentitas.TabIndex = 10;
             // 
             // lblIJenisIdentitas
@@ -196,11 +198,24 @@
             this.label7.TabIndex = 15;
             this.label7.Text = "Informasi ini dibutuhkan";
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Pink;
+            this.panel1.Controls.Add(this.lblInfo);
+            this.panel1.Controls.Add(this.btnTambahkan);
+            this.panel1.Location = new System.Drawing.Point(-1, -2);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(307, 46);
+            this.panel1.TabIndex = 16;
+            // 
             // frmTambahPelanggan
             // 
+            this.AcceptButton = this.btnTambahkan;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 198);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(303, 198);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.cmbJenisIdentitas);
@@ -215,12 +230,13 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lblKodeMember);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.lblInfo);
-            this.Controls.Add(this.btnTambahkan);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmTambahPelanggan";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tambah Pelanggan";
+            this.Load += new System.EventHandler(this.frmTambahPelanggan_Load);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -244,5 +260,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Panel panel1;
     }
 }

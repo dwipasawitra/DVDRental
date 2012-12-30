@@ -12,11 +12,11 @@ namespace Rentalin
     public partial class frmMasterStok : Form
     {
         DataTable stok = new DataTable();
-        DataTable pencarian = new DataTable();
         DataTable info = new DataTable();
         public int mode;
         public int modify;
         public string viewStok;
+
         public frmMasterStok()
         {
             InitializeComponent();
@@ -28,6 +28,7 @@ namespace Rentalin
             InitializeComponent();
             viewStok = kodeKoleksi;
             tampilanAwal(kodeKoleksi);
+            updateStok();
         }
 
         public void tampilanAwal()
@@ -49,15 +50,53 @@ namespace Rentalin
         public void tampilanAwal(string KodeKoleksi)
         {
             mode = 1;
-            stok = Program.conn.ExecuteDataTable("SELECT * FROM stokkoleksi WHERE kodekoleksi = '" + KodeKoleksi + "'");
-            dgStokKoleksi.DataSource = stok;
+            
             dgStokKoleksi.ReadOnly = true;
             btnPilihKoleksi.Enabled = false;
+            btnCariKoleksi.Enabled = false;
             txtPilihKoleksi.Enabled = false;
             btnTambah.Enabled = true;
             btnPerbarui.Enabled = false;
             btnHapus.Enabled = true;
+            loadInfo();
             //MessageBox.Show("string");
+        }
+
+        private void updateStok()
+        {
+            stok = Program.conn.ExecuteDataTable("SELECT KodeStok, (CASE WHEN Kondisi=1 THEN 'Baik' ELSE 'Buruk' END) as Kondisi, (CASE WHEN Status=1 THEN 'Dipinjam' ELSE 'Tersedia' END) as Status, harga, tglbeli" 
+                                                  + " FROM stokkoleksi WHERE kodekoleksi = '" + viewStok + "'");
+            
+            // Set masing-masing nama kolom
+            stok.Columns[0].ColumnName = "Kode Stok";
+            stok.Columns[1].ColumnName = "Kondisi";
+            stok.Columns[2].ColumnName = "Status";
+            stok.Columns[3].ColumnName = "Harga beli";
+            stok.Columns[4].ColumnName = "Tgl Beli";
+
+            // Set isi data grid
+            dgStokKoleksi.DataSource = stok;
+        }
+
+        private void cariStok(string input)
+        {
+            stok = Program.conn.ExecuteDataTable("SELECT KodeStok, (CASE WHEN Kondisi=1 THEN 'Baik' ELSE 'Buruk' END) as Kondisi, (CASE WHEN Status=1 THEN 'Dipinjam' ELSE 'Tersedia' END) as Status, harga, tglbeli" 
+                                                 + " FROM stokkoleksi WHERE kodestok like '%" + txtPencarian.Text + "%'");
+            
+            // set masing-masing nama kolom
+            stok.Columns[0].ColumnName = "Kode Stok";
+            stok.Columns[1].ColumnName = "Kondisi";
+            stok.Columns[2].ColumnName = "Status";
+            stok.Columns[3].ColumnName = "Harga beli";
+            stok.Columns[4].ColumnName = "Tgl Beli";
+
+
+            // jika ada data
+            if (stok.Rows.Count > 0)
+            {
+                // Set isi data grid
+                dgStokKoleksi.DataSource = stok;
+            }
         }
 
         private void btnHapus_Click(object sender, EventArgs e)
@@ -70,27 +109,27 @@ namespace Rentalin
 
         private void txtPencarian_TextChanged(object sender, EventArgs e)
         {
-            pencarian = Program.conn.ExecuteDataTable("SELECT * FROM stokkoleksi WHERE kodestok like '%" + txtPencarian.Text + "%' OR kodekoleksi like '%" + txtPencarian.Text + "%'");// OR kondisi =" + txtPencarian.Text + " OR status = " + txtPencarian.Text + " OR harga like = " + txtPencarian.Text + "");// OR tglbeli like '%" + txtPencarian.Text + "%'");
-            if (pencarian.Rows.Count > 0)
-            {
-                //MessageBox.Show("berhasil");
-                dgStokKoleksi.DataSource = pencarian;
-            }
+            cariStok(txtPencarian.Text);
+        }
+
+        void loadInfo()
+        {
+            info = Program.conn.ExecuteDataTable("SELECT koleksi.namaitem, genre.namakategori FROM koleksi INNER JOIN genre ON koleksi.kodekategori = genre.kodekategori WHERE koleksi.kodekoleksi='" + viewStok + "'");
+            lblJudul.Text = info.Rows[0].ItemArray[0].ToString();
+            lblGenre.Text = info.Rows[0].ItemArray[1].ToString();
         }
 
         private void frmMasterStok_Load(object sender, EventArgs e)
         {
-            info = Program.conn.ExecuteDataTable("SELECT stokkoleksi.kodestok, stokkoleksi.kodekoleksi, koleksi.namaitem, stokkoleksi.kondisi, stokkoleksi.status, stokkoleksi.harga, stokkoleksi.tglbeli, genre.namakategori FROM stokkoleksi INNER JOIN koleksi ON stokkoleksi.kodekoleksi = koleksi.kodekoleksi INNER JOIN genre ON koleksi.kodekategori = genre.kodekategori");
             txtKodeStok.Enabled = false;
-            txtKodeKoleksi.Enabled = false;
             txtHarga.Enabled = false;
             cmbKondisi.Enabled = false;
             cmbStatus.Enabled = false;
             dtpTglBeli.Enabled = false;
-            cmbKondisi.Items.Add("0");
-            cmbKondisi.Items.Add("1");
-            cmbStatus.Items.Add("0");
-            cmbStatus.Items.Add("1");
+            cmbKondisi.Items.Add("Buruk");
+            cmbKondisi.Items.Add("Baik");
+            cmbStatus.Items.Add("Tersedia");
+            cmbStatus.Items.Add("Dipinjam");
         }
 
         private void dgStokKoleksi_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
@@ -111,82 +150,50 @@ namespace Rentalin
             dtpTglBeli.Enabled = true;
             txtHarga.Enabled = true;
             btnPerbarui.Enabled = true;
-            txtKodeKoleksi.Text = dgStokKoleksi.Rows[dgStokKoleksi.CurrentCellAddress.Y].Cells[1].Value.ToString();
+            cmbStatus.SelectedIndex = 0;
+            cmbKondisi.SelectedIndex = 0;
+            btnPerbarui.Text = "Tambahkan";
+            txtKodeStok.Focus();
         }
 
         private void btnModifikasi_Click(object sender, EventArgs e)
         {
             modify = 1;
-            txtKodeStok.Enabled = false;
-            txtKodeStok.Text = dgStokKoleksi.Rows[dgStokKoleksi.CurrentCellAddress.Y].Cells[0].Value.ToString();
-            txtKodeKoleksi.Text = dgStokKoleksi.Rows[dgStokKoleksi.CurrentCellAddress.Y].Cells[1].Value.ToString();
-            cmbKondisi.Text = dgStokKoleksi.Rows[dgStokKoleksi.CurrentCellAddress.Y].Cells[2].Value.ToString();
-            cmbStatus.Text = dgStokKoleksi.Rows[dgStokKoleksi.CurrentCellAddress.Y].Cells[3].Value.ToString();
-            txtHarga.Text = dgStokKoleksi.Rows[dgStokKoleksi.CurrentCellAddress.Y].Cells[4].Value.ToString();
-
-
-            cmbKondisi.Enabled = true;
-            cmbStatus.Enabled = true;
-            txtHarga.Enabled = true;
-            dtpTglBeli.Enabled = true;
-            btnPerbarui.Enabled = true;
-
-            string date = dgStokKoleksi.Rows[dgStokKoleksi.CurrentCellAddress.Y].Cells[5].Value.ToString();
-            date = date.Substring(0, 10);
-            string newDate = "";
-
-            if (date.Substring(1, 1) == "/" && date.Substring(3, 1) == "/")
+            btnPerbarui.Text = "Modifikasi";
+            if(dgStokKoleksi.SelectedCells.Count >= 1)
             {
-                newDate = "0";
-                newDate += date.Substring(0, 2);
-                newDate += "0";
-                newDate += date.Substring(3, 5);
-            }
-            else if (date.Substring(1, 1) == "/" && date.Substring(4, 1) == "/")
-            {
-                newDate = "0";
-                newDate += date.Substring(0, 9);
-            }
-            else if (date.Substring(2, 1) == "/" && date.Substring(4, 1) == "/")
-            {
-                newDate = date.Substring(0, 3);
-                newDate += "0";
-                newDate += date.Substring(3, 6);
-            }
-            else
-                newDate = date.Substring(0, 10);
-
-            dtpTglBeli.Value = DateTime.ParseExact(newDate, "MM/dd/yyyy",null);
-
-        }
-
-        private void dgStokKoleksi_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            int y = e.RowIndex;
-            btnModifikasi.Enabled = true;
-            int i, idx = info.Rows.Count;
-            MessageBox.Show("jumlah" + idx.ToString());
-            for(i=0;i<idx;i++)
-            {
-                if (dgStokKoleksi.Rows[y].Cells[1].Value.ToString() == info.Rows[i].ItemArray[1].ToString())
+                if(dgStokKoleksi.SelectedCells[0].RowIndex <= stok.Rows.Count)
                 {
-                    lblJudul.Text = info.Rows[i].ItemArray[2].ToString();
-                    lblGenre.Text = info.Rows[i].ItemArray[7].ToString();
-                    break;
+                    int idx = dgStokKoleksi.SelectedCells[0].RowIndex;
+                    txtKodeStok.Enabled = false;
+                    cmbKondisi.Enabled = true;
+                    cmbStatus.Enabled = true;
+                    txtHarga.Enabled = true;
+                    dtpTglBeli.Enabled = true;
+                    btnPerbarui.Enabled = true;
+
                 }
             }
+
         }
+
+      
 
         private void btnPilihKoleksi_Click(object sender, EventArgs e)
         {
             stok = Program.conn.ExecuteDataTable("SELECT * FROM stokkoleksi WHERE kodekoleksi = '" + txtPilihKoleksi.Text + "'");
             if (stok.Rows.Count > 1)
             {
-                dgStokKoleksi.DataSource = stok;
+                updateStok();
                 txtPilihKoleksi.ResetText();
                 btnTambah.Enabled = true;
                 btnModifikasi.Enabled = true;
                 btnHapus.Enabled = true;
+                btnPilihKoleksi.Enabled = false;
+                btnCariKoleksi.Enabled = false;
+                txtPilihKoleksi.Enabled = false;
+                viewStok = txtPilihKoleksi.Text;
+                loadInfo();
             }
             else
             {
@@ -209,7 +216,7 @@ namespace Rentalin
 
         private void txtHarga_Enter(object sender, EventArgs e)
         {
-            if (txtHarga.Text == "Harga")
+            if (txtHarga.Text == "Harga Pembelian")
                 txtHarga.Text = "";
         }
 
@@ -231,7 +238,7 @@ namespace Rentalin
         private void btnPerbarui_Click(object sender, EventArgs e)
         {
             int i, idx = info.Rows.Count;
-            if (txtKodeStok.Text == "" && txtKodeKoleksi.Text == "" && cmbKondisi.Text == "" && cmbStatus.Text == "" && txtHarga.Text == "")
+            if (txtKodeStok.Text == ""  && cmbKondisi.Text == "" && cmbStatus.Text == "" && txtHarga.Text == "")
             {
                 MessageBox.Show("Ada informasi yang kosong");
             }
@@ -253,7 +260,7 @@ namespace Rentalin
                 {
                     if (modify == 0)
                     {
-                        string insert = "INSERT INTO stokkoleksi VALUES('" + txtKodeStok.Text + "','" + txtKodeKoleksi.Text + "'," + cmbKondisi.Text + "," + cmbStatus.Text + "," + txtHarga.Text + ",to_date('" + dtpTglBeli.Value.Date.ToString().Substring(0, 10) + "','mm/dd/yyyy'))";
+                        string insert = "INSERT INTO stokkoleksi VALUES('" + txtKodeStok.Text + "','" + viewStok + "'," + cmbKondisi.SelectedIndex + "," + cmbStatus.SelectedIndex + "," + txtHarga.Text + ",'" + Program.convertTglkeOracle(dtpTglBeli.Value) + "')";
                         Program.conn.ExecuteNonQuery(insert);
                         MessageBox.Show("Data berhasil ditambahkan");
                         txtKodeStok.ResetText();
@@ -261,12 +268,12 @@ namespace Rentalin
                         cmbStatus.ResetText();
                         dtpTglBeli.ResetText();
                         txtHarga.ResetText();
-                        pencarian = Program.conn.ExecuteDataTable("SELECT * FROM stokkoleksi WHERE kodekoleksi = '"+txtKodeKoleksi.Text+"'");
-                        dgStokKoleksi.DataSource = pencarian;
+                       
+                        updateStok();
                     }
                     else if (modify == 1)
                     {                        
-                        string update = "UPDATE stokkoleksi SET kondisi = " + cmbKondisi.Text + ", status = " + cmbStatus.Text + ", harga = " + txtHarga.Text + ", tglbeli = to_date('" + dtpTglBeli.Value.Date.ToString().Substring(0, 10) + "','MM/dd/yyyy') WHERE kodestok = '" + txtKodeStok.Text + "'";
+                        string update = "UPDATE stokkoleksi SET kondisi = '" + cmbKondisi.SelectedIndex + "', status = '" + cmbStatus.SelectedIndex + "', harga = '" + txtHarga.Text + "', tglbeli = '" + Program.convertTglkeOracle(dtpTglBeli.Value) + "' WHERE kodestok = '" + txtKodeStok.Text + "'";
                         Program.conn.ExecuteNonQuery(update);
                         MessageBox.Show("Data berhasil diperbarui");
                         txtKodeStok.ResetText();
@@ -274,13 +281,49 @@ namespace Rentalin
                         cmbStatus.ResetText();
                         dtpTglBeli.ResetText();
                         txtHarga.ResetText();
-                        pencarian = Program.conn.ExecuteDataTable("SELECT * FROM stokkoleksi WHERE kodekoleksi = '" + txtKodeKoleksi.Text + "'");
-                        dgStokKoleksi.DataSource = pencarian;
-                    }                    
+                        updateStok();
+                    }
+                    btnPerbarui.Text = "Modifikasi";
+                    txtKodeStok.Enabled = false;
+                    cmbKondisi.Enabled = false;
+                    cmbStatus.Enabled = false;
+                    dtpTglBeli.Enabled = false;
+                    txtHarga.Enabled = false;
+                    btnPerbarui.Enabled = false;
                 }
             }
 
         }
+
+        private void dgStokKoleksi_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgStokKoleksi.SelectedCells.Count >= 1)
+            {
+                if (dgStokKoleksi.SelectedCells[0].RowIndex < stok.Rows.Count)
+                {
+                    int idx = dgStokKoleksi.SelectedCells[0].RowIndex;
+                    btnModifikasi.Enabled = true;
+                    btnHapus.Enabled = true;
+                    btnHistori.Enabled = true;
+                    txtKodeStok.Text = stok.Rows[idx].ItemArray[0].ToString();
+                    cmbKondisi.Text = stok.Rows[idx].ItemArray[1].ToString();
+                    cmbStatus.Text = stok.Rows[idx].ItemArray[2].ToString();
+                    txtHarga.Text = stok.Rows[idx].ItemArray[3].ToString();
+                    dtpTglBeli.Value = DateTime.ParseExact(stok.Rows[idx].ItemArray[4].ToString(), "dd/MM/yyyy h:mm:ss", null);
+                    
+                }
+                else
+                {
+                    btnModifikasi.Enabled = false;
+                    btnHapus.Enabled = false;
+                    btnHistori.Enabled = false;
+                }
+            }
+        }
+
+      
+
+        
 
     }
 }

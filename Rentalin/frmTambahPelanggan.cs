@@ -11,6 +11,10 @@ namespace Rentalin
 {
     public partial class frmTambahPelanggan : Form
     {
+        DataTable jenisidentitas;
+        DataTable modify;
+        DataTable listMember;
+
         public int mode;
         public string IDMember;
         public frmTambahPelanggan()
@@ -28,8 +32,18 @@ namespace Rentalin
             IDMember = KodeMember;
         }
 
-        DataTable modify = new DataTable();
-        DataTable listMember = new DataTable();
+
+        private void addListJenisIdentitas()
+        {
+            jenisidentitas = Program.conn.ExecuteDataTable("SELECT * FROM jenisidentitas");
+
+            // Isi combo box jenis identitas
+            cmbJenisIdentitas.Items.Clear();
+            for (int i = 0; i < jenisidentitas.Rows.Count; i++)
+            {
+                cmbJenisIdentitas.Items.Add(jenisidentitas.Rows[i].ItemArray[1].ToString());
+            }
+        }
 
         public void tampilanAwal()
         {
@@ -38,11 +52,9 @@ namespace Rentalin
             txtKodeMember.ResetText();
             txtNamaMember.ResetText();
             txtNomorIdentitas.ResetText();
-            cmbJenisIdentitas.Items.Clear();
-            cmbJenisIdentitas.Items.Add("0");
-            cmbJenisIdentitas.Items.Add("1");
-            cmbJenisIdentitas.Items.Add("2");
-            cmbJenisIdentitas.Items.Add("3");
+            addListJenisIdentitas();
+            cmbJenisIdentitas.SelectedIndex = 0;
+            
         }
 
         public void tampilanAwal(string kodeMember)
@@ -51,18 +63,15 @@ namespace Rentalin
             btnTambahkan.Enabled = true;
             btnTambahkan.Text = "Perbarui";
 
-            modify = Program.conn.ExecuteDataTable("SELECT * FROM member WHERE kodemember = '" + kodeMember + "'");
+            modify = Program.conn.ExecuteDataTable("SELECT member.*, jenisidentitas.jenis FROM member INNER JOIN jenisidentitas ON member.jenisidentitas = jenisidentitas.id WHERE kodemember = '" + kodeMember + "'");
 
             txtKodeMember.Text = modify.Rows[0].ItemArray[0].ToString();
             txtNamaMember.Text = modify.Rows[0].ItemArray[1].ToString();
             txtNomorIdentitas.Text = modify.Rows[0].ItemArray[3].ToString();
 
-            cmbJenisIdentitas.Items.Clear();
-            cmbJenisIdentitas.Items.Add("0");
-            cmbJenisIdentitas.Items.Add("1");
-            cmbJenisIdentitas.Items.Add("2");
-            cmbJenisIdentitas.Items.Add("3");
-            cmbJenisIdentitas.Text = modify.Rows[0].ItemArray[2].ToString();
+            addListJenisIdentitas();
+
+            cmbJenisIdentitas.Text = modify.Rows[0].ItemArray[4].ToString();
         }
 
         private void btnTambahkan_Click(object sender, EventArgs e)
@@ -91,14 +100,14 @@ namespace Rentalin
                 {
                     if (mode == 0)
                     {
-                        string insert = "INSERT INTO member VALUES('" + txtKodeMember.Text + "','" + txtNamaMember.Text + "'," + cmbJenisIdentitas.Text + "," + txtNomorIdentitas.Text + ")";
+                        string insert = "INSERT INTO member VALUES('" + Program.escapeQuoteSQL(txtKodeMember.Text) + "','" + Program.escapeQuoteSQL(txtNamaMember.Text) + "'," + jenisidentitas.Rows[cmbJenisIdentitas.SelectedIndex].ItemArray[0].ToString() + "," + Program.escapeQuoteSQL(txtNomorIdentitas.Text) + ")";
                         Program.conn.ExecuteNonQuery(insert);
                         MessageBox.Show("Data berhasil ditambahkan");
                         tampilanAwal();
                     }
                     else
                     {
-                        string update = "UPDATE member SET kodemember = '" + txtKodeMember.Text + "', namamember='" + txtNamaMember.Text + "', jenisidentitas = " + cmbJenisIdentitas.Text + ", nomoridentitas = " + txtNomorIdentitas.Text + " WHERE kodemember = '" + IDMember + "'";
+                        string update = "UPDATE member SET kodemember = '" + Program.escapeQuoteSQL(txtKodeMember.Text) + "', namamember='" + Program.escapeQuoteSQL(txtNamaMember.Text) + "', jenisidentitas = " + jenisidentitas.Rows[cmbJenisIdentitas.SelectedIndex].ItemArray[0].ToString() + ", nomoridentitas = " + Program.escapeQuoteSQL(txtNomorIdentitas.Text) + " WHERE kodemember = '" + Program.escapeQuoteSQL(IDMember) + "'";
                         Program.conn.ExecuteNonQuery(update);
                         MessageBox.Show("Data berhasil diperbarui");
                         Close();
@@ -111,6 +120,11 @@ namespace Rentalin
         {
             if (txtKodeMember.TextLength > 0)
                 btnTambahkan.Enabled = true;
+        }
+
+        private void frmTambahPelanggan_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
