@@ -29,7 +29,7 @@ namespace Rentalin
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Koneksi tidak bisa dilakukan, pastikan definisi koneksi pada koneksi.txt diisi dengan benar.\nPesan kesalahan : \n" + ex.ToString(), "Galat", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return false;
         }
@@ -86,18 +86,26 @@ namespace Rentalin
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Query gagal dijalankan, pastikan definisi data di dalam Oracle 11g sudah sesuai dengan upstream.\nPesan kesalahan : \n" + ex.ToString(), "Galat", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return -1;
         }
 
         public DataTable ExecuteDataTable(string sql)
         {
-            DataTable dt = new DataTable();
-            OracleDataAdapter da = new OracleDataAdapter(sql, conn);
-            da.Fill(dt);
-            da.Update(dt);
-            return dt;
+            try
+            {
+                DataTable dt = new DataTable();
+                OracleDataAdapter da = new OracleDataAdapter(sql, conn);
+                da.Fill(dt);
+                da.Update(dt);
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Query gagal dijalankan, pastikan definisi data di dalam Oracle 11g sudah sesuai dengan upstream.\nPesan kesalahan : \n" + ex.ToString(), "Galat", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return null;
         }
 
         public int ExecuteBlobQuery(string sql, string param, byte[] blob)
@@ -116,7 +124,7 @@ namespace Rentalin
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Query gagal dijalankan, pastikan definisi data di dalam Oracle 11g sudah sesuai dengan upstream.\nPesan kesalahan : \n" + ex.ToString(), "Galat", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return -1;
         }

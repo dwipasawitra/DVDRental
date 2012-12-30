@@ -56,11 +56,13 @@
             this.btnMasterKoleksi = new System.Windows.Forms.Button();
             this.btnMasterPelanggan = new System.Windows.Forms.Button();
             this.lblMasterInfo = new System.Windows.Forms.Label();
+            this.picMaster = new System.Windows.Forms.PictureBox();
             this.lblMasterData = new System.Windows.Forms.Label();
             this.pnlTransaksi = new System.Windows.Forms.Panel();
             this.btnPeminjaman = new System.Windows.Forms.Button();
             this.lblTransaksi = new System.Windows.Forms.Label();
             this.btnPengembalian = new System.Windows.Forms.Button();
+            this.picTransaksi = new System.Windows.Forms.PictureBox();
             this.lblTransaksiInfo = new System.Windows.Forms.Label();
             this.pnlLaporan = new System.Windows.Forms.Panel();
             this.btnLaporanKeuangan = new System.Windows.Forms.Button();
@@ -68,6 +70,7 @@
             this.btnLaporanNota = new System.Windows.Forms.Button();
             this.lblLaporan = new System.Windows.Forms.Label();
             this.lblLaporanInfo = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblDate = new System.Windows.Forms.Label();
             this.lblTime = new System.Windows.Forms.Label();
             this.lblLogedInAs = new System.Windows.Forms.Label();
@@ -76,22 +79,23 @@
             this.btnAdmin = new System.Windows.Forms.Button();
             this.tmrWaktu = new System.Windows.Forms.Timer(this.components);
             this.panel2 = new System.Windows.Forms.Panel();
+            this.picDisc = new System.Windows.Forms.PictureBox();
             this.tmrStatistik = new System.Windows.Forms.Timer(this.components);
             this.tmrBlinkingPenawaranSpesial = new System.Windows.Forms.Timer(this.components);
             this.lblPowered = new System.Windows.Forms.Label();
-            this.picDisc = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.picTransaksi = new System.Windows.Forms.PictureBox();
-            this.picMaster = new System.Windows.Forms.PictureBox();
+            this.pnlScrollingText = new System.Windows.Forms.Panel();
+            this.lblScrollText = new System.Windows.Forms.Label();
+            this.tmrScrollingText = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.pnlMaster.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picMaster)).BeginInit();
             this.pnlTransaksi.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picTransaksi)).BeginInit();
             this.pnlLaporan.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picDisc)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picTransaksi)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picMaster)).BeginInit();
+            this.pnlScrollingText.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblAlamatLayanan
@@ -375,6 +379,15 @@
             this.lblMasterInfo.Text = "Silahkan mengatur basis data layanan rental ini\r\nMelalui menu yang disediakan di " +
                 "bawah";
             // 
+            // picMaster
+            // 
+            this.picMaster.Image = global::Rentalin.Properties.Resources.db;
+            this.picMaster.Location = new System.Drawing.Point(15, 10);
+            this.picMaster.Name = "picMaster";
+            this.picMaster.Size = new System.Drawing.Size(92, 95);
+            this.picMaster.TabIndex = 1;
+            this.picMaster.TabStop = false;
+            // 
             // lblMasterData
             // 
             this.lblMasterData.AutoSize = true;
@@ -431,6 +444,15 @@
             this.btnPengembalian.Text = "Pengembalian";
             this.btnPengembalian.UseVisualStyleBackColor = true;
             this.btnPengembalian.Click += new System.EventHandler(this.btnPengembalian_Click);
+            // 
+            // picTransaksi
+            // 
+            this.picTransaksi.Image = global::Rentalin.Properties.Resources.bill;
+            this.picTransaksi.Location = new System.Drawing.Point(15, 12);
+            this.picTransaksi.Name = "picTransaksi";
+            this.picTransaksi.Size = new System.Drawing.Size(94, 94);
+            this.picTransaksi.TabIndex = 15;
+            this.picTransaksi.TabStop = false;
             // 
             // lblTransaksiInfo
             // 
@@ -508,6 +530,15 @@
             this.lblLaporanInfo.TabIndex = 19;
             this.lblLaporanInfo.Text = "Silahkan pilih salah satu laporan layanan yang ingin Anda lihat\r\npada menu dibawa" +
                 "h ini";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Rentalin.Properties.Resources.report;
+            this.pictureBox1.Location = new System.Drawing.Point(15, 8);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(92, 109);
+            this.pictureBox1.TabIndex = 18;
+            this.pictureBox1.TabStop = false;
             // 
             // lblDate
             // 
@@ -592,6 +623,15 @@
             this.panel2.Size = new System.Drawing.Size(756, 81);
             this.panel2.TabIndex = 18;
             // 
+            // picDisc
+            // 
+            this.picDisc.Image = global::Rentalin.Properties.Resources.disc;
+            this.picDisc.Location = new System.Drawing.Point(17, 0);
+            this.picDisc.Name = "picDisc";
+            this.picDisc.Size = new System.Drawing.Size(85, 87);
+            this.picDisc.TabIndex = 8;
+            this.picDisc.TabStop = false;
+            // 
             // tmrStatistik
             // 
             this.tmrStatistik.Enabled = true;
@@ -606,54 +646,44 @@
             // lblPowered
             // 
             this.lblPowered.AutoSize = true;
-            this.lblPowered.Location = new System.Drawing.Point(530, 454);
+            this.lblPowered.Location = new System.Drawing.Point(12, 84);
             this.lblPowered.Name = "lblPowered";
             this.lblPowered.Size = new System.Drawing.Size(210, 26);
             this.lblPowered.TabIndex = 19;
             this.lblPowered.Text = "Powered by RENTALIN engine\r\nhttp://github.com/initrunlevel0/DVDRental";
             // 
-            // picDisc
+            // pnlScrollingText
             // 
-            this.picDisc.Image = global::Rentalin.Properties.Resources.disc;
-            this.picDisc.Location = new System.Drawing.Point(17, 0);
-            this.picDisc.Name = "picDisc";
-            this.picDisc.Size = new System.Drawing.Size(85, 87);
-            this.picDisc.TabIndex = 8;
-            this.picDisc.TabStop = false;
+            this.pnlScrollingText.BackColor = System.Drawing.Color.LightCyan;
+            this.pnlScrollingText.Controls.Add(this.lblScrollText);
+            this.pnlScrollingText.Location = new System.Drawing.Point(-4, 486);
+            this.pnlScrollingText.Name = "pnlScrollingText";
+            this.pnlScrollingText.Size = new System.Drawing.Size(755, 34);
+            this.pnlScrollingText.TabIndex = 20;
             // 
-            // pictureBox1
+            // lblScrollText
             // 
-            this.pictureBox1.Image = global::Rentalin.Properties.Resources.report;
-            this.pictureBox1.Location = new System.Drawing.Point(15, 8);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(92, 109);
-            this.pictureBox1.TabIndex = 18;
-            this.pictureBox1.TabStop = false;
+            this.lblScrollText.AutoSize = true;
+            this.lblScrollText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblScrollText.Location = new System.Drawing.Point(3, 6);
+            this.lblScrollText.Name = "lblScrollText";
+            this.lblScrollText.Size = new System.Drawing.Size(975, 16);
+            this.lblScrollText.TabIndex = 0;
+            this.lblScrollText.Text = "SELAMAT DATANG DI RENTALIN...... Silahkan memilih menu yang disediakan sesuai den" +
+                "gan hak akses yang diberikan. TERIMA KASIH *** ";
             // 
-            // picTransaksi
+            // tmrScrollingText
             // 
-            this.picTransaksi.Image = global::Rentalin.Properties.Resources.bill;
-            this.picTransaksi.Location = new System.Drawing.Point(15, 12);
-            this.picTransaksi.Name = "picTransaksi";
-            this.picTransaksi.Size = new System.Drawing.Size(94, 94);
-            this.picTransaksi.TabIndex = 15;
-            this.picTransaksi.TabStop = false;
-            // 
-            // picMaster
-            // 
-            this.picMaster.Image = global::Rentalin.Properties.Resources.db;
-            this.picMaster.Location = new System.Drawing.Point(15, 10);
-            this.picMaster.Name = "picMaster";
-            this.picMaster.Size = new System.Drawing.Size(92, 95);
-            this.picMaster.TabIndex = 1;
-            this.picMaster.TabStop = false;
+            this.tmrScrollingText.Enabled = true;
+            this.tmrScrollingText.Tick += new System.EventHandler(this.tmrScrollingText_Tick);
             // 
             // frmMainOperator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(749, 482);
+            this.ClientSize = new System.Drawing.Size(749, 517);
+            this.Controls.Add(this.pnlScrollingText);
             this.Controls.Add(this.lblPowered);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.lblTime);
@@ -672,16 +702,18 @@
             this.panel1.PerformLayout();
             this.pnlMaster.ResumeLayout(false);
             this.pnlMaster.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picMaster)).EndInit();
             this.pnlTransaksi.ResumeLayout(false);
             this.pnlTransaksi.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picTransaksi)).EndInit();
             this.pnlLaporan.ResumeLayout(false);
             this.pnlLaporan.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picDisc)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picTransaksi)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picMaster)).EndInit();
+            this.pnlScrollingText.ResumeLayout(false);
+            this.pnlScrollingText.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -743,5 +775,8 @@
         private System.Windows.Forms.Label lblPenawaranSpesialInfo;
         private System.Windows.Forms.Timer tmrBlinkingPenawaranSpesial;
         private System.Windows.Forms.Label lblPowered;
+        private System.Windows.Forms.Panel pnlScrollingText;
+        private System.Windows.Forms.Label lblScrollText;
+        private System.Windows.Forms.Timer tmrScrollingText;
     }
 }

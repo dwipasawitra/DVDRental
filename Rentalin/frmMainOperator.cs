@@ -14,6 +14,20 @@ namespace Rentalin
         bool blinker = false;
         DataTable dtTransaksiStat, dtJudulDipinjamStat;
 
+        /* ISENG BY WIRAMA */
+      
+
+        private void tmrScrollingText_Tick(object sender, EventArgs e)
+        {
+            int len = lblScrollText.Text.Length;
+            lblScrollText.Text = lblScrollText.Text.Substring(1, len -1) + lblScrollText.Text.Substring(0, 1);
+            
+        }
+
+
+
+        /* AKHIR KEISENGANNYA */
+
         public frmMainOperator()
         {
             InitializeComponent();
@@ -274,6 +288,8 @@ namespace Rentalin
             frmLaporanKeuangan form = new frmLaporanKeuangan();
             form.ShowDialog(this);
         }
+
+       
 
         
 
