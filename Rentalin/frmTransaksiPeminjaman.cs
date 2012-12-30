@@ -24,6 +24,7 @@ namespace Rentalin
 
         public void cekPenawaranSpesial()
         {
+            
             Program.so.updateSpecialOffer();
             if (Program.so.isSpecialOffer())
             {               
