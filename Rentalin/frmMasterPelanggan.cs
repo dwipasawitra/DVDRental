@@ -62,7 +62,12 @@ namespace Rentalin
 
         private void btnHistori_Click(object sender, EventArgs e)
         {
-
+            int y = dgPelanggan.CurrentCellAddress.Y;
+            if (y >= 0 && y < pelanggan.Rows.Count)
+            {
+                frmHistoryPenyewaan formHistoryPenyewaan = new frmHistoryPenyewaan(dgPelanggan.Rows[y].Cells[0].Value.ToString(), 1);
+                formHistoryPenyewaan.ShowDialog(this);
+            }
         }
 
         private void txtPencarian_TextChanged(object sender, EventArgs e)

@@ -30,24 +30,39 @@
         {
             this.dgHistory = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgHistory)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgHistory
             // 
             this.dgHistory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgHistory.Location = new System.Drawing.Point(12, 56);
+            this.dgHistory.Location = new System.Drawing.Point(12, 101);
             this.dgHistory.Name = "dgHistory";
-            this.dgHistory.Size = new System.Drawing.Size(438, 333);
+            this.dgHistory.Size = new System.Drawing.Size(438, 288);
             this.dgHistory.TabIndex = 0;
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(136)))), ((int)(((byte)(166)))));
+            this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(0, -1);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(464, 96);
             this.panel1.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.CausesValidation = false;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(30, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(130, 16);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Riwayat Penyewaan";
             // 
             // frmHistoryPenyewaan
             // 
@@ -60,6 +75,8 @@
             this.Text = "Riwayat Penyewaan";
             this.Load += new System.EventHandler(this.frmHistoryPenyewaan_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgHistory)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -68,5 +85,6 @@
 
         private System.Windows.Forms.DataGridView dgHistory;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label1;
     }
 }

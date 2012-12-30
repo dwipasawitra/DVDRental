@@ -228,7 +228,7 @@ namespace Rentalin
             }
         }
 
-        private void btOk_Click(object sender, EventArgs e)
+        private void btnOk_Click(object sender, EventArgs e)
         {
             DataTable cekPeminjam = new DataTable();
             cekPeminjam = Program.conn.ExecuteDataTable("SELECT * FROM nota WHERE kodemember = '" + txtPeminjam.Text + "' AND tglrealisasikembali IS NULL");
@@ -253,7 +253,7 @@ namespace Rentalin
                         //btnCariJudul.Enabled = true;
                         btnTambah.Enabled = true;
                         txtPeminjam.Enabled = false;
-                        btOk.Enabled = false;
+                        btnOk.Enabled = false;
                         btnCariJudul.Enabled = true;
                         txtTambahJudul.Focus();
                         break;
@@ -310,31 +310,41 @@ namespace Rentalin
 
         private void btnProses_Click(object sender, EventArgs e)
         {
-            string date = System.DateTime.Now.Date.ToString();
-            string newDate = date.Substring(0, 10);
-            string tglKembali = dtpTanggalKembali.Value.Date.ToString();
-            string newTglKembali = tglKembali.Substring(0, 10);
+            frmBayarKembali formBayarKembali = new frmBayarKembali(lblNmrNota.Text, int.Parse(lblBiayaSewa.Text));
+            formBayarKembali.ShowDialog(this);
 
-            //insert belanjaan ke tabel
-            string insertNota = "INSERT INTO nota (nonota,kodeoperator,kodepenawaranspesial,kodemember,tgltransaksi,tglkembali)VALUES ('" + lblNmrNota.Text + "','" + Program.session.getKodeOperator().ToString() + "',"+Program.so.getSpecialOfferCode()+",'" + lblKodeMember.Text + "',to_date('" + newDate + "','mm/dd/yyyy'),to_date('" + newTglKembali + "','mm/dd/yyyy'))";
-            Program.conn.ExecuteNonQuery(insertNota);
-            string kodeDipinjam = randomNota();
-            int i, idx = belanja.Rows.Count;
-            for (i = 0; i < idx; i++)
-            {
-                string insertDipinjam = "INSERT INTO dipinjam (kodedipinjam, kodestok, nonota, hargasewa) VALUES('" + randomNota() + "','" + belanja.Rows[i].ItemArray[2].ToString() + "','" + lblNmrNota.Text + "',"+int.Parse(belanja.Rows[i].ItemArray[4].ToString())+")";
-                Program.conn.ExecuteNonQuery(insertDipinjam);
-                string updateStok = "UPDATE stokkoleksi SET status = 1 WHERE kodestok = '" + belanja.Rows[i].ItemArray[2].ToString() + "'";
-                Program.conn.ExecuteNonQuery(updateStok);
+            if (formBayarKembali.getHasil() == true)
+            {                
+                string date = System.DateTime.Now.Date.ToString();
+                string newDate = date.Substring(0, 10);
+                string tglKembali = dtpTanggalKembali.Value.Date.ToString();
+                string newTglKembali = tglKembali.Substring(0, 10);
+
+                //insert belanjaan ke tabel
+                string insertNota = "INSERT INTO nota (nonota,kodeoperator,kodepenawaranspesial,kodemember,tgltransaksi,tglkembali)VALUES ('" + lblNmrNota.Text + "','" + Program.session.getKodeOperator().ToString() + "'," + Program.so.getSpecialOfferCode() + ",'" + lblKodeMember.Text + "',to_date('" + newDate + "','mm/dd/yyyy'),to_date('" + newTglKembali + "','mm/dd/yyyy'))";
+                Program.conn.ExecuteNonQuery(insertNota);
+                string kodeDipinjam = randomNota();
+                int i, idx = belanja.Rows.Count;
+                for (i = 0; i < idx; i++)
+                {
+                    string insertDipinjam = "INSERT INTO dipinjam (kodedipinjam, kodestok, nonota, hargasewa) VALUES('" + randomNota() + "','" + belanja.Rows[i].ItemArray[2].ToString() + "','" + lblNmrNota.Text + "'," + int.Parse(belanja.Rows[i].ItemArray[4].ToString()) + ")";
+                    Program.conn.ExecuteNonQuery(insertDipinjam);
+                    string updateStok = "UPDATE stokkoleksi SET status = 1 WHERE kodestok = '" + belanja.Rows[i].ItemArray[2].ToString() + "'";
+                    Program.conn.ExecuteNonQuery(updateStok);
+                }
+                MessageBox.Show("Transaksi Berhasil");
+                tampilanAwal();
             }
-            MessageBox.Show("Transaksi Berhasil");
-            tampilanAwal();
+            else
+            {
+                tampilanAwal();
+            }                
         }
 
         private void tampilanAwal()
         {            
             belanja.Clear();
-            btOk.Enabled = true;
+            btnOk.Enabled = true;
             txtPeminjam.Enabled = true;
             txtPeminjam.ResetText();
             lblNmrNota.Text = "Kode Nota";
@@ -360,14 +370,20 @@ namespace Rentalin
         }
         private void dtpTanggalKembali_ValueChanged(object sender, EventArgs e)
         {
-            MessageBox.Show(dgPeminjaman.Rows.Count.ToString());
+            //MessageBox.Show(dgPeminjaman.Rows.Count.ToString());
             int lamaPenyewaan = dtpTanggalKembali.Value.Day - DateTime.Now.Day;
+            int bulan = dtpTanggalKembali.Value.Month - DateTime.Now.Month;
+            int tahun = dtpTanggalKembali.Value.Year - DateTime.Now.Year;
+            bulan += tahun * 12;
+            lamaPenyewaan += bulan*30;            
+
             if (Program.setting.lamaPenyewaan == appSetting.LAMA_PENYEWAAN_FIX && lamaPenyewaan > Program.setting.lamaPenyewaanHari)
-            {
-                MessageBox.Show("Maaf Lama Penyewaan " + Program.setting.lamaPenyewaanHari.ToString());
+            {                
+                MessageBox.Show("Maaf Lama Penyewaan " + Program.setting.lamaPenyewaanHari.ToString() + " Hari");
+                dtpTanggalKembali.ResetText();
             }
             else
-            {
+            {                           
                 if (lamaPenyewaan < 0)
                     lamaPenyewaan = 0;
                 lblLamaPenyewaan.Text = lamaPenyewaan.ToString();
@@ -414,6 +430,12 @@ namespace Rentalin
         {
             frmPeminjamanCariPelanggan formPeminjamanCariPelanggan = new frmPeminjamanCariPelanggan();
             formPeminjamanCariPelanggan.ShowDialog(this);
+        }
+
+        private void txtPeminjam_TextChanged(object sender, EventArgs e)
+        {
+            if (txtPeminjam.TextLength == 10)
+                btnOk_Click(sender, e);
         }       
     }
 }

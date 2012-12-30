@@ -30,7 +30,6 @@
         {
             this.btnHapus = new System.Windows.Forms.Button();
             this.pnlInfo = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblInfoDetail = new System.Windows.Forms.Label();
             this.lblInfo = new System.Windows.Forms.Label();
             this.txtPencarian = new System.Windows.Forms.TextBox();
@@ -54,11 +53,12 @@
             this.cmbKondisi = new System.Windows.Forms.ComboBox();
             this.lblStatusInfo = new System.Windows.Forms.Label();
             this.lblKondisiInfo = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnlInfo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgStokKoleksi)).BeginInit();
             this.pnlKoleksiDIpilih.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnHapus
@@ -83,16 +83,6 @@
             this.pnlInfo.Name = "pnlInfo";
             this.pnlInfo.Size = new System.Drawing.Size(491, 88);
             this.pnlInfo.TabIndex = 3;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Rentalin.Properties.Resources.db;
-            this.pictureBox1.Location = new System.Drawing.Point(14, 10);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(69, 74);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
             // 
             // lblInfoDetail
             // 
@@ -146,6 +136,7 @@
             this.btnHistori.TabIndex = 9;
             this.btnHistori.Text = "Histori Penyewaan";
             this.btnHistori.UseVisualStyleBackColor = true;
+            this.btnHistori.Click += new System.EventHandler(this.btnHistori_Click);
             // 
             // btnModifikasi
             // 
@@ -336,6 +327,16 @@
             this.lblKondisiInfo.TabIndex = 20;
             this.lblKondisiInfo.Text = "Kondisi";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Rentalin.Properties.Resources.db;
+            this.pictureBox1.Location = new System.Drawing.Point(14, 10);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(69, 74);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            // 
             // frmMasterStok
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -356,12 +357,12 @@
             this.Load += new System.EventHandler(this.frmMasterStok_Load);
             this.pnlInfo.ResumeLayout(false);
             this.pnlInfo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgStokKoleksi)).EndInit();
             this.pnlKoleksiDIpilih.ResumeLayout(false);
             this.pnlKoleksiDIpilih.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

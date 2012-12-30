@@ -35,7 +35,7 @@
             this.pnlPeminjam = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.lblKodeMember = new System.Windows.Forms.Label();
-            this.btOk = new System.Windows.Forms.Button();
+            this.btnOk = new System.Windows.Forms.Button();
             this.lblIdentitas = new System.Windows.Forms.Label();
             this.lblNamaPeminjam = new System.Windows.Forms.Label();
             this.btnCariPelanggan = new System.Windows.Forms.Button();
@@ -44,6 +44,8 @@
             this.txtTambahJudul = new System.Windows.Forms.TextBox();
             this.dgPeminjaman = new System.Windows.Forms.DataGridView();
             this.pnlDetail = new System.Windows.Forms.Panel();
+            this.lblNamaPenawaran = new System.Windows.Forms.Label();
+            this.lblPenawaranSpesialInfo = new System.Windows.Forms.Label();
             this.lblDetail = new System.Windows.Forms.Label();
             this.lblHargaDendaItem = new System.Windows.Forms.Label();
             this.lblHargaDendaItemInfo = new System.Windows.Forms.Label();
@@ -69,8 +71,6 @@
             this.lblDetailTransaksi = new System.Windows.Forms.Label();
             this.btnCariJudul = new System.Windows.Forms.Button();
             this.lblTambahJudul = new System.Windows.Forms.Label();
-            this.lblPenawaranSpesialInfo = new System.Windows.Forms.Label();
-            this.lblNamaPenawaran = new System.Windows.Forms.Label();
             this.pnlInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picInfo)).BeginInit();
             this.pnlPeminjam.SuspendLayout();
@@ -126,7 +126,7 @@
             this.pnlPeminjam.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(173)))), ((int)(((byte)(191)))));
             this.pnlPeminjam.Controls.Add(this.button1);
             this.pnlPeminjam.Controls.Add(this.lblKodeMember);
-            this.pnlPeminjam.Controls.Add(this.btOk);
+            this.pnlPeminjam.Controls.Add(this.btnOk);
             this.pnlPeminjam.Controls.Add(this.lblIdentitas);
             this.pnlPeminjam.Controls.Add(this.lblNamaPeminjam);
             this.pnlPeminjam.Controls.Add(this.btnCariPelanggan);
@@ -159,16 +159,15 @@
             this.lblKodeMember.TabIndex = 7;
             this.lblKodeMember.Text = "Kode Member";
             // 
-            // btOk
+            // btnOk
             // 
-            this.btOk.ForeColor = System.Drawing.Color.Black;
-            this.btOk.Location = new System.Drawing.Point(236, 3);
-            this.btOk.Name = "btOk";
-            this.btOk.Size = new System.Drawing.Size(75, 23);
-            this.btOk.TabIndex = 6;
-            this.btOk.Text = "OK";
-            this.btOk.UseVisualStyleBackColor = true;
-            this.btOk.Click += new System.EventHandler(this.btOk_Click);
+            this.btnOk.ForeColor = System.Drawing.Color.Black;
+            this.btnOk.Location = new System.Drawing.Point(236, 3);
+            this.btnOk.Name = "btnOk";
+            this.btnOk.Size = new System.Drawing.Size(75, 23);
+            this.btnOk.TabIndex = 6;
+            this.btnOk.Text = "OK";
+            this.btnOk.UseVisualStyleBackColor = true;
             // 
             // lblIdentitas
             // 
@@ -206,6 +205,7 @@
             this.txtPeminjam.Name = "txtPeminjam";
             this.txtPeminjam.Size = new System.Drawing.Size(157, 20);
             this.txtPeminjam.TabIndex = 1;
+            this.txtPeminjam.TextChanged += new System.EventHandler(this.txtPeminjam_TextChanged);
             // 
             // label1
             // 
@@ -256,6 +256,26 @@
             this.pnlDetail.Name = "pnlDetail";
             this.pnlDetail.Size = new System.Drawing.Size(191, 365);
             this.pnlDetail.TabIndex = 7;
+            // 
+            // lblNamaPenawaran
+            // 
+            this.lblNamaPenawaran.AutoSize = true;
+            this.lblNamaPenawaran.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNamaPenawaran.Location = new System.Drawing.Point(11, 288);
+            this.lblNamaPenawaran.Name = "lblNamaPenawaran";
+            this.lblNamaPenawaran.Size = new System.Drawing.Size(140, 18);
+            this.lblNamaPenawaran.TabIndex = 25;
+            this.lblNamaPenawaran.Text = "Nama Penawaran";
+            // 
+            // lblPenawaranSpesialInfo
+            // 
+            this.lblPenawaranSpesialInfo.AutoSize = true;
+            this.lblPenawaranSpesialInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPenawaranSpesialInfo.Location = new System.Drawing.Point(11, 264);
+            this.lblPenawaranSpesialInfo.Name = "lblPenawaranSpesialInfo";
+            this.lblPenawaranSpesialInfo.Size = new System.Drawing.Size(160, 13);
+            this.lblPenawaranSpesialInfo.TabIndex = 24;
+            this.lblPenawaranSpesialInfo.Text = "Penawaran Spesial Hari Ini";
             // 
             // lblDetail
             // 
@@ -512,26 +532,6 @@
             this.lblTambahJudul.TabIndex = 3;
             this.lblTambahJudul.Text = "Tambah Judul";
             // 
-            // lblPenawaranSpesialInfo
-            // 
-            this.lblPenawaranSpesialInfo.AutoSize = true;
-            this.lblPenawaranSpesialInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPenawaranSpesialInfo.Location = new System.Drawing.Point(11, 264);
-            this.lblPenawaranSpesialInfo.Name = "lblPenawaranSpesialInfo";
-            this.lblPenawaranSpesialInfo.Size = new System.Drawing.Size(160, 13);
-            this.lblPenawaranSpesialInfo.TabIndex = 24;
-            this.lblPenawaranSpesialInfo.Text = "Penawaran Spesial Hari Ini";
-            // 
-            // lblNamaPenawaran
-            // 
-            this.lblNamaPenawaran.AutoSize = true;
-            this.lblNamaPenawaran.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNamaPenawaran.Location = new System.Drawing.Point(11, 288);
-            this.lblNamaPenawaran.Name = "lblNamaPenawaran";
-            this.lblNamaPenawaran.Size = new System.Drawing.Size(140, 18);
-            this.lblNamaPenawaran.TabIndex = 25;
-            this.lblNamaPenawaran.Text = "Nama Penawaran";
-            // 
             // frmTransaksiPeminjaman
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -603,7 +603,7 @@
         private System.Windows.Forms.Label lblHargaSewaItemInfo;
         private System.Windows.Forms.Label lblHargaDendaItem;
         private System.Windows.Forms.Label lblHargaDendaItemInfo;
-        private System.Windows.Forms.Button btOk;
+        private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.Label lblDetail;
         private System.Windows.Forms.Label lblHari;
         private System.Windows.Forms.Label lblKodeMember;
