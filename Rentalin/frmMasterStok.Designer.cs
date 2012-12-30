@@ -30,7 +30,6 @@
         {
             this.btnHapus = new System.Windows.Forms.Button();
             this.pnlInfo = new System.Windows.Forms.Panel();
-            this.lblPencarian = new System.Windows.Forms.Label();
             this.txtPencarian = new System.Windows.Forms.TextBox();
             this.lblInfoDetail = new System.Windows.Forms.Label();
             this.picInfo = new System.Windows.Forms.PictureBox();
@@ -76,8 +75,6 @@
             // pnlInfo
             // 
             this.pnlInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(136)))), ((int)(((byte)(166)))));
-            this.pnlInfo.Controls.Add(this.lblPencarian);
-            this.pnlInfo.Controls.Add(this.txtPencarian);
             this.pnlInfo.Controls.Add(this.lblInfoDetail);
             this.pnlInfo.Controls.Add(this.picInfo);
             this.pnlInfo.Controls.Add(this.lblInfo);
@@ -87,19 +84,9 @@
             this.pnlInfo.Size = new System.Drawing.Size(491, 122);
             this.pnlInfo.TabIndex = 3;
             // 
-            // lblPencarian
-            // 
-            this.lblPencarian.AutoSize = true;
-            this.lblPencarian.Location = new System.Drawing.Point(116, 78);
-            this.lblPencarian.Name = "lblPencarian";
-            this.lblPencarian.Size = new System.Drawing.Size(50, 13);
-            this.lblPencarian.TabIndex = 8;
-            this.lblPencarian.Text = "Cari Stok";
-            this.lblPencarian.Click += new System.EventHandler(this.lblPencarian_Click);
-            // 
             // txtPencarian
             // 
-            this.txtPencarian.Location = new System.Drawing.Point(119, 94);
+            this.txtPencarian.Location = new System.Drawing.Point(141, 132);
             this.txtPencarian.Name = "txtPencarian";
             this.txtPencarian.Size = new System.Drawing.Size(349, 20);
             this.txtPencarian.TabIndex = 7;
@@ -109,7 +96,7 @@
             // 
             this.lblInfoDetail.AutoSize = true;
             this.lblInfoDetail.ForeColor = System.Drawing.Color.White;
-            this.lblInfoDetail.Location = new System.Drawing.Point(116, 38);
+            this.lblInfoDetail.Location = new System.Drawing.Point(116, 60);
             this.lblInfoDetail.Name = "lblInfoDetail";
             this.lblInfoDetail.Size = new System.Drawing.Size(357, 26);
             this.lblInfoDetail.TabIndex = 5;
@@ -131,7 +118,7 @@
             this.lblInfo.AutoSize = true;
             this.lblInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInfo.ForeColor = System.Drawing.Color.White;
-            this.lblInfo.Location = new System.Drawing.Point(114, 13);
+            this.lblInfo.Location = new System.Drawing.Point(114, 35);
             this.lblInfo.Name = "lblInfo";
             this.lblInfo.Size = new System.Drawing.Size(138, 25);
             this.lblInfo.TabIndex = 3;
@@ -140,9 +127,9 @@
             // btnTambah
             // 
             this.btnTambah.ForeColor = System.Drawing.Color.Black;
-            this.btnTambah.Location = new System.Drawing.Point(43, 120);
+            this.btnTambah.Location = new System.Drawing.Point(13, 133);
             this.btnTambah.Name = "btnTambah";
-            this.btnTambah.Size = new System.Drawing.Size(121, 28);
+            this.btnTambah.Size = new System.Drawing.Size(121, 19);
             this.btnTambah.TabIndex = 6;
             this.btnTambah.Text = "Tambah Stok";
             this.btnTambah.UseVisualStyleBackColor = true;
@@ -172,22 +159,20 @@
             // dgStokKoleksi
             // 
             this.dgStokKoleksi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgStokKoleksi.Location = new System.Drawing.Point(13, 132);
+            this.dgStokKoleksi.Location = new System.Drawing.Point(13, 158);
             this.dgStokKoleksi.Name = "dgStokKoleksi";
-            this.dgStokKoleksi.Size = new System.Drawing.Size(477, 329);
+            this.dgStokKoleksi.Size = new System.Drawing.Size(477, 303);
             this.dgStokKoleksi.TabIndex = 4;
-            this.dgStokKoleksi.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgStokKoleksi_CellContentClick);            
+            this.dgStokKoleksi.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgStokKoleksi_CellContentClick);
             this.dgStokKoleksi.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dgStokKoleksi_RowsRemoved);
             // 
             // pnlKoleksiDIpilih
             // 
             this.pnlKoleksiDIpilih.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(173)))), ((int)(((byte)(191)))));
-            this.pnlKoleksiDIpilih.Controls.Add(this.panel1);
             this.pnlKoleksiDIpilih.Controls.Add(this.lblGenre);
             this.pnlKoleksiDIpilih.Controls.Add(this.lblJudul);
             this.pnlKoleksiDIpilih.Controls.Add(this.btnHistori);
             this.pnlKoleksiDIpilih.Controls.Add(this.btnPilihKoleksi);
-            this.pnlKoleksiDIpilih.Controls.Add(this.btnTambah);
             this.pnlKoleksiDIpilih.Controls.Add(this.txtPilihKoleksi);
             this.pnlKoleksiDIpilih.Controls.Add(this.btnHapus);
             this.pnlKoleksiDIpilih.Controls.Add(this.lblDipilih);
@@ -210,7 +195,7 @@
             this.panel1.Controls.Add(this.lblStatusInfo);
             this.panel1.Controls.Add(this.lblKondisiInfo);
             this.panel1.Controls.Add(this.txtKodeKoleksi);
-            this.panel1.Location = new System.Drawing.Point(0, 164);
+            this.panel1.Location = new System.Drawing.Point(496, 158);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(211, 178);
             this.panel1.TabIndex = 28;
@@ -317,7 +302,7 @@
             // btnPilihKoleksi
             // 
             this.btnPilihKoleksi.ForeColor = System.Drawing.Color.Black;
-            this.btnPilihKoleksi.Location = new System.Drawing.Point(43, 35);
+            this.btnPilihKoleksi.Location = new System.Drawing.Point(43, 34);
             this.btnPilihKoleksi.Name = "btnPilihKoleksi";
             this.btnPilihKoleksi.Size = new System.Drawing.Size(121, 28);
             this.btnPilihKoleksi.TabIndex = 10;
@@ -327,7 +312,7 @@
             // 
             // txtPilihKoleksi
             // 
-            this.txtPilihKoleksi.Location = new System.Drawing.Point(9, 69);
+            this.txtPilihKoleksi.Location = new System.Drawing.Point(9, 68);
             this.txtPilihKoleksi.Name = "txtPilihKoleksi";
             this.txtPilihKoleksi.Size = new System.Drawing.Size(188, 20);
             this.txtPilihKoleksi.TabIndex = 1;
@@ -336,7 +321,7 @@
             // 
             this.lblDipilih.AutoSize = true;
             this.lblDipilih.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDipilih.Location = new System.Drawing.Point(3, 11);
+            this.lblDipilih.Location = new System.Drawing.Point(3, 10);
             this.lblDipilih.Name = "lblDipilih";
             this.lblDipilih.Size = new System.Drawing.Size(118, 13);
             this.lblDipilih.TabIndex = 0;
@@ -348,9 +333,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(705, 479);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnlKoleksiDIpilih);
+            this.Controls.Add(this.txtPencarian);
             this.Controls.Add(this.pnlInfo);
             this.Controls.Add(this.dgStokKoleksi);
+            this.Controls.Add(this.btnTambah);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "frmMasterStok";
@@ -366,6 +354,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -373,7 +362,6 @@
 
         private System.Windows.Forms.Button btnHapus;
         private System.Windows.Forms.Panel pnlInfo;
-        private System.Windows.Forms.Label lblPencarian;
         private System.Windows.Forms.TextBox txtPencarian;
         private System.Windows.Forms.Button btnTambah;
         private System.Windows.Forms.Label lblInfoDetail;

@@ -39,14 +39,14 @@ namespace Rentalin
                     {
                         frmMainOperator formOperator = new frmMainOperator();
                         formOperator.Focus();
-                        formOperator.ShowDialog();
+                        formOperator.ShowDialog(this);
                         
                     }
                     else
                     {
                         frmAdmin formAdmin = new frmAdmin();
                         formAdmin.Focus();
-                        formAdmin.ShowDialog();
+                        formAdmin.ShowDialog(this);
                         
                     }
                 }

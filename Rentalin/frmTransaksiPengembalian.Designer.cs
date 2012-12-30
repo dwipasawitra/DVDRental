@@ -86,6 +86,7 @@
             // 
             // btnProses
             // 
+            this.btnProses.ForeColor = System.Drawing.Color.Black;
             this.btnProses.Location = new System.Drawing.Point(552, 10);
             this.btnProses.Name = "btnProses";
             this.btnProses.Size = new System.Drawing.Size(127, 53);
@@ -344,6 +345,7 @@
             // 
             // btnCariPelanggan
             // 
+            this.btnCariPelanggan.ForeColor = System.Drawing.Color.Black;
             this.btnCariPelanggan.Location = new System.Drawing.Point(232, 4);
             this.btnCariPelanggan.Name = "btnCariPelanggan";
             this.btnCariPelanggan.Size = new System.Drawing.Size(75, 23);

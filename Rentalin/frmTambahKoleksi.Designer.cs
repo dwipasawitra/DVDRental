@@ -40,7 +40,6 @@
             this.lblJenis = new System.Windows.Forms.Label();
             this.cmbJenis = new System.Windows.Forms.ComboBox();
             this.lblCoverArt = new System.Windows.Forms.Label();
-            this.txtCoverArt = new System.Windows.Forms.TextBox();
             this.btnBrowse = new System.Windows.Forms.Button();
             this.picCoverArt = new System.Windows.Forms.PictureBox();
             this.btnTambahkan = new System.Windows.Forms.Button();
@@ -55,13 +54,16 @@
             this.txtHargaDenda = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.opdFIleBrowser = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.picCoverArt)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblTambahKoleksi
             // 
             this.lblTambahKoleksi.AutoSize = true;
-            this.lblTambahKoleksi.Location = new System.Drawing.Point(12, 9);
+            this.lblTambahKoleksi.Location = new System.Drawing.Point(15, 11);
             this.lblTambahKoleksi.Name = "lblTambahKoleksi";
             this.lblTambahKoleksi.Size = new System.Drawing.Size(399, 26);
             this.lblTambahKoleksi.TabIndex = 0;
@@ -170,18 +172,11 @@
             this.lblCoverArt.TabIndex = 12;
             this.lblCoverArt.Text = "Cover Art";
             // 
-            // txtCoverArt
-            // 
-            this.txtCoverArt.Location = new System.Drawing.Point(360, 108);
-            this.txtCoverArt.Name = "txtCoverArt";
-            this.txtCoverArt.Size = new System.Drawing.Size(126, 20);
-            this.txtCoverArt.TabIndex = 13;
-            // 
             // btnBrowse
             // 
-            this.btnBrowse.Location = new System.Drawing.Point(492, 108);
+            this.btnBrowse.Location = new System.Drawing.Point(360, 108);
             this.btnBrowse.Name = "btnBrowse";
-            this.btnBrowse.Size = new System.Drawing.Size(86, 20);
+            this.btnBrowse.Size = new System.Drawing.Size(126, 20);
             this.btnBrowse.TabIndex = 14;
             this.btnBrowse.Text = "Telusuri..";
             this.btnBrowse.UseVisualStyleBackColor = true;
@@ -192,12 +187,14 @@
             this.picCoverArt.Location = new System.Drawing.Point(360, 134);
             this.picCoverArt.Name = "picCoverArt";
             this.picCoverArt.Size = new System.Drawing.Size(126, 156);
+            this.picCoverArt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picCoverArt.TabIndex = 15;
             this.picCoverArt.TabStop = false;
+            
             // 
             // btnTambahkan
             // 
-            this.btnTambahkan.Location = new System.Drawing.Point(220, 311);
+            this.btnTambahkan.Location = new System.Drawing.Point(199, 308);
             this.btnTambahkan.Name = "btnTambahkan";
             this.btnTambahkan.Size = new System.Drawing.Size(143, 26);
             this.btnTambahkan.TabIndex = 16;
@@ -265,7 +262,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Red;
-            this.label6.Location = new System.Drawing.Point(4, 324);
+            this.label6.Location = new System.Drawing.Point(0, 305);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(15, 20);
             this.label6.TabIndex = 22;
@@ -274,7 +271,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(16, 324);
+            this.label7.Location = new System.Drawing.Point(12, 305);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(117, 13);
             this.label7.TabIndex = 23;
@@ -312,12 +309,29 @@
             this.label9.TabIndex = 27;
             this.label9.Text = "Harga Denda";
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.PaleGoldenrod;
+            this.panel1.Controls.Add(this.lblTambahKoleksi);
+            this.panel1.Location = new System.Drawing.Point(-3, -2);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(595, 45);
+            this.panel1.TabIndex = 28;
+            // 
+            // opdFIleBrowser
+            // 
+            this.opdFIleBrowser.Filter = "JPG Images|(*.jpg)";
+            this.opdFIleBrowser.Title = "Telusuri cover art";
+            // 
             // frmTambahKoleksi
             // 
             this.AcceptButton = this.btnTambahkan;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(587, 349);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(516, 346);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.btnTambahkan);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txtHargaDenda);
@@ -329,10 +343,8 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnTambahkan);
             this.Controls.Add(this.picCoverArt);
             this.Controls.Add(this.btnBrowse);
-            this.Controls.Add(this.txtCoverArt);
             this.Controls.Add(this.lblCoverArt);
             this.Controls.Add(this.cmbJenis);
             this.Controls.Add(this.lblJenis);
@@ -344,7 +356,6 @@
             this.Controls.Add(this.lblNama);
             this.Controls.Add(this.txtKode);
             this.Controls.Add(this.lblKode);
-            this.Controls.Add(this.lblTambahKoleksi);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
             this.Name = "frmTambahKoleksi";
@@ -352,6 +363,8 @@
             this.Text = "Tambah Koleksi";
             this.Load += new System.EventHandler(this.frmTambahKoleksi_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picCoverArt)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -371,7 +384,6 @@
         private System.Windows.Forms.Label lblJenis;
         private System.Windows.Forms.ComboBox cmbJenis;
         private System.Windows.Forms.Label lblCoverArt;
-        private System.Windows.Forms.TextBox txtCoverArt;
         private System.Windows.Forms.Button btnBrowse;
         private System.Windows.Forms.PictureBox picCoverArt;
         private System.Windows.Forms.Button btnTambahkan;
@@ -386,5 +398,7 @@
         private System.Windows.Forms.TextBox txtHargaDenda;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.OpenFileDialog opdFIleBrowser;
     }
 }

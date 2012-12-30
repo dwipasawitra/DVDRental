@@ -191,11 +191,11 @@
             // lblJudul
             // 
             this.lblJudul.AutoSize = true;
-            this.lblJudul.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblJudul.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblJudul.ForeColor = System.Drawing.Color.Black;
             this.lblJudul.Location = new System.Drawing.Point(3, 148);
             this.lblJudul.Name = "lblJudul";
-            this.lblJudul.Size = new System.Drawing.Size(85, 18);
+            this.lblJudul.Size = new System.Drawing.Size(74, 15);
             this.lblJudul.TabIndex = 11;
             this.lblJudul.Text = "Judul Film";
             // 
@@ -232,7 +232,8 @@
             this.Controls.Add(this.pnlDetail);
             this.Controls.Add(this.dgKoleksi);
             this.Name = "frmMasterKoleksi";
-            this.Text = "Rentalin - Master Koleksi";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "RENTALIN - Master Koleksi";
             this.Load += new System.EventHandler(this.frmMasterKoleksi_Load);
             this.pnlInfo.ResumeLayout(false);
             this.pnlInfo.PerformLayout();

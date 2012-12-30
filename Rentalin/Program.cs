@@ -344,19 +344,18 @@ namespace Rentalin
 
     }
 
+    
+
     static class Program
     {
+        /// <summary>
         /// The main entry point for the application.
+        /// </summary>
+        [STAThread]
 
-        public static dbConnection conn = new dbConnection();
-        public static userSession session = new userSession();
-        public static appSetting setting = new appSetting();
-        public static userRole role = new userRole();
-        public static specialOffer so = new specialOffer();
-
-        public const string IMAGE_FILE_TEMPORARY = "gambarsementara.jpg";
         static void Main()
         {
+
             bool isConn;
 
             // App initialization
@@ -375,8 +374,17 @@ namespace Rentalin
             {
                 MessageBox.Show("Gagal melakukan koneksi ke basis data. Pastikan pengaturan basis data sudah sesuai.", "Galat", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-            }          
+            }
         }
+
+        public static dbConnection conn = new dbConnection();
+        public static userSession session = new userSession();
+        public static appSetting setting = new appSetting();
+        public static userRole role = new userRole();
+        public static specialOffer so = new specialOffer();
+
+        public const string IMAGE_FILE_TEMPORARY = "gambarsementara.jpg";
+        
 
         public static string convertTglkeOracle(DateTime dtInput)
         {
@@ -406,12 +414,18 @@ namespace Rentalin
 
         public static void displayBlobImage(byte[] blob)
         {
-
-            // Tulis BLOB tersebut ke berkas imgtmp.jpg
-            FileStream FS = new FileStream(IMAGE_FILE_TEMPORARY, FileMode.Create);
-            FS.Write(blob, 0, blob.Length);
-            FS.Close();
-            FS = null;
+            try
+            {
+                FileStream FS = new FileStream(IMAGE_FILE_TEMPORARY, FileMode.Create, FileAccess.Write);
+                FS.Write(blob, 0, blob.Length);
+                FS.Close();
+                FS.Dispose();
+                FS = null;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
         }
 
         public static byte[] getBlobImage(string filePath)

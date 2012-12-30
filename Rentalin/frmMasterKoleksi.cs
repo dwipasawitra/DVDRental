@@ -84,9 +84,15 @@ namespace Rentalin
 
         private void btnModifikasi_Click(object sender, EventArgs e)
         {
+            // Kosongkan gambar agar tidak konflik
+            if (pbCoverArt.Image != null)
+            {
+                pbCoverArt.Image.Dispose();
+            }
+
             int y = dgKoleksi.CurrentCellAddress.Y;
             frmTambahKoleksi formTambahKoleksi = new frmTambahKoleksi(koleksi.Rows[y].ItemArray[0].ToString());
-            formTambahKoleksi.ShowDialog(this);
+            formTambahKoleksi.ShowDialog();
         }
 
         private void txtPencarian_TextChanged(object sender, EventArgs e)
@@ -97,7 +103,7 @@ namespace Rentalin
 
         private void dgKoleksi_SelectionChanged(object sender, EventArgs e)
         {
-            if (dgKoleksi.SelectedCells.Count >= 1)
+            if (dgKoleksi.SelectedCells.Count == 1)
             {
                 int idx = dgKoleksi.SelectedCells[0].RowIndex;
                 showDataDetail(idx);
@@ -107,8 +113,7 @@ namespace Rentalin
 
         private void showDataDetail(int index)
         {
-          
-     
+
             // Tampilkan nama judul dan genre
             lblJudul.Text = koleksi.Rows[index].ItemArray[1].ToString();
             lblGenre.Text = koleksi.Rows[index].ItemArray[2].ToString();
@@ -117,6 +122,13 @@ namespace Rentalin
             string kodeKoleksi = koleksi.Rows[index].ItemArray[0].ToString();
             DataTable infoJudul;
             infoJudul = Program.conn.ExecuteDataTable("SELECT dekripsiitem, coverart FROM koleksi WHERE KodeKoleksi='" + kodeKoleksi + "'");
+
+            // Kosongkan gambar
+            if (pbCoverArt.Image != null)
+            {
+                pbCoverArt.Image.Dispose();
+                pbCoverArt.Image = null;
+            }
 
             try
             {
@@ -134,7 +146,7 @@ namespace Rentalin
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.ToString());
+                MessageBox.Show(e.ToString(), "Galat", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             // Tampilkan teks pada deskripsi
