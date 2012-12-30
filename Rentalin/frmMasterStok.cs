@@ -45,6 +45,7 @@ namespace Rentalin
             btnTambah.Enabled = false;
             btnPerbarui.Enabled = false;
             txtPilihKoleksi.Focus();
+            btnHistori.Enabled = false;
         }
 
         public void tampilanAwal(string KodeKoleksi)
@@ -312,7 +313,7 @@ namespace Rentalin
                     txtHarga.Text = stok.Rows[idx].ItemArray[3].ToString();                    
                     if(stok.Rows[idx].ItemArray[4].ToString().Length > 0)
                     dtpTglBeli.Value = DateTime.ParseExact(stok.Rows[idx].ItemArray[4].ToString().Substring(0,10), "MM/dd/yyyy", null);
-                    
+                    btnHistori.Enabled = true; 
                 }
                 else
                 {
@@ -333,6 +334,16 @@ namespace Rentalin
         {
             if (e.KeyCode == Keys.Enter)
                 btnPilihKoleksi_Click(sender, e);
+        }
+
+        private void btnHistori_Click(object sender, EventArgs e)
+        {
+            int y = dgStokKoleksi.CurrentCellAddress.Y;
+            if(y >= 0 && y < stok.Rows.Count)
+            {
+                frmHistoryPenyewaan formHistoryPenyewaan = new frmHistoryPenyewaan(dgStokKoleksi.Rows[y].Cells[0].Value.ToString(), 0);
+                formHistoryPenyewaan.ShowDialog(this);
+            }
         }
 
       

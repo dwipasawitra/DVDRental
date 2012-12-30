@@ -11,28 +11,24 @@ namespace Rentalin
 {
     public partial class frmHistoryPenyewaan : Form
     {
-        int mode;
-        public frmHistoryPenyewaan()
+        int Mode;
+        public string Kode;
+        public frmHistoryPenyewaan(string kode, int mode)
         {
             InitializeComponent();
-            mode = 0;
-        }
-
-        public frmHistoryPenyewaan(string kodeMember)
-        {
-            InitializeComponent();
-            mode = 1;
+            Mode = mode;
+            Kode = kode;
         }
 
         private void frmHistoryPenyewaan_Load(object sender, EventArgs e)
         {
-            if (mode == 0)
+            if (Mode == 0)
             {
- 
+                dgHistory.DataSource = Program.conn.ExecuteDataTable("select nota.tgltransaksi, nota.nonota, member.namamember from dipinjam inner join nota on dipinjam.nonota = nota.nonota inner join member on nota.kodemember = member.kodemember where dipinjam.kodestok = '"+Kode+"' order by nota.tgltransaksi");
             }
-            else if (mode == 1)
+            else if (Mode == 1)
             {
- 
+                dgHistory.DataSource = Program.conn.ExecuteDataTable("select * from nota where nota.kodemember = '"+Kode+"' ORDER BY nota.tgltransaksi asc");
             }
         }
     }

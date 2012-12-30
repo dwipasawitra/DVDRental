@@ -54,11 +54,14 @@
             this.lblKodeMember = new System.Windows.Forms.Label();
             this.lblNamaPeminjam = new System.Windows.Forms.Label();
             this.pnlPeminjam = new System.Windows.Forms.Panel();
+            this.btnOk = new System.Windows.Forms.Button();
             this.btnCariPelanggan = new System.Windows.Forms.Button();
             this.txtPeminjam = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lblDetail = new System.Windows.Forms.Label();
             this.pnlDetail = new System.Windows.Forms.Panel();
+            this.lblDendaPersen = new System.Windows.Forms.Label();
+            this.lblDendaPersenInfo = new System.Windows.Forms.Label();
             this.lblStok = new System.Windows.Forms.Label();
             this.lblStokInfo = new System.Windows.Forms.Label();
             this.lblDendaKerusakan = new System.Windows.Forms.Label();
@@ -66,8 +69,6 @@
             this.lblDendaKerusakanInfo = new System.Windows.Forms.Label();
             this.lblHargaDendaItemInfo = new System.Windows.Forms.Label();
             this.lblJudul = new System.Windows.Forms.Label();
-            this.lblDendaPersenInfo = new System.Windows.Forms.Label();
-            this.lblDendaPersen = new System.Windows.Forms.Label();
             this.pnlTransaksi.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgPengembalian)).BeginInit();
             this.pnlInfo.SuspendLayout();
@@ -334,6 +335,7 @@
             // pnlPeminjam
             // 
             this.pnlPeminjam.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(153)))), ((int)(((byte)(102)))));
+            this.pnlPeminjam.Controls.Add(this.btnOk);
             this.pnlPeminjam.Controls.Add(this.lblIdentitas);
             this.pnlPeminjam.Controls.Add(this.lblKodeMember);
             this.pnlPeminjam.Controls.Add(this.lblNamaPeminjam);
@@ -346,10 +348,21 @@
             this.pnlPeminjam.Size = new System.Drawing.Size(317, 75);
             this.pnlPeminjam.TabIndex = 11;
             // 
+            // btnOk
+            // 
+            this.btnOk.ForeColor = System.Drawing.Color.Black;
+            this.btnOk.Location = new System.Drawing.Point(232, 4);
+            this.btnOk.Name = "btnOk";
+            this.btnOk.Size = new System.Drawing.Size(75, 24);
+            this.btnOk.TabIndex = 6;
+            this.btnOk.Text = "OK";
+            this.btnOk.UseVisualStyleBackColor = true;
+            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
+            // 
             // btnCariPelanggan
             // 
             this.btnCariPelanggan.ForeColor = System.Drawing.Color.Black;
-            this.btnCariPelanggan.Location = new System.Drawing.Point(232, 4);
+            this.btnCariPelanggan.Location = new System.Drawing.Point(232, 33);
             this.btnCariPelanggan.Name = "btnCariPelanggan";
             this.btnCariPelanggan.Size = new System.Drawing.Size(75, 23);
             this.btnCariPelanggan.TabIndex = 2;
@@ -363,6 +376,7 @@
             this.txtPeminjam.Name = "txtPeminjam";
             this.txtPeminjam.Size = new System.Drawing.Size(157, 20);
             this.txtPeminjam.TabIndex = 1;
+            this.txtPeminjam.TextChanged += new System.EventHandler(this.txtPeminjam_TextChanged);
             // 
             // label1
             // 
@@ -407,6 +421,25 @@
             this.pnlDetail.Name = "pnlDetail";
             this.pnlDetail.Size = new System.Drawing.Size(191, 365);
             this.pnlDetail.TabIndex = 16;
+            // 
+            // lblDendaPersen
+            // 
+            this.lblDendaPersen.AutoSize = true;
+            this.lblDendaPersen.Location = new System.Drawing.Point(4, 315);
+            this.lblDendaPersen.Name = "lblDendaPersen";
+            this.lblDendaPersen.Size = new System.Drawing.Size(24, 13);
+            this.lblDendaPersen.TabIndex = 28;
+            this.lblDendaPersen.Text = "0 %";
+            // 
+            // lblDendaPersenInfo
+            // 
+            this.lblDendaPersenInfo.AutoSize = true;
+            this.lblDendaPersenInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDendaPersenInfo.Location = new System.Drawing.Point(4, 301);
+            this.lblDendaPersenInfo.Name = "lblDendaPersenInfo";
+            this.lblDendaPersenInfo.Size = new System.Drawing.Size(144, 13);
+            this.lblDendaPersenInfo.TabIndex = 27;
+            this.lblDendaPersenInfo.Text = "Besar Denda Kerusakan";
             // 
             // lblStok
             // 
@@ -475,25 +508,6 @@
             this.lblJudul.Size = new System.Drawing.Size(63, 13);
             this.lblJudul.TabIndex = 13;
             this.lblJudul.Text = "Judul Film";
-            // 
-            // lblDendaPersenInfo
-            // 
-            this.lblDendaPersenInfo.AutoSize = true;
-            this.lblDendaPersenInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDendaPersenInfo.Location = new System.Drawing.Point(4, 301);
-            this.lblDendaPersenInfo.Name = "lblDendaPersenInfo";
-            this.lblDendaPersenInfo.Size = new System.Drawing.Size(144, 13);
-            this.lblDendaPersenInfo.TabIndex = 27;
-            this.lblDendaPersenInfo.Text = "Besar Denda Kerusakan";
-            // 
-            // lblDendaPersen
-            // 
-            this.lblDendaPersen.AutoSize = true;
-            this.lblDendaPersen.Location = new System.Drawing.Point(4, 315);
-            this.lblDendaPersen.Name = "lblDendaPersen";
-            this.lblDendaPersen.Size = new System.Drawing.Size(24, 13);
-            this.lblDendaPersen.TabIndex = 28;
-            this.lblDendaPersen.Text = "0 %";
             // 
             // frmTransaksiPengembalian
             // 
@@ -568,5 +582,6 @@
         private System.Windows.Forms.Label lblHari;
         private System.Windows.Forms.Label lblDendaPersen;
         private System.Windows.Forms.Label lblDendaPersenInfo;
+        private System.Windows.Forms.Button btnOk;
     }
 }
