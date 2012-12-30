@@ -21,6 +21,7 @@ namespace Rentalin
         {
             muatUlangData();
             dgPelanggan.ReadOnly = true;
+            txtPencarian.Focus();
         }
 
         private void btnHapus_Click(object sender, EventArgs e)

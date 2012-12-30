@@ -22,6 +22,20 @@ namespace Rentalin
         DataTable stokKoleksi = new DataTable();
         private const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
+        public void cekPenawaranSpesial()
+        {
+            
+            Program.so.updateSpecialOffer();
+            if (Program.so.isSpecialOffer())
+            {               
+                lblNamaPenawaran.Text = Program.so.getSpecialOfferName() + " " + Program.so.getSpecialOfferDiscount().ToString() + " %";
+            }
+            else
+            {
+                lblNamaPenawaran.Text = "Tidak Ada";
+            }
+        }
+
         private void hitungTotalBiaya()
         {
             int i, totalBiayaSewa = 0;
