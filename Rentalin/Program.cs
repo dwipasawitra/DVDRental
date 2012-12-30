@@ -82,7 +82,7 @@ namespace Rentalin
 
             // Check user login in database
             loginChecker = Program.conn.ExecuteDataTable("SELECT * FROM pengguna WHERE username = '"
-                                                        + userName +"' and password = '"
+                                                        + Program.escapeQuoteSQL(userName) +"' and password = '"
                                                         + passwordSha1 + "'");
             
             // If there is one row in table
@@ -438,6 +438,15 @@ namespace Rentalin
             FS = null;
 
             return blob;
+        }
+
+        public static string escapeQuoteSQL(string input)
+        {
+            string output;
+            output = input.Replace(@"'", @"\'");
+            output = output.Replace(@"-", @"\-");
+
+            return output;
         }
     }
 }

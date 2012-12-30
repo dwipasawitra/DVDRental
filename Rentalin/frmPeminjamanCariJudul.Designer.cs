@@ -31,14 +31,14 @@
             this.txtPencarian = new System.Windows.Forms.TextBox();
             this.dgPencarian = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblDenda = new System.Windows.Forms.Label();
+            this.lblHargaDendaInfo = new System.Windows.Forms.Label();
             this.lblSewa = new System.Windows.Forms.Label();
             this.lblSewaInfo = new System.Windows.Forms.Label();
             this.pbCover = new System.Windows.Forms.PictureBox();
             this.lblGenre = new System.Windows.Forms.Label();
             this.lblJudul = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.lblDenda = new System.Windows.Forms.Label();
-            this.lblHargaDendaInfo = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgPencarian)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbCover)).BeginInit();
@@ -47,9 +47,9 @@
             // txtPencarian
             // 
             this.txtPencarian.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPencarian.Location = new System.Drawing.Point(270, 8);
+            this.txtPencarian.Location = new System.Drawing.Point(12, 8);
             this.txtPencarian.Name = "txtPencarian";
-            this.txtPencarian.Size = new System.Drawing.Size(206, 21);
+            this.txtPencarian.Size = new System.Drawing.Size(675, 21);
             this.txtPencarian.TabIndex = 0;
             this.txtPencarian.TextChanged += new System.EventHandler(this.txtPencarian_TextChanged);
             // 
@@ -77,6 +77,28 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(205, 333);
             this.panel1.TabIndex = 2;
+            // 
+            // lblDenda
+            // 
+            this.lblDenda.AutoSize = true;
+            this.lblDenda.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDenda.ForeColor = System.Drawing.Color.White;
+            this.lblDenda.Location = new System.Drawing.Point(18, 130);
+            this.lblDenda.Name = "lblDenda";
+            this.lblDenda.Size = new System.Drawing.Size(14, 15);
+            this.lblDenda.TabIndex = 7;
+            this.lblDenda.Text = "0";
+            // 
+            // lblHargaDendaInfo
+            // 
+            this.lblHargaDendaInfo.AutoSize = true;
+            this.lblHargaDendaInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHargaDendaInfo.ForeColor = System.Drawing.Color.White;
+            this.lblHargaDendaInfo.Location = new System.Drawing.Point(18, 112);
+            this.lblHargaDendaInfo.Name = "lblHargaDendaInfo";
+            this.lblHargaDendaInfo.Size = new System.Drawing.Size(149, 15);
+            this.lblHargaDendaInfo.TabIndex = 6;
+            this.lblHargaDendaInfo.Text = "Harga Denda Per Hari";
             // 
             // lblSewa
             // 
@@ -142,28 +164,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Detail Item";
             // 
-            // lblDenda
-            // 
-            this.lblDenda.AutoSize = true;
-            this.lblDenda.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDenda.ForeColor = System.Drawing.Color.White;
-            this.lblDenda.Location = new System.Drawing.Point(18, 130);
-            this.lblDenda.Name = "lblDenda";
-            this.lblDenda.Size = new System.Drawing.Size(14, 15);
-            this.lblDenda.TabIndex = 7;
-            this.lblDenda.Text = "0";
-            // 
-            // lblHargaDendaInfo
-            // 
-            this.lblHargaDendaInfo.AutoSize = true;
-            this.lblHargaDendaInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHargaDendaInfo.ForeColor = System.Drawing.Color.White;
-            this.lblHargaDendaInfo.Location = new System.Drawing.Point(18, 112);
-            this.lblHargaDendaInfo.Name = "lblHargaDendaInfo";
-            this.lblHargaDendaInfo.Size = new System.Drawing.Size(149, 15);
-            this.lblHargaDendaInfo.TabIndex = 6;
-            this.lblHargaDendaInfo.Text = "Harga Denda Per Hari";
-            // 
             // frmPeminjamanCariJudul
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -178,7 +178,7 @@
             this.Name = "frmPeminjamanCariJudul";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmPeminjamanCariJudul";
+            this.Text = "Cari Judul";
             this.Load += new System.EventHandler(this.frmPeminjamanCariJudul_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgPencarian)).EndInit();
             this.panel1.ResumeLayout(false);

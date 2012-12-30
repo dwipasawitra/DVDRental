@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.pnlInfo = new System.Windows.Forms.Panel();
-            this.txtPencarian = new System.Windows.Forms.TextBox();
-            this.btnTambah = new System.Windows.Forms.Button();
             this.lblInfoDetail = new System.Windows.Forms.Label();
             this.picInfo = new System.Windows.Forms.PictureBox();
             this.lblInfo = new System.Windows.Forms.Label();
+            this.txtPencarian = new System.Windows.Forms.TextBox();
+            this.btnTambah = new System.Windows.Forms.Button();
             this.btnModifikasi = new System.Windows.Forms.Button();
             this.btnHapus = new System.Windows.Forms.Button();
             this.btnHistori = new System.Windows.Forms.Button();
@@ -43,15 +43,17 @@
             this.lblIdentitas = new System.Windows.Forms.Label();
             this.lblNamaPelanggan = new System.Windows.Forms.Label();
             this.lblDetail = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnlInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picInfo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgPelanggan)).BeginInit();
             this.pnlDetail.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlInfo
             // 
-            this.pnlInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(136)))), ((int)(((byte)(166)))));
+            this.pnlInfo.BackColor = System.Drawing.Color.DarkBlue;
             this.pnlInfo.Controls.Add(this.lblInfoDetail);
             this.pnlInfo.Controls.Add(this.picInfo);
             this.pnlInfo.Controls.Add(this.lblInfo);
@@ -60,25 +62,6 @@
             this.pnlInfo.Name = "pnlInfo";
             this.pnlInfo.Size = new System.Drawing.Size(468, 106);
             this.pnlInfo.TabIndex = 0;
-            // 
-            // txtPencarian
-            // 
-            this.txtPencarian.Location = new System.Drawing.Point(134, 118);
-            this.txtPencarian.Name = "txtPencarian";
-            this.txtPencarian.Size = new System.Drawing.Size(334, 20);
-            this.txtPencarian.TabIndex = 7;
-            this.txtPencarian.TextChanged += new System.EventHandler(this.txtPencarian_TextChanged);
-            // 
-            // btnTambah
-            // 
-            this.btnTambah.ForeColor = System.Drawing.Color.Black;
-            this.btnTambah.Location = new System.Drawing.Point(12, 118);
-            this.btnTambah.Name = "btnTambah";
-            this.btnTambah.Size = new System.Drawing.Size(116, 20);
-            this.btnTambah.TabIndex = 6;
-            this.btnTambah.Text = "Tambah Pelanggan";
-            this.btnTambah.UseVisualStyleBackColor = true;
-            this.btnTambah.Click += new System.EventHandler(this.btnTambah_Click);
             // 
             // lblInfoDetail
             // 
@@ -110,11 +93,30 @@
             this.lblInfo.TabIndex = 3;
             this.lblInfo.Text = "Master Pelanggan";
             // 
+            // txtPencarian
+            // 
+            this.txtPencarian.Location = new System.Drawing.Point(134, 118);
+            this.txtPencarian.Name = "txtPencarian";
+            this.txtPencarian.Size = new System.Drawing.Size(334, 20);
+            this.txtPencarian.TabIndex = 7;
+            this.txtPencarian.TextChanged += new System.EventHandler(this.txtPencarian_TextChanged);
+            // 
+            // btnTambah
+            // 
+            this.btnTambah.ForeColor = System.Drawing.Color.Black;
+            this.btnTambah.Location = new System.Drawing.Point(12, 118);
+            this.btnTambah.Name = "btnTambah";
+            this.btnTambah.Size = new System.Drawing.Size(116, 20);
+            this.btnTambah.TabIndex = 6;
+            this.btnTambah.Text = "Tambah Pelanggan";
+            this.btnTambah.UseVisualStyleBackColor = true;
+            this.btnTambah.Click += new System.EventHandler(this.btnTambah_Click);
+            // 
             // btnModifikasi
             // 
-            this.btnModifikasi.Location = new System.Drawing.Point(13, 189);
+            this.btnModifikasi.Location = new System.Drawing.Point(13, 319);
             this.btnModifikasi.Name = "btnModifikasi";
-            this.btnModifikasi.Size = new System.Drawing.Size(121, 28);
+            this.btnModifikasi.Size = new System.Drawing.Size(172, 28);
             this.btnModifikasi.TabIndex = 7;
             this.btnModifikasi.Text = "Modifikasi Pelanggan";
             this.btnModifikasi.UseVisualStyleBackColor = true;
@@ -122,9 +124,9 @@
             // 
             // btnHapus
             // 
-            this.btnHapus.Location = new System.Drawing.Point(13, 222);
+            this.btnHapus.Location = new System.Drawing.Point(13, 352);
             this.btnHapus.Name = "btnHapus";
-            this.btnHapus.Size = new System.Drawing.Size(121, 28);
+            this.btnHapus.Size = new System.Drawing.Size(172, 28);
             this.btnHapus.TabIndex = 8;
             this.btnHapus.Text = "Hapus Pelanggan";
             this.btnHapus.UseVisualStyleBackColor = true;
@@ -132,9 +134,9 @@
             // 
             // btnHistori
             // 
-            this.btnHistori.Location = new System.Drawing.Point(13, 256);
+            this.btnHistori.Location = new System.Drawing.Point(13, 386);
             this.btnHistori.Name = "btnHistori";
-            this.btnHistori.Size = new System.Drawing.Size(121, 28);
+            this.btnHistori.Size = new System.Drawing.Size(172, 28);
             this.btnHistori.TabIndex = 9;
             this.btnHistori.Text = "Histori Penyewaan";
             this.btnHistori.UseVisualStyleBackColor = true;
@@ -147,12 +149,13 @@
             this.dgPelanggan.Name = "dgPelanggan";
             this.dgPelanggan.Size = new System.Drawing.Size(456, 320);
             this.dgPelanggan.TabIndex = 1;
-            this.dgPelanggan.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgPelanggan_CellContentClick);
             this.dgPelanggan.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dgPelanggan_RowsRemoved);
+            this.dgPelanggan.SelectionChanged += new System.EventHandler(this.dgPelanggan_SelectionChanged);
             // 
             // pnlDetail
             // 
-            this.pnlDetail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(173)))), ((int)(((byte)(191)))));
+            this.pnlDetail.BackColor = System.Drawing.Color.Indigo;
+            this.pnlDetail.Controls.Add(this.pictureBox1);
             this.pnlDetail.Controls.Add(this.btnMuatUlang);
             this.pnlDetail.Controls.Add(this.btnHistori);
             this.pnlDetail.Controls.Add(this.lblIdentitas);
@@ -167,9 +170,9 @@
             // 
             // btnMuatUlang
             // 
-            this.btnMuatUlang.Location = new System.Drawing.Point(13, 290);
+            this.btnMuatUlang.Location = new System.Drawing.Point(13, 420);
             this.btnMuatUlang.Name = "btnMuatUlang";
-            this.btnMuatUlang.Size = new System.Drawing.Size(122, 32);
+            this.btnMuatUlang.Size = new System.Drawing.Size(173, 32);
             this.btnMuatUlang.TabIndex = 13;
             this.btnMuatUlang.Text = "Muat Ulang";
             this.btnMuatUlang.UseVisualStyleBackColor = true;
@@ -179,7 +182,7 @@
             // 
             this.lblIdentitas.AutoSize = true;
             this.lblIdentitas.ForeColor = System.Drawing.Color.White;
-            this.lblIdentitas.Location = new System.Drawing.Point(10, 161);
+            this.lblIdentitas.Location = new System.Drawing.Point(10, 160);
             this.lblIdentitas.Name = "lblIdentitas";
             this.lblIdentitas.Size = new System.Drawing.Size(53, 13);
             this.lblIdentitas.TabIndex = 12;
@@ -189,7 +192,7 @@
             // 
             this.lblNamaPelanggan.AutoSize = true;
             this.lblNamaPelanggan.ForeColor = System.Drawing.Color.White;
-            this.lblNamaPelanggan.Location = new System.Drawing.Point(10, 148);
+            this.lblNamaPelanggan.Location = new System.Drawing.Point(10, 147);
             this.lblNamaPelanggan.Name = "lblNamaPelanggan";
             this.lblNamaPelanggan.Size = new System.Drawing.Size(89, 13);
             this.lblNamaPelanggan.TabIndex = 11;
@@ -200,11 +203,20 @@
             this.lblDetail.AutoSize = true;
             this.lblDetail.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDetail.ForeColor = System.Drawing.Color.White;
-            this.lblDetail.Location = new System.Drawing.Point(10, 116);
+            this.lblDetail.Location = new System.Drawing.Point(10, 115);
             this.lblDetail.Name = "lblDetail";
             this.lblDetail.Size = new System.Drawing.Size(125, 18);
             this.lblDetail.TabIndex = 10;
             this.lblDetail.Text = "Detil Pelanggan";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Rentalin.Properties.Resources.consumer;
+            this.pictureBox1.Location = new System.Drawing.Point(53, 20);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(82, 86);
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
             // 
             // frmMasterPelanggan
             // 
@@ -229,6 +241,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgPelanggan)).EndInit();
             this.pnlDetail.ResumeLayout(false);
             this.pnlDetail.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -251,5 +264,6 @@
         private System.Windows.Forms.Label lblDetail;
         private System.Windows.Forms.TextBox txtPencarian;
         private System.Windows.Forms.Button btnMuatUlang;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

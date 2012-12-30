@@ -105,8 +105,12 @@ namespace Rentalin
         {
             if (dgKoleksi.SelectedCells.Count == 1)
             {
-                int idx = dgKoleksi.SelectedCells[0].RowIndex;
-                showDataDetail(idx);
+                if (dgKoleksi.SelectedCells[0].RowIndex >= 0 && dgKoleksi.SelectedCells[0].RowIndex < koleksi.Rows.Count)
+                {
+
+                    int idx = dgKoleksi.SelectedCells[0].RowIndex;
+                    showDataDetail(idx);
+                }
 
             }
         }

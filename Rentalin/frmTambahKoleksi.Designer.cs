@@ -149,15 +149,6 @@
             // cmbJenis
             // 
             this.cmbJenis.FormattingEnabled = true;
-            this.cmbJenis.Items.AddRange(new object[] {
-            "MP3",
-            "CD",
-            "VCD",
-            "DVD4",
-            "DVD8",
-            "DVD-DL",
-            "Blu-Ray",
-            "HD-DVD"});
             this.cmbJenis.Location = new System.Drawing.Point(89, 254);
             this.cmbJenis.Name = "cmbJenis";
             this.cmbJenis.Size = new System.Drawing.Size(74, 21);
@@ -190,7 +181,6 @@
             this.picCoverArt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picCoverArt.TabIndex = 15;
             this.picCoverArt.TabStop = false;
-            
             // 
             // btnTambahkan
             // 

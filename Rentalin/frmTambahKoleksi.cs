@@ -14,6 +14,8 @@ namespace Rentalin
         DataTable daftarKoleksi = new DataTable();
         DataTable modify = new DataTable();
         DataTable daftarGenre = new DataTable();
+        DataTable daftarJenisKeping = new DataTable();
+
         byte[] imgCoverArt;
 
         public int mode;
@@ -42,10 +44,18 @@ namespace Rentalin
             }
 
             // Tampilkan daftar kategori
+            cmbKategori.Items.Clear();
             for (int i = 0; i < daftarGenre.Rows.Count; i++)
             {
                 cmbKategori.Items.Add(daftarGenre.Rows[i].ItemArray[1].ToString());
             }
+
+            // Tambahkan daftar jenis keping
+            for (int i = 0; i < daftarJenisKeping.Rows.Count; i++)
+            {
+                cmbJenis.Items.Add(daftarJenisKeping.Rows[i].ItemArray[1].ToString());
+            }
+
 
             // Tampilkan form sesuai mode
             if(mode == 0)
@@ -76,7 +86,7 @@ namespace Rentalin
                 cmbKategori.Text = modify.Rows[0].ItemArray[7].ToString();
                 txtJudul.Text = modify.Rows[0].ItemArray[2].ToString();
                 txtDeskripsi.Text = modify.Rows[0].ItemArray[3].ToString();
-                cmbJenis.Text = modify.Rows[0].ItemArray[4].ToString();
+                cmbJenis.Text = daftarJenisKeping.Rows[Int16.Parse(modify.Rows[0].ItemArray[4].ToString())].ItemArray[1].ToString();
                 txtHargaSewa.Text = modify.Rows[0].ItemArray[5].ToString();
                 txtHargaDenda.Text = modify.Rows[0].ItemArray[6].ToString();
 
@@ -106,6 +116,7 @@ namespace Rentalin
             // Query data koleksi dan genre
             daftarKoleksi = Program.conn.ExecuteDataTable("SELECT kodekoleksi, kodekategori, namaitem, dekripsiitem, jenis, biayasewafilm, biayadendafilm FROM koleksi");
             daftarGenre = Program.conn.ExecuteDataTable("SELECT kodekategori, namakategori FROM genre");
+            daftarJenisKeping = Program.conn.ExecuteDataTable("SELECT * FROM jeniskeping");
             
             tampilanAwal();
             
@@ -149,7 +160,13 @@ namespace Rentalin
                     {                        
                         //Insert table
                         string kodeKategori = daftarGenre.Rows[cmbKategori.SelectedIndex].ItemArray[0].ToString();
-                        string insert = "INSERT into koleksi (kodekoleksi, kodekategori, namaitem, dekripsiitem, jenis, biayasewafilm, biayadendafilm) VALUES ('"+txtKode.Text+"','"+kodeKategori+"','"+txtJudul.Text+"','"+txtDeskripsi.Text+"','"+cmbJenis.Text+"',"+txtHargaSewa.Text+","+txtHargaDenda.Text+")";
+                        string insert = "INSERT into koleksi (kodekoleksi, kodekategori, namaitem, dekripsiitem, jenis, biayasewafilm, biayadendafilm) VALUES ('"+ Program.escapeQuoteSQL(txtKode.Text) 
+                                                                                                                                                                +"','"+Program.escapeQuoteSQL(kodeKategori)
+                                                                                                                                                                +"','"+Program.escapeQuoteSQL(txtJudul.Text)
+                                                                                                                                                                +"','"+Program.escapeQuoteSQL(txtDeskripsi.Text)
+                                                                                                                                                                +"','"+cmbJenis.SelectedIndex
+                                                                                                                                                                +"',"+Program.escapeQuoteSQL(txtHargaSewa.Text)+","
+                                                                                                                                                                +Program.escapeQuoteSQL(txtHargaDenda.Text)+")";
                         Program.conn.ExecuteNonQuery(insert);
                         
                         // Insert BLOB image
@@ -165,7 +182,7 @@ namespace Rentalin
                     {
                         // Modify data
                         string kodeKategori = daftarGenre.Rows[cmbKategori.SelectedIndex].ItemArray[0].ToString();
-                        string update = "UPDATE koleksi SET kodekoleksi = '" + txtKode.Text + "', kodekategori = '" + kodeKategori + "', namaitem = '" + txtJudul.Text + "', dekripsiitem = '" + txtDeskripsi.Text + "', jenis = '" + cmbJenis.Text + "', biayasewafilm = " + txtHargaSewa.Text + ", biayadendafilm = " + txtHargaDenda.Text + " WHERE kodekoleksi = '" + KodeKoleksi + "'";
+                        string update = "UPDATE koleksi SET kodekoleksi = '" + txtKode.Text + "', kodekategori = '" + kodeKategori + "', namaitem = '" + txtJudul.Text + "', dekripsiitem = '" + txtDeskripsi.Text + "', jenis = '" + cmbJenis.SelectedIndex + "', biayasewafilm = '" + txtHargaSewa.Text + "', biayadendafilm = '" + txtHargaDenda.Text + "' WHERE kodekoleksi = '" + KodeKoleksi + "'";
                         Program.conn.ExecuteNonQuery(update);
 
                         // Insert BLOB image
