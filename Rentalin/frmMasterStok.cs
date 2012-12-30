@@ -64,7 +64,7 @@ namespace Rentalin
 
         private void updateStok()
         {
-            stok = Program.conn.ExecuteDataTable("SELECT KodeStok, (CASE WHEN Kondisi=1 THEN 'Baik' ELSE 'Buruk' END) as Kondisi, (CASE WHEN Status=1 THEN 'Dipinjam' ELSE 'Tersedia' END) as Status, harga, tglbeli" 
+            stok = Program.conn.ExecuteDataTable("SELECT KodeStok, (CASE WHEN Kondisi=0 THEN 'Baik' ELSE 'Buruk' END) as Kondisi, (CASE WHEN Status=1 THEN 'Dipinjam' ELSE 'Tersedia' END) as Status, harga, tglbeli" 
                                                   + " FROM stokkoleksi WHERE kodekoleksi = '" + viewStok + "'");
             
             // Set masing-masing nama kolom
@@ -80,7 +80,7 @@ namespace Rentalin
 
         private void cariStok(string input)
         {
-            stok = Program.conn.ExecuteDataTable("SELECT KodeStok, (CASE WHEN Kondisi=1 THEN 'Baik' ELSE 'Buruk' END) as Kondisi, (CASE WHEN Status=1 THEN 'Dipinjam' ELSE 'Tersedia' END) as Status, harga, tglbeli" 
+            stok = Program.conn.ExecuteDataTable("SELECT KodeStok, (CASE WHEN Kondisi=0 THEN 'Baik' ELSE 'Buruk' END) as Kondisi, (CASE WHEN Status=1 THEN 'Dipinjam' ELSE 'Tersedia' END) as Status, harga, tglbeli" 
                                                  + " FROM stokkoleksi WHERE kodestok like '%" + txtPencarian.Text + "%'");
             
             // set masing-masing nama kolom
@@ -126,8 +126,9 @@ namespace Rentalin
             cmbKondisi.Enabled = false;
             cmbStatus.Enabled = false;
             dtpTglBeli.Enabled = false;
-            cmbKondisi.Items.Add("Buruk");
+
             cmbKondisi.Items.Add("Baik");
+            cmbKondisi.Items.Add("Buruk");
             cmbStatus.Items.Add("Tersedia");
             cmbStatus.Items.Add("Dipinjam");
         }
