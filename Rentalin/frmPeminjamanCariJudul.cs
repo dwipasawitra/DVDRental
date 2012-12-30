@@ -36,23 +36,43 @@ namespace Rentalin
         {
             //pencarian = Program.conn.ExecuteDataTable("SELECT kodekoleksi, kodekategori, namaitem, dekripsiitem, biayasewafilm, biayadendafilm, item FROM koleksi WHERE kodekoleksi like '%"+txtPencarian.Text+"%' OR namaitem like '%"+txtPencarian.Text+"%'");
             //if (txtPencarian.TextLength > 0)
+            if (txtPencarian.Text != "")
+            {
                 pencarian = Program.conn.ExecuteDataTable("SELECT kodekoleksi, genre.kodekategori, namaitem, biayasewafilm, biayadendafilm, namakategori FROM koleksi INNER JOIN genre ON koleksi.kodekategori = genre.kodekategori WHERE kodekoleksi like '%" + txtPencarian.Text + "%' OR namaitem like '%" + txtPencarian.Text + "%'");
-            //else
-              //  dgPencarian.DataSource = pencarian;
-            //if (pencarian.Rows.Count > 0)
-            //{
-                
+                //else
+                //  dgPencarian.DataSource = pencarian;
+                //if (pencarian.Rows.Count > 0)
+                //{
+
                 dgPencarian.DataSource = pencarian;
+            }
+                
             //}
         }
 
         private void dgPencarian_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            int y = e.RowIndex;
-            lblJudul.Text = dgPencarian.Rows[y].Cells[2].Value.ToString();
-            lblGenre.Text = dgPencarian.Rows[y].Cells[5].Value.ToString();
-            lblDenda.Text = dgPencarian.Rows[y].Cells[4].Value.ToString();
-            lblSewa.Text = dgPencarian.Rows[y].Cells[3].Value.ToString();
+            
+        }
+
+        private void dgPencarian_SelectionChanged(object sender, EventArgs e)
+        {
+            int y = dgPencarian.CurrentCellAddress.Y;
+            if (y >= 0 && y < pencarian.Rows.Count)
+            {
+                lblJudul.Text = dgPencarian.Rows[y].Cells[2].Value.ToString();
+                lblGenre.Text = dgPencarian.Rows[y].Cells[5].Value.ToString();
+                lblDenda.Text = dgPencarian.Rows[y].Cells[4].Value.ToString();
+                lblSewa.Text = dgPencarian.Rows[y].Cells[3].Value.ToString();
+            }
+            else
+            {
+                lblJudul.Text = "Judul Film";
+                lblGenre.Text = "Genre";
+                lblDenda.Text = "0";
+                lblSewa.Text = "0";
+            }
+            
         }
 
 

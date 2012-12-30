@@ -15,9 +15,12 @@ namespace Rentalin
         {
             InitializeComponent();
         }        
+
         DataTable daftarPinjaman = new DataTable();
         DataTable dipinjam = new DataTable();
         DataTable koleksi = new DataTable();
+        DataTable stokKoleksi = new DataTable();
+
         private void tampilanAwal()
         {
             txtPeminjam.Enabled = true;
@@ -39,6 +42,7 @@ namespace Rentalin
             lblLamaTelat.Text = "0";
             lblNmrNota.Text = "Kode Nota";
             btnProses.Enabled = false;
+            lblDendaPersen.Text = Program.setting.dendaKerusakan.ToString() + " %";
             daftarPinjaman.Clear();
         }
 
@@ -55,13 +59,15 @@ namespace Rentalin
             daftarPinjaman.Columns.Add("Denda Kerusakan");
             daftarPinjaman.Columns.Add("Total Denda");
             dgPengembalian.DataSource = daftarPinjaman;
-            koleksi = Program.conn.ExecuteDataTable("SELECT kodekoleksi, genre.kodekategori, namaitem, biayasewafilm, biayadendafilm, namakategori FROM koleksi INNER JOIN genre ON koleksi.kodekategori = genre.kodekategori");
+            koleksi = Program.conn.ExecuteDataTable("SELECT kodekoleksi, genre.kodekategori, namaitem, biayasewafilm, biayadendafilm, namakategori, hargasewakategori, hargadendakategori FROM koleksi INNER JOIN genre ON koleksi.kodekategori = genre.kodekategori");
+            stokKoleksi = Program.conn.ExecuteDataTable("SELECT * FROM stokkoleksi");
+            //koleksi = Program.conn.ExecuteDataTable("SELECT kodekoleksi, genre.kodekategori, namaitem, biayasewafilm, biayadendafilm, namakategori FROM koleksi INNER JOIN genre ON koleksi.kodekategori = genre.kodekategori");
         }
 
         private int hitungTotalDenda()
         {
             int i, idx = dipinjam.Rows.Count, totalDenda = 0;
-            MessageBox.Show("hho");
+            //MessageBox.Show("hho");
             MessageBox.Show(idx.ToString());
             for (i = 0; i < idx; i++)
             {
@@ -73,7 +79,7 @@ namespace Rentalin
 
         private void labelInfo()
         {
-            int y = dgPengembalian.CurrentCellAddress.Y;
+            /*int y = dgPengembalian.CurrentCellAddress.Y;
             if (dgPengembalian.CurrentCellAddress.Y == dipinjam.Rows.Count)
             {
                 y = dgPengembalian.CurrentCellAddress.Y - 1;
@@ -92,7 +98,70 @@ namespace Rentalin
                     lblHargaSewaItem.Text = dipinjam.Rows[i].ItemArray[3].ToString();
                     MessageBox.Show(dipinjam.Rows[i].ItemArray[5].ToString());
                 }                
-            }         
+            }
+            ///////////*/
+            
+            if(dgPengembalian.CurrentCellAddress.Y >=0 && dgPengembalian.CurrentCellAddress.Y < daftarPinjaman.Rows.Count)
+            {
+                int i, idx = stokKoleksi.Rows.Count;
+                for (i = 0; i < idx; i++)
+                {
+                    if (stokKoleksi.Rows[i].ItemArray[0].ToString() == dgPengembalian.Rows[dgPengembalian.CurrentCellAddress.Y].Cells[2].Value.ToString())
+                    {
+                        lblDendaKerusakan.Text = stokKoleksi.Rows[i].ItemArray[4].ToString();
+                        break;
+                    }
+                }
+                idx = koleksi.Rows.Count;
+                for (i = 0; i < idx; i++)
+                {
+                    if (koleksi.Rows[i].ItemArray[0].ToString() == dgPengembalian.Rows[dgPengembalian.CurrentCellAddress.Y].Cells[0].Value.ToString())
+                    {
+                        if (Program.setting.biayaSewaPer == 0)
+                        {
+                            lblHargaSewaItem.Text = "0";
+                        }
+                        else if (Program.setting.biayaSewaPer == 1)
+                        {
+                            lblHargaSewaItem.Text = koleksi.Rows[i].ItemArray[6].ToString();
+                        }
+                        else if (Program.setting.biayaSewaPer == 2)
+                        {
+                            lblHargaSewaItem.Text = koleksi.Rows[i].ItemArray[3].ToString();
+                        }
+                        else if (Program.setting.biayaSewaPer == 3)
+                        {
+                            lblHargaSewaItem.Text = (int.Parse(koleksi.Rows[i].ItemArray[3].ToString()) + int.Parse(koleksi.Rows[i].ItemArray[6].ToString())).ToString();
+                        }
+
+                        if (Program.setting.biayaDendaPer == 0)
+                        {
+                            lblHargaDendaItem.Text = "0";
+                        }
+                        else if (Program.setting.biayaDendaPer == 1)
+                        {
+                            lblHargaDendaItem.Text = koleksi.Rows[i].ItemArray[7].ToString();
+                        }
+                        else if (Program.setting.biayaDendaPer == 2)
+                        {
+                            lblHargaDendaItem.Text = koleksi.Rows[i].ItemArray[4].ToString();
+                        }
+                        else if (Program.setting.biayaDendaPer == 3)
+                        {
+                            lblHargaDendaItem.Text = (int.Parse(koleksi.Rows[i].ItemArray[4].ToString()) + int.Parse(koleksi.Rows[i].ItemArray[7].ToString())).ToString();
+                        }
+
+                        lblJudul.Text = koleksi.Rows[i].ItemArray[2].ToString();
+                        lblGenre.Text = koleksi.Rows[i].ItemArray[5].ToString();
+                        break;
+                    }
+                }
+            }
+            lblDendaKerusakan.Text = "0";
+            lblJudul.Text = "Judul FIlm";
+            lblGenre.Text = "Genre";
+            lblHargaDendaItem.Text = "0";
+            lblHargaSewaItem.Text = "0";
         }
 
         private void btnCariPelanggan_Click(object sender, EventArgs e)
@@ -108,52 +177,79 @@ namespace Rentalin
             {
                 btnCariPelanggan.Enabled = false;
                 btnProses.Enabled = true;
-                dipinjam = Program.conn.ExecuteDataTable("SELECT stokkoleksi.kodekoleksi, koleksi.namaitem, stokkoleksi.kodestok, koleksi.biayasewafilm, koleksi.biayadendafilm, genre.namakategori FROM ((dipinjam INNER JOIN stokkoleksi ON dipinjam.kodestok = stokkoleksi.kodestok) INNER JOIN koleksi ON stokkoleksi.kodekoleksi = koleksi.kodekoleksi) INNER JOIN genre ON koleksi.kodekategori=genre.kodekategori WHERE nonota = (SELECT nonota FROM (SELECT RANK() OVER (ORDER BY tgltransaksi DESC) AS rank, nota.* FROM nota WHERE kodemember='" + txtPeminjam.Text + "') WHERE rank=1)");                
+                dipinjam = Program.conn.ExecuteDataTable("SELECT stokkoleksi.kodekoleksi, koleksi.namaitem, stokkoleksi.kodestok, koleksi.biayasewafilm, koleksi.biayadendafilm, genre.namakategori, genre.hargasewakategori, genre.hargadendakategori FROM ((dipinjam INNER JOIN stokkoleksi ON dipinjam.kodestok = stokkoleksi.kodestok) INNER JOIN koleksi ON stokkoleksi.kodekoleksi = koleksi.kodekoleksi) INNER JOIN genre ON koleksi.kodekategori=genre.kodekategori WHERE nonota = (SELECT nonota FROM (SELECT RANK() OVER (ORDER BY tgltransaksi DESC) AS rank, nota.* FROM nota WHERE kodemember='" + txtPeminjam.Text + "') WHERE rank=1)");                
                 int i, idx = dipinjam.Rows.Count;
                 lblNmrNota.Text = cekPeminjam.Rows[0].ItemArray[0].ToString();
                 lblTanggalSeharusnyaKembali.Text = cekPeminjam.Rows[0].ItemArray[5].ToString();
                 DateTime tanggalHarusKembali = DateTime.Parse(lblTanggalSeharusnyaKembali.Text);
                 int selisih = DateTime.Now.Day - tanggalHarusKembali.Day;
-                MessageBox.Show("asdasd");
-                MessageBox.Show(idx.ToString());
+                //MessageBox.Show("asdasd");
+                //MessageBox.Show(idx.ToString());
                 if (selisih < 0)
                     selisih = 0;
-                lblLamaTelat.Text = selisih.ToString();
+                lblLamaTelat.Text = selisih.ToString();                
                 for (i = 0; i < idx; i++)
                 {
-                    daftarPinjaman.Rows.Add(dipinjam.Rows[i].ItemArray[0].ToString(), dipinjam.Rows[i].ItemArray[1].ToString(), dipinjam.Rows[i].ItemArray[2].ToString(), "", dipinjam.Rows[i].ItemArray[4].ToString(), 0, int.Parse(dipinjam.Rows[i].ItemArray[4].ToString()) + 0);
+                    if (Program.setting.biayaDendaPer == 0)
+                    {
+                        daftarPinjaman.Rows.Add(dipinjam.Rows[i].ItemArray[0].ToString(), dipinjam.Rows[i].ItemArray[1].ToString(), dipinjam.Rows[i].ItemArray[2].ToString(), "", 0, 0, int.Parse(dipinjam.Rows[i].ItemArray[4].ToString()) + 0);
+                    }
+                    else if (Program.setting.biayaDendaPer == 1)
+                    {
+                        daftarPinjaman.Rows.Add(dipinjam.Rows[i].ItemArray[0].ToString(), dipinjam.Rows[i].ItemArray[1].ToString(), dipinjam.Rows[i].ItemArray[2].ToString(), "", dipinjam.Rows[i].ItemArray[7].ToString(), 0, int.Parse(dipinjam.Rows[i].ItemArray[4].ToString()) + 0);
+                    }
+                    else if (Program.setting.biayaDendaPer == 2)
+                    {
+                        daftarPinjaman.Rows.Add(dipinjam.Rows[i].ItemArray[0].ToString(), dipinjam.Rows[i].ItemArray[1].ToString(), dipinjam.Rows[i].ItemArray[2].ToString(), "", dipinjam.Rows[i].ItemArray[4].ToString(), 0, int.Parse(dipinjam.Rows[i].ItemArray[4].ToString()) + 0);
+                    }
+                    else if (Program.setting.biayaDendaPer == 3)
+                    {
+                        daftarPinjaman.Rows.Add(dipinjam.Rows[i].ItemArray[0].ToString(), dipinjam.Rows[i].ItemArray[1].ToString(), dipinjam.Rows[i].ItemArray[2].ToString(), "", (int.Parse(dipinjam.Rows[i].ItemArray[4].ToString())+int.Parse(dipinjam.Rows[i].ItemArray[7].ToString())).ToString(), 0, int.Parse(dipinjam.Rows[i].ItemArray[4].ToString()) + 0);
+                    }
+                    
                 }
                 txtPeminjam.Enabled = false;
+                
                 dgPengembalian.DataSource = daftarPinjaman;
                 dgPengembalian.ReadOnly = true;
                 lblBiayaDenda.Text = hitungTotalDenda().ToString();
                 labelInfo();                
             }
         }
-
-        private void dgPengembalian_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgPengembalian_SelectionChanged(object sender, EventArgs e)
         {
             int idx = dipinjam.Rows.Count;
-            MessageBox.Show(idx.ToString());
+            //MessageBox.Show(idx.ToString());
             labelInfo();
+        }
+        private void dgPengembalian_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
         }
 
         private void cmbKondisi_SelectedIndexChanged(object sender, EventArgs e)
         {
             int y = dgPengembalian.CurrentCellAddress.Y;
-            daftarPinjaman.Rows[y][3] = cmbKondisi.Text;
-            if (cmbKondisi.Text == "Buruk")
+            if (y < daftarPinjaman.Rows.Count)
             {
-                DataTable ambilHarga = Program.conn.ExecuteDataTable("SELECT * FROM stokkoleksi WHERE kodestok = '" + daftarPinjaman.Rows[y].ItemArray[2].ToString() + "'");
-                lblDendaKerusakan.Text = (int.Parse(ambilHarga.Rows[0].ItemArray[4].ToString()) * 50 / 100).ToString();
-                daftarPinjaman.Rows[y][5] = int.Parse(lblDendaKerusakan.Text);
+                daftarPinjaman.Rows[y][3] = cmbKondisi.Text;
+                if (cmbKondisi.Text == "Buruk")
+                {
+                    //DataTable ambilHarga = Program.conn.ExecuteDataTable("SELECT * FROM stokkoleksi WHERE kodestok = '" + daftarPinjaman.Rows[y].ItemArray[2].ToString() + "'");
+                    //lblDendaKerusakan.Text = ambilHarga.Rows[0].ItemArray[4].ToString();
+                    
+                    //MessageBox.Show("Harga " + (int.Parse(ambilHarga.Rows[0].ItemArray[4].ToString()) * Program.setting.dendaKerusakan / 100).ToString());
+                    daftarPinjaman.Rows[y][5] = (int.Parse(lblDendaKerusakan.Text) * Program.setting.dendaKerusakan / 100).ToString();
+                }
+                else if (cmbKondisi.Text == "Baik")
+                {
+                    //lblDendaKerusakan.Text = "0";
+                    //lblDendaPersen.Text = "0 %";
+                    daftarPinjaman.Rows[y][5] = 0;
+                }
+                lblBiayaDenda.Text = hitungTotalDenda().ToString();
             }
-            else if (cmbKondisi.Text == "Baik")
-            {
-                lblDendaKerusakan.Text = "0";
-                daftarPinjaman.Rows[y][5] = 0;
-            }            
-            lblBiayaDenda.Text = hitungTotalDenda().ToString();
+            
         }
 
         private void btnProses_Click(object sender, EventArgs e)
@@ -182,6 +278,7 @@ namespace Rentalin
                 }
                 Program.conn.ExecuteNonQuery("UPDATE nota SET tglrealisasikembali = to_date('" + newDate + "','MM/dd/yyyy') WHERE nonota = '" + lblNmrNota.Text + "'");
                 MessageBox.Show("Transaksi Berhasil");
+                daftarPinjaman.Clear();
                 tampilanAwal();
             }
             else
@@ -189,7 +286,9 @@ namespace Rentalin
                 MessageBox.Show("Silahkan update kondisi");
             }
             
-        }    
+        }
+
+            
 
     }
 }

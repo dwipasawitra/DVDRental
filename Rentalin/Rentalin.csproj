@@ -141,6 +141,12 @@
     <Compile Include="frmPeminjamanCariJudul.Designer.cs">
       <DependentUpon>frmPeminjamanCariJudul.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmPeminjamanCariPelanggan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPeminjamanCariPelanggan.Designer.cs">
+      <DependentUpon>frmPeminjamanCariPelanggan.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmPengaturan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -223,6 +229,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPeminjamanCariJudul.resx">
       <DependentUpon>frmPeminjamanCariJudul.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPeminjamanCariPelanggan.resx">
+      <DependentUpon>frmPeminjamanCariPelanggan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPengaturan.resx">
       <DependentUpon>frmPengaturan.cs</DependentUpon>

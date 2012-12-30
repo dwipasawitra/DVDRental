@@ -201,6 +201,7 @@ namespace Rentalin
         public int lamaPenyewaanHari;
         public int maksTransaksi;
         public int maksTransaksiJumlah;
+        public int dendaKerusakan;
 
         public const int BIAYA_SEWA_TIDAK_ADA = 0;
         public const int BIAYA_SEWA_PER_KATEGORI = 1;
@@ -214,8 +215,6 @@ namespace Rentalin
         public const int LAMA_PENYEWAAN_BEBAS = 1;
         public const int MAKS_TRANSAKSI_MAKS = 0;
         public const int MAKS_TRANSAKSI_BEBAS = 1;
-
-    
 
         public void readSetting()
         {
@@ -259,6 +258,9 @@ namespace Rentalin
                 setting = Program.conn.ExecuteDataTable("SELECT data FROM pengaturan WHERE Atribut='maksJudulTransaksi'");
                 maksTransaksiJumlah = Int16.Parse(setting.Rows[0].ItemArray[0].ToString());
 
+                //dendaKerusakan
+                setting = Program.conn.ExecuteDataTable("SELECT data FROM pengaturan WHERE Atribut='dendaKerusakan'");
+                dendaKerusakan = Int16.Parse(setting.Rows[0].ItemArray[0].ToString());
             } 
             catch (Exception e) 
             {
@@ -341,7 +343,14 @@ namespace Rentalin
             return so;
         }
 
-
+        public int getSpecialOfferCode()
+        {
+            if (so)
+            {
+                return specialOfferCode;
+            }
+            return -1;
+        }
     }
 
     

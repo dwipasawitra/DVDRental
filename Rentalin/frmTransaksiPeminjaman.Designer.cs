@@ -69,6 +69,8 @@
             this.lblDetailTransaksi = new System.Windows.Forms.Label();
             this.btnCariJudul = new System.Windows.Forms.Button();
             this.lblTambahJudul = new System.Windows.Forms.Label();
+            this.lblPenawaranSpesialInfo = new System.Windows.Forms.Label();
+            this.lblNamaPenawaran = new System.Windows.Forms.Label();
             this.pnlInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picInfo)).BeginInit();
             this.pnlPeminjam.SuspendLayout();
@@ -196,6 +198,7 @@
             this.btnCariPelanggan.TabIndex = 2;
             this.btnCariPelanggan.Text = "Cari...";
             this.btnCariPelanggan.UseVisualStyleBackColor = true;
+            this.btnCariPelanggan.Click += new System.EventHandler(this.btnCariPelanggan_Click);
             // 
             // txtPeminjam
             // 
@@ -231,10 +234,13 @@
             this.dgPeminjaman.TabIndex = 6;
             this.dgPeminjaman.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgPeminjaman_CellContentClick);
             this.dgPeminjaman.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dgPeminjaman_RowsRemoved);
+            this.dgPeminjaman.SelectionChanged += new System.EventHandler(this.dgPeminjaman_SelectionChanged);
             // 
             // pnlDetail
             // 
             this.pnlDetail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.pnlDetail.Controls.Add(this.lblNamaPenawaran);
+            this.pnlDetail.Controls.Add(this.lblPenawaranSpesialInfo);
             this.pnlDetail.Controls.Add(this.lblDetail);
             this.pnlDetail.Controls.Add(this.lblHargaDendaItem);
             this.pnlDetail.Controls.Add(this.lblHargaDendaItemInfo);
@@ -276,9 +282,9 @@
             this.lblHargaDendaItemInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHargaDendaItemInfo.Location = new System.Drawing.Point(7, 127);
             this.lblHargaDendaItemInfo.Name = "lblHargaDendaItemInfo";
-            this.lblHargaDendaItemInfo.Size = new System.Drawing.Size(131, 13);
+            this.lblHargaDendaItemInfo.Size = new System.Drawing.Size(155, 13);
             this.lblHargaDendaItemInfo.TabIndex = 20;
-            this.lblHargaDendaItemInfo.Text = "Harga Denda per Hari";
+            this.lblHargaDendaItemInfo.Text = "Harga Denda Asli per Hari";
             // 
             // lblHargaSewaItem
             // 
@@ -295,9 +301,9 @@
             this.lblHargaSewaItemInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHargaSewaItemInfo.Location = new System.Drawing.Point(7, 85);
             this.lblHargaSewaItemInfo.Name = "lblHargaSewaItemInfo";
-            this.lblHargaSewaItemInfo.Size = new System.Drawing.Size(125, 13);
+            this.lblHargaSewaItemInfo.Size = new System.Drawing.Size(149, 13);
             this.lblHargaSewaItemInfo.TabIndex = 18;
-            this.lblHargaSewaItemInfo.Text = "Harga Sewa per Hari";
+            this.lblHargaSewaItemInfo.Text = "Harga Sewa Asli per Hari";
             // 
             // btnHapus
             // 
@@ -506,6 +512,26 @@
             this.lblTambahJudul.TabIndex = 3;
             this.lblTambahJudul.Text = "Tambah Judul";
             // 
+            // lblPenawaranSpesialInfo
+            // 
+            this.lblPenawaranSpesialInfo.AutoSize = true;
+            this.lblPenawaranSpesialInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPenawaranSpesialInfo.Location = new System.Drawing.Point(11, 264);
+            this.lblPenawaranSpesialInfo.Name = "lblPenawaranSpesialInfo";
+            this.lblPenawaranSpesialInfo.Size = new System.Drawing.Size(160, 13);
+            this.lblPenawaranSpesialInfo.TabIndex = 24;
+            this.lblPenawaranSpesialInfo.Text = "Penawaran Spesial Hari Ini";
+            // 
+            // lblNamaPenawaran
+            // 
+            this.lblNamaPenawaran.AutoSize = true;
+            this.lblNamaPenawaran.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNamaPenawaran.Location = new System.Drawing.Point(11, 288);
+            this.lblNamaPenawaran.Name = "lblNamaPenawaran";
+            this.lblNamaPenawaran.Size = new System.Drawing.Size(140, 18);
+            this.lblNamaPenawaran.TabIndex = 25;
+            this.lblNamaPenawaran.Text = "Nama Penawaran";
+            // 
             // frmTransaksiPeminjaman
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -585,5 +611,7 @@
         private System.Windows.Forms.Label lblLamaPenyewaan;
         private System.Windows.Forms.Button btnCariJudul;
         private System.Windows.Forms.Label lblTambahJudul;
+        private System.Windows.Forms.Label lblPenawaranSpesialInfo;
+        private System.Windows.Forms.Label lblNamaPenawaran;
     }
 }

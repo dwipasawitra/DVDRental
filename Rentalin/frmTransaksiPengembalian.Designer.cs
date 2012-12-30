@@ -66,6 +66,8 @@
             this.lblDendaKerusakanInfo = new System.Windows.Forms.Label();
             this.lblHargaDendaItemInfo = new System.Windows.Forms.Label();
             this.lblJudul = new System.Windows.Forms.Label();
+            this.lblDendaPersenInfo = new System.Windows.Forms.Label();
+            this.lblDendaPersen = new System.Windows.Forms.Label();
             this.pnlTransaksi.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgPengembalian)).BeginInit();
             this.pnlInfo.SuspendLayout();
@@ -257,6 +259,7 @@
             this.dgPengembalian.Size = new System.Drawing.Size(484, 366);
             this.dgPengembalian.TabIndex = 15;
             this.dgPengembalian.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgPengembalian_CellContentClick);
+            this.dgPengembalian.SelectionChanged += new System.EventHandler(this.dgPengembalian_SelectionChanged);
             // 
             // pnlInfo
             // 
@@ -384,6 +387,8 @@
             // pnlDetail
             // 
             this.pnlDetail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(136)))), ((int)(((byte)(166)))));
+            this.pnlDetail.Controls.Add(this.lblDendaPersen);
+            this.pnlDetail.Controls.Add(this.lblDendaPersenInfo);
             this.pnlDetail.Controls.Add(this.lblStok);
             this.pnlDetail.Controls.Add(this.lblStokInfo);
             this.pnlDetail.Controls.Add(this.lblDendaKerusakan);
@@ -446,9 +451,9 @@
             this.lblDendaKerusakanInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDendaKerusakanInfo.Location = new System.Drawing.Point(4, 263);
             this.lblDendaKerusakanInfo.Name = "lblDendaKerusakanInfo";
-            this.lblDendaKerusakanInfo.Size = new System.Drawing.Size(145, 13);
+            this.lblDendaKerusakanInfo.Size = new System.Drawing.Size(169, 13);
             this.lblDendaKerusakanInfo.TabIndex = 24;
-            this.lblDendaKerusakanInfo.Text = "Harga Denda kerusakan";
+            this.lblDendaKerusakanInfo.Text = "Harga Asli Denda kerusakan";
             // 
             // lblHargaDendaItemInfo
             // 
@@ -470,6 +475,25 @@
             this.lblJudul.Size = new System.Drawing.Size(63, 13);
             this.lblJudul.TabIndex = 13;
             this.lblJudul.Text = "Judul Film";
+            // 
+            // lblDendaPersenInfo
+            // 
+            this.lblDendaPersenInfo.AutoSize = true;
+            this.lblDendaPersenInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDendaPersenInfo.Location = new System.Drawing.Point(4, 301);
+            this.lblDendaPersenInfo.Name = "lblDendaPersenInfo";
+            this.lblDendaPersenInfo.Size = new System.Drawing.Size(144, 13);
+            this.lblDendaPersenInfo.TabIndex = 27;
+            this.lblDendaPersenInfo.Text = "Besar Denda Kerusakan";
+            // 
+            // lblDendaPersen
+            // 
+            this.lblDendaPersen.AutoSize = true;
+            this.lblDendaPersen.Location = new System.Drawing.Point(4, 315);
+            this.lblDendaPersen.Name = "lblDendaPersen";
+            this.lblDendaPersen.Size = new System.Drawing.Size(24, 13);
+            this.lblDendaPersen.TabIndex = 28;
+            this.lblDendaPersen.Text = "0 %";
             // 
             // frmTransaksiPengembalian
             // 
@@ -542,5 +566,7 @@
         private System.Windows.Forms.Label lblDendaKerusakanInfo;
         private System.Windows.Forms.Label lblTanggalSeharusnyaKembali;
         private System.Windows.Forms.Label lblHari;
+        private System.Windows.Forms.Label lblDendaPersen;
+        private System.Windows.Forms.Label lblDendaPersenInfo;
     }
 }
