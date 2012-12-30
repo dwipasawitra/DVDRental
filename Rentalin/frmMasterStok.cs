@@ -15,7 +15,7 @@ namespace Rentalin
         DataTable info = new DataTable();
         public int mode;
         public int modify;
-        public string viewStok;
+        public string viewStok;    
 
         public frmMasterStok()
         {
@@ -126,11 +126,12 @@ namespace Rentalin
             cmbKondisi.Enabled = false;
             cmbStatus.Enabled = false;
             dtpTglBeli.Enabled = false;
+            dgStokKoleksi.ReadOnly = true;
 
             cmbKondisi.Items.Add("Baik");
             cmbKondisi.Items.Add("Buruk");
             cmbStatus.Items.Add("Tersedia");
-            cmbStatus.Items.Add("Dipinjam");
+            cmbStatus.Items.Add("Dipinjam");           
         }
 
         private void dgStokKoleksi_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
@@ -178,22 +179,21 @@ namespace Rentalin
 
         }
 
-      
-
         private void btnPilihKoleksi_Click(object sender, EventArgs e)
         {
             stok = Program.conn.ExecuteDataTable("SELECT * FROM stokkoleksi WHERE kodekoleksi = '" + txtPilihKoleksi.Text + "'");
             if (stok.Rows.Count > 1)
             {
-                updateStok();
+                viewStok = txtPilihKoleksi.Text;
                 txtPilihKoleksi.ResetText();
+                updateStok();                
                 btnTambah.Enabled = true;
                 btnModifikasi.Enabled = true;
                 btnHapus.Enabled = true;
                 btnPilihKoleksi.Enabled = false;
                 btnCariKoleksi.Enabled = false;
                 txtPilihKoleksi.Enabled = false;
-                viewStok = txtPilihKoleksi.Text;
+                
                 loadInfo();
             }
             else
@@ -309,8 +309,9 @@ namespace Rentalin
                     txtKodeStok.Text = stok.Rows[idx].ItemArray[0].ToString();
                     cmbKondisi.Text = stok.Rows[idx].ItemArray[1].ToString();
                     cmbStatus.Text = stok.Rows[idx].ItemArray[2].ToString();
-                    txtHarga.Text = stok.Rows[idx].ItemArray[3].ToString();
-                    dtpTglBeli.Value = DateTime.ParseExact(stok.Rows[idx].ItemArray[4].ToString(), "dd/MM/yyyy h:mm:ss", null);
+                    txtHarga.Text = stok.Rows[idx].ItemArray[3].ToString();                    
+                    if(stok.Rows[idx].ItemArray[4].ToString().Length > 0)
+                    dtpTglBeli.Value = DateTime.ParseExact(stok.Rows[idx].ItemArray[4].ToString().Substring(0,10), "MM/dd/yyyy", null);
                     
                 }
                 else
@@ -322,6 +323,19 @@ namespace Rentalin
             }
         }
 
+        private void txtPilihKoleksi_TextChanged(object sender, EventArgs e)
+        {
+            if (txtPilihKoleksi.TextLength == 12)
+                btnPilihKoleksi_Click(sender, e);
+        }
+
+        private void txtPilihKoleksi_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                btnPilihKoleksi_Click(sender, e);
+        }
+
+      
 
         
 

@@ -117,36 +117,36 @@ namespace Rentalin
                 {
                     if (koleksi.Rows[i].ItemArray[0].ToString() == dgPengembalian.Rows[dgPengembalian.CurrentCellAddress.Y].Cells[0].Value.ToString())
                     {
-                        if (Program.setting.biayaSewaPer == 0)
+                        if (Program.setting.biayaSewaPer == appSetting.BIAYA_SEWA_TIDAK_ADA)
                         {
                             lblHargaSewaItem.Text = "0";
                         }
-                        else if (Program.setting.biayaSewaPer == 1)
+                        else if (Program.setting.biayaSewaPer == appSetting.BIAYA_SEWA_PER_KATEGORI)
                         {
                             lblHargaSewaItem.Text = koleksi.Rows[i].ItemArray[6].ToString();
                         }
-                        else if (Program.setting.biayaSewaPer == 2)
+                        else if (Program.setting.biayaSewaPer == appSetting.BIAYA_SEWA_PER_JUDUL)
                         {
                             lblHargaSewaItem.Text = koleksi.Rows[i].ItemArray[3].ToString();
                         }
-                        else if (Program.setting.biayaSewaPer == 3)
+                        else if (Program.setting.biayaSewaPer == appSetting.BIAYA_SEWA_KEDUANYA)
                         {
                             lblHargaSewaItem.Text = (int.Parse(koleksi.Rows[i].ItemArray[3].ToString()) + int.Parse(koleksi.Rows[i].ItemArray[6].ToString())).ToString();
                         }
 
-                        if (Program.setting.biayaDendaPer == 0)
+                        if (Program.setting.biayaDendaPer == appSetting.BIAYA_DENDA_TIDAK_ADA)
                         {
                             lblHargaDendaItem.Text = "0";
                         }
-                        else if (Program.setting.biayaDendaPer == 1)
+                        else if (Program.setting.biayaDendaPer == appSetting.BIAYA_DENDA_PER_KATEGORI)
                         {
                             lblHargaDendaItem.Text = koleksi.Rows[i].ItemArray[7].ToString();
                         }
-                        else if (Program.setting.biayaDendaPer == 2)
+                        else if (Program.setting.biayaDendaPer == appSetting.BIAYA_DENDA_PER_JUDUL)
                         {
                             lblHargaDendaItem.Text = koleksi.Rows[i].ItemArray[4].ToString();
                         }
-                        else if (Program.setting.biayaDendaPer == 3)
+                        else if (Program.setting.biayaDendaPer == appSetting.BIAYA_DENDA_KEDUANYA)
                         {
                             lblHargaDendaItem.Text = (int.Parse(koleksi.Rows[i].ItemArray[4].ToString()) + int.Parse(koleksi.Rows[i].ItemArray[7].ToString())).ToString();
                         }
@@ -190,19 +190,19 @@ namespace Rentalin
                 lblLamaTelat.Text = selisih.ToString();                
                 for (i = 0; i < idx; i++)
                 {
-                    if (Program.setting.biayaDendaPer == 0)
+                    if (Program.setting.biayaDendaPer == appSetting.BIAYA_DENDA_TIDAK_ADA)
                     {
                         daftarPinjaman.Rows.Add(dipinjam.Rows[i].ItemArray[0].ToString(), dipinjam.Rows[i].ItemArray[1].ToString(), dipinjam.Rows[i].ItemArray[2].ToString(), "", 0, 0, int.Parse(dipinjam.Rows[i].ItemArray[4].ToString()) + 0);
                     }
-                    else if (Program.setting.biayaDendaPer == 1)
+                    else if (Program.setting.biayaDendaPer == appSetting.BIAYA_DENDA_PER_KATEGORI)
                     {
                         daftarPinjaman.Rows.Add(dipinjam.Rows[i].ItemArray[0].ToString(), dipinjam.Rows[i].ItemArray[1].ToString(), dipinjam.Rows[i].ItemArray[2].ToString(), "", dipinjam.Rows[i].ItemArray[7].ToString(), 0, int.Parse(dipinjam.Rows[i].ItemArray[4].ToString()) + 0);
                     }
-                    else if (Program.setting.biayaDendaPer == 2)
+                    else if (Program.setting.biayaDendaPer == appSetting.BIAYA_DENDA_PER_JUDUL)
                     {
                         daftarPinjaman.Rows.Add(dipinjam.Rows[i].ItemArray[0].ToString(), dipinjam.Rows[i].ItemArray[1].ToString(), dipinjam.Rows[i].ItemArray[2].ToString(), "", dipinjam.Rows[i].ItemArray[4].ToString(), 0, int.Parse(dipinjam.Rows[i].ItemArray[4].ToString()) + 0);
                     }
-                    else if (Program.setting.biayaDendaPer == 3)
+                    else if (Program.setting.biayaDendaPer == appSetting.BIAYA_DENDA_KEDUANYA)
                     {
                         daftarPinjaman.Rows.Add(dipinjam.Rows[i].ItemArray[0].ToString(), dipinjam.Rows[i].ItemArray[1].ToString(), dipinjam.Rows[i].ItemArray[2].ToString(), "", (int.Parse(dipinjam.Rows[i].ItemArray[4].ToString())+int.Parse(dipinjam.Rows[i].ItemArray[7].ToString())).ToString(), 0, int.Parse(dipinjam.Rows[i].ItemArray[4].ToString()) + 0);
                     }
@@ -284,11 +284,7 @@ namespace Rentalin
             else
             {
                 MessageBox.Show("Silahkan update kondisi");
-            }
-            
+            }   
         }
-
-            
-
     }
 }

@@ -233,6 +233,7 @@
             this.txtPilihKoleksi.Size = new System.Drawing.Size(188, 20);
             this.txtPilihKoleksi.TabIndex = 1;
             this.txtPilihKoleksi.TextChanged += new System.EventHandler(this.txtPilihKoleksi_TextChanged);
+            this.txtPilihKoleksi.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPilihKoleksi_KeyDown);
             // 
             // lblDipilih
             // 

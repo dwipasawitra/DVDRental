@@ -99,36 +99,36 @@ namespace Rentalin
             {
                 if (koleksi.Rows[i].ItemArray[0].ToString() == dgPeminjaman.Rows[dgPeminjaman.CurrentCellAddress.Y].Cells[0].Value.ToString())
                 {
-                    if (Program.setting.biayaSewaPer == 0)
+                    if (Program.setting.biayaSewaPer == appSetting.BIAYA_SEWA_TIDAK_ADA)
                     {
                         lblHargaSewaItem.Text = "0"; 
                     }
-                    else if (Program.setting.biayaSewaPer == 1)
+                    else if (Program.setting.biayaSewaPer == appSetting.BIAYA_SEWA_PER_KATEGORI)
                     {
                         lblHargaSewaItem.Text = koleksi.Rows[i].ItemArray[6].ToString();
                     }
-                    else if (Program.setting.biayaSewaPer == 2)
+                    else if (Program.setting.biayaSewaPer == appSetting.BIAYA_SEWA_PER_JUDUL)
                     {
                         lblHargaSewaItem.Text = koleksi.Rows[i].ItemArray[3].ToString();
                     }
-                    else if (Program.setting.biayaSewaPer == 3)
+                    else if (Program.setting.biayaSewaPer == appSetting.BIAYA_SEWA_KEDUANYA)
                     {
                         lblHargaSewaItem.Text = (int.Parse(koleksi.Rows[i].ItemArray[3].ToString()) + int.Parse(koleksi.Rows[i].ItemArray[6].ToString())).ToString();
                     }
 
-                    if (Program.setting.biayaDendaPer == 0)
+                    if (Program.setting.biayaDendaPer == appSetting.BIAYA_DENDA_TIDAK_ADA)
                     {
                         lblHargaDendaItem.Text = "0";
                     }
-                    else if (Program.setting.biayaDendaPer == 1)
+                    else if (Program.setting.biayaDendaPer == appSetting.BIAYA_DENDA_PER_KATEGORI)
                     {
                         lblHargaDendaItem.Text = koleksi.Rows[i].ItemArray[7].ToString();
                     }
-                    else if (Program.setting.biayaDendaPer == 2)
+                    else if (Program.setting.biayaDendaPer == appSetting.BIAYA_DENDA_PER_JUDUL)
                     {
                         lblHargaDendaItem.Text = koleksi.Rows[i].ItemArray[4].ToString();
                     }
-                    else if (Program.setting.biayaDendaPer == 3)
+                    else if (Program.setting.biayaDendaPer == appSetting.BIAYA_DENDA_KEDUANYA)
                     {
                         lblHargaDendaItem.Text = (int.Parse(koleksi.Rows[i].ItemArray[4].ToString()) + int.Parse(koleksi.Rows[i].ItemArray[7].ToString())).ToString();
                     }
@@ -153,7 +153,7 @@ namespace Rentalin
                         int idx_stok = stokKoleksi.Rows.Count;
 
                         //menambah daftar belanja
-                        if (Program.setting.biayaSewaPer == 0)
+                        if (Program.setting.biayaSewaPer == appSetting.BIAYA_SEWA_TIDAK_ADA)
                         {
                             if (Program.so.isSpecialOffer())
                             {
@@ -164,7 +164,7 @@ namespace Rentalin
                                 belanja.Rows.Add(txtTambahJudul.Text, koleksi.Rows[i].ItemArray[2].ToString(), stokKoleksi.Rows[0].ItemArray[0].ToString(), 0, int.Parse(koleksi.Rows[i].ItemArray[3].ToString()) * int.Parse(lblLamaPenyewaan.Text));
                             }
                         }
-                        else if (Program.setting.biayaSewaPer == 1)
+                        else if (Program.setting.biayaSewaPer == appSetting.BIAYA_SEWA_PER_KATEGORI)
                         {
                             if (Program.so.isSpecialOffer())
                             {
@@ -175,7 +175,7 @@ namespace Rentalin
                                 belanja.Rows.Add(txtTambahJudul.Text, koleksi.Rows[i].ItemArray[2].ToString(), stokKoleksi.Rows[0].ItemArray[0].ToString(), koleksi.Rows[i].ItemArray[6].ToString(), int.Parse(koleksi.Rows[i].ItemArray[3].ToString()) * int.Parse(lblLamaPenyewaan.Text));
                             }
                         }
-                        else if (Program.setting.biayaSewaPer == 2)
+                        else if (Program.setting.biayaSewaPer == appSetting.BIAYA_SEWA_PER_JUDUL)
                         {
                             if (Program.so.isSpecialOffer())
                             {
@@ -186,7 +186,7 @@ namespace Rentalin
                                 belanja.Rows.Add(txtTambahJudul.Text, koleksi.Rows[i].ItemArray[2].ToString(), stokKoleksi.Rows[0].ItemArray[0].ToString(), koleksi.Rows[i].ItemArray[3].ToString(), int.Parse(koleksi.Rows[i].ItemArray[3].ToString()) * int.Parse(lblLamaPenyewaan.Text));
                             }
                         }
-                        else if (Program.setting.biayaSewaPer == 3)
+                        else if (Program.setting.biayaSewaPer == appSetting.BIAYA_SEWA_KEDUANYA)
                         {
                             if (Program.so.isSpecialOffer())
                             {
@@ -362,15 +362,22 @@ namespace Rentalin
         {
             MessageBox.Show(dgPeminjaman.Rows.Count.ToString());
             int lamaPenyewaan = dtpTanggalKembali.Value.Day - DateTime.Now.Day;
-            if (lamaPenyewaan < 0)
-                lamaPenyewaan = 0;
-            lblLamaPenyewaan.Text = lamaPenyewaan.ToString();
-            int i, idx = dgPeminjaman.Rows.Count;
-            for (i = 0; i < idx-1; i++)
+            if (Program.setting.lamaPenyewaan == appSetting.LAMA_PENYEWAAN_FIX && lamaPenyewaan > Program.setting.lamaPenyewaanHari)
             {
-                belanja.Rows[i][4] = int.Parse(belanja.Rows[i].ItemArray[3].ToString()) * lamaPenyewaan;
+                MessageBox.Show("Maaf Lama Penyewaan " + Program.setting.lamaPenyewaanHari.ToString());
             }
-            hitungTotalBiaya();
+            else
+            {
+                if (lamaPenyewaan < 0)
+                    lamaPenyewaan = 0;
+                lblLamaPenyewaan.Text = lamaPenyewaan.ToString();
+                int i, idx = dgPeminjaman.Rows.Count;
+                for (i = 0; i < idx - 1; i++)
+                {
+                    belanja.Rows[i][4] = int.Parse(belanja.Rows[i].ItemArray[3].ToString()) * lamaPenyewaan;
+                }
+                hitungTotalBiaya();
+            }            
         }
 
         private void button1_Click(object sender, EventArgs e)
