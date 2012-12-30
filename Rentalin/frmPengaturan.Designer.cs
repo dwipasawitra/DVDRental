@@ -56,11 +56,16 @@
             this.lblJumlahJudul = new System.Windows.Forms.Label();
             this.rbBebasJudul = new System.Windows.Forms.RadioButton();
             this.rbTetapJudul = new System.Windows.Forms.RadioButton();
+            this.gbDendaKerusakan = new System.Windows.Forms.GroupBox();
+            this.txtPersenDendaKerusakan = new System.Windows.Forms.TextBox();
+            this.lblDendaKerusakanSebanyak = new System.Windows.Forms.Label();
+            this.lblPersenHargaBeli = new System.Windows.Forms.Label();
             this.gbBiayaSewa.SuspendLayout();
             this.gbDenda.SuspendLayout();
             this.gbDasar.SuspendLayout();
             this.gbLamaPenyewaan.SuspendLayout();
             this.gbJumlahSewa.SuspendLayout();
+            this.gbDendaKerusakan.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbBiayaSewa
@@ -221,7 +226,7 @@
             // 
             // btnTerapkan
             // 
-            this.btnTerapkan.Location = new System.Drawing.Point(353, 420);
+            this.btnTerapkan.Location = new System.Drawing.Point(357, 420);
             this.btnTerapkan.Name = "btnTerapkan";
             this.btnTerapkan.Size = new System.Drawing.Size(75, 23);
             this.btnTerapkan.TabIndex = 4;
@@ -232,7 +237,7 @@
             // btnBatal
             // 
             this.btnBatal.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnBatal.Location = new System.Drawing.Point(434, 420);
+            this.btnBatal.Location = new System.Drawing.Point(440, 420);
             this.btnBatal.Name = "btnBatal";
             this.btnBatal.Size = new System.Drawing.Size(75, 23);
             this.btnBatal.TabIndex = 5;
@@ -342,13 +347,51 @@
             this.rbTetapJudul.Text = "Tetap sebanyak sekian judul";
             this.rbTetapJudul.UseVisualStyleBackColor = true;
             // 
+            // gbDendaKerusakan
+            // 
+            this.gbDendaKerusakan.Controls.Add(this.lblPersenHargaBeli);
+            this.gbDendaKerusakan.Controls.Add(this.txtPersenDendaKerusakan);
+            this.gbDendaKerusakan.Controls.Add(this.lblDendaKerusakanSebanyak);
+            this.gbDendaKerusakan.Location = new System.Drawing.Point(281, 361);
+            this.gbDendaKerusakan.Name = "gbDendaKerusakan";
+            this.gbDendaKerusakan.Size = new System.Drawing.Size(232, 49);
+            this.gbDendaKerusakan.TabIndex = 8;
+            this.gbDendaKerusakan.TabStop = false;
+            this.gbDendaKerusakan.Text = "Denda kerusakan keping";
+            // 
+            // txtPersenDendaKerusakan
+            // 
+            this.txtPersenDendaKerusakan.Location = new System.Drawing.Point(81, 19);
+            this.txtPersenDendaKerusakan.Name = "txtPersenDendaKerusakan";
+            this.txtPersenDendaKerusakan.Size = new System.Drawing.Size(37, 20);
+            this.txtPersenDendaKerusakan.TabIndex = 9;
+            // 
+            // lblDendaKerusakanSebanyak
+            // 
+            this.lblDendaKerusakanSebanyak.AutoSize = true;
+            this.lblDendaKerusakanSebanyak.Location = new System.Drawing.Point(14, 22);
+            this.lblDendaKerusakanSebanyak.Name = "lblDendaKerusakanSebanyak";
+            this.lblDendaKerusakanSebanyak.Size = new System.Drawing.Size(55, 13);
+            this.lblDendaKerusakanSebanyak.TabIndex = 8;
+            this.lblDendaKerusakanSebanyak.Text = "Sebanyak";
+            // 
+            // lblPersenHargaBeli
+            // 
+            this.lblPersenHargaBeli.AutoSize = true;
+            this.lblPersenHargaBeli.Location = new System.Drawing.Point(124, 22);
+            this.lblPersenHargaBeli.Name = "lblPersenHargaBeli";
+            this.lblPersenHargaBeli.Size = new System.Drawing.Size(64, 13);
+            this.lblPersenHargaBeli.TabIndex = 9;
+            this.lblPersenHargaBeli.Text = "% harga beli";
+            // 
             // frmPengaturan
             // 
             this.AcceptButton = this.btnTerapkan;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnBatal;
-            this.ClientSize = new System.Drawing.Size(525, 449);
+            this.ClientSize = new System.Drawing.Size(525, 452);
+            this.Controls.Add(this.gbDendaKerusakan);
             this.Controls.Add(this.gbJumlahSewa);
             this.Controls.Add(this.gbLamaPenyewaan);
             this.Controls.Add(this.btnBatal);
@@ -372,6 +415,8 @@
             this.gbLamaPenyewaan.PerformLayout();
             this.gbJumlahSewa.ResumeLayout(false);
             this.gbJumlahSewa.PerformLayout();
+            this.gbDendaKerusakan.ResumeLayout(false);
+            this.gbDendaKerusakan.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -407,5 +452,9 @@
         private System.Windows.Forms.Label lblJumlahJudul;
         private System.Windows.Forms.RadioButton rbBebasJudul;
         private System.Windows.Forms.RadioButton rbTetapJudul;
+        private System.Windows.Forms.GroupBox gbDendaKerusakan;
+        private System.Windows.Forms.Label lblPersenHargaBeli;
+        private System.Windows.Forms.TextBox txtPersenDendaKerusakan;
+        private System.Windows.Forms.Label lblDendaKerusakanSebanyak;
     }
 }

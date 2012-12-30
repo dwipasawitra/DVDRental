@@ -77,7 +77,11 @@ namespace Rentalin
                     rbBebasJudul.Checked = true;
                     break;
             }
+
             txtJumlahJudul.Text = Program.setting.maksTransaksiJumlah.ToString();
+
+            // Persentase denda kerusakan
+            txtPersenDendaKerusakan.Text = Program.setting.dendaKerusakan.ToString();
 
 
         }
@@ -149,9 +153,13 @@ namespace Rentalin
             }
             Program.setting.maksTransaksiJumlah = Int16.Parse(txtJumlahJudul.Text);
 
+            // Denda kerusakan
+            Program.setting.dendaKerusakan = Int16.Parse(txtPersenDendaKerusakan.Text);
+
             // And the last, kita update settingnya
             Program.setting.updateSetting();
 
+            Close();
             // Done
         }
 

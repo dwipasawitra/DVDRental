@@ -287,6 +287,7 @@ namespace Rentalin
             Program.conn.ExecuteNonQuery("UPDATE pengaturan SET data='" + maksTransaksi + "' WHERE atribut='skemaJudulTransaksi'");
             //public int maksTransaksiJumlah
             Program.conn.ExecuteNonQuery("UPDATE pengaturan SET data='" + maksTransaksiJumlah + "' WHERE atribut='maksJudulTransaksi'");
+            Program.conn.ExecuteNonQuery("UPDATE pengaturan SET data='" + dendaKerusakan + "' WHERE atribut='dendaKerusakan'");
         }
     }
 

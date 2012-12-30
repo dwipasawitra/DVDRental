@@ -322,7 +322,6 @@ namespace Rentalin
             }
         }
 
-      
 
         
 
