@@ -188,5 +188,11 @@ namespace Rentalin
             frmLaporanKeuangan form = new frmLaporanKeuangan();
             form.ShowDialog(this);
         }
+
+        private void btnSO_Click(object sender, EventArgs e)
+        {
+            frmPenawaranMenarik form = new frmPenawaranMenarik();
+            form.ShowDialog(this);
+        }
     }
 }

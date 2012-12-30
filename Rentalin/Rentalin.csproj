@@ -153,6 +153,12 @@
     <Compile Include="frmPeminjamanCariPelanggan.Designer.cs">
       <DependentUpon>frmPeminjamanCariPelanggan.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmPenawaranMenarik.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPenawaranMenarik.Designer.cs">
+      <DependentUpon>frmPenawaranMenarik.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmPengaturan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -241,6 +247,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPeminjamanCariPelanggan.resx">
       <DependentUpon>frmPeminjamanCariPelanggan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPenawaranMenarik.resx">
+      <DependentUpon>frmPenawaranMenarik.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPengaturan.resx">
       <DependentUpon>frmPengaturan.cs</DependentUpon>

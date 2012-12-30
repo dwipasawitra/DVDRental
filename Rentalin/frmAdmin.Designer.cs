@@ -219,6 +219,7 @@
             this.btnSO.TabIndex = 7;
             this.btnSO.Text = "Atur Penawaran Menarik";
             this.btnSO.UseVisualStyleBackColor = true;
+            this.btnSO.Click += new System.EventHandler(this.btnSO_Click);
             // 
             // lblLaporanNotaInfo
             // 

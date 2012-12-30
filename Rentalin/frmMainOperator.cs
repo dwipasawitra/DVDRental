@@ -89,6 +89,27 @@ namespace Rentalin
                 btnMasterKoleksi.Enabled = false;
             if (Program.role.masterStok == false)
                 btnMasterStok.Enabled = false;
+            if (Program.role.transaksi == false)
+            {
+                btnPeminjaman.Enabled = false;
+                btnPengembalian.Enabled = false;
+            }
+            if (Program.role.laporanPerTransaksi == false)
+            {
+                btnLaporanNota.Enabled = false;
+            }
+            if(Program.role.laporanTransaksi == false)
+            {
+                btnLaporanTransaksi.Enabled = false;
+            }
+            if (Program.role.laporanKeuangan == false)
+            {
+                btnLaporanKeuangan.Enabled = false;
+            }
+            if (Program.role.halloffame == false)
+            {
+                btnHallofFame.Enabled = false;
+            }
 
             // Ganti nama user
             lblUserName.Text = Program.session.getNamaUser();
