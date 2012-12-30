@@ -31,8 +31,6 @@ namespace Rentalin
 
             muatUlangData();
             txtPencarian.Text = "";
-
-
         }
 
         private void dgPelanggan_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
@@ -42,9 +40,6 @@ namespace Rentalin
                 btnHapus.Enabled = false;
             }
         }
-
-        
-     
 
         private void btnTambah_Click(object sender, EventArgs e)
         {

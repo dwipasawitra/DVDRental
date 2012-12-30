@@ -104,7 +104,7 @@ namespace Rentalin
         private void btnMasterPelanggan_Click(object sender, EventArgs e)
         {
             frmMasterPelanggan formMasterPelanggan = new frmMasterPelanggan();
-            formMasterPelanggan.Show();
+            formMasterPelanggan.ShowDialog(this);
             //Close();
         }
 

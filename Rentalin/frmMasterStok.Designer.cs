@@ -39,6 +39,7 @@
             this.btnModifikasi = new System.Windows.Forms.Button();
             this.dgStokKoleksi = new System.Windows.Forms.DataGridView();
             this.pnlKoleksiDIpilih = new System.Windows.Forms.Panel();
+            this.btnCariKoleksi = new System.Windows.Forms.Button();
             this.lblGenre = new System.Windows.Forms.Label();
             this.lblJudul = new System.Windows.Forms.Label();
             this.btnPilihKoleksi = new System.Windows.Forms.Button();
@@ -53,7 +54,6 @@
             this.cmbKondisi = new System.Windows.Forms.ComboBox();
             this.lblStatusInfo = new System.Windows.Forms.Label();
             this.lblKondisiInfo = new System.Windows.Forms.Label();
-            this.btnCariKoleksi = new System.Windows.Forms.Button();
             this.pnlInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgStokKoleksi)).BeginInit();
@@ -165,7 +165,6 @@
             this.dgStokKoleksi.Name = "dgStokKoleksi";
             this.dgStokKoleksi.Size = new System.Drawing.Size(478, 339);
             this.dgStokKoleksi.TabIndex = 4;
-            
             this.dgStokKoleksi.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dgStokKoleksi_RowsRemoved);
             this.dgStokKoleksi.SelectionChanged += new System.EventHandler(this.dgStokKoleksi_SelectionChanged);
             // 
@@ -186,6 +185,16 @@
             this.pnlKoleksiDIpilih.Name = "pnlKoleksiDIpilih";
             this.pnlKoleksiDIpilih.Size = new System.Drawing.Size(211, 461);
             this.pnlKoleksiDIpilih.TabIndex = 9;
+            // 
+            // btnCariKoleksi
+            // 
+            this.btnCariKoleksi.ForeColor = System.Drawing.Color.Black;
+            this.btnCariKoleksi.Location = new System.Drawing.Point(6, 52);
+            this.btnCariKoleksi.Name = "btnCariKoleksi";
+            this.btnCariKoleksi.Size = new System.Drawing.Size(87, 28);
+            this.btnCariKoleksi.TabIndex = 15;
+            this.btnCariKoleksi.Text = "Cari Koleksi";
+            this.btnCariKoleksi.UseVisualStyleBackColor = true;
             // 
             // lblGenre
             // 
@@ -223,6 +232,8 @@
             this.txtPilihKoleksi.Name = "txtPilihKoleksi";
             this.txtPilihKoleksi.Size = new System.Drawing.Size(188, 20);
             this.txtPilihKoleksi.TabIndex = 1;
+            this.txtPilihKoleksi.TextChanged += new System.EventHandler(this.txtPilihKoleksi_TextChanged);
+            this.txtPilihKoleksi.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPilihKoleksi_KeyDown);
             // 
             // lblDipilih
             // 
@@ -324,16 +335,6 @@
             this.lblKondisiInfo.Size = new System.Drawing.Size(41, 13);
             this.lblKondisiInfo.TabIndex = 20;
             this.lblKondisiInfo.Text = "Kondisi";
-            // 
-            // btnCariKoleksi
-            // 
-            this.btnCariKoleksi.ForeColor = System.Drawing.Color.Black;
-            this.btnCariKoleksi.Location = new System.Drawing.Point(6, 52);
-            this.btnCariKoleksi.Name = "btnCariKoleksi";
-            this.btnCariKoleksi.Size = new System.Drawing.Size(87, 28);
-            this.btnCariKoleksi.TabIndex = 15;
-            this.btnCariKoleksi.Text = "Cari Koleksi";
-            this.btnCariKoleksi.UseVisualStyleBackColor = true;
             // 
             // frmMasterStok
             // 

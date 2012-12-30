@@ -74,6 +74,12 @@
     <Compile Include="frmHallOfFame.Designer.cs">
       <DependentUpon>frmHallOfFame.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmHistoryPenyewaan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHistoryPenyewaan.Designer.cs">
+      <DependentUpon>frmHistoryPenyewaan.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmLaporanKeuangan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -196,6 +202,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmHallOfFame.resx">
       <DependentUpon>frmHallOfFame.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHistoryPenyewaan.resx">
+      <DependentUpon>frmHistoryPenyewaan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLaporanKeuangan.resx">
       <DependentUpon>frmLaporanKeuangan.cs</DependentUpon>
