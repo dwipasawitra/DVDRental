@@ -40,7 +40,6 @@
             this.txtPencarian = new System.Windows.Forms.TextBox();
             this.btnPesan = new System.Windows.Forms.Button();
             this.lblNamaLayanan = new System.Windows.Forms.Label();
-            this.picDisc = new System.Windows.Forms.PictureBox();
             this.lblAlamatLayanan = new System.Windows.Forms.Label();
             this.tabControlApp = new System.Windows.Forms.TabControl();
             this.tabDepan = new System.Windows.Forms.TabPage();
@@ -50,16 +49,20 @@
             this.btnLihatDaftarPesanan = new System.Windows.Forms.Button();
             this.lblInfoDetail = new System.Windows.Forms.Label();
             this.gbTopKoleksi = new System.Windows.Forms.GroupBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.lblJenisKepingTop = new System.Windows.Forms.Label();
+            this.lblDeskripsiTop = new System.Windows.Forms.Label();
+            this.lblGenreTop = new System.Windows.Forms.Label();
+            this.lblJudulTop = new System.Windows.Forms.Label();
             this.picTopKoleksiTerbaik = new System.Windows.Forms.PictureBox();
             this.btnLihatDaftarJudul = new System.Windows.Forms.Button();
             this.tabKoleksi = new System.Windows.Forms.TabPage();
-            this.gridKoleksiTersedia = new System.Windows.Forms.DataGridView();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dgKoleksi = new System.Windows.Forms.DataGridView();
+            this.gbInfoKoleksi = new System.Windows.Forms.GroupBox();
+            this.lblDeskripsiKoleksi = new System.Windows.Forms.Label();
+            this.lblGenreKoleksi = new System.Windows.Forms.Label();
+            this.lblJudulKoleksi = new System.Windows.Forms.Label();
+            this.picDetailKoleksi = new System.Windows.Forms.PictureBox();
             this.btnTambahKePesanan = new System.Windows.Forms.Button();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tabPesanan = new System.Windows.Forms.TabPage();
             this.btnBatalkanPesanan = new System.Windows.Forms.Button();
             this.btnHapusPilihan = new System.Windows.Forms.Button();
@@ -72,19 +75,20 @@
             this.tabPetunjuk = new System.Windows.Forms.TabPage();
             this.tmrWaktu = new System.Windows.Forms.Timer(this.components);
             this.tmrScrollingText = new System.Windows.Forms.Timer(this.components);
+            this.lblJenisKepingKoleksi = new System.Windows.Forms.Label();
+            this.btnPreview = new System.Windows.Forms.Button();
             this.pnlScrollingText.SuspendLayout();
             this.panel1.SuspendLayout();
             this.pnlJam.SuspendLayout();
             this.pnlHeader.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picDisc)).BeginInit();
             this.tabControlApp.SuspendLayout();
             this.tabDepan.SuspendLayout();
             this.gbTopKoleksi.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picTopKoleksiTerbaik)).BeginInit();
             this.tabKoleksi.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridKoleksiTersedia)).BeginInit();
-            this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgKoleksi)).BeginInit();
+            this.gbInfoKoleksi.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picDetailKoleksi)).BeginInit();
             this.tabPesanan.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridPesanan)).BeginInit();
             this.tabChatOperator.SuspendLayout();
@@ -157,12 +161,12 @@
             this.pnlHeader.Controls.Add(this.txtPencarian);
             this.pnlHeader.Controls.Add(this.btnPesan);
             this.pnlHeader.Controls.Add(this.lblNamaLayanan);
-            this.pnlHeader.Controls.Add(this.picDisc);
             this.pnlHeader.Controls.Add(this.lblAlamatLayanan);
             this.pnlHeader.Location = new System.Drawing.Point(-1, -3);
             this.pnlHeader.Name = "pnlHeader";
             this.pnlHeader.Size = new System.Drawing.Size(1001, 82);
             this.pnlHeader.TabIndex = 2;
+            this.pnlHeader.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlHeader_Paint);
             // 
             // txtPencarian
             // 
@@ -173,6 +177,9 @@
             this.txtPencarian.Size = new System.Drawing.Size(306, 31);
             this.txtPencarian.TabIndex = 13;
             this.txtPencarian.Text = "Pencarian...";
+            this.txtPencarian.TextChanged += new System.EventHandler(this.txtPencarian_TextChanged);
+            this.txtPencarian.Enter += new System.EventHandler(this.txtPencarian_Enter);
+            this.txtPencarian.Leave += new System.EventHandler(this.txtPencarian_Leave);
             // 
             // btnPesan
             // 
@@ -183,31 +190,24 @@
             this.btnPesan.TabIndex = 12;
             this.btnPesan.Text = "Lihat Pesanan Anda";
             this.btnPesan.UseVisualStyleBackColor = true;
+            this.btnPesan.Click += new System.EventHandler(this.btnPesan_Click);
             // 
             // lblNamaLayanan
             // 
             this.lblNamaLayanan.AutoSize = true;
             this.lblNamaLayanan.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNamaLayanan.ForeColor = System.Drawing.Color.Black;
-            this.lblNamaLayanan.Location = new System.Drawing.Point(81, 19);
+            this.lblNamaLayanan.Location = new System.Drawing.Point(21, 16);
             this.lblNamaLayanan.Name = "lblNamaLayanan";
             this.lblNamaLayanan.Size = new System.Drawing.Size(130, 25);
             this.lblNamaLayanan.TabIndex = 9;
             this.lblNamaLayanan.Text = "HMTC Disc";
             // 
-            // picDisc
-            // 
-            this.picDisc.Location = new System.Drawing.Point(14, 8);
-            this.picDisc.Name = "picDisc";
-            this.picDisc.Size = new System.Drawing.Size(61, 58);
-            this.picDisc.TabIndex = 11;
-            this.picDisc.TabStop = false;
-            // 
             // lblAlamatLayanan
             // 
             this.lblAlamatLayanan.AutoSize = true;
             this.lblAlamatLayanan.ForeColor = System.Drawing.Color.Black;
-            this.lblAlamatLayanan.Location = new System.Drawing.Point(83, 44);
+            this.lblAlamatLayanan.Location = new System.Drawing.Point(23, 41);
             this.lblAlamatLayanan.Name = "lblAlamatLayanan";
             this.lblAlamatLayanan.Size = new System.Drawing.Size(170, 13);
             this.lblAlamatLayanan.TabIndex = 10;
@@ -296,7 +296,10 @@
             // 
             // gbTopKoleksi
             // 
-            this.gbTopKoleksi.Controls.Add(this.textBox2);
+            this.gbTopKoleksi.Controls.Add(this.lblJenisKepingTop);
+            this.gbTopKoleksi.Controls.Add(this.lblDeskripsiTop);
+            this.gbTopKoleksi.Controls.Add(this.lblGenreTop);
+            this.gbTopKoleksi.Controls.Add(this.lblJudulTop);
             this.gbTopKoleksi.Controls.Add(this.picTopKoleksiTerbaik);
             this.gbTopKoleksi.Location = new System.Drawing.Point(22, 100);
             this.gbTopKoleksi.Name = "gbTopKoleksi";
@@ -305,22 +308,54 @@
             this.gbTopKoleksi.TabStop = false;
             this.gbTopKoleksi.Text = "Top Koleksi Terbaik";
             // 
-            // textBox2
+            // lblJenisKepingTop
             // 
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Enabled = false;
-            this.textBox2.Location = new System.Drawing.Point(190, 56);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(247, 57);
-            this.textBox2.TabIndex = 1;
-            this.textBox2.Text = "Dilwale Dulhania Le Jayengge";
+            this.lblJenisKepingTop.AutoSize = true;
+            this.lblJenisKepingTop.Location = new System.Drawing.Point(59, 279);
+            this.lblJenisKepingTop.Name = "lblJenisKepingTop";
+            this.lblJenisKepingTop.Size = new System.Drawing.Size(82, 24);
+            this.lblJenisKepingTop.TabIndex = 4;
+            this.lblJenisKepingTop.Text = "Blu-Ray";
+            // 
+            // lblDeskripsiTop
+            // 
+            this.lblDeskripsiTop.AutoEllipsis = true;
+            this.lblDeskripsiTop.AutoSize = true;
+            this.lblDeskripsiTop.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDeskripsiTop.Location = new System.Drawing.Point(190, 89);
+            this.lblDeskripsiTop.MaximumSize = new System.Drawing.Size(250, 0);
+            this.lblDeskripsiTop.Name = "lblDeskripsiTop";
+            this.lblDeskripsiTop.Size = new System.Drawing.Size(250, 210);
+            this.lblDeskripsiTop.TabIndex = 3;
+            this.lblDeskripsiTop.Text = resources.GetString("lblDeskripsiTop.Text");
+            // 
+            // lblGenreTop
+            // 
+            this.lblGenreTop.AutoSize = true;
+            this.lblGenreTop.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGenreTop.Location = new System.Drawing.Point(190, 73);
+            this.lblGenreTop.Name = "lblGenreTop";
+            this.lblGenreTop.Size = new System.Drawing.Size(71, 16);
+            this.lblGenreTop.TabIndex = 2;
+            this.lblGenreTop.Text = "Bollywood";
+            // 
+            // lblJudulTop
+            // 
+            this.lblJudulTop.AutoSize = true;
+            this.lblJudulTop.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblJudulTop.Location = new System.Drawing.Point(190, 55);
+            this.lblJudulTop.Name = "lblJudulTop";
+            this.lblJudulTop.Size = new System.Drawing.Size(104, 18);
+            this.lblJudulTop.TabIndex = 1;
+            this.lblJudulTop.Text = "Mohabbatein";
             // 
             // picTopKoleksiTerbaik
             // 
+            this.picTopKoleksiTerbaik.Image = global::RentalinKatalog.Properties.Resources.mohabbatein;
             this.picTopKoleksiTerbaik.Location = new System.Drawing.Point(16, 56);
             this.picTopKoleksiTerbaik.Name = "picTopKoleksiTerbaik";
             this.picTopKoleksiTerbaik.Size = new System.Drawing.Size(168, 220);
+            this.picTopKoleksiTerbaik.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picTopKoleksiTerbaik.TabIndex = 0;
             this.picTopKoleksiTerbaik.TabStop = false;
             // 
@@ -337,8 +372,8 @@
             // 
             // tabKoleksi
             // 
-            this.tabKoleksi.Controls.Add(this.gridKoleksiTersedia);
-            this.tabKoleksi.Controls.Add(this.groupBox1);
+            this.tabKoleksi.Controls.Add(this.dgKoleksi);
+            this.tabKoleksi.Controls.Add(this.gbInfoKoleksi);
             this.tabKoleksi.Location = new System.Drawing.Point(4, 33);
             this.tabKoleksi.Name = "tabKoleksi";
             this.tabKoleksi.Size = new System.Drawing.Size(993, 442);
@@ -346,66 +381,85 @@
             this.tabKoleksi.Text = "Koleksi";
             this.tabKoleksi.UseVisualStyleBackColor = true;
             // 
-            // gridKoleksiTersedia
+            // dgKoleksi
             // 
-            this.gridKoleksiTersedia.AllowUserToAddRows = false;
-            this.gridKoleksiTersedia.AllowUserToDeleteRows = false;
-            this.gridKoleksiTersedia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridKoleksiTersedia.Location = new System.Drawing.Point(13, 16);
-            this.gridKoleksiTersedia.Name = "gridKoleksiTersedia";
-            this.gridKoleksiTersedia.ReadOnly = true;
-            this.gridKoleksiTersedia.Size = new System.Drawing.Size(657, 413);
-            this.gridKoleksiTersedia.TabIndex = 1;
+            this.dgKoleksi.AllowUserToAddRows = false;
+            this.dgKoleksi.AllowUserToDeleteRows = false;
+            this.dgKoleksi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgKoleksi.Location = new System.Drawing.Point(13, 16);
+            this.dgKoleksi.Name = "dgKoleksi";
+            this.dgKoleksi.ReadOnly = true;
+            this.dgKoleksi.Size = new System.Drawing.Size(657, 413);
+            this.dgKoleksi.TabIndex = 1;
+            this.dgKoleksi.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgKoleksi_CellContentClick);
+            this.dgKoleksi.SelectionChanged += new System.EventHandler(this.dgKoleksi_SelectionChanged);
             // 
-            // groupBox1
+            // gbInfoKoleksi
             // 
-            this.groupBox1.Controls.Add(this.btnTambahKePesanan);
-            this.groupBox1.Controls.Add(this.textBox4);
-            this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Controls.Add(this.pictureBox1);
-            this.groupBox1.Location = new System.Drawing.Point(690, 11);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(292, 419);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Info";
+            this.gbInfoKoleksi.Controls.Add(this.btnPreview);
+            this.gbInfoKoleksi.Controls.Add(this.lblJenisKepingKoleksi);
+            this.gbInfoKoleksi.Controls.Add(this.lblDeskripsiKoleksi);
+            this.gbInfoKoleksi.Controls.Add(this.lblGenreKoleksi);
+            this.gbInfoKoleksi.Controls.Add(this.lblJudulKoleksi);
+            this.gbInfoKoleksi.Controls.Add(this.picDetailKoleksi);
+            this.gbInfoKoleksi.Controls.Add(this.btnTambahKePesanan);
+            this.gbInfoKoleksi.Location = new System.Drawing.Point(690, 11);
+            this.gbInfoKoleksi.Name = "gbInfoKoleksi";
+            this.gbInfoKoleksi.Size = new System.Drawing.Size(292, 419);
+            this.gbInfoKoleksi.TabIndex = 0;
+            this.gbInfoKoleksi.TabStop = false;
+            this.gbInfoKoleksi.Text = "Info";
+            // 
+            // lblDeskripsiKoleksi
+            // 
+            this.lblDeskripsiKoleksi.AutoEllipsis = true;
+            this.lblDeskripsiKoleksi.AutoSize = true;
+            this.lblDeskripsiKoleksi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDeskripsiKoleksi.Location = new System.Drawing.Point(12, 213);
+            this.lblDeskripsiKoleksi.MaximumSize = new System.Drawing.Size(250, 0);
+            this.lblDeskripsiKoleksi.Name = "lblDeskripsiKoleksi";
+            this.lblDeskripsiKoleksi.Size = new System.Drawing.Size(250, 210);
+            this.lblDeskripsiKoleksi.TabIndex = 9;
+            this.lblDeskripsiKoleksi.Text = resources.GetString("lblDeskripsiKoleksi.Text");
+            // 
+            // lblGenreKoleksi
+            // 
+            this.lblGenreKoleksi.AutoSize = true;
+            this.lblGenreKoleksi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGenreKoleksi.Location = new System.Drawing.Point(12, 197);
+            this.lblGenreKoleksi.Name = "lblGenreKoleksi";
+            this.lblGenreKoleksi.Size = new System.Drawing.Size(71, 16);
+            this.lblGenreKoleksi.TabIndex = 8;
+            this.lblGenreKoleksi.Text = "Bollywood";
+            // 
+            // lblJudulKoleksi
+            // 
+            this.lblJudulKoleksi.AutoSize = true;
+            this.lblJudulKoleksi.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblJudulKoleksi.Location = new System.Drawing.Point(12, 179);
+            this.lblJudulKoleksi.Name = "lblJudulKoleksi";
+            this.lblJudulKoleksi.Size = new System.Drawing.Size(104, 18);
+            this.lblJudulKoleksi.TabIndex = 7;
+            this.lblJudulKoleksi.Text = "Mohabbatein";
+            // 
+            // picDetailKoleksi
+            // 
+            this.picDetailKoleksi.Image = global::RentalinKatalog.Properties.Resources.mohabbatein;
+            this.picDetailKoleksi.Location = new System.Drawing.Point(153, 28);
+            this.picDetailKoleksi.Name = "picDetailKoleksi";
+            this.picDetailKoleksi.Size = new System.Drawing.Size(104, 131);
+            this.picDetailKoleksi.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picDetailKoleksi.TabIndex = 6;
+            this.picDetailKoleksi.TabStop = false;
             // 
             // btnTambahKePesanan
             // 
-            this.btnTambahKePesanan.Location = new System.Drawing.Point(7, 365);
+            this.btnTambahKePesanan.Location = new System.Drawing.Point(15, 28);
             this.btnTambahKePesanan.Name = "btnTambahKePesanan";
-            this.btnTambahKePesanan.Size = new System.Drawing.Size(277, 52);
+            this.btnTambahKePesanan.Size = new System.Drawing.Size(132, 41);
             this.btnTambahKePesanan.TabIndex = 5;
             this.btnTambahKePesanan.Text = "PESAN";
             this.btnTambahKePesanan.UseVisualStyleBackColor = true;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(5, 333);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(280, 29);
-            this.textBox4.TabIndex = 4;
-            this.textBox4.Text = "Film ini mengisahkan tentang cerita cinta yang terjalin di Swiss";
-            // 
-            // textBox3
-            // 
-            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox3.Enabled = false;
-            this.textBox3.Location = new System.Drawing.Point(6, 269);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(280, 57);
-            this.textBox3.TabIndex = 3;
-            this.textBox3.Text = "Dilwale Dulhania Le Jayengge";
-            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(60, 43);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(168, 220);
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
             // 
             // tabPesanan
             // 
@@ -515,6 +569,25 @@
             this.tmrScrollingText.Enabled = true;
             this.tmrScrollingText.Tick += new System.EventHandler(this.tmrScrollingText_Tick);
             // 
+            // lblJenisKepingKoleksi
+            // 
+            this.lblJenisKepingKoleksi.AutoSize = true;
+            this.lblJenisKepingKoleksi.Location = new System.Drawing.Point(175, 157);
+            this.lblJenisKepingKoleksi.Name = "lblJenisKepingKoleksi";
+            this.lblJenisKepingKoleksi.Size = new System.Drawing.Size(52, 24);
+            this.lblJenisKepingKoleksi.TabIndex = 10;
+            this.lblJenisKepingKoleksi.Text = "DVD";
+            this.lblJenisKepingKoleksi.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // btnPreview
+            // 
+            this.btnPreview.Location = new System.Drawing.Point(15, 118);
+            this.btnPreview.Name = "btnPreview";
+            this.btnPreview.Size = new System.Drawing.Size(132, 41);
+            this.btnPreview.TabIndex = 11;
+            this.btnPreview.Text = "PRATINJAU";
+            this.btnPreview.UseVisualStyleBackColor = true;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -538,7 +611,6 @@
             this.pnlJam.PerformLayout();
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picDisc)).EndInit();
             this.tabControlApp.ResumeLayout(false);
             this.tabDepan.ResumeLayout(false);
             this.tabDepan.PerformLayout();
@@ -546,10 +618,10 @@
             this.gbTopKoleksi.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picTopKoleksiTerbaik)).EndInit();
             this.tabKoleksi.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridKoleksiTersedia)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgKoleksi)).EndInit();
+            this.gbInfoKoleksi.ResumeLayout(false);
+            this.gbInfoKoleksi.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picDetailKoleksi)).EndInit();
             this.tabPesanan.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridPesanan)).EndInit();
             this.tabChatOperator.ResumeLayout(false);
@@ -565,7 +637,6 @@
         private System.Windows.Forms.TextBox txtPencarian;
         private System.Windows.Forms.Button btnPesan;
         private System.Windows.Forms.Label lblNamaLayanan;
-        private System.Windows.Forms.PictureBox picDisc;
         private System.Windows.Forms.Label lblAlamatLayanan;
         private System.Windows.Forms.TabControl tabControlApp;
         private System.Windows.Forms.TabPage tabDepan;
@@ -577,8 +648,8 @@
         private System.Windows.Forms.GroupBox gbTopKoleksi;
         private System.Windows.Forms.Button btnLihatDaftarJudul;
         private System.Windows.Forms.TabPage tabKoleksi;
-        private System.Windows.Forms.DataGridView gridKoleksiTersedia;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.DataGridView dgKoleksi;
+        private System.Windows.Forms.GroupBox gbInfoKoleksi;
         private System.Windows.Forms.TabPage tabPesanan;
         private System.Windows.Forms.Button btnBatalkanPesanan;
         private System.Windows.Forms.Button btnHapusPilihan;
@@ -596,12 +667,18 @@
         private System.Windows.Forms.Timer tmrWaktu;
         private System.Windows.Forms.Label lblScrollingText;
         private System.Windows.Forms.Timer tmrScrollingText;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.PictureBox picTopKoleksiTerbaik;
         private System.Windows.Forms.Button btnTambahKePesanan;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label lblJenisKepingTop;
+        private System.Windows.Forms.Label lblDeskripsiTop;
+        private System.Windows.Forms.Label lblGenreTop;
+        private System.Windows.Forms.Label lblJudulTop;
+        private System.Windows.Forms.Label lblDeskripsiKoleksi;
+        private System.Windows.Forms.Label lblGenreKoleksi;
+        private System.Windows.Forms.Label lblJudulKoleksi;
+        private System.Windows.Forms.PictureBox picDetailKoleksi;
+        private System.Windows.Forms.Button btnPreview;
+        private System.Windows.Forms.Label lblJenisKepingKoleksi;
     }
 }
 

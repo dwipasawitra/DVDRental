@@ -120,6 +120,12 @@
   <data name="lblScrollingText.Text" xml:space="preserve">
     <value>SELAMAT DATANG di Rental kami. Silahkan memilih isi katalog kami melalui menu yang sudah disediakan di layar ini. Anda dapat memesan VCD yang ingin disewa langsung melalui layar ini. Sangat mudah bukan? Terima kasih atas kedatanagnnya *** </value>
   </data>
+  <data name="lblDeskripsiTop.Text" xml:space="preserve">
+    <value>In India, open romance is forbidden, as is showing affection in public. A college principal named Narayan is a strong believer in this, aware that a male student named Vicky is in love with Ishika; while another male student is hopelessly in love with Sanjana; and a third man named Karan is in love with a married woman named Kiran. No amount of persuasion can get Narayan to change his mind. Then the college recruits a music teacher named Raj, who eventually starts fanning the flames of love among the students, much to Narayan's chagrin, anger, and displeasure.</value>
+  </data>
+  <data name="lblDeskripsiKoleksi.Text" xml:space="preserve">
+    <value>In India, open romance is forbidden, as is showing affection in public. A college principal named Narayan is a strong believer in this, aware that a male student named Vicky is in love with Ishika; while another male student is hopelessly in love with Sanjana; and a third man named Karan is in love with a married woman named Kiran. No amount of persuasion can get Narayan to change his mind. Then the college recruits a music teacher named Raj, who eventually starts fanning the flames of love among the students, much to Narayan's chagrin, anger, and displeasure.</value>
+  </data>
   <metadata name="tmrWaktu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
