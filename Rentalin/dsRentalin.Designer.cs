@@ -4172,6 +4172,12 @@ namespace Rentalin {
             
             private global::System.Data.DataColumn columnHARGASEWA;
             
+            private global::System.Data.DataColumn columnTGLTRANSAKSI;
+            
+            private global::System.Data.DataColumn columnTGLKEMBALI;
+            
+            private global::System.Data.DataColumn columnHARGADENDA;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public QueryNotaDataTable() {
@@ -4247,6 +4253,30 @@ namespace Rentalin {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TGLTRANSAKSIColumn {
+                get {
+                    return this.columnTGLTRANSAKSI;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TGLKEMBALIColumn {
+                get {
+                    return this.columnTGLKEMBALI;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn HARGADENDAColumn {
+                get {
+                    return this.columnHARGADENDA;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -4282,14 +4312,17 @@ namespace Rentalin {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public QueryNotaRow AddQueryNotaRow(string NONOTA, string NAMAITEM, string NAMAKATEGORI, string KODESTOK, decimal HARGASEWA) {
+            public QueryNotaRow AddQueryNotaRow(string NONOTA, string NAMAITEM, string NAMAKATEGORI, string KODESTOK, decimal HARGASEWA, string TGLTRANSAKSI, string TGLKEMBALI, string HARGADENDA) {
                 QueryNotaRow rowQueryNotaRow = ((QueryNotaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         NONOTA,
                         NAMAITEM,
                         NAMAKATEGORI,
                         KODESTOK,
-                        HARGASEWA};
+                        HARGASEWA,
+                        TGLTRANSAKSI,
+                        TGLKEMBALI,
+                        HARGADENDA};
                 rowQueryNotaRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowQueryNotaRow);
                 return rowQueryNotaRow;
@@ -4317,6 +4350,9 @@ namespace Rentalin {
                 this.columnNAMAKATEGORI = base.Columns["NAMAKATEGORI"];
                 this.columnKODESTOK = base.Columns["KODESTOK"];
                 this.columnHARGASEWA = base.Columns["HARGASEWA"];
+                this.columnTGLTRANSAKSI = base.Columns["TGLTRANSAKSI"];
+                this.columnTGLKEMBALI = base.Columns["TGLKEMBALI"];
+                this.columnHARGADENDA = base.Columns["HARGADENDA"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4332,6 +4368,12 @@ namespace Rentalin {
                 base.Columns.Add(this.columnKODESTOK);
                 this.columnHARGASEWA = new global::System.Data.DataColumn("HARGASEWA", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnHARGASEWA);
+                this.columnTGLTRANSAKSI = new global::System.Data.DataColumn("TGLTRANSAKSI", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTGLTRANSAKSI);
+                this.columnTGLKEMBALI = new global::System.Data.DataColumn("TGLKEMBALI", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTGLKEMBALI);
+                this.columnHARGADENDA = new global::System.Data.DataColumn("HARGADENDA", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnHARGADENDA);
                 this.columnNONOTA.ReadOnly = true;
                 this.columnNONOTA.MaxLength = 12;
                 this.columnNAMAITEM.ReadOnly = true;
@@ -6635,6 +6677,54 @@ namespace Rentalin {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string TGLTRANSAKSI {
+                get {
+                    try {
+                        return ((string)(this[this.tableQueryNota.TGLTRANSAKSIColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TGLTRANSAKSI\' in table \'QueryNota\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableQueryNota.TGLTRANSAKSIColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string TGLKEMBALI {
+                get {
+                    try {
+                        return ((string)(this[this.tableQueryNota.TGLKEMBALIColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TGLKEMBALI\' in table \'QueryNota\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableQueryNota.TGLKEMBALIColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string HARGADENDA {
+                get {
+                    try {
+                        return ((string)(this[this.tableQueryNota.HARGADENDAColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'HARGADENDA\' in table \'QueryNota\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableQueryNota.HARGADENDAColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsNONOTANull() {
                 return this.IsNull(this.tableQueryNota.NONOTAColumn);
             }
@@ -6691,6 +6781,42 @@ namespace Rentalin {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetHARGASEWANull() {
                 this[this.tableQueryNota.HARGASEWAColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTGLTRANSAKSINull() {
+                return this.IsNull(this.tableQueryNota.TGLTRANSAKSIColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTGLTRANSAKSINull() {
+                this[this.tableQueryNota.TGLTRANSAKSIColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTGLKEMBALINull() {
+                return this.IsNull(this.tableQueryNota.TGLKEMBALIColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTGLKEMBALINull() {
+                this[this.tableQueryNota.TGLKEMBALIColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsHARGADENDANull() {
+                return this.IsNull(this.tableQueryNota.HARGADENDAColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetHARGADENDANull() {
+                this[this.tableQueryNota.HARGADENDAColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -13888,6 +14014,9 @@ namespace Rentalin.dsRentalinTableAdapters {
             tableMapping.ColumnMappings.Add("NAMAKATEGORI", "NAMAKATEGORI");
             tableMapping.ColumnMappings.Add("KODESTOK", "KODESTOK");
             tableMapping.ColumnMappings.Add("HARGASEWA", "HARGASEWA");
+            tableMapping.ColumnMappings.Add("TGLTRANSAKSI", "TGLTRANSAKSI");
+            tableMapping.ColumnMappings.Add("TGLKEMBALI", "TGLKEMBALI");
+            tableMapping.ColumnMappings.Add("HARGADENDA", "HARGADENDA");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -13905,7 +14034,7 @@ namespace Rentalin.dsRentalinTableAdapters {
             this._commandCollection[0] = new global::Oracle.DataAccess.Client.OracleCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = @"SELECT Nota.NoNota, Koleksi.NamaItem, Genre.NamaKategori, StokKoleksi.KodeStok,
-Dipinjam.HargaSewa
+Dipinjam.HargaSewa, Dipinjam.HargaDenda, Nota.TglTransaksi, Nota.TglKembali
 FROM (Nota INNER JOIN Dipinjam ON Nota.NoNota = Dipinjam.NoNota
 INNER JOIN StokKoleksi ON Dipinjam.KodeStok = StokKoleksi.KodeStok
 INNER JOIN Koleksi ON StokKoleksi.KodeKoleksi = Koleksi.KodeKoleksi
@@ -14118,37 +14247,39 @@ WHERE Nota.NoNota = :NOTAINPUT";
             this._commandCollection[1] = new global::Oracle.DataAccess.Client.OracleCommand();
             this._commandCollection[1].Connection = this.Connection;
             this._commandCollection[1].CommandText = "SELECT * FROM \r\n(Nota INNER JOIN Member on Nota.KodeMember = Member.KodeMember IN" +
-                "NER JOIN Pengguna on Nota.KodeOperator = Pengguna.KodeOperator)\r\nWHERE to_date(N" +
-                "ota.TglTransaksi, \'MMYYYY\') = to_date(:TANGGAL, \'MMYYYY\')";
+                "NER JOIN Pengguna on Nota.KodeOperator = Pengguna.KodeOperator)\r\nWHERE to_char(N" +
+                "ota.TglTransaksi, \'MMYYYY\') = to_char(:TANGGAL, \'MMYYYY\')\r\n\r\n";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.DataAccess.Client.OracleParameter();
             param.ParameterName = ":TANGGAL";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.DbType = global::System.Data.DbType.Date;
+            param.OracleDbTypeEx = global::Oracle.DataAccess.Client.OracleDbType.Date;
             param.Size = 1024;
             param.IsNullable = true;
             this._commandCollection[1].Parameters.Add(param);
             this._commandCollection[2] = new global::Oracle.DataAccess.Client.OracleCommand();
             this._commandCollection[2].Connection = this.Connection;
             this._commandCollection[2].CommandText = "SELECT * FROM \r\n(Nota INNER JOIN Member on Nota.KodeMember = Member.KodeMember IN" +
-                "NER JOIN Pengguna on Nota.KodeOperator = Pengguna.KodeOperator)\r\nWHERE To_Date(N" +
-                "ota.TglTransaksi, \'WWYYYY\') = To_Date(:TANGGAL, \'WWYYYY\')";
+                "NER JOIN Pengguna on Nota.KodeOperator = Pengguna.KodeOperator)\r\nWHERE To_char(N" +
+                "ota.TglTransaksi, \'WWYYYY\') = To_char(:TANGGAL, \'WWYYYY\')";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.DataAccess.Client.OracleParameter();
             param.ParameterName = ":TANGGAL";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.DbType = global::System.Data.DbType.Date;
+            param.OracleDbTypeEx = global::Oracle.DataAccess.Client.OracleDbType.Date;
             param.Size = 1024;
             param.IsNullable = true;
             this._commandCollection[2].Parameters.Add(param);
             this._commandCollection[3] = new global::Oracle.DataAccess.Client.OracleCommand();
             this._commandCollection[3].Connection = this.Connection;
             this._commandCollection[3].CommandText = "SELECT * FROM \r\n(Nota INNER JOIN Member on Nota.KodeMember = Member.KodeMember IN" +
-                "NER JOIN Pengguna on Nota.KodeOperator = Pengguna.KodeOperator)\r\nWHERE to_date(N" +
-                "ota.TglTransaksi, \'YYYY\' = (:TANGGAL, \'YYYY\')";
+                "NER JOIN Pengguna on Nota.KodeOperator = Pengguna.KodeOperator)\r\nWHERE to_char(N" +
+                "ota.TglTransaksi, \'YYYY\') = to_char(:TANGGAL, \'YYYY\')";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.DataAccess.Client.OracleParameter();
             param.ParameterName = ":TANGGAL";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.OracleDbTypeEx = global::Oracle.DataAccess.Client.OracleDbType.Varchar2;
+            param.DbType = global::System.Data.DbType.Date;
+            param.OracleDbTypeEx = global::Oracle.DataAccess.Client.OracleDbType.Date;
             param.Size = 1024;
             param.IsNullable = true;
             this._commandCollection[3].Parameters.Add(param);
@@ -14194,14 +14325,9 @@ WHERE Nota.NoNota = :NOTAINPUT";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillByMonth(dsRentalin.QueryTransaksiDataTable dataTable, string TANGGAL) {
+        public virtual int FillByMonth(dsRentalin.QueryTransaksiDataTable dataTable, System.DateTime TANGGAL) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
-            if ((TANGGAL == null)) {
-                throw new global::System.ArgumentNullException("TANGGAL");
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(TANGGAL));
-            }
+            this.Adapter.SelectCommand.Parameters[0].Value = ((System.DateTime)(TANGGAL));
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -14213,14 +14339,9 @@ WHERE Nota.NoNota = :NOTAINPUT";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual dsRentalin.QueryTransaksiDataTable GetDataByMonth(string TANGGAL) {
+        public virtual dsRentalin.QueryTransaksiDataTable GetDataByMonth(System.DateTime TANGGAL) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
-            if ((TANGGAL == null)) {
-                throw new global::System.ArgumentNullException("TANGGAL");
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(TANGGAL));
-            }
+            this.Adapter.SelectCommand.Parameters[0].Value = ((System.DateTime)(TANGGAL));
             dsRentalin.QueryTransaksiDataTable dataTable = new dsRentalin.QueryTransaksiDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -14230,14 +14351,9 @@ WHERE Nota.NoNota = :NOTAINPUT";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillByWeek(dsRentalin.QueryTransaksiDataTable dataTable, string TANGGAL) {
+        public virtual int FillByWeek(dsRentalin.QueryTransaksiDataTable dataTable, System.DateTime TANGGAL) {
             this.Adapter.SelectCommand = this.CommandCollection[2];
-            if ((TANGGAL == null)) {
-                throw new global::System.ArgumentNullException("TANGGAL");
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(TANGGAL));
-            }
+            this.Adapter.SelectCommand.Parameters[0].Value = ((System.DateTime)(TANGGAL));
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -14249,14 +14365,9 @@ WHERE Nota.NoNota = :NOTAINPUT";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual dsRentalin.QueryTransaksiDataTable GetDataByWeek(string TANGGAL) {
+        public virtual dsRentalin.QueryTransaksiDataTable GetDataByWeek(System.DateTime TANGGAL) {
             this.Adapter.SelectCommand = this.CommandCollection[2];
-            if ((TANGGAL == null)) {
-                throw new global::System.ArgumentNullException("TANGGAL");
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(TANGGAL));
-            }
+            this.Adapter.SelectCommand.Parameters[0].Value = ((System.DateTime)(TANGGAL));
             dsRentalin.QueryTransaksiDataTable dataTable = new dsRentalin.QueryTransaksiDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -14266,14 +14377,9 @@ WHERE Nota.NoNota = :NOTAINPUT";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillByYear(dsRentalin.QueryTransaksiDataTable dataTable, string TANGGAL) {
+        public virtual int FillByYear(dsRentalin.QueryTransaksiDataTable dataTable, System.DateTime TANGGAL) {
             this.Adapter.SelectCommand = this.CommandCollection[3];
-            if ((TANGGAL == null)) {
-                throw new global::System.ArgumentNullException("TANGGAL");
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(TANGGAL));
-            }
+            this.Adapter.SelectCommand.Parameters[0].Value = ((System.DateTime)(TANGGAL));
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -14285,14 +14391,9 @@ WHERE Nota.NoNota = :NOTAINPUT";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual dsRentalin.QueryTransaksiDataTable GetDataByYear(string TANGGAL) {
+        public virtual dsRentalin.QueryTransaksiDataTable GetDataByYear(System.DateTime TANGGAL) {
             this.Adapter.SelectCommand = this.CommandCollection[3];
-            if ((TANGGAL == null)) {
-                throw new global::System.ArgumentNullException("TANGGAL");
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(TANGGAL));
-            }
+            this.Adapter.SelectCommand.Parameters[0].Value = ((System.DateTime)(TANGGAL));
             dsRentalin.QueryTransaksiDataTable dataTable = new dsRentalin.QueryTransaksiDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;

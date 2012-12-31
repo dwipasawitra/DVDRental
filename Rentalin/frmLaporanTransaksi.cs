@@ -24,30 +24,33 @@ namespace Rentalin
         private void frmLaporanTransaksi_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'dsRentalin.QueryTransaksi' table. You can move, or remove it, as needed.
-            
+            muatLaporanTransaksi(DateTime.Now, LAPTRANSAKSI_MODE_HARIAN);
 
         }
 
         private void muatLaporanTransaksi(DateTime dtTanggal, int mode)
         {
             // Atur parameter report (masih percobaan)
-            ReportParameter namaToko = new ReportParameter("namaToko", "NASI GORENG");
-            ReportParameter alamatToko = new ReportParameter("alamatToko", "Jalan A. Yani");
-            ReportParameter jenisLaporanTransaksi = new ReportParameter("jenisLaporanTransaksi", "sesuatu");
+            ReportParameter namaToko = new ReportParameter("namaToko", Program.setting.namaJasa);
+            ReportParameter alamatToko = new ReportParameter("alamatToko", Program.setting.alamatJasa);
+            ReportParameter jenisLaporanTransaksi = null;
           
             // Convert tanggal ke bentuk "Oracle-friendly"
-            string tglDipilih = Program.convertTglkeOracle(dtTanggal);
+           string tglDipilih = Program.convertTglkeOracle(dtTanggal);
 
             switch (mode)
             {
                 case LAPTRANSAKSI_MODE_HARIAN:
+                    jenisLaporanTransaksi = new ReportParameter("jenisLaporanTransaksi", "HARIAN");
                     this.QueryTransaksiTableAdapter.FillByDate(this.dsRentalin.QueryTransaksi, tglDipilih);
                     break;
                 case LAPTRANSAKSI_MODE_MINGGUAN:
-                    this.QueryTransaksiTableAdapter.FillByWeek(this.dsRentalin.QueryTransaksi, tglDipilih);
+                    jenisLaporanTransaksi = new ReportParameter("jenisLaporanTransaksi", "MINGGUAN");
+                    this.QueryTransaksiTableAdapter.FillByWeek(this.dsRentalin.QueryTransaksi, dtTanggal);
                     break;
                 case LAPTRANSAKSI_MODE_BULANAN:
-                    this.QueryTransaksiTableAdapter.FillByMonth(this.dsRentalin.QueryTransaksi, tglDipilih);
+                    jenisLaporanTransaksi = new ReportParameter("jenisLaporanTransaksi", "TAHUNAN");
+                    this.QueryTransaksiTableAdapter.FillByMonth(this.dsRentalin.QueryTransaksi, dtTanggal);
                     break;
             }
 
