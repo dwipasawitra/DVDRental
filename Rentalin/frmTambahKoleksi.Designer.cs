@@ -56,9 +56,8 @@
             this.lblHargaSewa = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.lblHargaDenda = new System.Windows.Forms.Label();
-            this.mtxtHargaSewa = new System.Windows.Forms.MaskedTextBox();
-            this.mtxtHargaDenda = new System.Windows.Forms.MaskedTextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtHargaSewa = new System.Windows.Forms.TextBox();
+            this.txtHargaDenda = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.picCoverArt)).BeginInit();
             this.SuspendLayout();
             // 
@@ -322,36 +321,29 @@
             this.lblHargaDenda.TabIndex = 27;
             this.lblHargaDenda.Text = "Harga Denda";
             // 
-            // mtxtHargaSewa
+            // txtHargaSewa
             // 
-            this.mtxtHargaSewa.Location = new System.Drawing.Point(89, 231);
-            this.mtxtHargaSewa.Name = "mtxtHargaSewa";
-            this.mtxtHargaSewa.Size = new System.Drawing.Size(108, 20);
-            this.mtxtHargaSewa.TabIndex = 30;
+            this.txtHargaSewa.Location = new System.Drawing.Point(89, 230);
+            this.txtHargaSewa.Name = "txtHargaSewa";
+            this.txtHargaSewa.Size = new System.Drawing.Size(93, 20);
+            this.txtHargaSewa.TabIndex = 32;
+            this.txtHargaSewa.TextChanged += new System.EventHandler(this.validateTextInteger);
             // 
-            // mtxtHargaDenda
+            // txtHargaDenda
             // 
-            this.mtxtHargaDenda.Location = new System.Drawing.Point(89, 256);
-            this.mtxtHargaDenda.Name = "mtxtHargaDenda";
-            this.mtxtHargaDenda.Size = new System.Drawing.Size(108, 20);
-            this.mtxtHargaDenda.TabIndex = 31;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(203, 233);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(93, 20);
-            this.textBox1.TabIndex = 32;
-            this.textBox1.TextChanged += new System.EventHandler(this.validateTextInteger);
+            this.txtHargaDenda.Location = new System.Drawing.Point(89, 256);
+            this.txtHargaDenda.Name = "txtHargaDenda";
+            this.txtHargaDenda.Size = new System.Drawing.Size(93, 20);
+            this.txtHargaDenda.TabIndex = 33;
+            this.txtHargaDenda.TextChanged += new System.EventHandler(this.validateTextInteger);
             // 
             // frmTambahKoleksi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(308, 486);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.mtxtHargaDenda);
-            this.Controls.Add(this.mtxtHargaSewa);
+            this.Controls.Add(this.txtHargaDenda);
+            this.Controls.Add(this.txtHargaSewa);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.lblHargaDenda);
             this.Controls.Add(this.label8);
@@ -422,8 +414,7 @@
         private System.Windows.Forms.Label lblHargaSewa;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label lblHargaDenda;
-        private System.Windows.Forms.MaskedTextBox mtxtHargaSewa;
-        private System.Windows.Forms.MaskedTextBox mtxtHargaDenda;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtHargaSewa;
+        private System.Windows.Forms.TextBox txtHargaDenda;
     }
 }

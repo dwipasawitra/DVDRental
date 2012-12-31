@@ -65,14 +65,8 @@ namespace Rentalin
         {
             int i, idx = daftarKoleksi.Rows.Count;
 
-            if(txtKode.Text != "" && txtDeskripsi.Text == "" && txtJudul.Text == "" && cmbJenis.Text == "" && cmbKategori.Text == "" && mtxtHargaDenda.Text == "" && mtxtHargaSewa.Text == "")
-            {
-                int j,k,l;
-                
-                for(j=0;j<mtxtHargaDenda.TextLength;j++)
-                {
-
-                }
+            if(txtKode.Text != "" && txtDeskripsi.Text == "" && txtJudul.Text == "" && cmbJenis.Text == "" && cmbKategori.Text == "" && txtHargaDenda.Text == "" && txtHargaSewa.Text == "")
+            {                                 
                 if (txtKode.Text.Length != 12)
                 {
                     MessageBox.Show("Kode Koleksi harus 12 karakter");
@@ -100,7 +94,7 @@ namespace Rentalin
                     {
                         MessageBox.Show("Koleksi sudah ditambahkan");
                         //Insert table
-                        //string insert = "INSERT into koleksi 
+                        string insert = "INSERT into koleksi (kodekoleksi, kodekategori, namaitem, deskripsiitem, jenis, biayasewafilm, biayadendafilm) VALUES ('"+txtKode.Text+"','"+txtJudul.Text+"')
                     }
                     else
                     {
@@ -115,9 +109,7 @@ namespace Rentalin
         private void validateTextInteger(object sender, EventArgs e)
         {
             Exception X = new Exception();
-
             TextBox T = (TextBox)sender;
-
             try
             {
                 if (T.Text != "")
@@ -131,14 +123,13 @@ namespace Rentalin
                 {
                     int CursorIndex = T.SelectionStart - 1;
                     T.Text = T.Text.Remove(CursorIndex, 1);
-
                 //Align Cursor to same index
                 T.SelectionStart = CursorIndex;
                 T.SelectionLength = 0;
+                }
+                catch (Exception) { }
             }
-            catch (Exception) { }
         }
-    }
         
     }
 }
