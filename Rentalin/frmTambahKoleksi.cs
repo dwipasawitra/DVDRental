@@ -65,16 +65,24 @@ namespace Rentalin
         {
             int i, idx = daftarKoleksi.Rows.Count;
 
-            if(txtKode.Text != "" && txtDeskripsi.Text == "" && txtJudul.Text == "" && cmbJenis.Text == "" && cmbKategori.Text == "")
+            if(txtKode.Text != "" && txtDeskripsi.Text == "" && txtJudul.Text == "" && cmbJenis.Text == "" && cmbKategori.Text == "" && mtxtHargaDenda.Text == "" && mtxtHargaSewa.Text == "")
             {
+                int j,k,l;
+                
+                for(j=0;j<mtxtHargaDenda.TextLength;j++)
+                {
+
+                }
                 if (txtKode.Text.Length != 12)
                 {
                     MessageBox.Show("Kode Koleksi harus 12 karakter");
                 }
+                
                 else
                 {
                     MessageBox.Show("Detail koleksi tidak lengkap");
-                }                
+                }
+                
             }            
             else
             {
@@ -92,7 +100,7 @@ namespace Rentalin
                     {
                         MessageBox.Show("Koleksi sudah ditambahkan");
                         //Insert table
-                        string insert = "INSERT into kol
+                        //string insert = "INSERT into koleksi 
                     }
                     else
                     {
@@ -102,5 +110,35 @@ namespace Rentalin
                 }
             }
         }
+
+        
+        private void validateTextInteger(object sender, EventArgs e)
+        {
+            Exception X = new Exception();
+
+            TextBox T = (TextBox)sender;
+
+            try
+            {
+                if (T.Text != "")
+                {
+                    int x = int.Parse(T.Text);                 
+                }
+            }
+            catch (Exception)
+            {
+                try
+                {
+                    int CursorIndex = T.SelectionStart - 1;
+                    T.Text = T.Text.Remove(CursorIndex, 1);
+
+                //Align Cursor to same index
+                T.SelectionStart = CursorIndex;
+                T.SelectionLength = 0;
+            }
+            catch (Exception) { }
+        }
+    }
+        
     }
 }
