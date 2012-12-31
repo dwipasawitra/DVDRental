@@ -45,6 +45,7 @@ namespace Rentalin
         {
             frmTambahPelanggan formTambahPelanggan = new frmTambahPelanggan();
             formTambahPelanggan.ShowDialog(this);
+            muatUlangData();
         }
 
         private void btnModifikasi_Click(object sender, EventArgs e)
@@ -52,6 +53,7 @@ namespace Rentalin
             int y = dgPelanggan.CurrentCellAddress.Y;
             frmTambahPelanggan formTambahPelanggan = new frmTambahPelanggan(dgPelanggan.Rows[y].Cells[0].Value.ToString());
             formTambahPelanggan.ShowDialog(this);
+            muatUlangData();
         }
 
         private void btnMuatUlang_Click(object sender, EventArgs e)
@@ -106,7 +108,7 @@ namespace Rentalin
 
         private void cariData(string yangdicari)
         {
-            pelanggan = Program.conn.ExecuteDataTable("SELECT * FROM member WHERE namamember like '%" + txtPencarian.Text + "%' OR kodemember like '%" + txtPencarian.Text + "%'");
+            pelanggan = Program.conn.ExecuteDataTable("SELECT kodemember, namamember, jenisidentitas.jenis, nomoridentitas FROM member INNER JOIN jenisidentitas ON member.jenisidentitas = jenisidentitas.id WHERE namamember like '%" + txtPencarian.Text + "%' OR kodemember like '%" + txtPencarian.Text + "%'");
             pelanggan.Columns[0].ColumnName = "Kode Member";
             pelanggan.Columns[1].ColumnName = "Nama Member";
             pelanggan.Columns[2].ColumnName = "Jenis identitas";

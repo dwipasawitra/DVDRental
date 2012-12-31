@@ -198,7 +198,7 @@ namespace Rentalin
                             }
                         }                        
 
-                        MessageBox.Show("Data berhasil ditambahkan");
+                        //MessageBox.Show("Data berhasil ditambahkan");
                         btnProses.Enabled = true;
                         btnHapus.Enabled = true;
                         if (dgPeminjaman.Rows.Count == 2)
@@ -314,14 +314,15 @@ namespace Rentalin
             formBayarKembali.ShowDialog(this);
 
             if (formBayarKembali.getHasil() == true)
-            {                
-                string date = System.DateTime.Now.Date.ToString();
-                string newDate = date.Substring(0, 10);
-                string tglKembali = dtpTanggalKembali.Value.Date.ToString();
-                string newTglKembali = tglKembali.Substring(0, 10);
+            {            
+                string newDate = Program.convertTglkeOracle(System.DateTime.Now);
+                string newTglKembali = Program.convertTglkeOracle(dtpTanggalKembali.Value);
 
                 //insert belanjaan ke tabel
-                string insertNota = "INSERT INTO nota (nonota,kodeoperator,kodepenawaranspesial,kodemember,tgltransaksi,tglkembali)VALUES ('" + lblNmrNota.Text + "','" + Program.session.getKodeOperator().ToString() + "'," + Program.so.getSpecialOfferCode() + ",'" + lblKodeMember.Text + "',to_date('" + newDate + "','mm/dd/yyyy'),to_date('" + newTglKembali + "','mm/dd/yyyy'))";
+                string insertNota = "INSERT INTO nota (nonota,kodeoperator,kodepenawaranspesial,kodemember,tgltransaksi,tglkembali)VALUES ('" + Program.escapeQuoteSQL(lblNmrNota.Text) 
+                                    + "','" + Program.session.getKodeOperator().ToString() + "','" + Program.so.getSpecialOfferCode() + "','" 
+                                    + Program.escapeQuoteSQL(lblKodeMember.Text) + "','" + newDate + "','" 
+                                    + newTglKembali + "')";
                 Program.conn.ExecuteNonQuery(insertNota);
                 string kodeDipinjam = randomNota();
                 int i, idx = belanja.Rows.Count;
@@ -436,6 +437,13 @@ namespace Rentalin
         {
             if (txtPeminjam.TextLength == 10)
                 btnOk_Click(sender, e);
-        }       
+        }
+
+        private void pnlPeminjam_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+       
     }
 }

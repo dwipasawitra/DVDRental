@@ -176,6 +176,7 @@
             this.Controls.Add(this.btnSetuju);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmBayarKembali";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.frmBayarKembali_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

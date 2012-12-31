@@ -23,7 +23,7 @@ namespace Rentalin
 
         private void frmLaporanNota_Load(object sender, EventArgs e)
         {
-            
+            updateDataNota();
         }
 
         private void tampilkanLaporanNota(string noNota)
@@ -52,18 +52,19 @@ namespace Rentalin
                 dtTglKembali = DateTime.Parse(detailNota.Rows[0].ItemArray[1].ToString());
                 strTglKembali = dtTglKembali.Day.ToString("00") + "/" + dtTglTransaksi.Month.ToString("00") + "/" + dtTglTransaksi.Year.ToString("00");
 
-                if(detailNota.Rows[0].ItemArray[2] != null)
+                if(!Convert.IsDBNull(detailNota.Rows[0].ItemArray[2]))
                 {
                     dtTglRealisasiKembali = DateTime.Parse(detailNota.Rows[0].ItemArray[2].ToString());
                     strTglRealisasiKembali = dtTglRealisasiKembali.Day.ToString("00") + "/" + dtTglTransaksi.Month.ToString("00") + "/" + dtTglTransaksi.Year.ToString("00");
-                    modeNota = MODE_NOTA_PENYEWAAN;
+                    modeNota = MODE_NOTA_PENGEMBALIAN;
                     tsKeterlambatan = dtTglRealisasiKembali - dtTglKembali;
                     strKeterlambatan  = tsKeterlambatan.Days.ToString() + " hari";
 
                 }
                 else
                 {
-                    modeNota = MODE_NOTA_PENGEMBALIAN;
+                    modeNota = MODE_NOTA_PENYEWAAN;
+                    
                 }
 
                 // TODO: This line of code loads data into the 'dsRentalin.QueryNota' table. You can move, or remove it, as needed.

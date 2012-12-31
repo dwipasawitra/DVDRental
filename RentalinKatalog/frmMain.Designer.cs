@@ -593,7 +593,7 @@
             // tmrTopKoleksi
             // 
             this.tmrTopKoleksi.Enabled = true;
-            this.tmrTopKoleksi.Interval = 10000;
+            this.tmrTopKoleksi.Interval = 5000;
             this.tmrTopKoleksi.Tick += new System.EventHandler(this.tmrTopKoleksi_Tick);
             // 
             // frmMain

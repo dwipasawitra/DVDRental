@@ -83,7 +83,7 @@ namespace Rentalin
             int i, idx = listMember.Rows.Count;
             if (txtKodeMember.Text == "" && txtNamaMember.Text == "" && txtNomorIdentitas.Text == "" && cmbJenisIdentitas.Text == "")
             {
-                MessageBox.Show("Informasi * dibutuhkan");
+                MessageBox.Show("Informasi dibutuhkan");
             }
             else if (txtKodeMember.TextLength != 10)
             {
@@ -103,14 +103,14 @@ namespace Rentalin
                 {
                     if (mode == 0)
                     {
-                        string insert = "INSERT INTO member VALUES('" + Program.escapeQuoteSQL(txtKodeMember.Text) + "','" + Program.escapeQuoteSQL(txtNamaMember.Text) + "'," + jenisidentitas.Rows[cmbJenisIdentitas.SelectedIndex].ItemArray[0].ToString() + "," + Program.escapeQuoteSQL(txtNomorIdentitas.Text) + ")";
+                        string insert = "INSERT INTO member VALUES('" + Program.escapeQuoteSQL(txtKodeMember.Text) + "','" + Program.escapeQuoteSQL(txtNamaMember.Text) + "','" + jenisidentitas.Rows[cmbJenisIdentitas.SelectedIndex].ItemArray[0].ToString() + "','" + Program.escapeQuoteSQL(txtNomorIdentitas.Text) + "')";
                         Program.conn.ExecuteNonQuery(insert);
                         MessageBox.Show("Data berhasil ditambahkan");
                         tampilanAwal();
                     }
                     else
                     {
-                        string update = "UPDATE member SET kodemember = '" + Program.escapeQuoteSQL(txtKodeMember.Text) + "', namamember='" + Program.escapeQuoteSQL(txtNamaMember.Text) + "', jenisidentitas = " + jenisidentitas.Rows[cmbJenisIdentitas.SelectedIndex].ItemArray[0].ToString() + ", nomoridentitas = " + Program.escapeQuoteSQL(txtNomorIdentitas.Text) + " WHERE kodemember = '" + Program.escapeQuoteSQL(IDMember) + "'";
+                        string update = "UPDATE member SET kodemember = '" + Program.escapeQuoteSQL(txtKodeMember.Text) + "', namamember='" + Program.escapeQuoteSQL(txtNamaMember.Text) + "', jenisidentitas = '" + jenisidentitas.Rows[cmbJenisIdentitas.SelectedIndex].ItemArray[0].ToString() + "', nomoridentitas = '" + Program.escapeQuoteSQL(txtNomorIdentitas.Text) + "' WHERE kodemember = '" + Program.escapeQuoteSQL(IDMember) + "'";
                         Program.conn.ExecuteNonQuery(update);
                         MessageBox.Show("Data berhasil diperbarui");
                         Close();

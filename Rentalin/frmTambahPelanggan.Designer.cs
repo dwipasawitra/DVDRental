@@ -80,7 +80,7 @@
             // 
             this.txtKodeMember.Enabled = false;
             this.txtKodeMember.Location = new System.Drawing.Point(95, 50);
-            this.txtKodeMember.MaxLength = 12;
+            this.txtKodeMember.MaxLength = 10;
             this.txtKodeMember.Name = "txtKodeMember";
             this.txtKodeMember.Size = new System.Drawing.Size(104, 20);
             this.txtKodeMember.TabIndex = 3;

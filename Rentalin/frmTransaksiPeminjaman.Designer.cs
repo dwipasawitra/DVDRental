@@ -137,6 +137,7 @@
             this.pnlPeminjam.Name = "pnlPeminjam";
             this.pnlPeminjam.Size = new System.Drawing.Size(317, 75);
             this.pnlPeminjam.TabIndex = 2;
+            this.pnlPeminjam.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlPeminjam_Paint);
             // 
             // button1
             // 
@@ -168,6 +169,7 @@
             this.btnOk.TabIndex = 6;
             this.btnOk.Text = "OK";
             this.btnOk.UseVisualStyleBackColor = true;
+            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
             // lblIdentitas
             // 

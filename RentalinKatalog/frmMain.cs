@@ -250,13 +250,15 @@ namespace RentalinKatalog
 
         private void tmrTopKoleksi_Tick(object sender, EventArgs e)
         {
+           
             if (judulTerbanyak.Rows.Count < MAX_TOP_KOLEKSI)
             {
-                idxTopKoleksi += idxTopKoleksi % judulTerbanyak.Rows.Count;
+
+                idxTopKoleksi = (idxTopKoleksi + 1) % judulTerbanyak.Rows.Count;
             }
             else
             {
-                idxTopKoleksi += idxTopKoleksi % MAX_TOP_KOLEKSI;
+                idxTopKoleksi = (idxTopKoleksi + 1) % MAX_TOP_KOLEKSI;
             }
 
             updateTopKoleksi();

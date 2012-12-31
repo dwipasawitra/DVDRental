@@ -39,11 +39,11 @@
             this.btnHistori = new System.Windows.Forms.Button();
             this.dgPelanggan = new System.Windows.Forms.DataGridView();
             this.pnlDetail = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnMuatUlang = new System.Windows.Forms.Button();
             this.lblIdentitas = new System.Windows.Forms.Label();
             this.lblNamaPelanggan = new System.Windows.Forms.Label();
             this.lblDetail = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnlInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picInfo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgPelanggan)).BeginInit();
@@ -144,9 +144,12 @@
             // 
             // dgPelanggan
             // 
+            this.dgPelanggan.AllowUserToAddRows = false;
+            this.dgPelanggan.AllowUserToDeleteRows = false;
             this.dgPelanggan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgPelanggan.Location = new System.Drawing.Point(12, 149);
             this.dgPelanggan.Name = "dgPelanggan";
+            this.dgPelanggan.ReadOnly = true;
             this.dgPelanggan.Size = new System.Drawing.Size(456, 320);
             this.dgPelanggan.TabIndex = 1;
             this.dgPelanggan.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dgPelanggan_RowsRemoved);
@@ -167,6 +170,15 @@
             this.pnlDetail.Name = "pnlDetail";
             this.pnlDetail.Size = new System.Drawing.Size(199, 467);
             this.pnlDetail.TabIndex = 2;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Rentalin.Properties.Resources.consumer;
+            this.pictureBox1.Location = new System.Drawing.Point(53, 20);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(82, 86);
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
             // 
             // btnMuatUlang
             // 
@@ -208,15 +220,6 @@
             this.lblDetail.Size = new System.Drawing.Size(125, 18);
             this.lblDetail.TabIndex = 10;
             this.lblDetail.Text = "Detil Pelanggan";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Rentalin.Properties.Resources.consumer;
-            this.pictureBox1.Location = new System.Drawing.Point(53, 20);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(82, 86);
-            this.pictureBox1.TabIndex = 8;
-            this.pictureBox1.TabStop = false;
             // 
             // frmMasterPelanggan
             // 
