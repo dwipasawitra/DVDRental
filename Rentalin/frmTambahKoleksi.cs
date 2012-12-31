@@ -25,6 +25,7 @@ namespace Rentalin
             InitializeComponent();
             mode = 0;
             txtKode.Focus();
+            
         }
 
         public frmTambahKoleksi(string kodeKoleksi)
@@ -33,6 +34,7 @@ namespace Rentalin
             mode = 1;
             KodeKoleksi = kodeKoleksi;
             txtJudul.Focus();
+           
         }
 
         public void tampilanAwal()
@@ -96,8 +98,8 @@ namespace Rentalin
                     if (!Convert.IsDBNull(modify.Rows[0].ItemArray[8]))
                     {
                         imgCoverArt = (byte[])modify.Rows[0].ItemArray[8];
-                        Program.displayBlobImage(imgCoverArt);
-                        picCoverArt.Image = Image.FromFile(Program.IMAGE_FILE_TEMPORARY);
+                        Program.displayBlobImage(imgCoverArt, KodeKoleksi);
+                        picCoverArt.Image = Image.FromFile(KodeKoleksi);
                         picCoverArt.Refresh();
 
                     }
@@ -131,7 +133,7 @@ namespace Rentalin
         {
             int i, idx = daftarKoleksi.Rows.Count;
 
-            if(txtKode.Text != "" && txtDeskripsi.Text == "" && txtJudul.Text == "" && cmbJenis.Text == "" && cmbKategori.Text == "" && txtHargaDenda.Text == "" && txtHargaSewa.Text == "")
+            if(txtKode.Text != "" && txtDeskripsi.Text == "" && txtJudul.Text == "" && cmbJenis.Text == "" && cmbKategori.Text == "" && txtHargaSewa.Text == "" && txtHargaDenda.Text == "")
             {                                 
                 if (txtKode.Text.Length != 12)
                 {
@@ -182,7 +184,9 @@ namespace Rentalin
                     {
                         // Modify data
                         string kodeKategori = daftarGenre.Rows[cmbKategori.SelectedIndex].ItemArray[0].ToString();
-                        string update = "UPDATE koleksi SET kodekoleksi = '" + txtKode.Text + "', kodekategori = '" + kodeKategori + "', namaitem = '" + txtJudul.Text + "', dekripsiitem = '" + txtDeskripsi.Text + "', jenis = '" + cmbJenis.SelectedIndex + "', biayasewafilm = '" + txtHargaSewa.Text + "', biayadendafilm = '" + txtHargaDenda.Text + "' WHERE kodekoleksi = '" + KodeKoleksi + "'";
+                        string update = "UPDATE koleksi SET kodekoleksi = '" + Program.escapeQuoteSQL(txtKode.Text) + "', kodekategori = '" + Program.escapeQuoteSQL(kodeKategori) + "', namaitem = '" 
+                                        + Program.escapeQuoteSQL(txtJudul.Text) + "', dekripsiitem = '" + Program.escapeQuoteSQL(txtDeskripsi.Text) + "', jenis = '" + cmbJenis.SelectedIndex + "', biayasewafilm = '" + Program.escapeQuoteSQL(txtHargaSewa.Text) + "', biayadendafilm = '" 
+                                        + Program.escapeQuoteSQL(txtHargaDenda.Text) + "' WHERE kodekoleksi = '" + KodeKoleksi + "'";
                         Program.conn.ExecuteNonQuery(update);
 
                         // Insert BLOB image
@@ -244,14 +248,22 @@ namespace Rentalin
             string pathBerkasGambar = opdFIleBrowser.FileName;
 
             // Tampilkan gambar pada kotak gambar
-            picCoverArt.Image = Image.FromFile(pathBerkasGambar);
+            if (pathBerkasGambar != "")
+            {
+                picCoverArt.Image = Image.FromFile(pathBerkasGambar);
 
-            // Masukkan ke varibel blob untuk kemudian diproses
-            imgCoverArt = Program.getBlobImage(pathBerkasGambar);
+                // Masukkan ke varibel blob untuk kemudian diproses
+                imgCoverArt = Program.getBlobImage(pathBerkasGambar);
 
-            picCoverArt.Image = Image.FromFile(pathBerkasGambar);
-            picCoverArt.Refresh();
-            
+                picCoverArt.Image = Image.FromFile(pathBerkasGambar);
+                picCoverArt.Refresh();
+            }
+
+
+        }
+
+        private void txtDeskripsi_TextChanged(object sender, EventArgs e)
+        {
 
         }
 

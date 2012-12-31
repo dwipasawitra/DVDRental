@@ -11,9 +11,14 @@ namespace RentalinKatalog
 {
     public partial class frmMain : Form
     {
+        private const int MAX_TOP_KOLEKSI = 10;
         bool sedangMemesan = false;
         bool animateBlink = false;
         string yangDicari = "";
+        int idxTopKoleksi = 0;
+        string kodeTopKoleksi = "";
+
+        DataTable judulTerbanyak;
         DataTable dataKoleksi;
 
         private void updateKoleksi()
@@ -44,7 +49,61 @@ namespace RentalinKatalog
 
         }
 
-        
+        private void updateTopKoleksi()
+        {
+            try
+            {
+                // Ambil judul terbanyak berdasarkan orang meminjam
+                judulTerbanyak = Program.conn.ExecuteDataTable("SELECT koleksi.kodekoleksi, koleksi.namaitem, genre.namakategori, jeniskeping.jenis, count(dipinjam.kodedipinjam) as jumlah "
+                                                                    + "FROM stokkoleksi INNER JOIN dipinjam ON dipinjam.kodestok = stokkoleksi.kodestok INNER JOIN koleksi ON stokkoleksi.kodekoleksi = koleksi.kodekoleksi INNER JOIN nota ON dipinjam.nonota = nota.nonota INNER JOIN genre ON koleksi.kodekategori = genre.kodekategori INNER JOIN jeniskeping ON koleksi.jenis = jeniskeping.id "
+                                                                    + "GROUP BY koleksi.kodekoleksi, koleksi.namaitem, genre.namakategori, jeniskeping.jenis "
+                                                                    + "ORDER BY jumlah DESC ");
+                // Muat informasi utama
+                kodeTopKoleksi = judulTerbanyak.Rows[idxTopKoleksi].ItemArray[0].ToString();
+                lblJudulTop.Text = judulTerbanyak.Rows[idxTopKoleksi].ItemArray[1].ToString();
+                lblGenreTop.Text = judulTerbanyak.Rows[idxTopKoleksi].ItemArray[2].ToString();
+                lblJenisKepingTop.Text = judulTerbanyak.Rows[idxTopKoleksi].ItemArray[3].ToString();
+                
+                
+
+                // Muat gambar blob dan  deskripsi
+                DataTable blobTable = Program.conn.ExecuteDataTable("SELECT coverart, dekripsiitem FROM koleksi WHERE KodeKoleksi='" + kodeTopKoleksi + "'");
+
+                try
+                {
+                    if (picTopKoleksiTerbaik.Image != null)
+                    {
+                        picTopKoleksiTerbaik.Image.Dispose();
+                        picTopKoleksiTerbaik.Image = null;
+                    }
+
+                    // Convert coverart ke gambar
+                    if (!Convert.IsDBNull(blobTable.Rows[0].ItemArray[0]))
+                    {
+                        
+
+                        byte[] blob = (byte[])blobTable.Rows[0].ItemArray[0];
+                        Program.displayBlobImage(blob, "topkoleksi");
+
+                        // Tampilkan gambar
+                        picTopKoleksiTerbaik.Image = Image.FromFile("topkoleksi");
+                        picTopKoleksiTerbaik.SizeMode = PictureBoxSizeMode.StretchImage;
+                        picTopKoleksiTerbaik.Refresh();
+                    }
+                    lblDeskripsiTop.Text = blobTable.Rows[idxTopKoleksi].ItemArray[1].ToString();
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.ToString(), "Galat", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                
+            }
+            catch
+            {
+                return;
+            }
+
+        }
 
         public frmMain()
         {
@@ -56,7 +115,10 @@ namespace RentalinKatalog
             // Ambil data Nama dan Alamat
             lblNamaLayanan.Text = Program.setting.namaJasa;
             lblAlamatLayanan.Text = Program.setting.alamatJasa;
+
+            // Update data koleksi dan top koleksi
             updateKoleksi();
+            updateTopKoleksi();
         }
 
         private void tmrWaktu_Tick(object sender, EventArgs e)
@@ -182,6 +244,25 @@ namespace RentalinKatalog
         }
 
         private void dgKoleksi_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void tmrTopKoleksi_Tick(object sender, EventArgs e)
+        {
+            if (judulTerbanyak.Rows.Count < MAX_TOP_KOLEKSI)
+            {
+                idxTopKoleksi += idxTopKoleksi % judulTerbanyak.Rows.Count;
+            }
+            else
+            {
+                idxTopKoleksi += idxTopKoleksi % MAX_TOP_KOLEKSI;
+            }
+
+            updateTopKoleksi();
+        }
+
+        private void tabDepan_Click(object sender, EventArgs e)
         {
 
         }

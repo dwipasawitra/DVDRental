@@ -121,8 +121,8 @@ namespace Rentalin
                 if (!Convert.IsDBNull(gambarJuara.Rows[0].ItemArray[0]))
                 {
                     blobImageJuara = (byte[])gambarJuara.Rows[0].ItemArray[0];
-                    Program.displayBlobImage(blobImageJuara);
-                    picJuara.Image = Image.FromFile(Program.IMAGE_FILE_TEMPORARY);
+                    Program.displayBlobImage(blobImageJuara, judulTerbanyak.Rows[0].ItemArray[0].ToString());
+                    picJuara.Image = Image.FromFile(judulTerbanyak.Rows[0].ItemArray[0].ToString());
                     picJuara.Refresh();
                 }
                 

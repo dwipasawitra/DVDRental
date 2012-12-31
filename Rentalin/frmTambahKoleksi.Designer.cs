@@ -50,12 +50,12 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.txtHargaSewa = new System.Windows.Forms.TextBox();
-            this.txtHargaDenda = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.opdFIleBrowser = new System.Windows.Forms.OpenFileDialog();
+            this.txtHargaSewa = new System.Windows.Forms.TextBox();
+            this.txtHargaDenda = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.picCoverArt)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -82,6 +82,7 @@
             // txtKode
             // 
             this.txtKode.Location = new System.Drawing.Point(89, 57);
+            this.txtKode.MaxLength = 12;
             this.txtKode.Name = "txtKode";
             this.txtKode.Size = new System.Drawing.Size(111, 20);
             this.txtKode.TabIndex = 2;
@@ -99,6 +100,7 @@
             // txtJudul
             // 
             this.txtJudul.Location = new System.Drawing.Point(89, 84);
+            this.txtJudul.MaxLength = 255;
             this.txtJudul.Name = "txtJudul";
             this.txtJudul.Size = new System.Drawing.Size(196, 20);
             this.txtJudul.TabIndex = 4;
@@ -119,6 +121,7 @@
             this.txtDeskripsi.Name = "txtDeskripsi";
             this.txtDeskripsi.Size = new System.Drawing.Size(196, 100);
             this.txtDeskripsi.TabIndex = 6;
+            this.txtDeskripsi.TextChanged += new System.EventHandler(this.txtDeskripsi_TextChanged);
             // 
             // lblKategori
             // 
@@ -131,6 +134,7 @@
             // 
             // cmbKategori
             // 
+            this.cmbKategori.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbKategori.FormattingEnabled = true;
             this.cmbKategori.Location = new System.Drawing.Point(89, 220);
             this.cmbKategori.Name = "cmbKategori";
@@ -148,6 +152,7 @@
             // 
             // cmbJenis
             // 
+            this.cmbJenis.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbJenis.FormattingEnabled = true;
             this.cmbJenis.Location = new System.Drawing.Point(89, 254);
             this.cmbJenis.Name = "cmbJenis";
@@ -267,20 +272,6 @@
             this.label7.TabIndex = 23;
             this.label7.Text = "informasi ini dibutuhkan";
             // 
-            // txtHargaSewa
-            // 
-            this.txtHargaSewa.Location = new System.Drawing.Point(360, 58);
-            this.txtHargaSewa.Name = "txtHargaSewa";
-            this.txtHargaSewa.Size = new System.Drawing.Size(126, 20);
-            this.txtHargaSewa.TabIndex = 24;
-            // 
-            // txtHargaDenda
-            // 
-            this.txtHargaDenda.Location = new System.Drawing.Point(360, 81);
-            this.txtHargaDenda.Name = "txtHargaDenda";
-            this.txtHargaDenda.Size = new System.Drawing.Size(126, 20);
-            this.txtHargaDenda.TabIndex = 25;
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -313,6 +304,22 @@
             this.opdFIleBrowser.Filter = "JPG Images|(*.jpg)";
             this.opdFIleBrowser.Title = "Telusuri cover art";
             // 
+            // txtHargaSewa
+            // 
+            this.txtHargaSewa.Location = new System.Drawing.Point(361, 60);
+            this.txtHargaSewa.Name = "txtHargaSewa";
+            this.txtHargaSewa.Size = new System.Drawing.Size(125, 20);
+            this.txtHargaSewa.TabIndex = 29;
+            this.txtHargaSewa.TextChanged += new System.EventHandler(this.validateTextInteger);
+            // 
+            // txtHargaDenda
+            // 
+            this.txtHargaDenda.Location = new System.Drawing.Point(360, 84);
+            this.txtHargaDenda.Name = "txtHargaDenda";
+            this.txtHargaDenda.Size = new System.Drawing.Size(125, 20);
+            this.txtHargaDenda.TabIndex = 30;
+            this.txtHargaDenda.TextChanged += new System.EventHandler(this.validateTextInteger);
+            // 
             // frmTambahKoleksi
             // 
             this.AcceptButton = this.btnTambahkan;
@@ -320,12 +327,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(516, 346);
+            this.Controls.Add(this.txtHargaDenda);
+            this.Controls.Add(this.txtHargaSewa);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnTambahkan);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.txtHargaDenda);
-            this.Controls.Add(this.txtHargaSewa);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -384,11 +391,11 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtHargaSewa;
-        private System.Windows.Forms.TextBox txtHargaDenda;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.OpenFileDialog opdFIleBrowser;
+        private System.Windows.Forms.TextBox txtHargaSewa;
+        private System.Windows.Forms.TextBox txtHargaDenda;
     }
 }

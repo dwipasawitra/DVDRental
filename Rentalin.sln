@@ -5,18 +5,36 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rentalin", "Rentalin\Rental
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentalinKatalog", "RentalinKatalog\RentalinKatalog.csproj", "{61DDDA32-9A7E-4E45-97D2-99F796520CB9}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E5CC46FE-5F4E-4F9B-9459-CF8CC877299A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
 		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6B1DC36E-EB6C-4865-9FA4-A7697760EEAF}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{6B1DC36E-EB6C-4865-9FA4-A7697760EEAF}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{6B1DC36E-EB6C-4865-9FA4-A7697760EEAF}.Debug|Mixed Platforms.Build.0 = Debug|x86
 		{6B1DC36E-EB6C-4865-9FA4-A7697760EEAF}.Debug|x86.ActiveCfg = Debug|x86
 		{6B1DC36E-EB6C-4865-9FA4-A7697760EEAF}.Debug|x86.Build.0 = Debug|x86
+		{6B1DC36E-EB6C-4865-9FA4-A7697760EEAF}.Release|Any CPU.ActiveCfg = Release|x86
+		{6B1DC36E-EB6C-4865-9FA4-A7697760EEAF}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{6B1DC36E-EB6C-4865-9FA4-A7697760EEAF}.Release|Mixed Platforms.Build.0 = Release|x86
 		{6B1DC36E-EB6C-4865-9FA4-A7697760EEAF}.Release|x86.ActiveCfg = Release|x86
 		{6B1DC36E-EB6C-4865-9FA4-A7697760EEAF}.Release|x86.Build.0 = Release|x86
+		{61DDDA32-9A7E-4E45-97D2-99F796520CB9}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{61DDDA32-9A7E-4E45-97D2-99F796520CB9}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{61DDDA32-9A7E-4E45-97D2-99F796520CB9}.Debug|Mixed Platforms.Build.0 = Debug|x86
 		{61DDDA32-9A7E-4E45-97D2-99F796520CB9}.Debug|x86.ActiveCfg = Debug|x86
 		{61DDDA32-9A7E-4E45-97D2-99F796520CB9}.Debug|x86.Build.0 = Debug|x86
+		{61DDDA32-9A7E-4E45-97D2-99F796520CB9}.Release|Any CPU.ActiveCfg = Release|x86
+		{61DDDA32-9A7E-4E45-97D2-99F796520CB9}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{61DDDA32-9A7E-4E45-97D2-99F796520CB9}.Release|Mixed Platforms.Build.0 = Release|x86
 		{61DDDA32-9A7E-4E45-97D2-99F796520CB9}.Release|x86.ActiveCfg = Release|x86
 		{61DDDA32-9A7E-4E45-97D2-99F796520CB9}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection

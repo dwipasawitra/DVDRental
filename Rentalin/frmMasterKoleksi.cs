@@ -29,12 +29,13 @@ namespace Rentalin
             koleksi.Columns[2].ColumnName = "Kategori";
             koleksi.Columns[3].ColumnName = "Biaya Sewa";
             koleksi.Columns[4].ColumnName = "Biaya Denda";
-            
+            dgKoleksi.DataSource = koleksi;
             
         }
 
         private void cariKoleksi(string arg)
         {
+            arg = Program.escapeQuoteSQL(arg);
             koleksi = Program.conn.ExecuteDataTable("SELECT kodekoleksi, namaitem, genre.namakategori, biayasewafilm, biayadendafilm from koleksi, genre where genre.kodekategori = koleksi.kodekategori AND (kodekoleksi like '%" + arg + "%' OR namaitem like '%" + arg + "%')");
 
             // Atur judul kolom 
@@ -43,12 +44,13 @@ namespace Rentalin
             koleksi.Columns[2].ColumnName = "Kategori";
             koleksi.Columns[3].ColumnName = "Biaya Sewa";
             koleksi.Columns[4].ColumnName = "Biaya Denda";
+            dgKoleksi.DataSource = koleksi;
         }
         private void tampilanAwal()
         {
             lblJudul.Text = "Judul Film";
             lblGenre.Text = "Genre";
-            dgKoleksi.DataSource = koleksi;
+            
             dgKoleksi.ReadOnly = true;
         }
 
@@ -60,13 +62,29 @@ namespace Rentalin
 
         private void btnHapus_Click(object sender, EventArgs e)
         {
-            int rows = dgKoleksi.CurrentCellAddress.Y;
+           
+            if (dgKoleksi.SelectedCells.Count == 1)
+            {
+                if (dgKoleksi.SelectedCells[0].RowIndex >= 0 && dgKoleksi.SelectedCells[0].RowIndex < koleksi.Rows.Count)
+                {
+                    int idx = dgKoleksi.SelectedCells[0].RowIndex;
+
+                    DialogResult jawab = MessageBox.Show("Yakin akan menghapus koleksi berjudul '" + koleksi.Rows[idx].ItemArray[1].ToString() + "'?",
+                                                        "Konfirmasi Penghapusan", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (jawab == System.Windows.Forms.DialogResult.Yes)
+                    {
+                        // Integrity constraint check dilakukan dari sisi basis data
+                        string delete = "DELETE FROM koleksi WHERE kodekoleksi = '" + Program.escapeQuoteSQL(koleksi.Rows[idx].ItemArray[0].ToString()) + "'";
+                        Program.conn.ExecuteNonQuery(delete);
+                        MessageBox.Show("Data terhapus", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+
+                    updateKoleksi();
+                }
+
+            }
             //menghapus data
-            string delete = "DELETE FROM stokkoleksi WHERE kodekoleksi = '" + koleksi.Rows[rows].ItemArray[0].ToString() + "'";
-            Program.conn.ExecuteDataTable(delete);
-            delete = "DELETE FROM koleksi WHERE kodekoleksi = '" + koleksi.Rows[rows].ItemArray[0].ToString() + "'";
-            Program.conn.ExecuteDataTable(delete);
-            koleksi.Rows[rows].Delete();
+           
         }
 
      
@@ -80,6 +98,7 @@ namespace Rentalin
         {
             frmTambahKoleksi formTambahKoleksi = new frmTambahKoleksi();
             formTambahKoleksi.ShowDialog(this);
+            updateKoleksi();
         }
 
         private void btnModifikasi_Click(object sender, EventArgs e)
@@ -93,12 +112,13 @@ namespace Rentalin
             int y = dgKoleksi.CurrentCellAddress.Y;
             frmTambahKoleksi formTambahKoleksi = new frmTambahKoleksi(koleksi.Rows[y].ItemArray[0].ToString());
             formTambahKoleksi.ShowDialog();
+            updateKoleksi();
         }
 
         private void txtPencarian_TextChanged(object sender, EventArgs e)
         {
             cariKoleksi(txtPencarian.Text);
-            dgKoleksi.DataSource = koleksi;
+
         }
 
         private void dgKoleksi_SelectionChanged(object sender, EventArgs e)
@@ -125,7 +145,7 @@ namespace Rentalin
             // Ambil deskripsi dan BLOB gambar dari database
             string kodeKoleksi = koleksi.Rows[index].ItemArray[0].ToString();
             DataTable infoJudul;
-            infoJudul = Program.conn.ExecuteDataTable("SELECT dekripsiitem, coverart FROM koleksi WHERE KodeKoleksi='" + kodeKoleksi + "'");
+            infoJudul = Program.conn.ExecuteDataTable("SELECT dekripsiitem, coverart FROM koleksi WHERE KodeKoleksi='" + Program.escapeQuoteSQL(kodeKoleksi) + "'");
 
             // Kosongkan gambar
             if (pbCoverArt.Image != null)
@@ -140,17 +160,17 @@ namespace Rentalin
                 if (!Convert.IsDBNull(infoJudul.Rows[0].ItemArray[1]))
                 {
                     byte[] blob = (byte[])infoJudul.Rows[0].ItemArray[1];
-                    Program.displayBlobImage(blob);
+                    Program.displayBlobImage(blob, kodeKoleksi);
 
                     // Tampilkan gambar
-                    pbCoverArt.Image = Image.FromFile(Program.IMAGE_FILE_TEMPORARY);
+                    pbCoverArt.Image = Image.FromFile(kodeKoleksi);
                     pbCoverArt.SizeMode = PictureBoxSizeMode.StretchImage;
                     pbCoverArt.Refresh();
                 }
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.ToString(), "Galat", MessageBoxButtons.OK, MessageBoxIcon.Error);
+               // Error diabaikan dahulu, rasanya masih masuk akal
             }
 
             // Tampilkan teks pada deskripsi

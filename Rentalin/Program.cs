@@ -422,11 +422,11 @@ namespace Rentalin
             return tgl.ToString() + "-" + namaBulan + "-" + thn.ToString();
         }
 
-        public static void displayBlobImage(byte[] blob)
+        public static void displayBlobImage(byte[] blob, string namaFile)
         {
             try
             {
-                FileStream FS = new FileStream(IMAGE_FILE_TEMPORARY, FileMode.Create, FileAccess.Write);
+                FileStream FS = new FileStream(namaFile, FileMode.Create, FileAccess.Write);
                 FS.Write(blob, 0, blob.Length);
                 FS.Close();
                 FS.Dispose();
@@ -434,7 +434,7 @@ namespace Rentalin
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.ToString());
+               // Error diabaikan saja
             }
         }
 
@@ -453,10 +453,12 @@ namespace Rentalin
         public static string escapeQuoteSQL(string input)
         {
             string output;
-            output = input.Replace(@"'", @"\'");
-            output = output.Replace(@"-", @"\-");
+            output = input.Replace(@"'", @"''");
+            output = output.Replace("-", @"-");
 
             return output;
         }
+
+        
     }
 }

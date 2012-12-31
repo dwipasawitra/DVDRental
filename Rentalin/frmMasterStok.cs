@@ -13,6 +13,7 @@ namespace Rentalin
     {
         DataTable stok = new DataTable();
         DataTable info = new DataTable();
+        DataTable koleksi = new DataTable();
         public int mode;
         public int modify;
         public string viewStok;    
@@ -182,8 +183,8 @@ namespace Rentalin
 
         private void btnPilihKoleksi_Click(object sender, EventArgs e)
         {
-            stok = Program.conn.ExecuteDataTable("SELECT * FROM stokkoleksi WHERE kodekoleksi = '" + txtPilihKoleksi.Text + "'");
-            if (stok.Rows.Count > 1)
+            koleksi = Program.conn.ExecuteDataTable("SELECT * FROM koleksi WHERE kodekoleksi = '" + txtPilihKoleksi.Text + "'");
+            if (koleksi.Rows.Count > 0)
             {
                 viewStok = txtPilihKoleksi.Text;
                 txtPilihKoleksi.ResetText();
@@ -312,7 +313,7 @@ namespace Rentalin
                     cmbStatus.Text = stok.Rows[idx].ItemArray[2].ToString();
                     txtHarga.Text = stok.Rows[idx].ItemArray[3].ToString();                    
                     if(stok.Rows[idx].ItemArray[4].ToString().Length > 0)
-                    dtpTglBeli.Value = DateTime.ParseExact(stok.Rows[idx].ItemArray[4].ToString().Substring(0,10), "MM/dd/yyyy", null);
+                    dtpTglBeli.Value = DateTime.Parse(stok.Rows[idx].ItemArray[4].ToString());
                     btnHistori.Enabled = true; 
                 }
                 else
@@ -343,6 +344,31 @@ namespace Rentalin
             {
                 frmHistoryPenyewaan formHistoryPenyewaan = new frmHistoryPenyewaan(dgStokKoleksi.Rows[y].Cells[0].Value.ToString(), 0);
                 formHistoryPenyewaan.ShowDialog(this);
+            }
+        }
+
+        private void validateTextInteger(object sender, EventArgs e)
+        {
+            Exception X = new Exception();
+            TextBox T = (TextBox)sender;
+            try
+            {
+                if (T.Text != "")
+                {
+                    int x = int.Parse(T.Text);
+                }
+            }
+            catch (Exception)
+            {
+                try
+                {
+                    int CursorIndex = T.SelectionStart - 1;
+                    T.Text = T.Text.Remove(CursorIndex, 1);
+                    //Align Cursor to same index
+                    T.SelectionStart = CursorIndex;
+                    T.SelectionLength = 0;
+                }
+                catch (Exception) { }
             }
         }
 

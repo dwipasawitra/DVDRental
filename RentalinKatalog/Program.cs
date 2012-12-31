@@ -267,7 +267,7 @@ namespace RentalinKatalog
         public static string escapeQuoteSQL(string input)
         {
             string output;
-            output = input.Replace(@"'", @"\'");
+            output = input.Replace(@"'", @"''");
             output = output.Replace(@"-", @"\-");
 
             return output;

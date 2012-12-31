@@ -77,6 +77,7 @@
             this.tmrScrollingText = new System.Windows.Forms.Timer(this.components);
             this.lblJenisKepingKoleksi = new System.Windows.Forms.Label();
             this.btnPreview = new System.Windows.Forms.Button();
+            this.tmrTopKoleksi = new System.Windows.Forms.Timer(this.components);
             this.pnlScrollingText.SuspendLayout();
             this.panel1.SuspendLayout();
             this.pnlJam.SuspendLayout();
@@ -243,6 +244,7 @@
             this.tabDepan.TabIndex = 0;
             this.tabDepan.Text = "Depan";
             this.tabDepan.UseVisualStyleBackColor = true;
+            this.tabDepan.Click += new System.EventHandler(this.tabDepan_Click);
             // 
             // btnChatDgnOperator
             // 
@@ -588,6 +590,12 @@
             this.btnPreview.Text = "PRATINJAU";
             this.btnPreview.UseVisualStyleBackColor = true;
             // 
+            // tmrTopKoleksi
+            // 
+            this.tmrTopKoleksi.Enabled = true;
+            this.tmrTopKoleksi.Interval = 10000;
+            this.tmrTopKoleksi.Tick += new System.EventHandler(this.tmrTopKoleksi_Tick);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -679,6 +687,7 @@
         private System.Windows.Forms.PictureBox picDetailKoleksi;
         private System.Windows.Forms.Button btnPreview;
         private System.Windows.Forms.Label lblJenisKepingKoleksi;
+        private System.Windows.Forms.Timer tmrTopKoleksi;
     }
 }
 

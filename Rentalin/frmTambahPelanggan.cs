@@ -22,6 +22,8 @@ namespace Rentalin
             InitializeComponent();
             tampilanAwal();
             mode = 0;
+
+            txtKodeMember.Enabled = true;
         }
 
         public frmTambahPelanggan(string KodeMember)
@@ -30,6 +32,7 @@ namespace Rentalin
             tampilanAwal(KodeMember);
             mode = 1;
             IDMember = KodeMember;
+            txtKodeMember.Enabled = false;
         }
 
 

@@ -30,6 +30,7 @@
         {
             this.btnHapus = new System.Windows.Forms.Button();
             this.pnlInfo = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblInfoDetail = new System.Windows.Forms.Label();
             this.lblInfo = new System.Windows.Forms.Label();
             this.txtPencarian = new System.Windows.Forms.TextBox();
@@ -53,12 +54,11 @@
             this.cmbKondisi = new System.Windows.Forms.ComboBox();
             this.lblStatusInfo = new System.Windows.Forms.Label();
             this.lblKondisiInfo = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnlInfo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgStokKoleksi)).BeginInit();
             this.pnlKoleksiDIpilih.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnHapus
@@ -84,11 +84,21 @@
             this.pnlInfo.Size = new System.Drawing.Size(491, 88);
             this.pnlInfo.TabIndex = 3;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Rentalin.Properties.Resources.db;
+            this.pictureBox1.Location = new System.Drawing.Point(14, 10);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(69, 74);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            // 
             // lblInfoDetail
             // 
             this.lblInfoDetail.AutoSize = true;
             this.lblInfoDetail.ForeColor = System.Drawing.Color.White;
-            this.lblInfoDetail.Location = new System.Drawing.Point(95, 42);
+            this.lblInfoDetail.Location = new System.Drawing.Point(95, 37);
             this.lblInfoDetail.Name = "lblInfoDetail";
             this.lblInfoDetail.Size = new System.Drawing.Size(384, 39);
             this.lblInfoDetail.TabIndex = 5;
@@ -102,7 +112,7 @@
             this.lblInfo.AutoSize = true;
             this.lblInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInfo.ForeColor = System.Drawing.Color.White;
-            this.lblInfo.Location = new System.Drawing.Point(93, 17);
+            this.lblInfo.Location = new System.Drawing.Point(93, 12);
             this.lblInfo.Name = "lblInfo";
             this.lblInfo.Size = new System.Drawing.Size(138, 25);
             this.lblInfo.TabIndex = 3;
@@ -220,6 +230,7 @@
             // txtPilihKoleksi
             // 
             this.txtPilihKoleksi.Location = new System.Drawing.Point(6, 26);
+            this.txtPilihKoleksi.MaxLength = 12;
             this.txtPilihKoleksi.Name = "txtPilihKoleksi";
             this.txtPilihKoleksi.Size = new System.Drawing.Size(188, 20);
             this.txtPilihKoleksi.TabIndex = 1;
@@ -267,6 +278,7 @@
             // txtKodeStok
             // 
             this.txtKodeStok.Location = new System.Drawing.Point(7, 14);
+            this.txtKodeStok.MaxLength = 12;
             this.txtKodeStok.Name = "txtKodeStok";
             this.txtKodeStok.Size = new System.Drawing.Size(188, 20);
             this.txtKodeStok.TabIndex = 26;
@@ -281,6 +293,7 @@
             this.txtHarga.Size = new System.Drawing.Size(188, 20);
             this.txtHarga.TabIndex = 25;
             this.txtHarga.Text = "Harga Pembelian";
+            this.txtHarga.TextChanged += new System.EventHandler(this.validateTextInteger);
             this.txtHarga.Enter += new System.EventHandler(this.txtHarga_Enter);
             this.txtHarga.Leave += new System.EventHandler(this.txtHarga_Leave);
             // 
@@ -327,16 +340,6 @@
             this.lblKondisiInfo.TabIndex = 20;
             this.lblKondisiInfo.Text = "Kondisi";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Rentalin.Properties.Resources.db;
-            this.pictureBox1.Location = new System.Drawing.Point(14, 10);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(69, 74);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
-            // 
             // frmMasterStok
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -357,12 +360,12 @@
             this.Load += new System.EventHandler(this.frmMasterStok_Load);
             this.pnlInfo.ResumeLayout(false);
             this.pnlInfo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgStokKoleksi)).EndInit();
             this.pnlKoleksiDIpilih.ResumeLayout(false);
             this.pnlKoleksiDIpilih.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

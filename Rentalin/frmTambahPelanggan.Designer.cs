@@ -78,7 +78,9 @@
             // 
             // txtKodeMember
             // 
+            this.txtKodeMember.Enabled = false;
             this.txtKodeMember.Location = new System.Drawing.Point(95, 50);
+            this.txtKodeMember.MaxLength = 12;
             this.txtKodeMember.Name = "txtKodeMember";
             this.txtKodeMember.Size = new System.Drawing.Size(104, 20);
             this.txtKodeMember.TabIndex = 3;
@@ -107,6 +109,7 @@
             // txtNamaMember
             // 
             this.txtNamaMember.Location = new System.Drawing.Point(95, 76);
+            this.txtNamaMember.MaxLength = 255;
             this.txtNamaMember.Name = "txtNamaMember";
             this.txtNamaMember.Size = new System.Drawing.Size(203, 20);
             this.txtNamaMember.TabIndex = 6;
@@ -154,6 +157,7 @@
             // txtNomorIdentitas
             // 
             this.txtNomorIdentitas.Location = new System.Drawing.Point(95, 129);
+            this.txtNomorIdentitas.MaxLength = 255;
             this.txtNomorIdentitas.Name = "txtNomorIdentitas";
             this.txtNomorIdentitas.Size = new System.Drawing.Size(203, 20);
             this.txtNomorIdentitas.TabIndex = 10;
