@@ -27,12 +27,12 @@ namespace RentalinKatalog
             if(yangDicari == "")
             {
                 dataKoleksi = Program.conn.ExecuteDataTable("SELECT kodekoleksi, namaitem, genre.namakategori, jeniskeping.jenis " +
-                                                            "from koleksi, genre, jeniskeping where genre.kodekategori = koleksi.kodekategori AND koleksi.jenis = jeniskeping.id");
+                                                            "from koleksi, genre, jeniskeping where genre.kodekategori = koleksi.kodekategori AND koleksi.jenis = jeniskeping.ID");
             }
             else
             {
                 dataKoleksi = Program.conn.ExecuteDataTable("SELECT kodekoleksi, namaitem, genre.namakategori, jeniskeping.jenis " +
-                                                            "from koleksi, genre where genre.kodekategori = koleksi.kodekategori AND koleksi.jenis = jeniskeping.id AND (kodekoleksi like '%" + yangDicari + "%' OR namaitem like '%" + yangDicari + "%')");
+                                                            "from koleksi, genre, jeniskeping where genre.kodekategori = koleksi.kodekategori AND koleksi.jenis = jeniskeping.ID AND (upper(kodekoleksi) like '%" + yangDicari.ToUpper() + "%' OR upper(namaitem) like '%" + yangDicari.ToUpper() + "%')");
             }
             // Atur judul kolom 
             dataKoleksi.Columns[0].ColumnName = "Kode Koleksi";
@@ -43,9 +43,10 @@ namespace RentalinKatalog
 
             // Update isi data grid
             dgKoleksi.DataSource = dataKoleksi;
-            
-         
-
+            dgKoleksi.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgKoleksi.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgKoleksi.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgKoleksi.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
         }
 
@@ -183,7 +184,7 @@ namespace RentalinKatalog
 
             // Ambil deskripsi dan BLOB gambar dari database
             string kodeKoleksi = dataKoleksi.Rows[index].ItemArray[0].ToString();
-            DataTable infoJudul;
+            DataTable infoJudul, stokKoleksi;
             infoJudul = Program.conn.ExecuteDataTable("SELECT dekripsiitem, coverart FROM koleksi WHERE KodeKoleksi='" + kodeKoleksi + "'");
 
             // Kosongkan gambar
@@ -214,6 +215,21 @@ namespace RentalinKatalog
 
             // Tampilkan teks pada deskripsi
             lblDeskripsiKoleksi.Text = infoJudul.Rows[0].ItemArray[0].ToString();
+
+            // Cari jumlah stok yang tersedia dari koleksi yang dipilih
+            stokKoleksi = Program.conn.ExecuteDataTable("SELECT count(*) FROM StokKoleksi WHERE KodeKoleksi='" + kodeKoleksi + "' AND Status='0'");
+            int jumlahStok = Int16.Parse(stokKoleksi.Rows[0].ItemArray[0].ToString());
+            if (jumlahStok > 0)
+            {
+                lblStokInfo.Text = "Stok: " + jumlahStok.ToString();
+                lblStokInfo.ForeColor = Color.Black;
+
+            }
+            else
+            {
+                lblStokInfo.Text = "Habis";
+                lblStokInfo.ForeColor = Color.Red;
+            }
             
         }
 
@@ -265,6 +281,11 @@ namespace RentalinKatalog
         }
 
         private void tabDepan_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabKoleksi_Click(object sender, EventArgs e)
         {
 
         }

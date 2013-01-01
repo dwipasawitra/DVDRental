@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
             this.txtKembali = new System.Windows.Forms.MaskedTextBox();
             this.lblKembaliInfo = new System.Windows.Forms.Label();
             this.txtUangDibayar = new System.Windows.Forms.MaskedTextBox();
@@ -46,7 +45,6 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.SteelBlue;
-            this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.txtKembali);
             this.panel1.Controls.Add(this.lblKembaliInfo);
             this.panel1.Controls.Add(this.txtUangDibayar);
@@ -60,17 +58,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(301, 297);
             this.panel1.TabIndex = 0;
-            // 
-            // button2
-            // 
-            this.button2.ForeColor = System.Drawing.Color.Black;
-            this.button2.Location = new System.Drawing.Point(203, 263);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(95, 31);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Lihat Nota";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // txtKembali
             // 
@@ -197,7 +184,6 @@
         private System.Windows.Forms.Label lblNoNota;
         private System.Windows.Forms.Label lblNoNotaInfo;
         private System.Windows.Forms.Button btnSetuju;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnBatal;
     }
 }

@@ -319,7 +319,7 @@ namespace Rentalin
             string namaKewenanganBaru;
             int nomorKewenanganTerakhir;
 
-            namaKewenanganBaru = txtNamaKewenanganBaru.Text;
+            namaKewenanganBaru = Program.escapeQuoteSQL(txtNamaKewenanganBaru.Text);
             nomorKewenanganTerakhir = Int16.Parse(roleList.Rows[roleList.Rows.Count - 1].ItemArray[0].ToString());
 
             // Insert into database, first

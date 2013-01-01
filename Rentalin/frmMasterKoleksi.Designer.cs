@@ -212,9 +212,12 @@
             // 
             // dgKoleksi
             // 
+            this.dgKoleksi.AllowUserToAddRows = false;
+            this.dgKoleksi.AllowUserToDeleteRows = false;
             this.dgKoleksi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgKoleksi.Location = new System.Drawing.Point(8, 135);
             this.dgKoleksi.Name = "dgKoleksi";
+            this.dgKoleksi.ReadOnly = true;
             this.dgKoleksi.Size = new System.Drawing.Size(548, 333);
             this.dgKoleksi.TabIndex = 4;
             this.dgKoleksi.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgKoleksi_CellContentClick);

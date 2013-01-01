@@ -21,6 +21,27 @@ namespace Rentalin
             InitializeComponent();
         }
 
+        public frmLaporanNota(string noNota)
+        {
+            InitializeComponent();
+
+            // Cek apakah nota memang benar-benar ada
+            dataNota = Program.conn.ExecuteDataTable("SELECT NoNota, TglTransaksi FROM Nota WHERE NoNota='" + Program.escapeQuoteSQL(noNota) + "'");
+            if (dataNota.Rows.Count > 0)
+            {
+                // Jika ada, langsung tampilkan pada layar
+                tampilkanLaporanNota(noNota);
+
+                // Sesuaikan dengan kontrol di sebelah kiri
+                dtpTanggal.Value = DateTime.Parse(dataNota.Rows[0].ItemArray[1].ToString());
+                cmbNoNota.ValueMember = noNota;
+            }
+            else
+            {
+                MessageBox.Show("Oops. Nota tidak tersimpan di basis data.");
+            }
+        }
+
         private void frmLaporanNota_Load(object sender, EventArgs e)
         {
             updateDataNota();

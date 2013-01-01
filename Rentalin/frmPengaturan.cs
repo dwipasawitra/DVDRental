@@ -89,9 +89,9 @@ namespace Rentalin
         private void btnTerapkan_Click(object sender, EventArgs e)
         {
             // Update app setting
-            Program.setting.namaJasa = txtNamaJasa.Text;
-            Program.setting.alamatJasa = txtAlamat.Text;
-            Program.setting.namaPemilik = txtNamaPemilik.Text;
+            Program.setting.namaJasa = Program.escapeQuoteSQL(txtNamaJasa.Text);
+            Program.setting.alamatJasa = Program.escapeQuoteSQL(txtAlamat.Text);
+            Program.setting.namaPemilik = Program.escapeQuoteSQL(txtNamaPemilik.Text);
 
             // Set pengaturan biaya sewa
             if (chkSewaPerItem.Checked && chkSewaPerKategori.Checked)
@@ -101,7 +101,7 @@ namespace Rentalin
             }
             else if (chkSewaPerItem.Checked)
             {
-                Program.setting.biayaSewaPer = appSetting.BIAYA_SEWA_PER_KATEGORI;
+                Program.setting.biayaSewaPer = appSetting.BIAYA_SEWA_PER_JUDUL;
             }
             else if (chkSewaPerKategori.Checked)
             {
@@ -120,7 +120,7 @@ namespace Rentalin
             }
             else if (chkDendaPerItem.Checked)
             {
-                Program.setting.biayaDendaPer = appSetting.BIAYA_DENDA_PER_KATEGORI;
+                Program.setting.biayaDendaPer = appSetting.BIAYA_DENDA_PER_JUDUL;
             }
             else if (chkDendaPerKategori.Checked)
             {
@@ -140,7 +140,7 @@ namespace Rentalin
             {
                 Program.setting.lamaPenyewaan = appSetting.LAMA_PENYEWAAN_BEBAS;
             }
-            Program.setting.lamaPenyewaanHari = Int16.Parse(txtJumlahHari.Text);
+            Program.setting.lamaPenyewaanHari = Int16.Parse(Program.escapeQuoteSQL(txtJumlahHari.Text));
 
             // Cek maks jumlah judul disewa per transaksi
             if (rbTetapJudul.Checked)
@@ -151,10 +151,10 @@ namespace Rentalin
             {
                 Program.setting.maksTransaksi = appSetting.MAKS_TRANSAKSI_BEBAS;
             }
-            Program.setting.maksTransaksiJumlah = Int16.Parse(txtJumlahJudul.Text);
+            Program.setting.maksTransaksiJumlah = Int16.Parse(Program.escapeQuoteSQL(txtJumlahJudul.Text));
 
             // Denda kerusakan
-            Program.setting.dendaKerusakan = Int16.Parse(txtPersenDendaKerusakan.Text);
+            Program.setting.dendaKerusakan = Int16.Parse(Program.escapeQuoteSQL(txtPersenDendaKerusakan.Text));
 
             // And the last, kita update settingnya
             Program.setting.updateSetting();

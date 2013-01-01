@@ -71,10 +71,10 @@ namespace Rentalin
                 namaLengkapPenggunaDipilih = dataPengguna.Rows[index].ItemArray[6].ToString();
                 kewenanganDipilih = dataPengguna.Rows[index].ItemArray[0].ToString();
 
-                cmbKewenangan.Text = kewenanganDipilih;
+                cmbKewenangan.Text = Program.escapeQuoteSQL(kewenanganDipilih);
 
-                lblNamaPengguna.Text = namaPenggunaDipilih;
-                txtNamaLengkap.Text = namaLengkapPenggunaDipilih;
+                lblNamaPengguna.Text = Program.escapeQuoteSQL(namaPenggunaDipilih);
+                txtNamaLengkap.Text = Program.escapeQuoteSQL(namaLengkapPenggunaDipilih);
             }
         }
 
@@ -85,7 +85,7 @@ namespace Rentalin
                 string kewenanganBaru = dataKewenangan.Rows[cmbKewenangan.SelectedIndex].ItemArray[0].ToString();
 
                 // Sebelum mengubah kewenangan, tanyakan terlebih dahulu ke pengguna
-                DialogResult jawab = MessageBox.Show("Apakah Anda yakin mengubah hak akses pengguna '" + namaPenggunaDipilih + "' menjadi " + cmbKewenangan.Text + " ?",
+                DialogResult jawab = MessageBox.Show("Apakah Anda yakin mengubah hak akses pengguna '" + namaPenggunaDipilih + "' menjadi " + Program.escapeQuoteSQL(cmbKewenangan.Text) + " ?",
                                      "Pengubahak Hak Akses", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 // Jika pengguna menekan tombol "Yes"
@@ -96,14 +96,14 @@ namespace Rentalin
                     updateDataPengguna();
 
                     // Modifikasi isi list
-                    listPengguna.Items[cmbKewenangan.SelectedIndex] = namaPenggunaDipilih + " [" + cmbKewenangan.Text + "]";
+                    listPengguna.Items[cmbKewenangan.SelectedIndex] = namaPenggunaDipilih + " [" + Program.escapeQuoteSQL(cmbKewenangan.Text) + "]";
 
                 }
 
                 // Jika tidak
                 else
                 {
-                    cmbKewenangan.Text = kewenanganDipilih;
+                    cmbKewenangan.Text = Program.escapeQuoteSQL(kewenanganDipilih);
                 }
             }
         }
@@ -172,8 +172,8 @@ namespace Rentalin
             idPenggunaBaru = Int16.Parse(dataPengguna.Rows[dataPengguna.Rows.Count-1].ItemArray[1].ToString());
             idPenggunaBaru++;
 
-            string namaPenggunaBaru = txtNamaPenggunaBaru.Text;
-            string namaLengkapbaru = txtNamaLengkap.Text;
+            string namaPenggunaBaru = Program.escapeQuoteSQL(txtNamaPenggunaBaru.Text);
+            string namaLengkapbaru = Program.escapeQuoteSQL(txtNamaLengkap.Text);
             int kodeKewenanganBaru = Int16.Parse(dataKewenangan.Rows[cmbKewenangan.SelectedIndex].ItemArray[0].ToString());
             string passwordBaru = sha1Encrypt.EncodePassword(md5Encrypt.EncodePassword(txtPassword.Text));
 

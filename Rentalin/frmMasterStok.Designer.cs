@@ -161,9 +161,12 @@
             // 
             // dgStokKoleksi
             // 
+            this.dgStokKoleksi.AllowUserToAddRows = false;
+            this.dgStokKoleksi.AllowUserToDeleteRows = false;
             this.dgStokKoleksi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgStokKoleksi.Location = new System.Drawing.Point(12, 122);
             this.dgStokKoleksi.Name = "dgStokKoleksi";
+            this.dgStokKoleksi.ReadOnly = true;
             this.dgStokKoleksi.Size = new System.Drawing.Size(478, 339);
             this.dgStokKoleksi.TabIndex = 4;
             this.dgStokKoleksi.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dgStokKoleksi_RowsRemoved);

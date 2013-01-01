@@ -58,6 +58,8 @@
             this.tabKoleksi = new System.Windows.Forms.TabPage();
             this.dgKoleksi = new System.Windows.Forms.DataGridView();
             this.gbInfoKoleksi = new System.Windows.Forms.GroupBox();
+            this.btnPreview = new System.Windows.Forms.Button();
+            this.lblJenisKepingKoleksi = new System.Windows.Forms.Label();
             this.lblDeskripsiKoleksi = new System.Windows.Forms.Label();
             this.lblGenreKoleksi = new System.Windows.Forms.Label();
             this.lblJudulKoleksi = new System.Windows.Forms.Label();
@@ -75,9 +77,8 @@
             this.tabPetunjuk = new System.Windows.Forms.TabPage();
             this.tmrWaktu = new System.Windows.Forms.Timer(this.components);
             this.tmrScrollingText = new System.Windows.Forms.Timer(this.components);
-            this.lblJenisKepingKoleksi = new System.Windows.Forms.Label();
-            this.btnPreview = new System.Windows.Forms.Button();
             this.tmrTopKoleksi = new System.Windows.Forms.Timer(this.components);
+            this.lblStokInfo = new System.Windows.Forms.Label();
             this.pnlScrollingText.SuspendLayout();
             this.panel1.SuspendLayout();
             this.pnlJam.SuspendLayout();
@@ -382,6 +383,7 @@
             this.tabKoleksi.TabIndex = 1;
             this.tabKoleksi.Text = "Koleksi";
             this.tabKoleksi.UseVisualStyleBackColor = true;
+            this.tabKoleksi.Click += new System.EventHandler(this.tabKoleksi_Click);
             // 
             // dgKoleksi
             // 
@@ -398,6 +400,7 @@
             // 
             // gbInfoKoleksi
             // 
+            this.gbInfoKoleksi.Controls.Add(this.lblStokInfo);
             this.gbInfoKoleksi.Controls.Add(this.btnPreview);
             this.gbInfoKoleksi.Controls.Add(this.lblJenisKepingKoleksi);
             this.gbInfoKoleksi.Controls.Add(this.lblDeskripsiKoleksi);
@@ -411,6 +414,25 @@
             this.gbInfoKoleksi.TabIndex = 0;
             this.gbInfoKoleksi.TabStop = false;
             this.gbInfoKoleksi.Text = "Info";
+            // 
+            // btnPreview
+            // 
+            this.btnPreview.Location = new System.Drawing.Point(15, 28);
+            this.btnPreview.Name = "btnPreview";
+            this.btnPreview.Size = new System.Drawing.Size(132, 41);
+            this.btnPreview.TabIndex = 11;
+            this.btnPreview.Text = "PRATINJAU";
+            this.btnPreview.UseVisualStyleBackColor = true;
+            // 
+            // lblJenisKepingKoleksi
+            // 
+            this.lblJenisKepingKoleksi.AutoSize = true;
+            this.lblJenisKepingKoleksi.Location = new System.Drawing.Point(175, 157);
+            this.lblJenisKepingKoleksi.Name = "lblJenisKepingKoleksi";
+            this.lblJenisKepingKoleksi.Size = new System.Drawing.Size(52, 24);
+            this.lblJenisKepingKoleksi.TabIndex = 10;
+            this.lblJenisKepingKoleksi.Text = "DVD";
+            this.lblJenisKepingKoleksi.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // lblDeskripsiKoleksi
             // 
@@ -456,7 +478,7 @@
             // 
             // btnTambahKePesanan
             // 
-            this.btnTambahKePesanan.Location = new System.Drawing.Point(15, 28);
+            this.btnTambahKePesanan.Location = new System.Drawing.Point(15, 118);
             this.btnTambahKePesanan.Name = "btnTambahKePesanan";
             this.btnTambahKePesanan.Size = new System.Drawing.Size(132, 41);
             this.btnTambahKePesanan.TabIndex = 5;
@@ -571,30 +593,20 @@
             this.tmrScrollingText.Enabled = true;
             this.tmrScrollingText.Tick += new System.EventHandler(this.tmrScrollingText_Tick);
             // 
-            // lblJenisKepingKoleksi
-            // 
-            this.lblJenisKepingKoleksi.AutoSize = true;
-            this.lblJenisKepingKoleksi.Location = new System.Drawing.Point(175, 157);
-            this.lblJenisKepingKoleksi.Name = "lblJenisKepingKoleksi";
-            this.lblJenisKepingKoleksi.Size = new System.Drawing.Size(52, 24);
-            this.lblJenisKepingKoleksi.TabIndex = 10;
-            this.lblJenisKepingKoleksi.Text = "DVD";
-            this.lblJenisKepingKoleksi.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // btnPreview
-            // 
-            this.btnPreview.Location = new System.Drawing.Point(15, 118);
-            this.btnPreview.Name = "btnPreview";
-            this.btnPreview.Size = new System.Drawing.Size(132, 41);
-            this.btnPreview.TabIndex = 11;
-            this.btnPreview.Text = "PRATINJAU";
-            this.btnPreview.UseVisualStyleBackColor = true;
-            // 
             // tmrTopKoleksi
             // 
             this.tmrTopKoleksi.Enabled = true;
             this.tmrTopKoleksi.Interval = 5000;
             this.tmrTopKoleksi.Tick += new System.EventHandler(this.tmrTopKoleksi_Tick);
+            // 
+            // lblStokInfo
+            // 
+            this.lblStokInfo.AutoSize = true;
+            this.lblStokInfo.Location = new System.Drawing.Point(11, 81);
+            this.lblStokInfo.Name = "lblStokInfo";
+            this.lblStokInfo.Size = new System.Drawing.Size(62, 24);
+            this.lblStokInfo.TabIndex = 12;
+            this.lblStokInfo.Text = "Stok :";
             // 
             // frmMain
             // 
@@ -688,6 +700,7 @@
         private System.Windows.Forms.Button btnPreview;
         private System.Windows.Forms.Label lblJenisKepingKoleksi;
         private System.Windows.Forms.Timer tmrTopKoleksi;
+        private System.Windows.Forms.Label lblStokInfo;
     }
 }
 
