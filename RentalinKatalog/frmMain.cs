@@ -17,9 +17,53 @@ namespace RentalinKatalog
         string yangDicari = "";
         int idxTopKoleksi = 0;
         string kodeTopKoleksi = "";
+        string kodeKoleksiDipilih = "";
 
         DataTable judulTerbanyak;
         DataTable dataKoleksi;
+        DataTable pesananAnda;
+        DataTable chat;
+
+        private void cekPesananAnda()
+        {
+            if (pesananAnda.Rows.Count > 0)
+            {
+                btnPesan.Enabled = true;
+                btnBatalkanPesanan.Enabled = true;
+            }
+            else
+            {
+                btnPesan.Enabled = false;
+                btnBatalkanPesanan.Enabled = false;
+            }
+
+            if (dgPesananAnda.SelectedCells.Count > 0)
+            {
+                btnHapusPilihan.Enabled = true;
+            }
+            else
+            {
+                btnHapusPilihan.Enabled = false;
+            }
+        }
+        private void siapkanPesananAnda()
+        {
+            // Siapkan tabel untuk pesanan anda
+            pesananAnda = new DataTable();
+            pesananAnda.Columns.Add("Kode");
+            pesananAnda.Columns.Add("Judul");
+            pesananAnda.Columns.Add("Genre");
+            pesananAnda.Columns.Add("Jenis");
+
+            dgPesananAnda.DataSource = pesananAnda;
+            dgPesananAnda.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgPesananAnda.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgPesananAnda.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgPesananAnda.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+            // OK, sip
+
+        }
 
         private void updateKoleksi()
         {
@@ -120,6 +164,54 @@ namespace RentalinKatalog
             // Update data koleksi dan top koleksi
             updateKoleksi();
             updateTopKoleksi();
+            siapkanPesananAnda();
+        }
+
+        private void updateChat()
+        {
+            chat = Program.conn.ExecuteDataTable("SELECT * FROM chat ORDER BY timestamp ASC");
+            listChat.Items.Clear();
+            for (int i = 0; i < chat.Rows.Count; i++)
+            {
+                DateTime timeStamp = DateTime.Parse(chat.Rows[i].ItemArray[1].ToString());
+                string toChat = timeStamp.Date + " - " + timeStamp.Hour + ":" + timeStamp.Minute + ":" + timeStamp.Second + " ";
+                int sender = Int16.Parse(chat.Rows[i].ItemArray[2].ToString());
+                if (sender == 0)
+                {
+                    toChat += "[OPERATOR] ";
+                }
+                else
+                {
+                    toChat += "[PELANGGAN] ";
+                }
+                int dibaca = Int16.Parse(chat.Rows[i].ItemArray[4].ToString());
+                if (dibaca == 0) toChat += "** ";
+                toChat += chat.Rows[i].ItemArray[3].ToString();
+                
+                listChat.Items.Add(toChat);
+                
+            }
+        }
+
+        private void sendChat(string toSend)
+        {
+            int idChat;
+
+            // Dapatkan idChat sebelumnya
+            if (chat.Rows.Count > 0)
+            {
+                idChat = Int16.Parse(chat.Rows[chat.Rows.Count - 1].ItemArray[0].ToString());
+                idChat++;
+            }
+            else
+            {
+                idChat = 0;
+            }
+            
+
+            // Kirim chat
+            toSend = Program.escapeQuoteSQL(toSend);
+            Program.conn.ExecuteNonQuery("INSERT INTO chat VALUES ('" + idChat + "',sysdate,'1','" + toSend + "','0')");
         }
 
         private void tmrWaktu_Tick(object sender, EventArgs e)
@@ -141,6 +233,7 @@ namespace RentalinKatalog
                 animateBlink = true;
                 lblTime.Text = hour + ":" + minute;
             }
+            updateChat();
         }
 
         private void tmrScrollingText_Tick(object sender, EventArgs e)
@@ -151,8 +244,8 @@ namespace RentalinKatalog
 
         private void btnLihatDaftarJudul_Click(object sender, EventArgs e)
         {
-            
 
+            tabControlApp.TabIndex = 1;
         }
 
         private void btnPesan_Click(object sender, EventArgs e)
@@ -183,9 +276,9 @@ namespace RentalinKatalog
             lblJenisKepingKoleksi.Text = dataKoleksi.Rows[index].ItemArray[3].ToString();
 
             // Ambil deskripsi dan BLOB gambar dari database
-            string kodeKoleksi = dataKoleksi.Rows[index].ItemArray[0].ToString();
+            kodeKoleksiDipilih = dataKoleksi.Rows[index].ItemArray[0].ToString();
             DataTable infoJudul, stokKoleksi;
-            infoJudul = Program.conn.ExecuteDataTable("SELECT dekripsiitem, coverart FROM koleksi WHERE KodeKoleksi='" + kodeKoleksi + "'");
+            infoJudul = Program.conn.ExecuteDataTable("SELECT dekripsiitem, coverart FROM koleksi WHERE KodeKoleksi='" + kodeKoleksiDipilih + "'");
 
             // Kosongkan gambar
             if (picDetailKoleksi.Image != null)
@@ -200,10 +293,10 @@ namespace RentalinKatalog
                 if (!Convert.IsDBNull(infoJudul.Rows[0].ItemArray[1]))
                 {
                     byte[] blob = (byte[])infoJudul.Rows[0].ItemArray[1];
-                    Program.displayBlobImage(blob, kodeKoleksi);
+                    Program.displayBlobImage(blob, kodeKoleksiDipilih);
 
                     // Tampilkan gambar
-                    picDetailKoleksi.Image = Image.FromFile(kodeKoleksi);
+                    picDetailKoleksi.Image = Image.FromFile(kodeKoleksiDipilih);
                     picDetailKoleksi.SizeMode = PictureBoxSizeMode.StretchImage;
                     picDetailKoleksi.Refresh();
                 }
@@ -217,18 +310,22 @@ namespace RentalinKatalog
             lblDeskripsiKoleksi.Text = infoJudul.Rows[0].ItemArray[0].ToString();
 
             // Cari jumlah stok yang tersedia dari koleksi yang dipilih
-            stokKoleksi = Program.conn.ExecuteDataTable("SELECT count(*) FROM StokKoleksi WHERE KodeKoleksi='" + kodeKoleksi + "' AND Status='0'");
+            stokKoleksi = Program.conn.ExecuteDataTable("SELECT count(*) FROM StokKoleksi WHERE KodeKoleksi='" + kodeKoleksiDipilih + "' AND Status='0'");
             int jumlahStok = Int16.Parse(stokKoleksi.Rows[0].ItemArray[0].ToString());
             if (jumlahStok > 0)
             {
-                lblStokInfo.Text = "Stok: " + jumlahStok.ToString();
+                lblStokInfo.Text = "Stok: ";
+                lblStokJumlah.Text = jumlahStok.ToString();
                 lblStokInfo.ForeColor = Color.Black;
+                btnTambahKePesanan.Enabled = true;
 
             }
             else
             {
                 lblStokInfo.Text = "Habis";
+                lblStokJumlah.Text = "";
                 lblStokInfo.ForeColor = Color.Red;
+                btnTambahKePesanan.Enabled = false;
             }
             
         }
@@ -266,18 +363,28 @@ namespace RentalinKatalog
 
         private void tmrTopKoleksi_Tick(object sender, EventArgs e)
         {
-           
-            if (judulTerbanyak.Rows.Count < MAX_TOP_KOLEKSI)
+            if (judulTerbanyak.Rows.Count > 0)
             {
+                if (judulTerbanyak.Rows.Count < MAX_TOP_KOLEKSI)
+                {
 
-                idxTopKoleksi = (idxTopKoleksi + 1) % judulTerbanyak.Rows.Count;
+                    idxTopKoleksi = (idxTopKoleksi + 1) % judulTerbanyak.Rows.Count;
+                }
+                else
+                {
+                    idxTopKoleksi = (idxTopKoleksi + 1) % MAX_TOP_KOLEKSI;
+                }
+                updateTopKoleksi();
             }
             else
             {
-                idxTopKoleksi = (idxTopKoleksi + 1) % MAX_TOP_KOLEKSI;
+                picTopKoleksiTerbaik.Image = null;
+                lblJudulTop.Text = "";
+                lblGenreTop.Text = "";
+                lblJenisKepingTop.Text = "";
+                lblDeskripsiTop.Text = "";
             }
-
-            updateTopKoleksi();
+           
         }
 
         private void tabDepan_Click(object sender, EventArgs e)
@@ -289,6 +396,83 @@ namespace RentalinKatalog
         {
 
         }
+
+        private void btnTambahKePesanan_Click(object sender, EventArgs e)
+        {
+            bool ada = false;
+            // Cek apakah yang dipilih sudah masuk ke dalam daftar pesanan
+            for (int i = 0; i < pesananAnda.Rows.Count; i++)
+            {
+                if (pesananAnda.Rows[i].ItemArray[0].ToString() == kodeKoleksiDipilih)
+                    ada = true;
+            }
+            // Tambahkan item ke pesanananda
+            if (!ada)
+            {
+                pesananAnda.Rows.Add(kodeKoleksiDipilih, lblJudulKoleksi.Text, lblGenreKoleksi.Text, lblJenisKepingKoleksi.Text);
+                cekPesananAnda();
+            }
+            
+            // Ok sip
+        }
+
+        private void btnHapusPilihan_Click(object sender, EventArgs e)
+        {
+            // Hapus jika ada yang dipilih
+            if (dgPesananAnda.SelectedCells.Count > 0)
+            {
+                int idx = dgPesananAnda.SelectedCells[0].RowIndex;
+                pesananAnda.Rows[idx].Delete();
+            }
+            cekPesananAnda();
+        }
+
+        private void btnBatalkanPesanan_Click(object sender, EventArgs e)
+        {
+            // Bersihkan daftar pesanan
+            pesananAnda.Clear();
+            cekPesananAnda();
+        }
+
+        private void btnProsesPesanan_Click(object sender, EventArgs e)
+        {
+            frmProsesPesanan form = new frmProsesPesanan(pesananAnda);
+            form.ShowDialog(this);
+            if (form.isSukses)
+            {
+                pesananAnda.Clear();
+                updateKoleksi();
+                
+            }
+            cekPesananAnda();
+        }
+
+        private void dgPesananAnda_SelectionChanged(object sender, EventArgs e)
+        {
+            cekPesananAnda();
+        }
+
+        private void btnKirimPesan_Click(object sender, EventArgs e)
+        {
+            
+            sendChat(txtChatInput.Text);
+            txtChatInput.Text = "";
+            updateChat();
+        }
+
+        private void txtChatInput_Leave(object sender, EventArgs e)
+        {
+            this.AcceptButton = null;
+        }
+
+        private void txtChatInput_Enter(object sender, EventArgs e)
+        {
+            this.AcceptButton = btnKirimPesan;
+        }
+
+       
+
+
 
       
        

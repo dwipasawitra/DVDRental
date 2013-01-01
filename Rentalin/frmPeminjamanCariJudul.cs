@@ -16,64 +16,73 @@ namespace Rentalin
             InitializeComponent();
         }
 
-        DataTable pencarian = new DataTable();
+        DataTable koleksi = new DataTable();
+        public string kodeDipilih;
+
+        private void updateKoleksi()
+        {
+
+            koleksi = Program.conn.ExecuteDataTable("SELECT kodekoleksi, namaitem, genre.namakategori from koleksi, genre where genre.kodekategori = koleksi.kodekategori");
+
+            // Atur judul kolom 
+            koleksi.Columns[0].ColumnName = "Kode Koleksi";
+            koleksi.Columns[1].ColumnName = "Judul";
+            koleksi.Columns[2].ColumnName = "Kategori";
+          
+            dgPencarian.DataSource = koleksi;
+            dgPencarian.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dgPencarian.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dgPencarian.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+
+        }
+
+        private void cariKoleksi(string arg)
+        {
+            arg = Program.escapeQuoteSQL(arg);
+            koleksi = Program.conn.ExecuteDataTable("SELECT kodekoleksi, namaitem, genre.namakategori from koleksi, genre where genre.kodekategori = koleksi.kodekategori AND (upper(kodekoleksi) like '%" + arg.ToUpper() + "%' OR upper(namaitem) like '%" + arg.ToUpper() + "%')");
+
+            // Atur judul kolom 
+            koleksi.Columns[0].ColumnName = "Kode Koleksi";
+            koleksi.Columns[1].ColumnName = "Judul";
+            koleksi.Columns[2].ColumnName = "Kategori";
+      
+            dgPencarian.DataSource = koleksi;
+            dgPencarian.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dgPencarian.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dgPencarian.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+           
+          
+        }
 
         private void frmPeminjamanCariJudul_Load(object sender, EventArgs e)
         {
-            lblJudul.Text = "Judul Film";
-            lblGenre.Text = "Genre";
-            lblDenda.Text = "0";
-            lblSewa.Text = "0";
-            dgPencarian.ReadOnly = true;
-        }
-
-        private void pbCover_Click(object sender, EventArgs e)
-        {
-
+            updateKoleksi();
         }
 
         private void txtPencarian_TextChanged(object sender, EventArgs e)
         {
-            //pencarian = Program.conn.ExecuteDataTable("SELECT kodekoleksi, kodekategori, namaitem, dekripsiitem, biayasewafilm, biayadendafilm, item FROM koleksi WHERE kodekoleksi like '%"+txtPencarian.Text+"%' OR namaitem like '%"+txtPencarian.Text+"%'");
-            //if (txtPencarian.TextLength > 0)
-            if (txtPencarian.Text != "")
-            {
-                pencarian = Program.conn.ExecuteDataTable("SELECT kodekoleksi, genre.kodekategori, namaitem, biayasewafilm, biayadendafilm, namakategori FROM koleksi INNER JOIN genre ON koleksi.kodekategori = genre.kodekategori WHERE kodekoleksi like '%" + txtPencarian.Text + "%' OR namaitem like '%" + txtPencarian.Text + "%'");
-                //else
-                //  dgPencarian.DataSource = pencarian;
-                //if (pencarian.Rows.Count > 0)
-                //{
-
-                dgPencarian.DataSource = pencarian;
-            }
-                
-            //}
+            cariKoleksi(txtPencarian.Text);
         }
 
-        private void dgPencarian_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void btnPilih_Click(object sender, EventArgs e)
         {
-            
+            if (dgPencarian.SelectedCells.Count > 0)
+            {
+                kodeDipilih = koleksi.Rows[dgPencarian.SelectedCells[0].RowIndex].ItemArray[0].ToString();
+                Close();
+            }
         }
 
-        private void dgPencarian_SelectionChanged(object sender, EventArgs e)
+        private void txtPencarian_KeyPress(object sender, KeyPressEventArgs e)
         {
-            int y = dgPencarian.CurrentCellAddress.Y;
-            if (y >= 0 && y < pencarian.Rows.Count)
-            {
-                lblJudul.Text = dgPencarian.Rows[y].Cells[2].Value.ToString();
-                lblGenre.Text = dgPencarian.Rows[y].Cells[5].Value.ToString();
-                lblDenda.Text = dgPencarian.Rows[y].Cells[4].Value.ToString();
-                lblSewa.Text = dgPencarian.Rows[y].Cells[3].Value.ToString();
-            }
-            else
-            {
-                lblJudul.Text = "Judul Film";
-                lblGenre.Text = "Genre";
-                lblDenda.Text = "0";
-                lblSewa.Text = "0";
-            }
-            
+
         }
+
+      
+
+       
+
+            
 
 
     }

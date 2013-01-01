@@ -126,6 +126,8 @@ namespace Rentalin
                         reportviewNota.LocalReport.SetParameters(tglKembali);
                         reportviewNota.LocalReport.SetParameters(pesanBawah);
                         reportviewNota.LocalReport.SetParameters(jenisHarga);
+                        reportviewNota.LocalReport.SetParameters(keterlambatan);
+                        reportviewNota.LocalReport.SetParameters(tglRealisasiKembali);
                         this.reportviewNota.RefreshReport();
                         break;
                 }

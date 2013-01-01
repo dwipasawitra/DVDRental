@@ -33,10 +33,11 @@
             this.btnLogin = new System.Windows.Forms.Button();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.txtUserName = new System.Windows.Forms.TextBox();
-            this.picDisc = new System.Windows.Forms.PictureBox();
             this.lblNamaLayanan = new System.Windows.Forms.Label();
             this.lblAlamatLayanan = new System.Windows.Forms.Label();
             this.lblPowered = new System.Windows.Forms.Label();
+            this.picDisc = new System.Windows.Forms.PictureBox();
+            this.btnKeluar = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picUser)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picDisc)).BeginInit();
@@ -99,15 +100,6 @@
             this.txtUserName.Enter += new System.EventHandler(this.txtUserName_Enter);
             this.txtUserName.Leave += new System.EventHandler(this.txtUserName_Leave);
             // 
-            // picDisc
-            // 
-            this.picDisc.Image = global::Rentalin.Properties.Resources.disc;
-            this.picDisc.Location = new System.Drawing.Point(12, 11);
-            this.picDisc.Name = "picDisc";
-            this.picDisc.Size = new System.Drawing.Size(85, 87);
-            this.picDisc.TabIndex = 4;
-            this.picDisc.TabStop = false;
-            // 
             // lblNamaLayanan
             // 
             this.lblNamaLayanan.AutoSize = true;
@@ -138,12 +130,32 @@
             this.lblPowered.TabIndex = 10;
             this.lblPowered.Text = "Powered by RENTALIN engine\r\nhttp://github.com/initrunlevel0/DVDRental";
             // 
+            // picDisc
+            // 
+            this.picDisc.Image = global::Rentalin.Properties.Resources.disc;
+            this.picDisc.Location = new System.Drawing.Point(12, 11);
+            this.picDisc.Name = "picDisc";
+            this.picDisc.Size = new System.Drawing.Size(85, 87);
+            this.picDisc.TabIndex = 4;
+            this.picDisc.TabStop = false;
+            // 
+            // btnKeluar
+            // 
+            this.btnKeluar.Location = new System.Drawing.Point(577, 18);
+            this.btnKeluar.Name = "btnKeluar";
+            this.btnKeluar.Size = new System.Drawing.Size(123, 37);
+            this.btnKeluar.TabIndex = 11;
+            this.btnKeluar.Text = "Keluar Aplikasi";
+            this.btnKeluar.UseVisualStyleBackColor = true;
+            this.btnKeluar.Click += new System.EventHandler(this.btnKeluar_Click);
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(727, 330);
+            this.Controls.Add(this.btnKeluar);
             this.Controls.Add(this.lblPowered);
             this.Controls.Add(this.lblNamaLayanan);
             this.Controls.Add(this.lblAlamatLayanan);
@@ -175,6 +187,7 @@
         private System.Windows.Forms.Label lblNamaLayanan;
         private System.Windows.Forms.Label lblAlamatLayanan;
         private System.Windows.Forms.Label lblPowered;
+        private System.Windows.Forms.Button btnKeluar;
 
     }
 }

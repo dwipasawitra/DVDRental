@@ -88,7 +88,12 @@ namespace Rentalin
 
         }
 
+        private void btnKeluar_Click(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
+        }
 
+       
         
     }
 }

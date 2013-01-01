@@ -28,41 +28,53 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgPencarianPelanggan = new System.Windows.Forms.DataGridView();
             this.txtCariPelanggan = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dgPencarianPelanggan)).BeginInit();
+            this.btnPilih = new System.Windows.Forms.Button();
+            this.listBoxPelanggan = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
-            // 
-            // dgPencarianPelanggan
-            // 
-            this.dgPencarianPelanggan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgPencarianPelanggan.Location = new System.Drawing.Point(9, 36);
-            this.dgPencarianPelanggan.Name = "dgPencarianPelanggan";
-            this.dgPencarianPelanggan.Size = new System.Drawing.Size(389, 319);
-            this.dgPencarianPelanggan.TabIndex = 0;
             // 
             // txtCariPelanggan
             // 
-            this.txtCariPelanggan.Location = new System.Drawing.Point(212, 10);
+            this.txtCariPelanggan.Location = new System.Drawing.Point(12, 10);
             this.txtCariPelanggan.Name = "txtCariPelanggan";
-            this.txtCariPelanggan.Size = new System.Drawing.Size(185, 20);
+            this.txtCariPelanggan.Size = new System.Drawing.Size(323, 20);
             this.txtCariPelanggan.TabIndex = 1;
             this.txtCariPelanggan.TextChanged += new System.EventHandler(this.txtCariPelanggan_TextChanged);
             this.txtCariPelanggan.Enter += new System.EventHandler(this.txtCariPelanggan_Enter);
             this.txtCariPelanggan.Leave += new System.EventHandler(this.txtCariPelanggan_Leave);
             // 
+            // btnPilih
+            // 
+            this.btnPilih.Location = new System.Drawing.Point(341, 10);
+            this.btnPilih.Name = "btnPilih";
+            this.btnPilih.Size = new System.Drawing.Size(57, 20);
+            this.btnPilih.TabIndex = 2;
+            this.btnPilih.Text = "Pilih";
+            this.btnPilih.UseVisualStyleBackColor = true;
+            this.btnPilih.Click += new System.EventHandler(this.btnPilih_Click);
+            // 
+            // listBoxPelanggan
+            // 
+            this.listBoxPelanggan.FormattingEnabled = true;
+            this.listBoxPelanggan.Location = new System.Drawing.Point(13, 33);
+            this.listBoxPelanggan.Name = "listBoxPelanggan";
+            this.listBoxPelanggan.Size = new System.Drawing.Size(384, 316);
+            this.listBoxPelanggan.TabIndex = 3;
+            // 
             // frmPeminjamanCariPelanggan
             // 
+            this.AcceptButton = this.btnPilih;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(410, 367);
+            this.ClientSize = new System.Drawing.Size(408, 361);
+            this.Controls.Add(this.listBoxPelanggan);
+            this.Controls.Add(this.btnPilih);
             this.Controls.Add(this.txtCariPelanggan);
-            this.Controls.Add(this.dgPencarianPelanggan);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmPeminjamanCariPelanggan";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cari Pelanggan";
             this.Load += new System.EventHandler(this.frmPeminjamanCariPelanggan_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgPencarianPelanggan)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -70,7 +82,8 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dgPencarianPelanggan;
         private System.Windows.Forms.TextBox txtCariPelanggan;
+        private System.Windows.Forms.Button btnPilih;
+        private System.Windows.Forms.ListBox listBoxPelanggan;
     }
 }

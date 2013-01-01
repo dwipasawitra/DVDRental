@@ -11,9 +11,62 @@ namespace Rentalin
 {
     public partial class frmTransaksiPeminjaman : Form
     {
+        DataTable dataPesanan;
+
         public frmTransaksiPeminjaman()
         {
             InitializeComponent();
+            tampilanAwal();
+            cekPenawaranSpesial();
+            //MessageBox.Show(System.DateTime.Now.Date.ToString());
+            koleksi = Program.conn.ExecuteDataTable("SELECT kodekoleksi, genre.kodekategori, namaitem, biayasewafilm, biayadendafilm, namakategori, hargasewakategori, hargadendakategori FROM koleksi INNER JOIN genre ON koleksi.kodekategori = genre.kodekategori");
+            member = Program.conn.ExecuteDataTable("SELECT * FROM member");
+
+            belanja.Columns.Add("Kode Judul");
+            belanja.Columns.Add("Judul Film");
+            belanja.Columns.Add("Kode Stok");
+            belanja.Columns.Add("Sewa Per Hari");
+            belanja.Columns.Add("Sewa Total");
+
+            dgPeminjaman.DataSource = belanja;
+            dgPeminjaman.ReadOnly = true;
+        }
+
+        public frmTransaksiPeminjaman(string kodePendingNota, string kodeMember)
+        {
+
+            InitializeComponent();
+            tampilanAwal();
+            cekPenawaranSpesial();
+            //MessageBox.Show(System.DateTime.Now.Date.ToString());
+            koleksi = Program.conn.ExecuteDataTable("SELECT kodekoleksi, genre.kodekategori, namaitem, biayasewafilm, biayadendafilm, namakategori, hargasewakategori, hargadendakategori FROM koleksi INNER JOIN genre ON koleksi.kodekategori = genre.kodekategori");
+            member = Program.conn.ExecuteDataTable("SELECT * FROM member");
+
+            belanja.Columns.Add("Kode Judul");
+            belanja.Columns.Add("Judul Film");
+            belanja.Columns.Add("Kode Stok");
+            belanja.Columns.Add("Sewa Per Hari");
+            belanja.Columns.Add("Sewa Total");
+
+            dgPeminjaman.DataSource = belanja;
+            dgPeminjaman.ReadOnly = true;
+
+            // Proses pending nota
+            // Masukkan kode member dari pending nota yang dimaksud
+            txtPeminjam.Text = kodeMember;
+            txtPeminjam.Enabled = false;
+            btnCariPelanggan.Enabled = false;
+            btnOk.Enabled = false;
+
+            // List masing-masing pesanan
+            dataPesanan = Program.conn.ExecuteDataTable("SELECT KodeKoleksi FROM PendingDipinjam WHERE NoPendingNota='" + kodePendingNota + "'");
+            for (int i = 0; i < dataPesanan.Rows.Count; i++)
+            {
+                txtTambahJudul.Text = dataPesanan.Rows[i].ItemArray[0].ToString();
+                txtTambahJudul.Text = "";
+            }
+
+
         }
 
         DataTable belanja = new DataTable();
@@ -70,20 +123,7 @@ namespace Rentalin
 
         private void frmTransaksiPeminjaman_Load(object sender, EventArgs e)
         {
-            tampilanAwal();
-            cekPenawaranSpesial();
-            //MessageBox.Show(System.DateTime.Now.Date.ToString());
-            koleksi = Program.conn.ExecuteDataTable("SELECT kodekoleksi, genre.kodekategori, namaitem, biayasewafilm, biayadendafilm, namakategori, hargasewakategori, hargadendakategori FROM koleksi INNER JOIN genre ON koleksi.kodekategori = genre.kodekategori");
-            member = Program.conn.ExecuteDataTable("SELECT * FROM member");
-
-            belanja.Columns.Add("Kode Judul");
-            belanja.Columns.Add("Judul Film");
-            belanja.Columns.Add("Kode Stok");
-            belanja.Columns.Add("Sewa Per Hari");
-            belanja.Columns.Add("Sewa Total");
-
-            dgPeminjaman.DataSource = belanja;
-            dgPeminjaman.ReadOnly = true;
+            
         }
 
         
@@ -447,6 +487,7 @@ namespace Rentalin
         {
             frmPeminjamanCariJudul formPeminjamanCariJudul = new frmPeminjamanCariJudul();
             formPeminjamanCariJudul.ShowDialog(this);
+            txtTambahJudul.Text = formPeminjamanCariJudul.kodeDipilih;
         }
 
         private void txtTambahJudul_TextChanged(object sender, EventArgs e)
@@ -459,6 +500,7 @@ namespace Rentalin
         {
             frmPeminjamanCariPelanggan formPeminjamanCariPelanggan = new frmPeminjamanCariPelanggan();
             formPeminjamanCariPelanggan.ShowDialog(this);
+            txtPeminjam.Text = formPeminjamanCariPelanggan.kodePelangganDipilih;
         }
 
         private void txtPeminjam_TextChanged(object sender, EventArgs e)

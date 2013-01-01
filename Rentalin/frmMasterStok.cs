@@ -60,6 +60,7 @@ namespace Rentalin
             btnTambah.Enabled = true;
             btnPerbarui.Enabled = false;
             btnHapus.Enabled = true;
+            txtPencarian.Enabled = true;
             loadInfo();
             //MessageBox.Show("string");
         }
@@ -83,7 +84,7 @@ namespace Rentalin
         private void cariStok(string input)
         {
             stok = Program.conn.ExecuteDataTable("SELECT KodeStok, (CASE WHEN Kondisi=0 THEN 'Baik' ELSE 'Buruk' END) as Kondisi, (CASE WHEN Status=1 THEN 'Dipinjam' ELSE 'Tersedia' END) as Status, harga, tglbeli" 
-                                                 + " FROM stokkoleksi WHERE kodestok like '%" + txtPencarian.Text + "%'");
+                                                 + " FROM stokkoleksi WHERE upper(kodestok) like '%" + txtPencarian.Text.ToUpper() + "%'");
             
             // set masing-masing nama kolom
             stok.Columns[0].ColumnName = "Kode Stok";
@@ -195,7 +196,7 @@ namespace Rentalin
                 btnPilihKoleksi.Enabled = false;
                 btnCariKoleksi.Enabled = false;
                 txtPilihKoleksi.Enabled = false;
-                
+                txtPencarian.Enabled = true;
                 loadInfo();
             }
             else
@@ -370,6 +371,13 @@ namespace Rentalin
                 }
                 catch (Exception) { }
             }
+        }
+
+        private void btnCariKoleksi_Click(object sender, EventArgs e)
+        {
+            frmPeminjamanCariJudul form = new frmPeminjamanCariJudul();
+            form.ShowDialog();
+            txtPilihKoleksi.Text = form.kodeDipilih;
         }
 
       

@@ -243,6 +243,7 @@
             this.dgPengembalian.ReadOnly = true;
             this.dgPengembalian.Size = new System.Drawing.Size(690, 366);
             this.dgPengembalian.TabIndex = 15;
+            this.dgPengembalian.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgPengembalian_CellContentClick);
             this.dgPengembalian.SelectionChanged += new System.EventHandler(this.dgPengembalian_SelectionChanged);
             // 
             // pnlInfo
@@ -254,7 +255,7 @@
             this.pnlInfo.ForeColor = System.Drawing.Color.White;
             this.pnlInfo.Location = new System.Drawing.Point(-6, -4);
             this.pnlInfo.Name = "pnlInfo";
-            this.pnlInfo.Size = new System.Drawing.Size(571, 75);
+            this.pnlInfo.Size = new System.Drawing.Size(571, 78);
             this.pnlInfo.TabIndex = 10;
             // 
             // lblInfoDetail

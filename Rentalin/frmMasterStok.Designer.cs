@@ -199,6 +199,7 @@
             this.btnCariKoleksi.TabIndex = 15;
             this.btnCariKoleksi.Text = "Cari Koleksi";
             this.btnCariKoleksi.UseVisualStyleBackColor = true;
+            this.btnCariKoleksi.Click += new System.EventHandler(this.btnCariKoleksi_Click);
             // 
             // lblGenre
             // 

@@ -11,7 +11,7 @@ namespace Rentalin
 {
     public partial class frmMain : Form
     {
-
+        
         public frmMain()
         {
             InitializeComponent();

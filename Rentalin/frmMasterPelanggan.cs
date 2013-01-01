@@ -108,7 +108,7 @@ namespace Rentalin
 
         private void cariData(string yangdicari)
         {
-            pelanggan = Program.conn.ExecuteDataTable("SELECT kodemember, namamember, jenisidentitas.jenis, nomoridentitas FROM member INNER JOIN jenisidentitas ON member.jenisidentitas = jenisidentitas.id WHERE namamember like '%" + txtPencarian.Text + "%' OR kodemember like '%" + txtPencarian.Text + "%'");
+            pelanggan = Program.conn.ExecuteDataTable("SELECT kodemember, namamember, jenisidentitas.jenis, nomoridentitas FROM member INNER JOIN jenisidentitas ON member.jenisidentitas = jenisidentitas.id WHERE upper(namamember) like '%" + txtPencarian.Text.ToUpper() + "%' OR upper(kodemember) like '%" + txtPencarian.Text.ToUpper() + "%'");
             pelanggan.Columns[0].ColumnName = "Kode Member";
             pelanggan.Columns[1].ColumnName = "Nama Member";
             pelanggan.Columns[2].ColumnName = "Jenis identitas";

@@ -48,7 +48,7 @@ namespace Rentalin
 
         private void frmTransaksiPengembalian_Load(object sender, EventArgs e)
         {
-            MessageBox.Show(System.DateTime.Now.ToString());
+           
             tampilanAwal();
             txtPeminjam.Focus();
             daftarPinjaman.Columns.Add("Kode Judul");
@@ -66,7 +66,7 @@ namespace Rentalin
         private int hitungTotalDenda()
         {
             int i, idx = dipinjam.Rows.Count, totalDenda = 0;            
-            MessageBox.Show(idx.ToString());
+            
             for (i = 0; i < idx; i++)
             {
                 daftarPinjaman.Rows[i][6] = int.Parse(daftarPinjaman.Rows[i].ItemArray[4].ToString())*int.Parse(lblLamaTelat.Text) + int.Parse(daftarPinjaman.Rows[i].ItemArray[5].ToString());
@@ -76,14 +76,15 @@ namespace Rentalin
         }
 
         private void labelInfo()
-        {             
-            if(dgPengembalian.CurrentCellAddress.Y >=0 && dgPengembalian.CurrentCellAddress.Y < daftarPinjaman.Rows.Count)
+        {
+            if (dgPengembalian.CurrentCellAddress.Y >= 0 && dgPengembalian.CurrentCellAddress.Y < daftarPinjaman.Rows.Count)
             {
                 int i, idx = stokKoleksi.Rows.Count;
                 for (i = 0; i < idx; i++)
                 {
                     if (stokKoleksi.Rows[i].ItemArray[0].ToString() == dgPengembalian.Rows[dgPengembalian.CurrentCellAddress.Y].Cells[2].Value.ToString())
                     {
+
                         lblDendaKerusakan.Text = stokKoleksi.Rows[i].ItemArray[4].ToString();
                         break;
                     }
@@ -93,7 +94,7 @@ namespace Rentalin
                 {
                     if (koleksi.Rows[i].ItemArray[0].ToString() == dgPengembalian.Rows[dgPengembalian.CurrentCellAddress.Y].Cells[0].Value.ToString())
                     {
-                       
+
                         if (Program.setting.biayaDendaPer == appSetting.BIAYA_DENDA_TIDAK_ADA)
                         {
                             lblHargaDendaItem.Text = "0";
@@ -117,7 +118,6 @@ namespace Rentalin
                     }
                 }
             }
-            lblDendaKerusakan.Text = "0";
             lblJudul.Text = "Judul FIlm";
             lblGenre.Text = "Genre";
             lblHargaDendaItem.Text = "0";
@@ -128,6 +128,7 @@ namespace Rentalin
         {
             frmPeminjamanCariPelanggan formPeminjamanCariPelanggan = new frmPeminjamanCariPelanggan();
             formPeminjamanCariPelanggan.ShowDialog(this);
+            txtPeminjam.Text = formPeminjamanCariPelanggan.kodePelangganDipilih;
         }
         private void dgPengembalian_SelectionChanged(object sender, EventArgs e)
         {
@@ -158,7 +159,7 @@ namespace Rentalin
         {       
             int i, idx = dipinjam.Rows.Count, error = 1;
             string newDate = DateTime.Now.Date.ToString().Substring(0, 10);
-            MessageBox.Show(newDate);
+
             for (i = 0; i < idx; i++)
             {
                 if (daftarPinjaman.Rows[i].ItemArray[3].ToString() == "Baik" || daftarPinjaman.Rows[i].ItemArray[3].ToString() == "Buruk")
@@ -190,6 +191,9 @@ namespace Rentalin
                     }
                     Program.conn.ExecuteNonQuery("UPDATE nota SET tglrealisasikembali = to_date('" + newDate + "','MM/dd/yyyy') WHERE nonota = '" + lblNmrNota.Text + "'");
                     MessageBox.Show("Transaksi Berhasil");
+                    frmLaporanNota notaTransaksi = new frmLaporanNota(lblNmrNota.Text);
+                    notaTransaksi.ShowDialog(this);
+
                     daftarPinjaman.Clear();
                     tampilanAwal();
                 }
@@ -270,6 +274,11 @@ namespace Rentalin
         }
 
         private void lblLamaTelat_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgPengembalian_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

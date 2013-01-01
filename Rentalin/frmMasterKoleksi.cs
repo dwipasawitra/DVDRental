@@ -36,7 +36,7 @@ namespace Rentalin
         private void cariKoleksi(string arg)
         {
             arg = Program.escapeQuoteSQL(arg);
-            koleksi = Program.conn.ExecuteDataTable("SELECT kodekoleksi, namaitem, genre.namakategori, biayasewafilm, biayadendafilm from koleksi, genre where genre.kodekategori = koleksi.kodekategori AND (kodekoleksi like '%" + arg + "%' OR namaitem like '%" + arg + "%')");
+            koleksi = Program.conn.ExecuteDataTable("SELECT kodekoleksi, namaitem, genre.namakategori, biayasewafilm, biayadendafilm from koleksi, genre where genre.kodekategori = koleksi.kodekategori AND (upper(kodekoleksi) like '%" + arg.ToUpper() + "%' OR upper(namaitem) like '%" + arg.ToUpper() + "%')");
 
             // Atur judul kolom 
             koleksi.Columns[0].ColumnName = "Kode Koleksi";

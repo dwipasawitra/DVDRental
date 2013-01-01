@@ -84,6 +84,7 @@
             this.txtUangDibayar.Name = "txtUangDibayar";
             this.txtUangDibayar.Size = new System.Drawing.Size(258, 31);
             this.txtUangDibayar.TabIndex = 5;
+            
             this.txtUangDibayar.TextChanged += new System.EventHandler(this.txtUangDibayar_TextChanged);
             this.txtUangDibayar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtUangDibayar_KeyDown);
             // 

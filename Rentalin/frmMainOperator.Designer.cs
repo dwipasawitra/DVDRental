@@ -56,13 +56,11 @@
             this.btnMasterKoleksi = new System.Windows.Forms.Button();
             this.btnMasterPelanggan = new System.Windows.Forms.Button();
             this.lblMasterInfo = new System.Windows.Forms.Label();
-            this.picMaster = new System.Windows.Forms.PictureBox();
             this.lblMasterData = new System.Windows.Forms.Label();
             this.pnlTransaksi = new System.Windows.Forms.Panel();
             this.btnPeminjaman = new System.Windows.Forms.Button();
             this.lblTransaksi = new System.Windows.Forms.Label();
             this.btnPengembalian = new System.Windows.Forms.Button();
-            this.picTransaksi = new System.Windows.Forms.PictureBox();
             this.lblTransaksiInfo = new System.Windows.Forms.Label();
             this.pnlLaporan = new System.Windows.Forms.Panel();
             this.btnLaporanKeuangan = new System.Windows.Forms.Button();
@@ -70,7 +68,6 @@
             this.btnLaporanNota = new System.Windows.Forms.Button();
             this.lblLaporan = new System.Windows.Forms.Label();
             this.lblLaporanInfo = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblDate = new System.Windows.Forms.Label();
             this.lblTime = new System.Windows.Forms.Label();
             this.lblLogedInAs = new System.Windows.Forms.Label();
@@ -79,23 +76,29 @@
             this.btnAdmin = new System.Windows.Forms.Button();
             this.tmrWaktu = new System.Windows.Forms.Timer(this.components);
             this.panel2 = new System.Windows.Forms.Panel();
-            this.picDisc = new System.Windows.Forms.PictureBox();
             this.tmrStatistik = new System.Windows.Forms.Timer(this.components);
             this.tmrBlinkingPenawaranSpesial = new System.Windows.Forms.Timer(this.components);
             this.lblPowered = new System.Windows.Forms.Label();
             this.pnlScrollingText = new System.Windows.Forms.Panel();
             this.lblScrollText = new System.Windows.Forms.Label();
             this.tmrScrollingText = new System.Windows.Forms.Timer(this.components);
+            this.btnPendingPeminjaman = new System.Windows.Forms.Button();
+            this.btnChat = new System.Windows.Forms.Button();
+            this.picDisc = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.picTransaksi = new System.Windows.Forms.PictureBox();
+            this.picMaster = new System.Windows.Forms.PictureBox();
+            this.tmrChat = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.pnlMaster.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picMaster)).BeginInit();
             this.pnlTransaksi.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picTransaksi)).BeginInit();
             this.pnlLaporan.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picDisc)).BeginInit();
             this.pnlScrollingText.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picDisc)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picTransaksi)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picMaster)).BeginInit();
             this.SuspendLayout();
             // 
             // lblAlamatLayanan
@@ -121,6 +124,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnChat);
             this.panel1.Controls.Add(this.lblPenawaranSpesial);
             this.panel1.Controls.Add(this.lblPenawaranSpesialInfo);
             this.panel1.Controls.Add(this.lblMemutakhirkan);
@@ -142,7 +146,7 @@
             this.panel1.Controls.Add(this.lblStatistik);
             this.panel1.Location = new System.Drawing.Point(12, 117);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(242, 320);
+            this.panel1.Size = new System.Drawing.Size(242, 329);
             this.panel1.TabIndex = 9;
             // 
             // lblPenawaranSpesial
@@ -302,7 +306,7 @@
             // 
             // btnHallofFame
             // 
-            this.btnHallofFame.Location = new System.Drawing.Point(11, 285);
+            this.btnHallofFame.Location = new System.Drawing.Point(11, 268);
             this.btnHallofFame.Name = "btnHallofFame";
             this.btnHallofFame.Size = new System.Drawing.Size(211, 23);
             this.btnHallofFame.TabIndex = 1;
@@ -379,15 +383,6 @@
             this.lblMasterInfo.Text = "Silahkan mengatur basis data layanan rental ini\r\nMelalui menu yang disediakan di " +
                 "bawah";
             // 
-            // picMaster
-            // 
-            this.picMaster.Image = global::Rentalin.Properties.Resources.db;
-            this.picMaster.Location = new System.Drawing.Point(15, 10);
-            this.picMaster.Name = "picMaster";
-            this.picMaster.Size = new System.Drawing.Size(92, 95);
-            this.picMaster.TabIndex = 1;
-            this.picMaster.TabStop = false;
-            // 
             // lblMasterData
             // 
             this.lblMasterData.AutoSize = true;
@@ -402,6 +397,7 @@
             // pnlTransaksi
             // 
             this.pnlTransaksi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(173)))), ((int)(((byte)(191)))));
+            this.pnlTransaksi.Controls.Add(this.btnPendingPeminjaman);
             this.pnlTransaksi.Controls.Add(this.btnPeminjaman);
             this.pnlTransaksi.Controls.Add(this.lblTransaksi);
             this.pnlTransaksi.Controls.Add(this.btnPengembalian);
@@ -415,9 +411,9 @@
             // btnPeminjaman
             // 
             this.btnPeminjaman.ForeColor = System.Drawing.Color.Black;
-            this.btnPeminjaman.Location = new System.Drawing.Point(118, 66);
+            this.btnPeminjaman.Location = new System.Drawing.Point(117, 66);
             this.btnPeminjaman.Name = "btnPeminjaman";
-            this.btnPeminjaman.Size = new System.Drawing.Size(165, 40);
+            this.btnPeminjaman.Size = new System.Drawing.Size(111, 40);
             this.btnPeminjaman.TabIndex = 20;
             this.btnPeminjaman.Text = "Peminjaman";
             this.btnPeminjaman.UseVisualStyleBackColor = true;
@@ -437,22 +433,13 @@
             // btnPengembalian
             // 
             this.btnPengembalian.ForeColor = System.Drawing.Color.Black;
-            this.btnPengembalian.Location = new System.Drawing.Point(289, 66);
+            this.btnPengembalian.Location = new System.Drawing.Point(234, 66);
             this.btnPengembalian.Name = "btnPengembalian";
-            this.btnPengembalian.Size = new System.Drawing.Size(157, 40);
+            this.btnPengembalian.Size = new System.Drawing.Size(112, 40);
             this.btnPengembalian.TabIndex = 18;
             this.btnPengembalian.Text = "Pengembalian";
             this.btnPengembalian.UseVisualStyleBackColor = true;
             this.btnPengembalian.Click += new System.EventHandler(this.btnPengembalian_Click);
-            // 
-            // picTransaksi
-            // 
-            this.picTransaksi.Image = global::Rentalin.Properties.Resources.bill;
-            this.picTransaksi.Location = new System.Drawing.Point(15, 12);
-            this.picTransaksi.Name = "picTransaksi";
-            this.picTransaksi.Size = new System.Drawing.Size(94, 94);
-            this.picTransaksi.TabIndex = 15;
-            this.picTransaksi.TabStop = false;
             // 
             // lblTransaksiInfo
             // 
@@ -530,15 +517,6 @@
             this.lblLaporanInfo.TabIndex = 19;
             this.lblLaporanInfo.Text = "Silahkan pilih salah satu laporan layanan yang ingin Anda lihat\r\npada menu dibawa" +
                 "h ini";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Rentalin.Properties.Resources.report;
-            this.pictureBox1.Location = new System.Drawing.Point(15, 8);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(92, 109);
-            this.pictureBox1.TabIndex = 18;
-            this.pictureBox1.TabStop = false;
             // 
             // lblDate
             // 
@@ -623,15 +601,6 @@
             this.panel2.Size = new System.Drawing.Size(756, 81);
             this.panel2.TabIndex = 18;
             // 
-            // picDisc
-            // 
-            this.picDisc.Image = global::Rentalin.Properties.Resources.disc;
-            this.picDisc.Location = new System.Drawing.Point(17, 0);
-            this.picDisc.Name = "picDisc";
-            this.picDisc.Size = new System.Drawing.Size(85, 87);
-            this.picDisc.TabIndex = 8;
-            this.picDisc.TabStop = false;
-            // 
             // tmrStatistik
             // 
             this.tmrStatistik.Enabled = true;
@@ -677,6 +646,70 @@
             this.tmrScrollingText.Enabled = true;
             this.tmrScrollingText.Tick += new System.EventHandler(this.tmrScrollingText_Tick);
             // 
+            // btnPendingPeminjaman
+            // 
+            this.btnPendingPeminjaman.ForeColor = System.Drawing.Color.Black;
+            this.btnPendingPeminjaman.Location = new System.Drawing.Point(352, 65);
+            this.btnPendingPeminjaman.Name = "btnPendingPeminjaman";
+            this.btnPendingPeminjaman.Size = new System.Drawing.Size(94, 40);
+            this.btnPendingPeminjaman.TabIndex = 21;
+            this.btnPendingPeminjaman.Text = "Peminjaman dari Katalog";
+            this.btnPendingPeminjaman.UseVisualStyleBackColor = true;
+            this.btnPendingPeminjaman.Click += new System.EventHandler(this.btnPendingPeminjaman_Click);
+            // 
+            // btnChat
+            // 
+            this.btnChat.ForeColor = System.Drawing.Color.Black;
+            this.btnChat.Location = new System.Drawing.Point(12, 291);
+            this.btnChat.Name = "btnChat";
+            this.btnChat.Size = new System.Drawing.Size(210, 26);
+            this.btnChat.TabIndex = 21;
+            this.btnChat.Text = "Chat dengan Pelanggan";
+            this.btnChat.UseVisualStyleBackColor = true;
+            this.btnChat.Click += new System.EventHandler(this.btnChat_Click);
+            // 
+            // picDisc
+            // 
+            this.picDisc.Image = global::Rentalin.Properties.Resources.disc;
+            this.picDisc.Location = new System.Drawing.Point(17, 0);
+            this.picDisc.Name = "picDisc";
+            this.picDisc.Size = new System.Drawing.Size(85, 87);
+            this.picDisc.TabIndex = 8;
+            this.picDisc.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Rentalin.Properties.Resources.report;
+            this.pictureBox1.Location = new System.Drawing.Point(15, 8);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(92, 109);
+            this.pictureBox1.TabIndex = 18;
+            this.pictureBox1.TabStop = false;
+            // 
+            // picTransaksi
+            // 
+            this.picTransaksi.Image = global::Rentalin.Properties.Resources.bill;
+            this.picTransaksi.Location = new System.Drawing.Point(15, 12);
+            this.picTransaksi.Name = "picTransaksi";
+            this.picTransaksi.Size = new System.Drawing.Size(94, 94);
+            this.picTransaksi.TabIndex = 15;
+            this.picTransaksi.TabStop = false;
+            // 
+            // picMaster
+            // 
+            this.picMaster.Image = global::Rentalin.Properties.Resources.db;
+            this.picMaster.Location = new System.Drawing.Point(15, 10);
+            this.picMaster.Name = "picMaster";
+            this.picMaster.Size = new System.Drawing.Size(92, 95);
+            this.picMaster.TabIndex = 1;
+            this.picMaster.TabStop = false;
+            // 
+            // tmrChat
+            // 
+            this.tmrChat.Enabled = true;
+            this.tmrChat.Interval = 1000;
+            this.tmrChat.Tick += new System.EventHandler(this.tmrChat_Tick);
+            // 
             // frmMainOperator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -702,18 +735,18 @@
             this.panel1.PerformLayout();
             this.pnlMaster.ResumeLayout(false);
             this.pnlMaster.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picMaster)).EndInit();
             this.pnlTransaksi.ResumeLayout(false);
             this.pnlTransaksi.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picTransaksi)).EndInit();
             this.pnlLaporan.ResumeLayout(false);
             this.pnlLaporan.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picDisc)).EndInit();
             this.pnlScrollingText.ResumeLayout(false);
             this.pnlScrollingText.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picDisc)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picTransaksi)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picMaster)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -778,5 +811,8 @@
         private System.Windows.Forms.Panel pnlScrollingText;
         private System.Windows.Forms.Label lblScrollText;
         private System.Windows.Forms.Timer tmrScrollingText;
+        private System.Windows.Forms.Button btnChat;
+        private System.Windows.Forms.Button btnPendingPeminjaman;
+        private System.Windows.Forms.Timer tmrChat;
     }
 }

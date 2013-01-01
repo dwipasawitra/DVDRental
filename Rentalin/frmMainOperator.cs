@@ -12,6 +12,7 @@ namespace Rentalin
     public partial class frmMainOperator : Form
     {
         bool blinker = false;
+        bool blinkPendingPeminjaman, blinkChat;
         DataTable dtTransaksiStat, dtJudulDipinjamStat;
 
         /* ISENG BY WIRAMA */
@@ -107,6 +108,7 @@ namespace Rentalin
             {
                 btnPeminjaman.Enabled = false;
                 btnPengembalian.Enabled = false;
+                btnPendingPeminjaman.Enabled = false;
             }
             if (Program.role.laporanPerTransaksi == false)
             {
@@ -185,6 +187,8 @@ namespace Rentalin
 
         private void tmrWaktu_Tick(object sender, EventArgs e)
         {
+            
+            cekPendingNota();
             string detik = DateTime.Now.Second.ToString();
             string menit = DateTime.Now.Minute.ToString();
             string jam = DateTime.Now.Hour.ToString();
@@ -231,15 +235,36 @@ namespace Rentalin
             if (blinker)
             {
                 lblTime.Text = jam + ":" + menit + ":" + detik;
+                if (blinkPendingPeminjaman) btnPendingPeminjaman.Text = "Peminjaman dari Katalog";
+                if (blinkChat) btnChat.Text = "Chat dengan pelanggan";
                 blinker = false;
             }
             else
             {
+                if (blinkPendingPeminjaman) btnPendingPeminjaman.Text = "";
+                if (blinkChat) btnChat.Text = "";
                 lblTime.Text = jam + " " + menit + " " + detik;
                 blinker = true;
             }
-        }   
+        }
 
+        private void cekPendingNota()
+        {
+            DataTable pendingNota = pendingNota = Program.conn.ExecuteDataTable("SELECT NoPendingNota, Member.KodeMember, Member.NamaMember FROM PendingNota INNER JOIN Member ON PendingNota.KodeMember = Member.KodeMember WHERE Diproses='0' ORDER BY NoPendingNota DESC") ;
+            
+            if (pendingNota.Rows.Count > 0)
+            {
+                btnPendingPeminjaman.ForeColor = Color.Red;
+                blinkPendingPeminjaman = true;
+              
+            }
+            else
+            {
+                btnPendingPeminjaman.ForeColor = Color.Black;
+                btnPendingPeminjaman.Text = "Peminjaman dari Katalog";
+                blinkPendingPeminjaman = false;
+            }
+        }
         private void btnHallofFame_Click(object sender, EventArgs e)
         {
             frmHallOfFame form = new frmHallOfFame();
@@ -250,6 +275,7 @@ namespace Rentalin
         {
             lblMemutakhirkan.Visible = true;
             updateStatistik();
+            
             lblMemutakhirkan.Visible = false;
 
             // Sekalian nitip
@@ -287,6 +313,33 @@ namespace Rentalin
         {
             frmLaporanKeuangan form = new frmLaporanKeuangan();
             form.ShowDialog(this);
+        }
+
+        private void btnPendingPeminjaman_Click(object sender, EventArgs e)
+        {
+            frmPeminjamanDariKatalog form = new frmPeminjamanDariKatalog();
+            form.ShowDialog(this);
+        }
+
+        private void btnChat_Click(object sender, EventArgs e)
+        {
+            // Tanpa modal
+            frmChatPelanggan form = new frmChatPelanggan();
+            form.Show();
+        }
+
+        private void tmrChat_Tick(object sender, EventArgs e)
+        {
+            // Cek apakah chat ada atau tidak
+            DataTable chatCheck = Program.conn.ExecuteDataTable("SELECT * FROM Chat WHERE Dibaca='0'");
+            if (chatCheck.Rows.Count > 0)
+            {
+                blinkChat = true;
+            }
+            else
+            {
+                blinkChat = false;
+            }
         }
 
        
