@@ -2,6 +2,10 @@
     
     
     public partial class dsRentalin {
+        partial class LaporanKeuanganDataTable
+        {
+        }
+    
         partial class PENGGUNA1DataTable
         {
         }

@@ -340,6 +340,7 @@
             // 
             // cmbStok
             // 
+            this.cmbStok.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbStok.FormattingEnabled = true;
             this.cmbStok.Location = new System.Drawing.Point(7, 194);
             this.cmbStok.Name = "cmbStok";

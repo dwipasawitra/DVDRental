@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLaporanKeuangan));
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource5 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.pnlInfo = new System.Windows.Forms.Panel();
             this.rbPerBulan = new System.Windows.Forms.RadioButton();
             this.rbPerMinggu = new System.Windows.Forms.RadioButton();
@@ -38,12 +39,19 @@
             this.label2 = new System.Windows.Forms.Label();
             this.lblInfo = new System.Windows.Forms.Label();
             this.reportviewKeuangan = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.dsRentalin = new Rentalin.dsRentalin();
+            this.LaporanKeuanganBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.LaporanKeuanganTableAdapter = new Rentalin.dsRentalinTableAdapters.LaporanKeuanganTableAdapter();
+            this.rbPerTahun = new System.Windows.Forms.RadioButton();
             this.pnlInfo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dsRentalin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LaporanKeuanganBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlInfo
             // 
             this.pnlInfo.BackColor = System.Drawing.Color.Green;
+            this.pnlInfo.Controls.Add(this.rbPerTahun);
             this.pnlInfo.Controls.Add(this.rbPerBulan);
             this.pnlInfo.Controls.Add(this.rbPerMinggu);
             this.pnlInfo.Controls.Add(this.rbPerTanggal);
@@ -55,6 +63,7 @@
             this.pnlInfo.Name = "pnlInfo";
             this.pnlInfo.Size = new System.Drawing.Size(238, 420);
             this.pnlInfo.TabIndex = 11;
+            this.pnlInfo.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlInfo_Paint);
             // 
             // rbPerBulan
             // 
@@ -65,6 +74,7 @@
             this.rbPerBulan.TabIndex = 7;
             this.rbPerBulan.Text = "Tampilkan transaksi pada bulan\r\ndari tanggal tersebut";
             this.rbPerBulan.UseVisualStyleBackColor = true;
+            this.rbPerBulan.CheckedChanged += new System.EventHandler(this.rbPerBulan_CheckedChanged);
             // 
             // rbPerMinggu
             // 
@@ -75,6 +85,7 @@
             this.rbPerMinggu.TabIndex = 6;
             this.rbPerMinggu.Text = "Tampilkan transaksi pada minggu \r\ndari tanggal tersebut";
             this.rbPerMinggu.UseVisualStyleBackColor = true;
+            this.rbPerMinggu.CheckedChanged += new System.EventHandler(this.rbPerMinggu_CheckedChanged);
             // 
             // rbPerTanggal
             // 
@@ -87,6 +98,7 @@
             this.rbPerTanggal.TabStop = true;
             this.rbPerTanggal.Text = "Tampilkan transaksi tanggal tersebut";
             this.rbPerTanggal.UseVisualStyleBackColor = true;
+            this.rbPerTanggal.CheckedChanged += new System.EventHandler(this.rbPerTanggal_CheckedChanged);
             // 
             // dtpTanggal
             // 
@@ -94,6 +106,7 @@
             this.dtpTanggal.Name = "dtpTanggal";
             this.dtpTanggal.Size = new System.Drawing.Size(218, 20);
             this.dtpTanggal.TabIndex = 4;
+            this.dtpTanggal.ValueChanged += new System.EventHandler(this.dtpTanggal_ValueChanged);
             // 
             // label2
             // 
@@ -116,14 +129,39 @@
             // 
             // reportviewKeuangan
             // 
-            reportDataSource1.Name = "dsLaporanTransaksi";
-            reportDataSource1.Value = null;
-            this.reportviewKeuangan.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportviewKeuangan.LocalReport.ReportEmbeddedResource = "Rentalin.rptLaporanTransaksi.rdlc";
+            reportDataSource5.Name = "dsLaporanKeuangan";
+            reportDataSource5.Value = this.LaporanKeuanganBindingSource;
+            this.reportviewKeuangan.LocalReport.DataSources.Add(reportDataSource5);
+            this.reportviewKeuangan.LocalReport.ReportEmbeddedResource = "Rentalin.rptLaporanKeuangan.rdlc";
             this.reportviewKeuangan.Location = new System.Drawing.Point(245, 7);
             this.reportviewKeuangan.Name = "reportviewKeuangan";
             this.reportviewKeuangan.Size = new System.Drawing.Size(720, 416);
             this.reportviewKeuangan.TabIndex = 10;
+            // 
+            // dsRentalin
+            // 
+            this.dsRentalin.DataSetName = "dsRentalin";
+            this.dsRentalin.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // LaporanKeuanganBindingSource
+            // 
+            this.LaporanKeuanganBindingSource.DataMember = "LaporanKeuangan";
+            this.LaporanKeuanganBindingSource.DataSource = this.dsRentalin;
+            // 
+            // LaporanKeuanganTableAdapter
+            // 
+            this.LaporanKeuanganTableAdapter.ClearBeforeFill = true;
+            // 
+            // rbPerTahun
+            // 
+            this.rbPerTahun.AutoSize = true;
+            this.rbPerTahun.Location = new System.Drawing.Point(8, 311);
+            this.rbPerTahun.Name = "rbPerTahun";
+            this.rbPerTahun.Size = new System.Drawing.Size(176, 30);
+            this.rbPerTahun.TabIndex = 8;
+            this.rbPerTahun.Text = "Tampilkan transaksi pada tahun\r\ndari tanggal tersebut";
+            this.rbPerTahun.UseVisualStyleBackColor = true;
+            this.rbPerTahun.CheckedChanged += new System.EventHandler(this.rbPerTahun_CheckedChanged);
             // 
             // frmLaporanKeuangan
             // 
@@ -137,8 +175,11 @@
             this.Name = "frmLaporanKeuangan";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RENTALIN -- Laporan Keuangan";
+            this.Load += new System.EventHandler(this.frmLaporanKeuangan_Load);
             this.pnlInfo.ResumeLayout(false);
             this.pnlInfo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dsRentalin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LaporanKeuanganBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -153,5 +194,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblInfo;
         private Microsoft.Reporting.WinForms.ReportViewer reportviewKeuangan;
+        private System.Windows.Forms.BindingSource LaporanKeuanganBindingSource;
+        private dsRentalin dsRentalin;
+        private dsRentalinTableAdapters.LaporanKeuanganTableAdapter LaporanKeuanganTableAdapter;
+        private System.Windows.Forms.RadioButton rbPerTahun;
     }
 }

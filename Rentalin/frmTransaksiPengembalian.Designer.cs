@@ -149,6 +149,7 @@
             // 
             // cmbKondisi
             // 
+            this.cmbKondisi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbKondisi.FormattingEnabled = true;
             this.cmbKondisi.Location = new System.Drawing.Point(7, 229);
             this.cmbKondisi.Name = "cmbKondisi";
