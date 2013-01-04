@@ -33,7 +33,7 @@ namespace Rentalin
 
         private void cariData(string yangdicari)
         {
-            pelanggan = Program.conn.ExecuteDataTable("SELECT kodemember, namamember WHERE upper(namamember) like '%" + txtCariPelanggan.Text.ToUpper() + "%' OR upper(kodemember) like '%" + txtCariPelanggan.Text.ToUpper() + "%'");
+            pelanggan = Program.conn.ExecuteDataTable("SELECT kodemember, namamember FROM member WHERE upper(namamember) like '%" + txtCariPelanggan.Text.ToUpper() + "%' OR upper(kodemember) like '%" + txtCariPelanggan.Text.ToUpper() + "%'");
             pelanggan.Columns[0].ColumnName = "Kode Member";
             pelanggan.Columns[1].ColumnName = "Nama Member";
           

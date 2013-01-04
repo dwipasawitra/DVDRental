@@ -35,7 +35,7 @@ namespace Rentalin
 
         private void updateDataPengguna()
         {
-            dataPengguna = Program.conn.ExecuteDataTable("SELECT kewenangan.namakewenangan, pengguna.* FROM pengguna INNER JOIN kewenangan ON pengguna.kodekewenangan = kewenangan.kodekewenangan");
+            dataPengguna = Program.conn.ExecuteDataTable("SELECT kewenangan.namakewenangan, pengguna.* FROM pengguna INNER JOIN kewenangan ON pengguna.kodekewenangan = kewenangan.kodekewenangan ORDER BY pengguna.kodeoperator ASC");
         }
 
         private void updateDataKewenangan()

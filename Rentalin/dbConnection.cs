@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using Oracle.DataAccess.Client;
 using System.Drawing;
 using Oracle.DataAccess.Types;
+using System.IO;
 
 
 // Database Connection
@@ -18,11 +19,14 @@ namespace Rentalin
              + "(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521)))"
              + "(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=xe)));"
              + "User Id=hyuuzu;Password=kireina;";
-        
+        //private string connStr = "";
         public bool Open()
          {
             try
             {
+                // Open connection text file
+                
+
                 conn = new OracleConnection(connStr);
                 conn.Open();
                 return true;

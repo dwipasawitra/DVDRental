@@ -14216,7 +14216,7 @@ WHERE Nota.NoNota = :NOTAINPUT";
             tableMapping.ColumnMappings.Add("TGLKEMBALI", "TGLKEMBALI");
             tableMapping.ColumnMappings.Add("TGLREALISASIKEMBALI", "TGLREALISASIKEMBALI");
             tableMapping.ColumnMappings.Add("NAMAMEMBER", "NAMAMEMBER");
-            tableMapping.ColumnMappings.Add("NAMALENGKAP", "NAMAOPERATOR");
+            tableMapping.ColumnMappings.Add("USERNAME", "NAMAOPERATOR");
             this._adapter.TableMappings.Add(tableMapping);
         }
         

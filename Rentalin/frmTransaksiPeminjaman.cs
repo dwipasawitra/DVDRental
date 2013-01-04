@@ -137,8 +137,7 @@ namespace Rentalin
         //fungsi merubah label Sewa Denda per hari
         private void labelSewaDenda()
         {
-            //DataTable newKoleksi = new DataTable();            
-            //newKoleksi = Program.conn.ExecuteDataTable("SELECT * FROM koleksi WHERE kodekoleksi = '" + dgPeminjaman.Rows[dgPeminjaman.CurrentCellAddress.Y].Cells[0].Value.ToString() + "'");
+            
             int i, idx = koleksi.Rows.Count;            
             
             for (i = 0; i < idx; i++)
@@ -161,9 +160,6 @@ namespace Rentalin
                     {
                         lblHargaSewaItem.Text = (int.Parse(koleksi.Rows[i].ItemArray[3].ToString()) + int.Parse(koleksi.Rows[i].ItemArray[6].ToString())).ToString();
                     }
-
-                 
-                    
                     lblJudul.Text = koleksi.Rows[i].ItemArray[2].ToString();
                     lblGenre.Text = koleksi.Rows[i].ItemArray[5].ToString();
                     break;
@@ -331,21 +327,24 @@ namespace Rentalin
         private void dgPeminjaman_SelectionChanged(object sender, EventArgs e)
         {
             //int x = e.ColumnIndex;
-            int y = dgPeminjaman.CurrentCellAddress.Y;
-            if (y < belanja.Rows.Count && y>= 0)
+            if (dgPeminjaman.SelectedCells.Count > 0)
             {
-                lblJudul.Text = dgPeminjaman.Rows[y].Cells[1].Value.ToString();
-
-                stokKoleksi = Program.conn.ExecuteDataTable("SELECT * FROM stokkoleksi WHERE kodekoleksi = '" + dgPeminjaman.Rows[y].Cells[0].Value.ToString() + "' AND kondisi = 0 AND status = 0");
-                int i, idx = stokKoleksi.Rows.Count, index = koleksi.Rows.Count;
-                cmbStok.Items.Clear();
-                for (i = 0; i < idx; i++)
+                int y = dgPeminjaman.SelectedCells[0].RowIndex;
+                if (y < belanja.Rows.Count && y >= 0)
                 {
-                    cmbStok.Items.Add(stokKoleksi.Rows[i].ItemArray[0].ToString());
-                }
-                cmbStok.Text = belanja.Rows[y].ItemArray[2].ToString();
+                    lblJudul.Text = dgPeminjaman.Rows[y].Cells[1].Value.ToString();
 
-                labelSewaDenda();
+                    stokKoleksi = Program.conn.ExecuteDataTable("SELECT * FROM stokkoleksi WHERE kodekoleksi = '" + dgPeminjaman.Rows[y].Cells[0].Value.ToString() + "' AND kondisi = 0 AND status = 0");
+                    int i, idx = stokKoleksi.Rows.Count, index = koleksi.Rows.Count;
+                    cmbStok.Items.Clear();
+                    for (i = 0; i < idx; i++)
+                    {
+                        cmbStok.Items.Add(stokKoleksi.Rows[i].ItemArray[0].ToString());
+                    }
+                    cmbStok.Text = belanja.Rows[y].ItemArray[2].ToString();
+
+                    labelSewaDenda();
+                }
             }
         }   
 
