@@ -15,17 +15,20 @@ namespace Rentalin
     class dbConnection
     {
         private OracleConnection conn;
-        private string connStr = "Data Source=(DESCRIPTION="
+        /*
+          private string connStr = "Data Source=(DESCRIPTION="
              + "(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521)))"
              + "(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=xe)));"
              + "User Id=hyuuzu;Password=kireina;";
-        //private string connStr = "";
+         */
+        private string connStr = "";
         public bool Open()
          {
             try
             {
                 // Open connection text file
-                
+                StreamReader srConn = new StreamReader("koneksi.txt");
+                connStr = srConn.ReadLine();
 
                 conn = new OracleConnection(connStr);
                 conn.Open();
